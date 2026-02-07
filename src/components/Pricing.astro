@@ -1,5 +1,5 @@
 ---
-// Gradient Modern Pricing
+// Glassmorphism Pricing
 const plans = [
   { name: 'Starter', price: '29', features: ['1 channel', '500 msgs/mo', 'Basic AI', 'Lead scoring'], highlight: false },
   { name: 'Pro', price: '79', features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team access', 'Integrations'], highlight: true },
@@ -10,31 +10,31 @@ const plans = [
 <section id="pricing" class="py-24 sm:py-32">
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-16 fade-in-up">
-      <div class="label-aurora mb-4">Pricing</div>
+      <div class="label-glass mb-4">Pricing</div>
       <h2 class="text-4xl sm:text-5xl font-bold mb-4">
-        Simple, <span class="text-aurora">transparent</span>
+        Simple pricing
       </h2>
-      <p class="text-dark-400">No surprises. Cancel anytime.</p>
+      <p class="text-white/60">Start free. Upgrade anytime.</p>
     </div>
     
     <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
       {plans.map((p, i) => (
-        <div class={`card-gradient p-8 fade-in-up flex flex-col ${p.highlight ? 'ring-2 ring-aurora-purple/50 shadow-glow-purple md:order-2 order-first' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
-          {p.highlight && <div class="label-aurora mb-4">Most Popular</div>}
+        <div class={`card-glass p-8 fade-in-up flex flex-col ${p.highlight ? 'ring-2 ring-white/30 md:order-2 order-first' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
+          {p.highlight && <div class="label-glass text-accent-pink mb-4">Most Popular</div>}
           <h3 class="text-xl font-semibold mb-2">{p.name}</h3>
           <div class="mb-6">
-            <span class="text-5xl font-bold text-aurora">${p.price}</span>
-            <span class="text-dark-500">/mo</span>
+            <span class="text-5xl font-bold">${p.price}</span>
+            <span class="text-white/50">/mo</span>
           </div>
           <ul class="space-y-3 mb-8 flex-1">
             {p.features.map(f => (
-              <li class="flex items-center gap-3 text-dark-300 text-sm">
-                <span class="text-aurora-purple">✓</span>
+              <li class="flex items-center gap-3 text-white/70 text-sm">
+                <span class="text-accent-cyan">✓</span>
                 {f}
               </li>
             ))}
           </ul>
-          <a href="#cta" class={p.highlight ? 'btn-gradient' : 'btn-gradient-outline'}>
+          <a href="#cta" class={p.highlight ? 'btn-glass-solid' : 'btn-glass'}>
             Get Started
           </a>
         </div>

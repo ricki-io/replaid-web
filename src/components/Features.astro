@@ -1,31 +1,31 @@
 ---
-// Gradient Modern Features
+// Glassmorphism Features
 const features = [
-  { icon: '📥', title: 'Unified Inbox', desc: 'Every channel, one beautiful dashboard.' },
-  { icon: '🎯', title: 'Smart Scoring', desc: 'AI finds your hottest leads instantly.' },
-  { icon: '⚡', title: 'Auto-Replies', desc: 'Lightning responses, 24/7.' },
-  { icon: '🤝', title: 'Human Handoff', desc: 'Seamless escalation when it matters.' },
+  { icon: '📥', title: 'Unified Inbox', desc: 'All channels in one sleek interface.' },
+  { icon: '🎯', title: 'Smart Scoring', desc: 'AI identifies your hottest leads.' },
+  { icon: '⚡', title: 'Auto-Replies', desc: 'Instant responses, always.' },
+  { icon: '🤝', title: 'Human Handoff', desc: 'Seamless escalation when needed.' },
 ];
 ---
 
 <section id="features" class="py-24 sm:py-32">
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-16 fade-in-up">
-      <div class="label-aurora mb-4">Features</div>
+      <div class="label-glass mb-4">Features</div>
       <h2 class="text-4xl sm:text-5xl font-bold mb-4">
-        Everything you need to <span class="text-aurora">convert</span>
+        Everything you need
       </h2>
-      <p class="text-dark-400 text-lg max-w-xl mx-auto">
-        Powerful tools, beautifully simple.
+      <p class="text-white/60 text-lg max-w-xl mx-auto">
+        Powerful features wrapped in beautiful simplicity.
       </p>
     </div>
     
     <div class="grid sm:grid-cols-2 gap-4">
       {features.map((f, i) => (
-        <div class="card-gradient p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+        <div class="card-glass p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
           <div class="text-3xl mb-4">{f.icon}</div>
           <h3 class="text-xl font-semibold mb-2">{f.title}</h3>
-          <p class="text-dark-400">{f.desc}</p>
+          <p class="text-white/60">{f.desc}</p>
         </div>
       ))}
     </div>

@@ -1,30 +1,30 @@
 ---
-// Gradient Modern Testimonials
+// Glassmorphism Testimonials
 const testimonials = [
-  { quote: "Response time dropped from hours to seconds. Absolutely transformative.", author: "Maria S.", role: "Founder" },
-  { quote: "3x conversion rate in month one. The ROI speaks for itself.", author: "James C.", role: "Sales Director" },
-  { quote: "AI replies are indistinguishable from our best team members.", author: "Lisa P.", role: "Head of Support" },
+  { quote: "Response time dropped from hours to seconds. Incredible.", author: "Maria S.", role: "Founder" },
+  { quote: "3x conversion rate in month one. Mind-blowing ROI.", author: "James C.", role: "Sales Director" },
+  { quote: "AI replies are indistinguishable from our team.", author: "Lisa P.", role: "Head of Support" },
 ];
 ---
 
-<section class="py-24 sm:py-32 border-t border-white/5">
+<section class="py-24 sm:py-32">
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-16 fade-in-up">
-      <div class="label-aurora mb-4">Testimonials</div>
+      <div class="label-glass mb-4">Testimonials</div>
       <h2 class="text-4xl sm:text-5xl font-bold">
-        Loved by <span class="text-aurora">thousands</span>
+        Loved by teams
       </h2>
     </div>
     
     <div class="grid md:grid-cols-3 gap-6">
       {testimonials.map((t, i) => (
-        <div class="card-gradient p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <blockquote class="text-lg text-dark-300 leading-relaxed mb-6">
+        <div class="card-glass p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <blockquote class="text-lg text-white/80 leading-relaxed mb-6">
             "{t.quote}"
           </blockquote>
           <div>
             <div class="font-semibold">{t.author}</div>
-            <div class="text-sm text-dark-500">{t.role}</div>
+            <div class="text-sm text-white/50">{t.role}</div>
           </div>
         </div>
       ))}

@@ -1,28 +1,28 @@
 ---
-// Gradient Modern FAQ
+// Glassmorphism FAQ
 const faqs = [
-  { q: "What channels are supported?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, and Twitter. More coming soon." },
+  { q: "What channels are supported?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, and Twitter." },
   { q: "How fast is setup?", a: "Under 10 minutes. Connect, train, launch." },
-  { q: "Can I disable auto-replies?", a: "Yes! Use Replaid for lead scoring only if you prefer." },
-  { q: "Is my data secure?", a: "Absolutely. Encrypted, GDPR compliant, and never sold." },
+  { q: "Can I disable auto-replies?", a: "Yes! Use it for lead scoring only if you prefer." },
+  { q: "Is my data secure?", a: "Absolutely. Encrypted and GDPR compliant." },
 ];
 ---
 
 <section id="faq" class="py-24 sm:py-32">
   <div class="mx-auto max-w-3xl px-6">
     <div class="text-center mb-16 fade-in-up">
-      <div class="label-aurora mb-4">FAQ</div>
+      <div class="label-glass mb-4">FAQ</div>
       <h2 class="text-4xl sm:text-5xl font-bold">Questions?</h2>
     </div>
     
     <div class="space-y-4">
       {faqs.map((f, i) => (
-        <details class="card-gradient group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
-          <summary class="p-6 font-semibold cursor-pointer flex justify-between items-center list-none hover:text-aurora-purple transition-colors">
+        <details class="card-glass group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
+          <summary class="p-6 font-semibold cursor-pointer flex justify-between items-center list-none hover:text-accent-cyan transition-colors">
             {f.q}
-            <span class="text-dark-500 group-open:rotate-45 transition-transform">+</span>
+            <span class="text-white/50 group-open:rotate-45 transition-transform">+</span>
           </summary>
-          <div class="px-6 pb-6 text-dark-400 leading-relaxed">
+          <div class="px-6 pb-6 text-white/60 leading-relaxed">
             {f.a}
           </div>
         </details>

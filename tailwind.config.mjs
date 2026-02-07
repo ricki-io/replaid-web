@@ -4,42 +4,38 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Gradient Modern palette
-        dark: {
-          950: '#09090b',
-          900: '#18181b',
-          800: '#27272a',
-          700: '#3f3f46',
-          600: '#52525b',
-          500: '#71717a',
-          400: '#a1a1aa',
-          300: '#d4d4d8',
+        // Glassmorphism palette
+        glass: {
+          white: 'rgba(255,255,255,0.15)',
+          border: 'rgba(255,255,255,0.2)',
+          light: 'rgba(255,255,255,0.25)',
         },
-        aurora: {
-          purple: '#a855f7',
-          violet: '#8b5cf6',
-          blue: '#3b82f6',
-          cyan: '#06b6d4',
-          pink: '#ec4899',
-          rose: '#f43f5e',
-          orange: '#f97316',
+        bg: {
+          start: '#1a1a2e',
+          mid: '#16213e',
+          end: '#0f3460',
+        },
+        accent: {
+          purple: '#9d4edd',
+          pink: '#e040fb',
+          blue: '#3d5af1',
+          cyan: '#22d1ee',
         },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
-        'aurora': 'linear-gradient(135deg, #a855f7 0%, #ec4899 25%, #f97316 50%, #ec4899 75%, #8b5cf6 100%)',
-        'aurora-soft': 'linear-gradient(135deg, rgba(168,85,247,0.15) 0%, rgba(236,72,153,0.15) 50%, rgba(139,92,246,0.15) 100%)',
-        'mesh': `radial-gradient(at 40% 20%, rgba(168,85,247,0.3) 0px, transparent 50%),
-                 radial-gradient(at 80% 0%, rgba(236,72,153,0.2) 0px, transparent 50%),
-                 radial-gradient(at 0% 50%, rgba(59,130,246,0.2) 0px, transparent 50%),
-                 radial-gradient(at 80% 50%, rgba(249,115,22,0.15) 0px, transparent 50%),
-                 radial-gradient(at 0% 100%, rgba(139,92,246,0.2) 0px, transparent 50%)`,
+        'glass-gradient': 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+        'mesh-bg': `
+          radial-gradient(at 0% 0%, #9d4edd 0px, transparent 50%),
+          radial-gradient(at 100% 0%, #3d5af1 0px, transparent 50%),
+          radial-gradient(at 100% 100%, #e040fb 0px, transparent 50%),
+          radial-gradient(at 0% 100%, #22d1ee 0px, transparent 50%)
+        `,
       },
-      boxShadow: {
-        'glow-purple': '0 0 40px rgba(168,85,247,0.3)',
-        'glow-pink': '0 0 40px rgba(236,72,153,0.3)',
+      backdropBlur: {
+        'glass': '20px',
       },
     },
   },

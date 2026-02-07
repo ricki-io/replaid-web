@@ -1,29 +1,29 @@
 ---
-// Gradient Modern How It Works
+// Glassmorphism How It Works
 const steps = [
-  { num: '1', title: 'Connect', desc: 'Link all your channels in one click.' },
-  { num: '2', title: 'Train', desc: 'Add your knowledge and brand voice.' },
-  { num: '3', title: 'Launch', desc: 'Go live and watch the magic happen.' },
+  { num: '1', title: 'Connect', desc: 'Link your channels instantly.' },
+  { num: '2', title: 'Train', desc: 'Add your knowledge base.' },
+  { num: '3', title: 'Launch', desc: 'Go live in minutes.' },
 ];
 ---
 
 <section id="how-it-works" class="py-24 sm:py-32">
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-16 fade-in-up">
-      <div class="label-aurora mb-4">How it works</div>
+      <div class="label-glass mb-4">How it works</div>
       <h2 class="text-4xl sm:text-5xl font-bold">
-        Live in <span class="text-aurora">10 minutes</span>
+        Ready in 10 minutes
       </h2>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-3 gap-6">
       {steps.map((s, i) => (
-        <div class="card-gradient p-8 text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <div class="w-12 h-12 bg-aurora rounded-xl flex items-center justify-center mx-auto mb-6">
-            <span class="font-bold text-lg">{s.num}</span>
+        <div class="card-glass p-8 text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <div class="w-14 h-14 card-glass flex items-center justify-center mx-auto mb-6 rounded-full">
+            <span class="font-bold text-xl">{s.num}</span>
           </div>
           <h3 class="text-xl font-semibold mb-3">{s.title}</h3>
-          <p class="text-dark-400">{s.desc}</p>
+          <p class="text-white/60">{s.desc}</p>
         </div>
       ))}
     </div>

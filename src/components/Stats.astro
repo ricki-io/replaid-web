@@ -1,5 +1,5 @@
 ---
-// Gradient Modern Stats
+// Glassmorphism Stats
 const stats = [
   { value: '10×', label: 'Faster' },
   { value: '90%', label: 'Automated' },
@@ -8,18 +8,17 @@ const stats = [
 ];
 ---
 
-<section class="py-20 sm:py-28 relative overflow-hidden">
-  <!-- Subtle aurora -->
-  <div class="absolute inset-0 bg-aurora-soft"></div>
-  
-  <div class="relative mx-auto max-w-6xl px-6">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
-      {stats.map((s, i) => (
-        <div class="text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <div class="text-5xl sm:text-6xl font-bold text-aurora">{s.value}</div>
-          <div class="mt-2 text-dark-500">{s.label}</div>
-        </div>
-      ))}
+<section class="py-20 sm:py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="card-glass p-8 sm:p-12">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        {stats.map((s, i) => (
+          <div class="text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+            <div class="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-accent-purple to-accent-pink bg-clip-text text-transparent">{s.value}</div>
+            <div class="mt-2 text-white/50">{s.label}</div>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
