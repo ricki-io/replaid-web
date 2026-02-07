@@ -1,24 +1,20 @@
 ---
-// Art Deco Stats
+// Scandinavian Stats
 const stats = [
-  { value: '10×', label: 'Swifter Response' },
-  { value: '90%', label: 'Noise Eliminated' },
-  { value: '3×', label: 'More Conversions' },
-  { value: '24/7', label: 'Perpetual Service' },
+  { value: '10×', label: 'Faster responses' },
+  { value: '90%', label: 'Less busywork' },
+  { value: '3×', label: 'More conversions' },
+  { value: '24/7', label: 'Always there' },
 ];
 ---
 
-<section class="py-24 sm:py-32 relative overflow-hidden">
-  <!-- Decorative borders -->
-  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
-  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
-  
+<section class="py-20 sm:py-28 bg-sage/10">
   <div class="mx-auto max-w-6xl px-6">
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
       {stats.map((s, i) => (
         <div class="text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <div class="font-display text-5xl sm:text-7xl font-bold text-gold-gradient">{s.value}</div>
-          <div class="mt-4 text-sm text-ivory/40 tracking-widest uppercase">{s.label}</div>
+          <div class="font-display text-5xl sm:text-6xl text-sage-dark">{s.value}</div>
+          <div class="mt-3 text-sm text-charcoal-muted">{s.label}</div>
         </div>
       ))}
     </div>

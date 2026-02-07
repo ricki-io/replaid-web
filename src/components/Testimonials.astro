@@ -1,40 +1,31 @@
 ---
-// Art Deco Testimonials
+// Scandinavian Testimonials
 const testimonials = [
-  { quote: "Response time transformed from hours to mere seconds. Utterly remarkable.", author: "Maria S.", role: "Founder" },
-  { quote: "We tripled our conversion rate in the inaugural month. Extraordinary.", author: "James C.", role: "Sales Director" },
-  { quote: "The AI responses are indistinguishable from our finest staff.", author: "Lisa P.", role: "Head of Support" },
+  { quote: "Our response time dropped from hours to seconds. Such a relief.", author: "Maria S.", role: "Founder" },
+  { quote: "We tripled our conversion rate in the first month. Quietly impressive.", author: "James C.", role: "Sales Director" },
+  { quote: "The AI replies feel natural and warm—just like our team.", author: "Lisa P.", role: "Head of Support" },
 ];
 ---
 
-<section class="py-24 sm:py-40 relative">
-  <!-- Decorative border -->
-  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
-  
+<section class="py-24 sm:py-32">
   <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-20 fade-in-up">
-      <div class="label-deco mb-4">Acclaim</div>
-      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
-        <span class="text-gold-gradient italic">Distinguished</span> Voices
+    <div class="text-center mb-16 fade-in-up">
+      <div class="label-soft mb-4">Testimonials</div>
+      <h2 class="font-display text-4xl sm:text-5xl text-charcoal">
+        Loved by teams
       </h2>
     </div>
     
     <div class="grid md:grid-cols-3 gap-8">
       {testimonials.map((t, i) => (
-        <div class="fade-in-up text-center" style={`transition-delay: ${i * 100}ms`}>
-          <div class="text-gold text-4xl font-display mb-6">"</div>
-          <blockquote class="font-display text-xl italic text-ivory/80 leading-relaxed mb-8">
-            {t.quote}
+        <div class="card-scandi p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <blockquote class="text-lg text-charcoal leading-relaxed mb-6">
+            "{t.quote}"
           </blockquote>
-          <div class="flex justify-center mb-4">
-            <div class="flex items-center gap-2">
-              <div class="w-6 h-px bg-gold/50"></div>
-              <div class="text-gold text-xs">◆</div>
-              <div class="w-6 h-px bg-gold/50"></div>
-            </div>
+          <div>
+            <div class="font-semibold text-charcoal">{t.author}</div>
+            <div class="text-sm text-charcoal-muted">{t.role}</div>
           </div>
-          <div class="font-semibold">{t.author}</div>
-          <div class="text-sm text-ivory/40">{t.role}</div>
         </div>
       ))}
     </div>

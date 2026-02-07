@@ -1,30 +1,30 @@
 ---
-// Art Deco FAQ
+// Scandinavian FAQ
 const faqs = [
-  { q: "Which channels are supported?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, and Twitter. Additional channels forthcoming." },
-  { q: "How swiftly can one begin?", a: "Within ten minutes. Connect your channels, impart your knowledge, and commence." },
-  { q: "May one disable auto-replies?", a: "Certainly. Employ Replaid solely for scoring and notifications if preferred." },
-  { q: "Is my data secure?", a: "Absolutely. All data is encrypted. We maintain GDPR compliance and never commercialize your data." },
+  { q: "What channels do you support?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, and Twitter. More on the way." },
+  { q: "How long does setup take?", a: "About 10 minutes. Connect your channels, add your info, and you're ready." },
+  { q: "Can I turn off auto-replies?", a: "Of course. Use Replaid just for lead scoring if that's what you prefer." },
+  { q: "Is my data safe?", a: "Yes. Everything is encrypted, we're GDPR compliant, and we never sell your data." },
 ];
 ---
 
-<section id="faq" class="py-24 sm:py-40">
+<section id="faq" class="py-24 sm:py-32 bg-cream-dark">
   <div class="mx-auto max-w-3xl px-6">
-    <div class="text-center mb-20 fade-in-up">
-      <div class="label-deco mb-4">Inquiries</div>
-      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
-        Common <span class="text-gold-gradient italic">Questions</span>
+    <div class="text-center mb-16 fade-in-up">
+      <div class="label-soft mb-4">FAQ</div>
+      <h2 class="font-display text-4xl sm:text-5xl text-charcoal">
+        Common questions
       </h2>
     </div>
     
     <div class="space-y-4">
       {faqs.map((f, i) => (
-        <details class="card-deco group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
-          <summary class="p-6 font-display text-lg font-semibold cursor-pointer flex justify-between items-center list-none hover:text-gold transition-colors">
+        <details class="card-scandi group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
+          <summary class="p-6 font-semibold cursor-pointer flex justify-between items-center list-none text-charcoal hover:text-wood transition-colors">
             {f.q}
-            <span class="text-gold group-open:rotate-45 transition-transform">◆</span>
+            <span class="text-charcoal-muted group-open:rotate-45 transition-transform text-xl">+</span>
           </summary>
-          <div class="px-6 pb-6 text-ivory/60 leading-relaxed border-t border-gold/10 pt-4">
+          <div class="px-6 pb-6 text-charcoal-muted leading-relaxed">
             {f.a}
           </div>
         </details>

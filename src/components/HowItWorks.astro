@@ -1,30 +1,29 @@
 ---
-// Art Deco How It Works
+// Scandinavian How It Works
 const steps = [
-  { num: 'I', title: 'Connect', desc: 'Link your channels with a single flourish.' },
-  { num: 'II', title: 'Cultivate', desc: 'Impart your knowledge and brand character.' },
-  { num: 'III', title: 'Prosper', desc: 'Observe as leads arrive in abundance.' },
+  { num: '1', title: 'Connect', desc: 'Link your channels in just a few clicks.' },
+  { num: '2', title: 'Teach', desc: 'Add your knowledge and tone of voice.' },
+  { num: '3', title: 'Relax', desc: 'Watch your inbox take care of itself.' },
 ];
 ---
 
-<section id="how-it-works" class="py-24 sm:py-40">
+<section id="how-it-works" class="py-24 sm:py-32">
   <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-20 fade-in-up">
-      <div class="label-deco mb-4">Process</div>
-      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
-        The <span class="text-gold-gradient italic">Method</span>
+    <div class="text-center mb-16 fade-in-up">
+      <div class="label-soft mb-4">How it works</div>
+      <h2 class="font-display text-4xl sm:text-5xl text-charcoal">
+        Ready in 10 minutes
       </h2>
-      <p class="text-ivory/60 mt-4 text-lg">Operational excellence in mere moments.</p>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-3 gap-8 sm:gap-12">
       {steps.map((s, i) => (
         <div class="text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <div class="inline-flex items-center justify-center w-20 h-20 border-2 border-gold mb-8 rotate-45">
-            <span class="font-display text-2xl font-bold text-gold -rotate-45">{s.num}</span>
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-wood/10 text-wood font-display text-2xl rounded-2xl mb-6">
+            {s.num}
           </div>
-          <h3 class="font-display text-2xl font-bold mb-4">{s.title}</h3>
-          <p class="text-ivory/60">{s.desc}</p>
+          <h3 class="font-display text-2xl mb-3 text-charcoal">{s.title}</h3>
+          <p class="text-charcoal-muted">{s.desc}</p>
         </div>
       ))}
     </div>

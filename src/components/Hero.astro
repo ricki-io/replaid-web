@@ -1,71 +1,52 @@
 ---
-// Art Deco Hero - glamorous and elegant
+// Scandinavian Hero - warm and welcoming
 ---
 
-<section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-  <!-- Sunburst background -->
-  <div class="absolute bottom-0 left-0 right-0 h-[80vh] bg-sunburst opacity-50"></div>
+<section class="relative pt-32 sm:pt-40 pb-20 sm:pb-32">
+  <!-- Soft decorative shapes -->
+  <div class="absolute top-20 right-0 w-96 h-96 bg-sage/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 w-80 h-80 bg-wood/10 rounded-full blur-3xl pointer-events-none"></div>
   
-  <!-- Decorative lines -->
-  <div class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
-  <div class="absolute bottom-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
-  
-  <div class="relative mx-auto max-w-6xl px-6 py-20 sm:py-32 text-center">
-    <!-- Decorative element -->
-    <div class="flex justify-center mb-8 fade-in-up">
-      <div class="flex items-center gap-4">
-        <div class="w-16 h-px bg-gold"></div>
-        <div class="w-3 h-3 rotate-45 border border-gold"></div>
-        <div class="w-16 h-px bg-gold"></div>
+  <div class="relative mx-auto max-w-6xl px-6">
+    <div class="max-w-3xl">
+      <!-- Label -->
+      <div class="label-soft mb-6 fade-in-up">Simple & Effective</div>
+      
+      <!-- Headline -->
+      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl mb-8 fade-in-up leading-tight text-charcoal">
+        Your inbox,<br/>
+        <span class="text-wood">simplified</span>
+      </h1>
+      
+      <!-- Subheadline -->
+      <p class="text-lg sm:text-xl text-charcoal-muted max-w-xl mb-10 leading-relaxed fade-in-up">
+        AI that handles customer messages with care. Qualify leads, reply instantly, and keep your business running smoothly—day and night.
+      </p>
+      
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 mb-16 fade-in-up">
+        <a href="#cta" class="btn-scandi">
+          Start free trial
+        </a>
+        <a href="mailto:hello@replaid.pro?subject=Demo%20Request" class="btn-scandi-outline">
+          Book a demo
+        </a>
       </div>
-    </div>
-    
-    <!-- Label -->
-    <div class="label-deco mb-6 fade-in-up">AI-Powered Excellence</div>
-    
-    <!-- Headline -->
-    <h1 class="font-display text-5xl sm:text-7xl md:text-8xl font-bold mb-8 fade-in-up leading-tight">
-      Your Inbox<br/>
-      <span class="text-gold-gradient italic">Is Fortune</span>
-    </h1>
-    
-    <!-- Subheadline -->
-    <p class="text-lg sm:text-xl text-ivory/60 max-w-2xl mx-auto mb-12 leading-relaxed fade-in-up">
-      An exquisite AI that qualifies leads, replies with elegance, and converts around the clock. The pinnacle of customer support.
-    </p>
-    
-    <!-- CTAs -->
-    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-20 fade-in-up">
-      <a href="#cta" class="btn-deco">
-        Begin Your Journey
-      </a>
-      <a href="mailto:hello@replaid.pro?subject=Demo%20Request" class="btn-deco-outline">
-        Request Demo
-      </a>
-    </div>
-    
-    <!-- Decorative divider -->
-    <div class="flex justify-center mb-12 fade-in-up">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-px bg-gold/50"></div>
-        <div class="text-gold">◆</div>
-        <div class="w-8 h-px bg-gold/50"></div>
-      </div>
-    </div>
-    
-    <!-- Stats -->
-    <div class="flex flex-wrap justify-center gap-12 sm:gap-20 fade-in-up">
-      <div class="text-center">
-        <div class="font-display text-4xl sm:text-5xl font-bold text-gold">5M+</div>
-        <div class="text-sm text-ivory/40 mt-2 tracking-wider uppercase">Messages</div>
-      </div>
-      <div class="text-center">
-        <div class="font-display text-4xl sm:text-5xl font-bold text-gold">10×</div>
-        <div class="text-sm text-ivory/40 mt-2 tracking-wider uppercase">Faster</div>
-      </div>
-      <div class="text-center">
-        <div class="font-display text-4xl sm:text-5xl font-bold text-gold">4.9★</div>
-        <div class="text-sm text-ivory/40 mt-2 tracking-wider uppercase">Rating</div>
+      
+      <!-- Stats -->
+      <div class="flex flex-wrap gap-12 sm:gap-16 fade-in-up">
+        <div>
+          <div class="font-display text-4xl sm:text-5xl text-charcoal">5M+</div>
+          <div class="text-sm text-charcoal-muted mt-1">messages handled</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl sm:text-5xl text-charcoal">10×</div>
+          <div class="text-sm text-charcoal-muted mt-1">faster responses</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl sm:text-5xl text-charcoal">4.9</div>
+          <div class="text-sm text-charcoal-muted mt-1">average rating</div>
+        </div>
       </div>
     </div>
   </div>

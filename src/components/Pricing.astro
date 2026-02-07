@@ -1,44 +1,41 @@
 ---
-// Art Deco Pricing
+// Scandinavian Pricing
 const plans = [
-  { name: 'Essentials', price: '29', features: ['1 channel', '500 msgs/mo', 'Core AI', 'Lead scoring'], highlight: false },
-  { name: 'Premier', price: '79', features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team access', 'Integrations'], highlight: true },
-  { name: 'Grand', price: '199', features: ['Unlimited', '25K msgs/mo', 'Bespoke AI', 'API access', 'Concierge support'], highlight: false },
+  { name: 'Starter', price: '29', features: ['1 channel', '500 msgs/mo', 'Basic AI', 'Lead scoring'], highlight: false },
+  { name: 'Pro', price: '79', features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team features', 'Integrations'], highlight: true },
+  { name: 'Scale', price: '199', features: ['Unlimited', '25K msgs/mo', 'Custom AI', 'API access', 'Priority support'], highlight: false },
 ];
 ---
 
-<section id="pricing" class="py-24 sm:py-40">
+<section id="pricing" class="py-24 sm:py-32 bg-cream-dark">
   <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-20 fade-in-up">
-      <div class="label-deco mb-4">Investment</div>
-      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
-        Select Your <span class="text-gold-gradient italic">Tier</span>
+    <div class="text-center mb-16 fade-in-up">
+      <div class="label-soft mb-4">Pricing</div>
+      <h2 class="font-display text-4xl sm:text-5xl text-charcoal mb-4">
+        Simple, honest pricing
       </h2>
+      <p class="text-charcoal-muted">Start free. Upgrade when you're ready.</p>
     </div>
     
     <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
       {plans.map((p, i) => (
-        <div class={`card-deco p-8 fade-in-up flex flex-col ${p.highlight ? 'border-gold md:order-2 order-first' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
-          {p.highlight && (
-            <div class="text-center mb-4">
-              <span class="label-deco text-xs">◆ Recommended ◆</span>
-            </div>
-          )}
-          <h3 class="font-display text-2xl font-bold text-center mb-2">{p.name}</h3>
-          <div class="text-center mb-8">
-            <span class="font-display text-5xl sm:text-6xl font-bold text-gold">${p.price}</span>
-            <span class="text-ivory/40 text-sm">/month</span>
+        <div class={`card-scandi p-8 fade-in-up flex flex-col ${p.highlight ? 'ring-2 ring-wood md:order-2 order-first' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
+          {p.highlight && <div class="label-soft text-wood mb-4">Most popular</div>}
+          <h3 class="font-display text-2xl mb-2 text-charcoal">{p.name}</h3>
+          <div class="mb-6">
+            <span class="font-display text-5xl text-charcoal">${p.price}</span>
+            <span class="text-charcoal-muted">/mo</span>
           </div>
-          <ul class="space-y-4 mb-10 flex-1">
+          <ul class="space-y-3 mb-8 flex-1">
             {p.features.map(f => (
-              <li class="flex items-center gap-3 text-ivory/60">
-                <span class="text-gold">◆</span>
+              <li class="flex items-center gap-3 text-charcoal-muted">
+                <span class="text-sage">✓</span>
                 {f}
               </li>
             ))}
           </ul>
-          <a href="#cta" class={`block text-center ${p.highlight ? 'btn-deco' : 'btn-deco-outline'}`}>
-            Select
+          <a href="#cta" class={p.highlight ? 'btn-wood' : 'btn-scandi-outline'}>
+            Get started
           </a>
         </div>
       ))}

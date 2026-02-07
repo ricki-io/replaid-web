@@ -1,34 +1,31 @@
 ---
-// Art Deco Features
+// Scandinavian Features - clean cards
 const features = [
-  { title: 'Unified Inbox', desc: 'All messages consolidated in one magnificent interface.' },
-  { title: 'Smart Scoring', desc: 'AI identifies your most distinguished prospects.' },
-  { title: 'Auto-Replies', desc: 'Respond with grace, even in your absence.' },
-  { title: 'Human Handoff', desc: 'AI attends to routine. You attend to excellence.' },
+  { icon: '📥', title: 'Unified Inbox', desc: 'All your messages in one calm, organized space.' },
+  { icon: '✨', title: 'Smart Scoring', desc: 'AI quietly identifies your best opportunities.' },
+  { icon: '💬', title: 'Auto-Replies', desc: 'Thoughtful responses, even while you rest.' },
+  { icon: '🤝', title: 'Human Handoff', desc: 'AI handles the routine. You handle what matters.' },
 ];
 ---
 
-<section id="features" class="py-24 sm:py-40 relative">
+<section id="features" class="py-24 sm:py-32">
   <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-20 fade-in-up">
-      <div class="label-deco mb-4">Capabilities</div>
-      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-        <span class="text-gold-gradient">Distinguished</span> Features
+    <div class="text-center mb-16 fade-in-up">
+      <div class="label-soft mb-4">Features</div>
+      <h2 class="font-display text-4xl sm:text-5xl text-charcoal mb-4">
+        Everything you need
       </h2>
-      <div class="flex justify-center mt-6">
-        <div class="flex items-center gap-3">
-          <div class="w-12 h-px bg-gold/30"></div>
-          <div class="text-gold">◆</div>
-          <div class="w-12 h-px bg-gold/30"></div>
-        </div>
-      </div>
+      <p class="text-charcoal-muted text-lg max-w-xl mx-auto">
+        Simple tools that work together beautifully.
+      </p>
     </div>
     
-    <div class="grid md:grid-cols-2 gap-6">
+    <div class="grid sm:grid-cols-2 gap-6">
       {features.map((f, i) => (
-        <div class="card-deco p-8 sm:p-10 fade-in-up corner-deco" style={`transition-delay: ${i * 100}ms`}>
-          <h3 class="font-display text-2xl sm:text-3xl font-bold mb-4 text-gold">{f.title}</h3>
-          <p class="text-ivory/60 leading-relaxed">{f.desc}</p>
+        <div class="card-scandi p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <div class="text-3xl mb-4">{f.icon}</div>
+          <h3 class="font-display text-2xl mb-3 text-charcoal">{f.title}</h3>
+          <p class="text-charcoal-muted leading-relaxed">{f.desc}</p>
         </div>
       ))}
     </div>

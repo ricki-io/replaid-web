@@ -14,7 +14,7 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#0d0d0d" />
+    <meta name="theme-color" content="#faf8f5" />
     <meta name="robots" content="noindex, nofollow" />
     
     <meta property="og:title" content={title} />
@@ -24,176 +24,129 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700;800;900&family=Poiret+One&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
   </head>
-  <body class="min-h-screen bg-deco-black text-ivory antialiased overflow-x-hidden">
-    <!-- Art Deco pattern overlay -->
-    <div class="fixed inset-0 bg-deco-pattern pointer-events-none opacity-50 z-0"></div>
-    
-    <div class="relative z-10">
-      <slot />
-    </div>
+  <body class="min-h-screen bg-cream text-charcoal antialiased overflow-x-hidden">
+    <slot />
     
     <style is:global>
       body {
-        font-family: 'Inter', system-ui, sans-serif;
-        background: linear-gradient(180deg, #0d0d0d 0%, #0a1628 50%, #0d0d0d 100%);
+        font-family: 'DM Sans', system-ui, sans-serif;
+        background: #faf8f5;
       }
       
       h1, h2, h3, h4, h5, h6 {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-weight: 700;
+        font-family: 'DM Serif Display', Georgia, serif;
+        font-weight: 400;
       }
       
       ::selection {
-        background-color: #d4af37;
-        color: #0d0d0d;
+        background-color: #9caa97;
+        color: #fff;
       }
       
       html {
         scroll-behavior: smooth;
       }
       
-      /* Art Deco button */
-      .btn-deco {
+      /* Scandinavian button - warm and inviting */
+      .btn-scandi {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 1rem 2.5rem;
-        font-family: 'Inter', system-ui, sans-serif;
+        padding: 1rem 2rem;
+        font-family: 'DM Sans', system-ui, sans-serif;
         font-weight: 600;
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
-        color: #0d0d0d;
+        font-size: 0.9375rem;
+        background: #2d2d2d;
+        color: #faf8f5;
         border: none;
-        position: relative;
+        border-radius: 0.75rem;
         transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       }
       
-      .btn-deco::before {
-        content: '';
-        position: absolute;
-        inset: 4px;
-        border: 1px solid #0d0d0d;
-        pointer-events: none;
-      }
-      
-      .btn-deco:hover {
+      .btn-scandi:hover {
+        background: #4a4a4a;
         transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(212,175,55,0.3);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
       }
       
-      .btn-deco-outline {
+      .btn-scandi-outline {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 1rem 2.5rem;
-        font-family: 'Inter', system-ui, sans-serif;
+        padding: 1rem 2rem;
+        font-family: 'DM Sans', system-ui, sans-serif;
         font-weight: 600;
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
+        font-size: 0.9375rem;
         background: transparent;
-        color: #d4af37;
-        border: 2px solid #d4af37;
-        position: relative;
+        color: #2d2d2d;
+        border: 2px solid #2d2d2d;
+        border-radius: 0.75rem;
         transition: all 0.3s ease;
       }
       
-      .btn-deco-outline:hover {
-        background: #d4af37;
-        color: #0d0d0d;
+      .btn-scandi-outline:hover {
+        background: #2d2d2d;
+        color: #faf8f5;
       }
       
-      /* Gold text */
-      .text-gold-gradient {
-        background: linear-gradient(135deg, #f4d03f 0%, #d4af37 50%, #b8860b 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      
-      /* Decorative line */
-      .deco-line {
-        display: flex;
+      /* Wood accent button */
+      .btn-wood {
+        display: inline-flex;
         align-items: center;
-        gap: 1rem;
+        justify-content: center;
+        padding: 1rem 2rem;
+        font-family: 'DM Sans', system-ui, sans-serif;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        background: #b8956c;
+        color: #fff;
+        border: none;
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(184,149,108,0.3);
       }
       
-      .deco-line::before,
-      .deco-line::after {
-        content: '';
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      .btn-wood:hover {
+        background: #a07d5a;
+        transform: translateY(-2px);
       }
       
-      /* Art Deco card */
-      .card-deco {
-        background: linear-gradient(135deg, rgba(212,175,55,0.03) 0%, transparent 50%, rgba(212,175,55,0.03) 100%);
-        border: 1px solid rgba(212,175,55,0.2);
-        position: relative;
+      /* Scandi card */
+      .card-scandi {
+        background: #fff;
+        border: 1px solid rgba(0,0,0,0.05);
+        border-radius: 1rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        transition: all 0.3s ease;
       }
       
-      .card-deco::before {
-        content: '';
-        position: absolute;
-        top: 8px;
-        left: 8px;
-        right: 8px;
-        bottom: 8px;
-        border: 1px solid rgba(212,175,55,0.1);
-        pointer-events: none;
+      .card-scandi:hover {
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        transform: translateY(-2px);
       }
       
-      /* Accent label */
-      .label-deco {
-        font-family: 'Poiret One', cursive;
-        font-size: 0.875rem;
-        letter-spacing: 0.3em;
+      /* Soft label */
+      .label-soft {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: #d4af37;
+        color: #9caa97;
       }
       
       /* Fade in */
       .fade-in-up {
         opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
       }
       
       .fade-in-up.visible {
         opacity: 1;
         transform: translateY(0);
-      }
-      
-      /* Decorative corner */
-      .corner-deco {
-        position: relative;
-      }
-      
-      .corner-deco::before,
-      .corner-deco::after {
-        content: '';
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        border-color: #d4af37;
-        border-style: solid;
-      }
-      
-      .corner-deco::before {
-        top: 0;
-        left: 0;
-        border-width: 2px 0 0 2px;
-      }
-      
-      .corner-deco::after {
-        bottom: 0;
-        right: 0;
-        border-width: 0 2px 2px 0;
       }
     </style>
 

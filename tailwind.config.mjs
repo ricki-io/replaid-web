@@ -4,39 +4,44 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Art Deco palette
-        deco: {
-          black: '#0d0d0d',
-          navy: '#0a1628',
-          charcoal: '#1a1a2e',
+        // Scandinavian palette - warm and cozy
+        cream: {
+          DEFAULT: '#faf8f5',
+          dark: '#f5f0e8',
+          warm: '#f8f4ed',
         },
-        gold: {
-          DEFAULT: '#d4af37',
-          light: '#f4d03f',
-          dark: '#b8860b',
-          muted: '#c9a227',
+        charcoal: {
+          DEFAULT: '#2d2d2d',
+          light: '#4a4a4a',
+          muted: '#6b6b6b',
         },
-        ivory: {
-          DEFAULT: '#fffff0',
-          dark: '#f5f5dc',
-          muted: '#e8e4d9',
+        wood: {
+          light: '#d4a574',
+          DEFAULT: '#b8956c',
+          dark: '#8b7355',
         },
-        accent: {
-          emerald: '#046307',
-          burgundy: '#722f37',
+        sage: {
+          DEFAULT: '#9caa97',
+          light: '#b8c4b4',
+          dark: '#7d8f78',
+        },
+        dusty: {
+          blue: '#8fa8b8',
+          rose: '#c9a9a6',
         },
       },
       fontFamily: {
-        display: ['Playfair Display', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        accent: ['Poiret One', 'cursive'],
+        display: ['DM Serif Display', 'Georgia', 'serif'],
+        sans: ['DM Sans', 'system-ui', 'sans-serif'],
       },
-      backgroundImage: {
-        'deco-pattern': `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='none' stroke='%23d4af3710' stroke-width='1'/%3E%3C/svg%3E")`,
-        'sunburst': `conic-gradient(from 0deg at 50% 100%, transparent 0deg, rgba(212,175,55,0.03) 10deg, transparent 20deg, rgba(212,175,55,0.03) 30deg, transparent 40deg, rgba(212,175,55,0.03) 50deg, transparent 60deg, rgba(212,175,55,0.03) 70deg, transparent 80deg, rgba(212,175,55,0.03) 90deg, transparent 100deg, rgba(212,175,55,0.03) 110deg, transparent 120deg, rgba(212,175,55,0.03) 130deg, transparent 140deg, rgba(212,175,55,0.03) 150deg, transparent 160deg, rgba(212,175,55,0.03) 170deg, transparent 180deg)`,
+      borderRadius: {
+        'soft': '1rem',
+        'softer': '1.5rem',
       },
-      borderWidth: {
-        '3': '3px',
+      boxShadow: {
+        'soft': '0 4px 20px rgba(0,0,0,0.04)',
+        'softer': '0 8px 30px rgba(0,0,0,0.06)',
+        'warm': '0 4px 20px rgba(184,149,108,0.15)',
       },
     },
   },
