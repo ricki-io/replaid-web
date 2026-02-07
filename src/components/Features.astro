@@ -1,10 +1,12 @@
 ---
 // Typography First Features - big type, minimal decoration
 const features = [
-  { num: '01', title: 'Unified Inbox', desc: 'All messages in one place. No more tab chaos.' },
-  { num: '02', title: 'Smart Scoring', desc: 'AI identifies who\'s ready to buy.' },
-  { num: '03', title: 'Auto-Replies', desc: 'Respond instantly, even while you sleep.' },
-  { num: '04', title: 'Human Handoff', desc: 'AI handles routine. You handle exceptions.' },
+  { num: '01', title: 'Omnichannel Inbox', desc: 'Bring all your messages into one shared inbox. Manage every conversation without switching tabs or tools.' },
+  { num: '02', title: 'Smart Filtering', desc: 'Let AI filter spam, detect intent, and trigger workflows. Focus only on real leads and conversations that matter.' },
+  { num: '03', title: 'Sentiment Analysis', desc: 'Replaid analyzes tone, urgency, and custom metrics you define, helping you prioritize messages intelligently.' },
+  { num: '04', title: 'Human Handoff', desc: 'AI handles the routine — you handle the rest. Jump into any conversation with full context when needed.' },
+  { num: '05', title: 'Brand Knowledge', desc: 'Train your AI with your tone and internal docs. Every reply stays on-brand and consistent across all channels.' },
+  { num: '06', title: 'Real-time Sync', desc: 'Connect live data sources so the AI can access the latest information in real time.' },
 ];
 ---
 
@@ -15,18 +17,21 @@ const features = [
   <div class="relative mx-auto max-w-7xl px-6">
     <div class="mb-20 fade-in-up">
       <div class="mono-label mb-4">What We Do</div>
-      <h2 class="text-display-md font-bold max-w-3xl">
-        Everything you need to<br/>
+      <h2 class="text-display-md font-bold max-w-4xl">
+        All the tools to<br/>
         <span class="text-accent">automate</span> your inbox
       </h2>
+      <p class="text-ink-200 text-lg mt-6 max-w-2xl">
+        Connect every channel, filter the noise, and let AI handle replies, leads, and workflows — while your team stays in control.
+      </p>
     </div>
     
-    <div class="grid md:grid-cols-2 gap-px bg-white/5">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
       {features.map((f, i) => (
-        <div class="bg-ink-950 p-8 sm:p-12 fade-in-up group hover:bg-ink-900 transition-colors" style={`transition-delay: ${i * 100}ms`}>
+        <div class="bg-ink-950 p-8 sm:p-10 fade-in-up group hover:bg-ink-900 transition-colors" style={`transition-delay: ${i * 100}ms`}>
           <span class="mono-label text-accent">{f.num}</span>
-          <h3 class="font-display text-2xl sm:text-3xl font-bold mt-4 mb-4 tracking-tight">{f.title}</h3>
-          <p class="text-ink-200 text-lg leading-relaxed">{f.desc}</p>
+          <h3 class="font-display text-xl sm:text-2xl font-bold mt-4 mb-4 tracking-tight">{f.title}</h3>
+          <p class="text-ink-200 leading-relaxed">{f.desc}</p>
         </div>
       ))}
     </div>
