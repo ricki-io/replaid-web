@@ -1,0 +1,98 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "The AI inbox that turns messages into leads. Qualify leads, automate replies, and never miss an opportunity." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <meta name="color-scheme" content="light" />
+    <meta name="author" content="Replaid" />
+    <meta name="keywords" content="AI inbox, lead qualification, Instagram DMs, WhatsApp automation, customer support, chatbot, omnichannel" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:image" content="/og-image.png" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    
+    <title>{title}</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    
+    <meta name="theme-color" content="#10b981" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href={Astro.url} />
+  </head>
+  <body class="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900 antialiased overflow-x-hidden">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <div class="relative">
+      <!-- Ambient background -->
+      <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div class="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-gradient-to-br from-primary-100/40 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-gradient-to-tl from-accent-100/40 to-transparent rounded-full blur-3xl"></div>
+      </div>
+      
+      <slot />
+    </div>
+    
+    <style>
+      .skip-link {
+        position: absolute;
+        top: -100px;
+        left: 1rem;
+        z-index: 50;
+        background-color: #10b981;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        transition: top 0.3s;
+      }
+
+      .skip-link:focus {
+        top: 1rem;
+      }
+    </style>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>

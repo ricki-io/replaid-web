@@ -1,0 +1,89 @@
+---
+// How it works section
+const steps = [
+  {
+    number: '01',
+    title: 'Connect Your Channels',
+    description: 'Link Instagram, WhatsApp, Messenger, and more with just one click. No API tokens or complex setups required.',
+    visual: 'channels'
+  },
+  {
+    number: '02',
+    title: 'Add Your Knowledge',
+    description: 'Upload brand guidelines, FAQs, and product info. The AI learns your voice and becomes an expert on your business.',
+    visual: 'knowledge'
+  },
+  {
+    number: '03',
+    title: 'Launch & Watch',
+    description: 'Replaid runs 24/7 on autopilot. Qualify leads, answer questions, and get notified when you\'re needed.',
+    visual: 'launch'
+  },
+];
+---
+
+<section id="how-it-works" class="py-24 md:py-32 bg-gradient-to-b from-white to-gray-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+      <span class="inline-block px-4 py-1.5 bg-accent-50 text-accent-700 text-sm font-medium rounded-full mb-4">How It Works</span>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        Up and running in <span class="gradient-text">minutes, not days</span>
+      </h2>
+      <p class="text-lg text-gray-600">
+        No coding required. Just connect, configure, and let AI do the heavy lifting.
+      </p>
+    </div>
+    
+    <div class="relative">
+      <!-- Connection line -->
+      <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary-200 via-accent-200 to-primary-200 -translate-y-1/2"></div>
+      
+      <div class="grid lg:grid-cols-3 gap-8 lg:gap-12">
+        {steps.map((step, index) => (
+          <div class="relative fade-in-up" style={`transition-delay: ${index * 100}ms`}>
+            <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300">
+              <!-- Step number -->
+              <div class="relative z-10 w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl mb-6 shadow-lg shadow-primary-500/30 -mt-12 mx-auto lg:mx-0">
+                {step.number}
+              </div>
+              
+              <h3 class="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
+              <p class="text-gray-600 leading-relaxed">{step.description}</p>
+              
+              <!-- Visual indicator -->
+              <div class="mt-6 pt-6 border-t border-gray-100">
+                {step.visual === 'channels' && (
+                  <div class="flex items-center gap-2">
+                    <span class="text-lg">📸</span>
+                    <span class="text-lg">💬</span>
+                    <span class="text-lg">💙</span>
+                    <span class="text-lg">📧</span>
+                    <span class="text-sm text-gray-400">+4 more</span>
+                  </div>
+                )}
+                {step.visual === 'knowledge' && (
+                  <div class="flex items-center gap-2">
+                    <div class="h-8 w-8 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600 text-sm">📄</div>
+                    <div class="h-8 w-8 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600 text-sm">📚</div>
+                    <div class="h-8 w-8 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600 text-sm">🎨</div>
+                    <span class="text-sm text-gray-500 ml-1">Your docs</span>
+                  </div>
+                )}
+                {step.visual === 'launch' && (
+                  <div class="flex items-center gap-3">
+                    <div class="flex -space-x-2">
+                      <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-green-600 rounded-full border-2 border-white flex items-center justify-center text-white text-xs">✓</div>
+                      <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-green-600 rounded-full border-2 border-white flex items-center justify-center text-white text-xs">✓</div>
+                      <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-green-600 rounded-full border-2 border-white flex items-center justify-center text-white text-xs">✓</div>
+                    </div>
+                    <span class="text-sm text-green-600 font-medium">All systems go</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

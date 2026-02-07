@@ -1,0 +1,32 @@
+---
+// Connected channels showcase
+const channels = [
+  { name: 'Instagram', icon: '📸', color: 'from-pink-500 to-purple-500' },
+  { name: 'WhatsApp', icon: '💬', color: 'from-green-400 to-green-600' },
+  { name: 'Messenger', icon: '💙', color: 'from-blue-500 to-blue-600' },
+  { name: 'Twitter/X', icon: '🐦', color: 'from-gray-700 to-gray-900' },
+  { name: 'Email', icon: '📧', color: 'from-red-400 to-orange-500' },
+  { name: 'Telegram', icon: '✈️', color: 'from-sky-400 to-blue-500' },
+];
+---
+
+<section class="py-16 border-y border-gray-100 bg-white/50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10 fade-in-up">
+      <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">One inbox for all your channels</p>
+    </div>
+    
+    <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8 fade-in-up">
+      {channels.map((channel) => (
+        <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+          <span class="text-xl">{channel.icon}</span>
+          <span class="text-sm font-medium text-gray-700">{channel.name}</span>
+        </div>
+      ))}
+      <div class="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-xl border border-dashed border-gray-200">
+        <span class="text-gray-400">+</span>
+        <span class="text-sm font-medium text-gray-500">More coming</span>
+      </div>
+    </div>
+  </div>
+</section>

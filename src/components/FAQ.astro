@@ -1,0 +1,56 @@
+---
+// FAQ section
+const faqs = [
+  {
+    question: "What channels can I connect to Replaid?",
+    answer: "You can connect Instagram (DMs and comments), WhatsApp, Facebook Messenger, Twitter/X, Telegram, and email. We're continuously adding new platforms based on user demand."
+  },
+  {
+    question: "Can Replaid respond automatically to messages?",
+    answer: "Yes! Replaid uses AI to send automatic replies, filter spam, answer FAQs, and qualify leads — all while maintaining your brand voice. You can customize how much automation you want."
+  },
+  {
+    question: "Can I use Replaid without auto-replies?",
+    answer: "Absolutely. You can disable auto-replies and still use Replaid for lead scoring, notifications, and workflow automation. Great if you prefer to reply manually but want smart prioritization."
+  },
+  {
+    question: "How does lead qualification work?",
+    answer: "Our AI analyzes message intent, sentiment, and urgency using natural language processing. It assigns scores, categories, and can trigger notifications or automations so you focus on high-value conversations."
+  },
+  {
+    question: "Is it hard to set up? Do I need to code?",
+    answer: "Not at all. Replaid is 100% no-code. Just connect your channels, upload your knowledge base, and you're ready to go. Most teams are up and running in under 10 minutes."
+  },
+  {
+    question: "What about data privacy?",
+    answer: "We take privacy seriously. Your data is encrypted in transit and at rest. We never share or sell your data, and you can delete everything at any time. We're GDPR compliant."
+  },
+];
+---
+
+<section id="faq" class="py-24 md:py-32">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 fade-in-up">
+      <span class="inline-block px-4 py-1.5 bg-accent-50 text-accent-700 text-sm font-medium rounded-full mb-4">FAQ</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+        Frequently asked questions
+      </h2>
+    </div>
+    
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <details class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow fade-in-up" style={`transition-delay: ${index * 30}ms`}>
+          <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-gray-900 list-none">
+            <span>{faq.question}</span>
+            <svg class="w-5 h-5 text-gray-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600 leading-relaxed">
+            {faq.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
