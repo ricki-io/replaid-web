@@ -1,168 +1,271 @@
 ---
-// Hero section
+// Hero section with social proof
 ---
 
 <section class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-4xl mx-auto">
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 border border-primary-100 rounded-full mb-8 fade-in-up">
-        <span class="flex h-2 w-2 relative">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
+      <!-- Uneed Badge -->
+      <a 
+        href="https://www.uneed.best/tool/replaid" 
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 rounded-full mb-8 hover:shadow-lg hover:shadow-amber-500/10 hover:-translate-y-0.5 transition-all duration-200 group fade-in-up"
+      >
+        <span class="flex items-center gap-1.5">
+          <svg class="w-5 h-5 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
+          <span class="font-semibold text-amber-700">#1 Product</span>
         </span>
-        <span class="text-sm font-medium text-primary-700">Voted #1 on Uneed Community</span>
-      </div>
+        <span class="text-amber-600/80 text-sm">on Uneed Community</span>
+        <svg class="w-4 h-4 text-amber-500 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
       
       <!-- Headline -->
       <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 fade-in-up">
         Your inbox is full of
-        <span class="gradient-text block sm:inline"> money</span>
+        <span class="gradient-text"> money</span>
       </h1>
       
       <!-- Subheadline -->
-      <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-10 fade-in-up">
-        Never miss an opportunity again. Replaid qualifies leads, sends notifications, triggers automations, and keeps your pipeline moving 24/7.
+      <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-10 fade-in-up leading-relaxed">
+        Never miss an opportunity. Replaid qualifies leads, filters noise, and replies instantly — keeping your pipeline moving 24/7.
       </p>
       
       <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in-up">
-        <a href="#cta" class="btn-primary text-lg !py-4 !px-8 w-full sm:w-auto">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 fade-in-up">
+        <a href="#cta" class="btn-primary text-lg !py-4 !px-8 w-full sm:w-auto group">
           Start Free Trial
-          <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="w-5 h-5 ml-2 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
         </a>
-        <a href="#how-it-works" class="btn-secondary text-lg !py-4 !px-8 w-full sm:w-auto">
-          <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <a href="#demo" class="btn-secondary text-lg !py-4 !px-8 w-full sm:w-auto group">
+          <svg class="w-5 h-5 mr-2 text-primary-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
           </svg>
           Watch Demo
         </a>
       </div>
       
-      <!-- Social Proof -->
-      <div class="mt-12 pt-8 border-t border-gray-100 fade-in-up">
-        <p class="text-sm text-gray-500 mb-4">Trusted by teams managing thousands of conversations</p>
-        <div class="flex items-center justify-center gap-8 opacity-60 grayscale">
-          <div class="text-2xl font-bold text-gray-400">Shopify</div>
-          <div class="text-2xl font-bold text-gray-400">Notion</div>
-          <div class="text-2xl font-bold text-gray-400">Stripe</div>
-          <div class="text-2xl font-bold text-gray-400">Vercel</div>
+      <!-- Social Proof Stats -->
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 fade-in-up">
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-gray-900">2,500+</div>
+          <div class="text-sm text-gray-500">Active teams</div>
+        </div>
+        <div class="hidden sm:block w-px h-10 bg-gray-200"></div>
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-gray-900">5M+</div>
+          <div class="text-sm text-gray-500">Messages processed</div>
+        </div>
+        <div class="hidden sm:block w-px h-10 bg-gray-200"></div>
+        <div class="text-center">
+          <div class="text-2xl md:text-3xl font-bold text-gray-900">4.9/5</div>
+          <div class="text-sm text-gray-500 flex items-center gap-1">
+            <span>Rating</span>
+            <span class="flex">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-3 h-3 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </span>
+          </div>
         </div>
       </div>
     </div>
     
     <!-- Hero Visual -->
-    <div class="mt-16 md:mt-24 relative fade-in-up">
+    <div class="mt-16 md:mt-20 relative fade-in-up">
       <div class="relative mx-auto max-w-5xl">
-        <!-- Glow effect -->
-        <div class="absolute -inset-4 bg-gradient-to-r from-primary-500/20 via-accent-500/20 to-primary-500/20 rounded-3xl blur-2xl"></div>
+        <!-- Glow effects -->
+        <div class="absolute -inset-4 bg-gradient-to-r from-primary-500/20 via-accent-500/20 to-primary-500/20 rounded-3xl blur-2xl opacity-60"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary-500/30 rounded-full blur-3xl"></div>
         
         <!-- Browser mockup -->
-        <div class="relative glass rounded-2xl overflow-hidden">
+        <div class="relative glass rounded-2xl overflow-hidden border border-white/40">
           <!-- Browser bar -->
-          <div class="flex items-center gap-2 px-4 py-3 bg-gray-100/50 border-b border-gray-200/50">
+          <div class="flex items-center gap-2 px-4 py-3 bg-gray-100/80 border-b border-gray-200/50">
             <div class="flex gap-1.5">
-              <div class="w-3 h-3 rounded-full bg-red-400"></div>
-              <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-              <div class="w-3 h-3 rounded-full bg-green-400"></div>
+              <div class="w-3 h-3 rounded-full bg-[#FF5F57] shadow-inner"></div>
+              <div class="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-inner"></div>
+              <div class="w-3 h-3 rounded-full bg-[#28CA41] shadow-inner"></div>
             </div>
             <div class="flex-1 mx-4">
-              <div class="w-full max-w-md mx-auto h-7 bg-white rounded-lg border border-gray-200 flex items-center px-3">
-                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div class="w-full max-w-md mx-auto h-8 bg-white rounded-lg border border-gray-200 flex items-center px-3 shadow-sm">
+                <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
-                <span class="ml-2 text-xs text-gray-500">app.replaid.pro</span>
+                <span class="ml-2 text-sm text-gray-600">app.replaid.pro</span>
               </div>
             </div>
           </div>
           
           <!-- App content preview -->
-          <div class="p-6 bg-gradient-to-br from-gray-50 to-white min-h-[400px]">
-            <div class="grid grid-cols-12 gap-4 h-full">
+          <div class="p-4 md:p-6 bg-gradient-to-br from-gray-50 to-white min-h-[350px] md:min-h-[420px]">
+            <div class="grid grid-cols-12 gap-3 md:gap-4 h-full">
               <!-- Sidebar -->
-              <div class="col-span-3 space-y-3">
-                <div class="h-10 bg-primary-100 rounded-lg"></div>
-                <div class="space-y-2">
-                  <div class="h-8 bg-gray-100 rounded-lg"></div>
-                  <div class="h-8 bg-primary-500/20 rounded-lg border-l-4 border-primary-500"></div>
-                  <div class="h-8 bg-gray-100 rounded-lg"></div>
-                  <div class="h-8 bg-gray-100 rounded-lg"></div>
+              <div class="col-span-3 space-y-3 hidden sm:block">
+                <div class="h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg flex items-center px-3">
+                  <span class="text-white text-xs font-medium">Inbox</span>
+                </div>
+                <div class="space-y-1.5">
+                  <div class="h-9 bg-white rounded-lg border border-gray-100 flex items-center px-3 gap-2">
+                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span class="text-xs text-gray-600">All Messages</span>
+                    <span class="ml-auto text-xs bg-primary-100 text-primary-700 px-1.5 py-0.5 rounded font-medium">24</span>
+                  </div>
+                  <div class="h-9 bg-primary-50 rounded-lg border border-primary-100 flex items-center px-3 gap-2">
+                    <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
+                    <span class="text-xs text-primary-700 font-medium">Hot Leads</span>
+                    <span class="ml-auto text-xs bg-primary-500 text-white px-1.5 py-0.5 rounded font-medium">8</span>
+                  </div>
+                  <div class="h-9 bg-white rounded-lg border border-gray-100 flex items-center px-3 gap-2">
+                    <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                    <span class="text-xs text-gray-600">Questions</span>
+                  </div>
+                  <div class="h-9 bg-white rounded-lg border border-gray-100 flex items-center px-3 gap-2">
+                    <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+                    <span class="text-xs text-gray-600">Spam</span>
+                  </div>
+                </div>
+                <div class="pt-3 border-t border-gray-100">
+                  <div class="text-xs text-gray-400 uppercase tracking-wide mb-2 px-1">Channels</div>
+                  <div class="space-y-1">
+                    <div class="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-50">
+                      <div class="w-5 h-5 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded"></div>
+                      <span class="text-xs text-gray-600">Instagram</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-50">
+                      <div class="w-5 h-5 bg-[#25D366] rounded"></div>
+                      <span class="text-xs text-gray-600">WhatsApp</span>
+                    </div>
+                  </div>
                 </div>
               </div>
               
               <!-- Main content -->
-              <div class="col-span-6 space-y-4">
-                <div class="flex gap-3">
-                  <div class="h-8 w-24 bg-primary-500 rounded-lg"></div>
-                  <div class="h-8 w-20 bg-gray-100 rounded-lg"></div>
-                  <div class="h-8 w-16 bg-gray-100 rounded-lg"></div>
+              <div class="col-span-12 sm:col-span-6 space-y-3">
+                <div class="flex gap-2 overflow-x-auto pb-1">
+                  <div class="h-8 px-4 bg-primary-500 text-white rounded-lg flex items-center text-xs font-medium whitespace-nowrap">All</div>
+                  <div class="h-8 px-4 bg-white border border-gray-200 rounded-lg flex items-center text-xs text-gray-600 whitespace-nowrap hover:border-gray-300 transition-colors">Unread</div>
+                  <div class="h-8 px-4 bg-white border border-gray-200 rounded-lg flex items-center text-xs text-gray-600 whitespace-nowrap hover:border-gray-300 transition-colors">Starred</div>
                 </div>
-                <div class="space-y-3">
-                  <!-- Message items -->
-                  <div class="p-4 bg-white rounded-xl border border-gray-100 shadow-sm flex items-start gap-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex-shrink-0"></div>
-                    <div class="flex-1 space-y-2">
-                      <div class="flex items-center gap-2">
-                        <div class="h-4 w-24 bg-gray-200 rounded"></div>
-                        <span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded-full font-medium">Hot Lead</span>
+                <div class="space-y-2">
+                  <!-- Message 1 - Hot Lead -->
+                  <div class="p-3 md:p-4 bg-white rounded-xl border-2 border-primary-200 shadow-sm flex items-start gap-3 hover:shadow-md transition-shadow cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex-shrink-0 flex items-center justify-center text-white font-semibold text-sm">SK</div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center gap-2 mb-1">
+                        <span class="font-semibold text-gray-900 text-sm">Sarah Kim</span>
+                        <span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded-full font-medium flex items-center gap-1">
+                          <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                          Hot Lead
+                        </span>
+                        <span class="text-xs text-gray-400 ml-auto">2m ago</span>
                       </div>
-                      <div class="h-3 w-full bg-gray-100 rounded"></div>
-                      <div class="h-3 w-3/4 bg-gray-100 rounded"></div>
+                      <p class="text-sm text-gray-600 truncate">Hi! I saw your product on Twitter. What's the pricing for teams? We're looking to...</p>
                     </div>
                   </div>
-                  <div class="p-4 bg-white rounded-xl border border-gray-100 shadow-sm flex items-start gap-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full flex-shrink-0"></div>
-                    <div class="flex-1 space-y-2">
-                      <div class="flex items-center gap-2">
-                        <div class="h-4 w-20 bg-gray-200 rounded"></div>
+                  <!-- Message 2 -->
+                  <div class="p-3 md:p-4 bg-white rounded-xl border border-gray-100 shadow-sm flex items-start gap-3 hover:shadow-md hover:border-gray-200 transition-all cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full flex-shrink-0 flex items-center justify-center text-white font-semibold text-sm">MJ</div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center gap-2 mb-1">
+                        <span class="font-semibold text-gray-900 text-sm">Mike Johnson</span>
                         <span class="px-2 py-0.5 bg-yellow-100 text-yellow-700 text-xs rounded-full font-medium">Question</span>
+                        <span class="text-xs text-gray-400 ml-auto">15m ago</span>
                       </div>
-                      <div class="h-3 w-full bg-gray-100 rounded"></div>
+                      <p class="text-sm text-gray-600 truncate">Does Replaid integrate with Hubspot? We need CRM sync for our...</p>
                     </div>
                   </div>
-                  <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 flex items-start gap-3 opacity-60">
+                  <!-- Message 3 - Spam (dimmed) -->
+                  <div class="p-3 md:p-4 bg-gray-50 rounded-xl border border-gray-100 flex items-start gap-3 opacity-50 cursor-pointer">
                     <div class="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0"></div>
-                    <div class="flex-1 space-y-2">
-                      <div class="flex items-center gap-2">
-                        <div class="h-4 w-16 bg-gray-200 rounded"></div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center gap-2 mb-1">
+                        <span class="font-medium text-gray-500 text-sm">crypto_gains_2024</span>
                         <span class="px-2 py-0.5 bg-gray-200 text-gray-500 text-xs rounded-full font-medium">Spam</span>
                       </div>
-                      <div class="h-3 w-2/3 bg-gray-100 rounded"></div>
+                      <p class="text-sm text-gray-400 truncate">🚀 MAKE $10K DAILY with our exclusive...</p>
                     </div>
                   </div>
                 </div>
               </div>
               
-              <!-- Right panel -->
-              <div class="col-span-3 space-y-3">
-                <div class="p-4 bg-white rounded-xl border border-gray-100">
-                  <div class="flex items-center gap-2 mb-3">
-                    <div class="w-8 h-8 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full"></div>
-                    <div class="h-4 w-20 bg-gray-200 rounded"></div>
-                  </div>
-                  <div class="space-y-2">
-                    <div class="flex justify-between text-xs">
-                      <span class="text-gray-500">Sentiment</span>
-                      <span class="text-green-600 font-medium">Positive</span>
+              <!-- Right panel - Details -->
+              <div class="col-span-3 space-y-3 hidden sm:block">
+                <div class="p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold">SK</div>
+                    <div>
+                      <div class="font-semibold text-gray-900">Sarah Kim</div>
+                      <div class="text-xs text-gray-500">@sarahk_design</div>
                     </div>
-                    <div class="flex justify-between text-xs">
+                  </div>
+                  <div class="space-y-2.5">
+                    <div class="flex justify-between text-sm">
+                      <span class="text-gray-500">Sentiment</span>
+                      <span class="text-green-600 font-medium flex items-center gap-1">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        Positive
+                      </span>
+                    </div>
+                    <div class="flex justify-between text-sm">
                       <span class="text-gray-500">Intent</span>
                       <span class="text-primary-600 font-medium">Purchase</span>
                     </div>
-                    <div class="flex justify-between text-xs">
-                      <span class="text-gray-500">Score</span>
-                      <span class="text-gray-900 font-medium">92/100</span>
+                    <div class="flex justify-between text-sm">
+                      <span class="text-gray-500">Lead Score</span>
+                      <span class="text-gray-900 font-bold">92<span class="text-gray-400 font-normal">/100</span></span>
                     </div>
                   </div>
                 </div>
-                <div class="p-3 bg-primary-50 rounded-xl border border-primary-100">
-                  <p class="text-xs text-primary-700 font-medium">🤖 AI Suggestion</p>
-                  <p class="text-xs text-primary-600 mt-1">Send pricing info and schedule a demo</p>
+                <div class="p-3 bg-gradient-to-br from-primary-50 to-accent-50 rounded-xl border border-primary-100">
+                  <div class="flex items-center gap-2 mb-2">
+                    <div class="w-6 h-6 bg-primary-500 rounded-lg flex items-center justify-center">
+                      <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <span class="text-sm font-semibold text-primary-900">AI Suggestion</span>
+                  </div>
+                  <p class="text-sm text-primary-700">Send pricing info and offer a quick demo call. High conversion probability.</p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Floating elements -->
+        <div class="absolute -right-4 top-1/4 p-3 bg-white rounded-xl shadow-xl border border-gray-100 animate-float hidden lg:block">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs text-gray-500">Auto-replied</div>
+              <div class="text-sm font-semibold text-gray-900">in 0.8s</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="absolute -left-4 bottom-1/4 p-3 bg-white rounded-xl shadow-xl border border-gray-100 animate-float hidden lg:block" style="animation-delay: -3s">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs text-gray-500">Leads today</div>
+              <div class="text-sm font-semibold text-gray-900">+23 qualified</div>
             </div>
           </div>
         </div>

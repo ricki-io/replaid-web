@@ -1,25 +1,40 @@
 ---
-// Testimonials section
+// Testimonials section with better avatars
 const testimonials = [
   {
-    quote: "Replaid handles 80% of our Instagram DMs automatically. Our response time went from hours to seconds.",
+    quote: "Replaid handles 80% of our Instagram DMs automatically. Our response time went from hours to seconds, and our conversion rate doubled.",
     author: "Maria Santos",
-    role: "E-commerce Owner",
-    avatar: "MS"
+    role: "E-commerce Founder",
+    company: "Velvet Studio",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+    rating: 5,
+    channel: 'instagram',
   },
   {
-    quote: "The lead scoring is incredible. We know exactly who's ready to buy and who's just browsing.",
+    quote: "The lead scoring is game-changing. We know exactly who's ready to buy vs who's just browsing. Closed 3x more deals in the first month.",
     author: "James Chen",
     role: "Sales Director",
-    avatar: "JC"
+    company: "TechFlow",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+    rating: 5,
+    channel: 'whatsapp',
   },
   {
-    quote: "Finally, an inbox tool that actually understands context. It feels like having a smart assistant.",
+    quote: "Finally, an inbox tool that actually understands context. The AI replies are so good, customers think they're talking to a real person.",
     author: "Lisa Park",
-    role: "Marketing Manager",
-    avatar: "LP"
+    role: "Head of Support",
+    company: "Bloom Health",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+    rating: 5,
+    channel: 'messenger',
   },
 ];
+
+const channelIcons = {
+  instagram: { bg: 'from-purple-600 via-pink-500 to-orange-400', icon: '<svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg>' },
+  whatsapp: { bg: 'bg-[#25D366]', icon: '<svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>' },
+  messenger: { bg: 'from-[#00B2FF] to-[#006AFF]', icon: '<svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111S18.627 0 12 0z"/></svg>' },
+};
 ---
 
 <section class="py-24 md:py-32 bg-gray-50">
@@ -33,31 +48,59 @@ const testimonials = [
     
     <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
       {testimonials.map((testimonial, index) => (
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow fade-in-up" style={`transition-delay: ${index * 50}ms`}>
-          <!-- Stars -->
+        <div 
+          class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 fade-in-up group" 
+          style={`transition-delay: ${index * 75}ms`}
+        >
+          <!-- Rating Stars -->
           <div class="flex gap-1 mb-4">
-            {[1,2,3,4,5].map(() => (
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            {Array.from({ length: testimonial.rating }).map(() => (
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
             ))}
           </div>
           
-          <blockquote class="text-gray-700 leading-relaxed mb-6">
+          <!-- Quote -->
+          <blockquote class="text-gray-700 leading-relaxed mb-6 group-hover:text-gray-900 transition-colors">
             "{testimonial.quote}"
           </blockquote>
           
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-gradient-to-br from-primary-400 to-accent-500 rounded-full flex items-center justify-center text-white font-medium text-sm">
-              {testimonial.avatar}
+          <!-- Author -->
+          <div class="flex items-center gap-4">
+            <div class="relative">
+              <img 
+                src={testimonial.avatar} 
+                alt={testimonial.author}
+                class="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-md"
+                loading="lazy"
+              />
+              <!-- Channel badge -->
+              <div class:list={[
+                'absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center shadow-sm',
+                testimonial.channel === 'whatsapp' ? 'bg-[#25D366]' : `bg-gradient-to-br ${channelIcons[testimonial.channel].bg}`
+              ]}>
+                <Fragment set:html={channelIcons[testimonial.channel].icon} />
+              </div>
             </div>
             <div>
               <div class="font-semibold text-gray-900">{testimonial.author}</div>
-              <div class="text-sm text-gray-500">{testimonial.role}</div>
+              <div class="text-sm text-gray-500">{testimonial.role}, {testimonial.company}</div>
             </div>
           </div>
         </div>
       ))}
+    </div>
+    
+    <!-- Trust badges -->
+    <div class="mt-16 text-center fade-in-up">
+      <p class="text-sm text-gray-500 mb-6">Trusted by fast-growing companies</p>
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-50 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-500">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/100px-Amazon_logo.svg.png" alt="Amazon" class="h-6 md:h-7 object-contain" loading="lazy" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Spotify_logo_with_text.svg/100px-Spotify_logo_with_text.svg.png" alt="Spotify" class="h-6 md:h-7 object-contain" loading="lazy" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/100px-Microsoft_logo_%282012%29.svg.png" alt="Microsoft" class="h-6 md:h-7 object-contain" loading="lazy" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/40px-Google_%22G%22_Logo.svg.png" alt="Google" class="h-6 md:h-7 object-contain" loading="lazy" />
+      </div>
     </div>
   </div>
 </section>

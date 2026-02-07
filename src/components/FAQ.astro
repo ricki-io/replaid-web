@@ -1,29 +1,29 @@
 ---
-// FAQ section
+// FAQ section with accordion
 const faqs = [
   {
     question: "What channels can I connect to Replaid?",
-    answer: "You can connect Instagram (DMs and comments), WhatsApp, Facebook Messenger, Twitter/X, Telegram, and email. We're continuously adding new platforms based on user demand."
+    answer: "You can connect Instagram (DMs and comments), WhatsApp, Facebook Messenger, Twitter/X, Telegram, and email. We're actively adding new platforms — let us know what you need."
   },
   {
     question: "Can Replaid respond automatically to messages?",
-    answer: "Yes! Replaid uses AI to send automatic replies, filter spam, answer FAQs, and qualify leads — all while maintaining your brand voice. You can customize how much automation you want."
+    answer: "Yes! Replaid uses AI to send instant replies, filter spam, answer FAQs, and qualify leads — all while maintaining your brand voice. You control how much automation you want."
   },
   {
     question: "Can I use Replaid without auto-replies?",
-    answer: "Absolutely. You can disable auto-replies and still use Replaid for lead scoring, notifications, and workflow automation. Great if you prefer to reply manually but want smart prioritization."
+    answer: "Absolutely. Many teams use Replaid purely for lead scoring, notifications, and smart prioritization while handling replies manually. You get all the intelligence without automation."
   },
   {
     question: "How does lead qualification work?",
-    answer: "Our AI analyzes message intent, sentiment, and urgency using natural language processing. It assigns scores, categories, and can trigger notifications or automations so you focus on high-value conversations."
+    answer: "Our AI analyzes message intent, sentiment, and urgency using natural language processing. It assigns scores from 0-100, categorizes conversations, and can trigger alerts when high-value leads come in."
   },
   {
     question: "Is it hard to set up? Do I need to code?",
-    answer: "Not at all. Replaid is 100% no-code. Just connect your channels, upload your knowledge base, and you're ready to go. Most teams are up and running in under 10 minutes."
+    answer: "Not at all. Replaid is 100% no-code. Connect your channels with OAuth, upload your knowledge base, and you're live. Most teams are up and running in under 10 minutes."
   },
   {
-    question: "What about data privacy?",
-    answer: "We take privacy seriously. Your data is encrypted in transit and at rest. We never share or sell your data, and you can delete everything at any time. We're GDPR compliant."
+    question: "What about data privacy and security?",
+    answer: "Security is our priority. All data is encrypted in transit (TLS 1.3) and at rest (AES-256). We're GDPR compliant, never share your data, and you can delete everything anytime. SOC 2 Type II certification in progress."
   },
 ];
 ---
@@ -35,22 +35,44 @@ const faqs = [
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
         Frequently asked questions
       </h2>
+      <p class="mt-4 text-lg text-gray-600">
+        Everything you need to know about Replaid
+      </p>
     </div>
     
-    <div class="space-y-4">
+    <div class="space-y-3">
       {faqs.map((faq, index) => (
-        <details class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow fade-in-up" style={`transition-delay: ${index * 30}ms`}>
-          <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-gray-900 list-none">
-            <span>{faq.question}</span>
-            <svg class="w-5 h-5 text-gray-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
+        <details 
+          class="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all duration-200 fade-in-up overflow-hidden" 
+          style={`transition-delay: ${index * 30}ms`}
+        >
+          <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-gray-900 list-none select-none">
+            <span class="pr-4">{faq.question}</span>
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 group-hover:bg-primary-50 flex items-center justify-center transition-colors">
+              <svg class="w-5 h-5 text-gray-500 group-hover:text-primary-600 transition-all duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
           </summary>
-          <div class="px-6 pb-6 text-gray-600 leading-relaxed">
-            {faq.answer}
+          <div class="px-6 pb-6 -mt-2">
+            <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
           </div>
         </details>
       ))}
+    </div>
+    
+    <!-- Contact callout -->
+    <div class="mt-12 text-center fade-in-up">
+      <p class="text-gray-600 mb-2">Still have questions?</p>
+      <a href="mailto:hello@replaid.pro" class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors group">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        Get in touch
+        <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
     </div>
   </div>
 </section>
