@@ -1,24 +1,20 @@
 ---
-// Neo-Geo Stats - bold geometric
+// Swiss Stats - bold numbers
 const stats = [
-  { value: '10×', label: 'Faster', color: 'bg-coral text-white' },
-  { value: '90%', label: 'Automated', color: 'bg-sage text-neo-black' },
-  { value: '3×', label: 'Conversions', color: 'bg-gold text-neo-black' },
-  { value: '24/7', label: 'Active', color: 'bg-neo-black text-cream' },
+  { value: '10×', label: 'Speed' },
+  { value: '90%', label: 'Automated' },
+  { value: '3×', label: 'Conversions' },
+  { value: '24/7', label: 'Uptime' },
 ];
 ---
 
-<section class="py-20 sm:py-28 bg-neo-navy relative overflow-hidden">
-  <!-- Geometric decoration -->
-  <div class="absolute -top-10 -right-10 w-40 h-40 bg-coral/20 rounded-full"></div>
-  <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-sage/20"></div>
-  
-  <div class="relative mx-auto max-w-6xl px-6">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+<section class="py-24 bg-black text-white">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4">
       {stats.map((s, i) => (
-        <div class={`${s.color} p-8 text-center fade-in-up`} style={`transition-delay: ${i * 100}ms`}>
-          <div class="font-display text-5xl sm:text-6xl font-bold">{s.value}</div>
-          <div class="mt-2 opacity-70 font-semibold">{s.label}</div>
+        <div class={`py-12 text-center fade-in-up ${i < 3 ? 'lg:border-r' : ''} border-white/20`} style={`transition-delay: ${i * 100}ms`}>
+          <div class="text-6xl sm:text-7xl font-black">{s.value}</div>
+          <div class="label-swiss mt-4 text-white/60">{s.label}</div>
         </div>
       ))}
     </div>

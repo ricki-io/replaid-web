@@ -1,17 +1,16 @@
 ---
-// Neo-Geo channels
+// Swiss channels - minimal grid
 const channels = ['Instagram', 'WhatsApp', 'Messenger', 'Email', 'Telegram', 'Twitter'];
 ---
 
-<section class="py-10 bg-neo-black">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
-      <span class="text-sm text-cream/60 font-display">Works with</span>
-      <div class="flex flex-wrap justify-center gap-6">
-        {channels.map(ch => (
-          <span class="text-sm text-cream/80 hover:text-coral transition-colors cursor-default font-semibold">{ch}</span>
-        ))}
-      </div>
+<section class="border-y-2 border-black">
+  <div class="mx-auto max-w-7xl px-6 py-6">
+    <div class="flex flex-wrap items-center gap-8">
+      <span class="label-swiss">Integrations</span>
+      <div class="grid-line flex-1 hidden sm:block"></div>
+      {channels.map((ch, i) => (
+        <span class="label-swiss hover:accent-red transition-colors cursor-default">{String(i+1).padStart(2,'0')}—{ch}</span>
+      ))}
     </div>
   </div>
 </section>

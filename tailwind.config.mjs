@@ -4,34 +4,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Neo-Geo palette - bold and artistic
-        neo: {
-          black: '#1a1a2e',
-          navy: '#16213e',
-        },
-        // Mediterranean-inspired accents
-        coral: {
-          DEFAULT: '#e07a5f',
-          light: '#f2a391',
-          dark: '#c9614a',
-        },
-        cream: {
-          DEFAULT: '#f4f1de',
-          dark: '#e8e4cc',
-        },
-        sage: {
-          DEFAULT: '#81b29a',
-          light: '#a8d5ba',
-          dark: '#5f9178',
-        },
-        gold: {
-          DEFAULT: '#f2cc8f',
-          dark: '#ddb870',
+        // Swiss brutalist palette - stark
+        swiss: {
+          black: '#000000',
+          white: '#ffffff',
+          red: '#ff0000',
+          gray: '#666666',
+          light: '#f5f5f5',
         },
       },
       fontFamily: {
-        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        mono: ['SF Mono', 'Monaco', 'monospace'],
+      },
+      fontSize: {
+        'massive': ['clamp(4rem, 20vw, 16rem)', { lineHeight: '0.85', letterSpacing: '-0.04em' }],
+        'huge': ['clamp(3rem, 12vw, 10rem)', { lineHeight: '0.9', letterSpacing: '-0.03em' }],
+        'big': ['clamp(2rem, 6vw, 5rem)', { lineHeight: '0.95', letterSpacing: '-0.02em' }],
       },
     },
   },

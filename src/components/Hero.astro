@@ -1,57 +1,53 @@
 ---
-// Neo-Geo Hero - bold geometric shapes
+// Swiss brutalist Hero - massive typography
 ---
 
-<section class="relative pt-32 sm:pt-40 pb-20 sm:pb-32 overflow-hidden">
-  <!-- Geometric decorations -->
-  <div class="absolute top-32 right-10 w-32 h-32 bg-sage rounded-full opacity-60 hidden lg:block"></div>
-  <div class="absolute top-60 right-40 w-20 h-20 bg-coral hidden lg:block"></div>
-  <div class="absolute bottom-20 left-10 w-24 h-24 bg-gold rounded-full opacity-80 hidden lg:block"></div>
-  <div class="absolute bottom-40 left-32 w-16 h-16 border-4 border-neo-black hidden lg:block"></div>
+<section class="min-h-screen flex flex-col justify-center pt-16 relative">
+  <!-- Red accent bar -->
+  <div class="absolute top-16 left-0 w-2 h-32 bg-red"></div>
   
-  <div class="relative mx-auto max-w-6xl px-6">
-    <div class="max-w-3xl">
-      <!-- Label -->
-      <div class="label-neo mb-6 fade-in-up flex items-center gap-3">
-        <span class="w-8 h-1 bg-coral"></span>
-        AI-Powered Support
+  <div class="mx-auto max-w-7xl px-6 py-20">
+    <!-- Label -->
+    <div class="label-swiss mb-8 fade-in-up">001 — AI Customer Support</div>
+    
+    <!-- Massive headline -->
+    <h1 class="text-massive font-black leading-none mb-12 fade-in-up">
+      INBOX<br/>
+      <span class="accent-red">=</span><br/>
+      MONEY
+    </h1>
+    
+    <!-- Grid line -->
+    <div class="grid-line w-full max-w-md mb-8 fade-in-up"></div>
+    
+    <!-- Subheadline -->
+    <p class="text-xl max-w-md mb-12 leading-relaxed fade-in-up text-swiss-gray">
+      AI that qualifies leads, responds instantly, converts 24/7.
+    </p>
+    
+    <!-- CTAs -->
+    <div class="flex flex-wrap gap-4 mb-20 fade-in-up">
+      <a href="#cta" class="btn-swiss">
+        Start Free Trial
+      </a>
+      <a href="mailto:hello@replaid.pro?subject=Demo%20Request" class="btn-swiss-outline">
+        Book Demo
+      </a>
+    </div>
+    
+    <!-- Stats - grid layout -->
+    <div class="grid grid-cols-3 gap-8 max-w-lg fade-in-up">
+      <div>
+        <div class="text-4xl sm:text-5xl font-black">5M+</div>
+        <div class="label-swiss mt-2">Messages</div>
       </div>
-      
-      <!-- Headline -->
-      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-8 fade-in-up leading-none">
-        Your inbox<br/>
-        is a <span class="text-coral">goldmine</span>
-      </h1>
-      
-      <!-- Subheadline -->
-      <p class="text-lg sm:text-xl text-neo-black/70 max-w-xl mb-10 leading-relaxed fade-in-up">
-        AI that qualifies leads, responds instantly, and converts around the clock. No more missed opportunities.
-      </p>
-      
-      <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row gap-4 mb-16 fade-in-up">
-        <a href="#cta" class="btn-neo">
-          Start Free Trial →
-        </a>
-        <a href="mailto:hello@replaid.pro?subject=Demo%20Request" class="btn-neo-outline">
-          Book a Demo
-        </a>
+      <div>
+        <div class="text-4xl sm:text-5xl font-black">10×</div>
+        <div class="label-swiss mt-2">Faster</div>
       </div>
-      
-      <!-- Stats in geometric boxes -->
-      <div class="flex flex-wrap gap-6 fade-in-up">
-        <div class="bg-neo-black text-cream px-6 py-4">
-          <div class="font-display text-3xl font-bold">5M+</div>
-          <div class="text-xs text-cream/70 mt-1">messages</div>
-        </div>
-        <div class="bg-sage text-neo-black px-6 py-4">
-          <div class="font-display text-3xl font-bold">10×</div>
-          <div class="text-xs text-neo-black/70 mt-1">faster</div>
-        </div>
-        <div class="bg-coral text-white px-6 py-4">
-          <div class="font-display text-3xl font-bold">4.9★</div>
-          <div class="text-xs text-white/70 mt-1">rating</div>
-        </div>
+      <div>
+        <div class="text-4xl sm:text-5xl font-black accent-red">4.9</div>
+        <div class="label-swiss mt-2">Rating</div>
       </div>
     </div>
   </div>

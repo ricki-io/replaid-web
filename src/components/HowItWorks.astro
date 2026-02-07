@@ -1,33 +1,32 @@
 ---
-// Neo-Geo How It Works
+// Swiss How It Works - numbered steps
 const steps = [
-  { num: '01', title: 'Connect', desc: 'Link your channels in one click.', color: 'bg-coral' },
-  { num: '02', title: 'Train', desc: 'Add your knowledge base.', color: 'bg-sage' },
-  { num: '03', title: 'Launch', desc: 'Go live in 10 minutes.', color: 'bg-gold' },
+  { title: 'Connect', desc: 'Link channels.' },
+  { title: 'Train', desc: 'Add knowledge.' },
+  { title: 'Launch', desc: 'Go live.' },
 ];
 ---
 
-<section id="how-it-works" class="py-24 sm:py-32">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="mb-16 fade-in-up">
-      <div class="label-neo mb-4 flex items-center gap-3">
-        <span class="w-8 h-1 bg-coral"></span>
-        How it works
+<section id="how-it-works" class="py-32">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="flex items-end justify-between mb-16 fade-in-up">
+      <div>
+        <div class="label-swiss mb-4">003 — Process</div>
+        <h2 class="text-huge font-black">HOW</h2>
       </div>
-      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
-        Three steps to<br/>
-        <span class="text-coral">success</span>
-      </h2>
+      <div class="hidden sm:block">
+        <span class="label-swiss">10 MIN SETUP</span>
+      </div>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid-line mb-16"></div>
+    
+    <div class="grid md:grid-cols-3 gap-0">
       {steps.map((s, i) => (
-        <div class="fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <div class={`${s.color} w-20 h-20 flex items-center justify-center mb-6`}>
-            <span class="font-display text-2xl font-bold text-white">{s.num}</span>
-          </div>
-          <h3 class="font-display text-2xl font-bold mb-3">{s.title}</h3>
-          <p class="text-neo-black/60">{s.desc}</p>
+        <div class={`py-12 fade-in-up ${i < 2 ? 'md:border-r-2' : ''} border-black md:pr-12`} style={`transition-delay: ${i * 100}ms`}>
+          <div class="text-9xl font-black text-swiss-light leading-none mb-6">{i + 1}</div>
+          <h3 class="text-3xl font-black mb-2">{s.title}</h3>
+          <p class="text-swiss-gray">{s.desc}</p>
         </div>
       ))}
     </div>

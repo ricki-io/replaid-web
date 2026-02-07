@@ -1,37 +1,37 @@
 ---
-// Neo-Geo Features - bold cards
+// Swiss Features - systematic grid
 const features = [
-  { color: 'bg-coral', icon: '📥', title: 'Unified Inbox', desc: 'All channels, one beautiful interface.' },
-  { color: 'bg-sage', icon: '🎯', title: 'Smart Scoring', desc: 'AI finds your hottest leads.' },
-  { color: 'bg-gold', icon: '⚡', title: 'Auto-Replies', desc: 'Lightning responses, always.' },
-  { color: 'bg-neo-navy', icon: '🤝', title: 'Human Handoff', desc: 'Seamless escalation when needed.' },
+  { num: '01', title: 'Unified Inbox', desc: 'All channels. One interface.' },
+  { num: '02', title: 'Lead Scoring', desc: 'AI finds hot prospects.' },
+  { num: '03', title: 'Auto-Reply', desc: 'Instant. Always on.' },
+  { num: '04', title: 'Handoff', desc: 'Human when needed.' },
 ];
 ---
 
-<section id="features" class="py-24 sm:py-32 relative">
-  <!-- Decorative shapes -->
-  <div class="absolute top-20 left-10 w-16 h-16 bg-sage/30 rounded-full hidden lg:block"></div>
-  <div class="absolute bottom-20 right-20 w-12 h-12 bg-coral/40 hidden lg:block"></div>
-  
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="mb-16 fade-in-up">
-      <div class="label-neo mb-4 flex items-center gap-3">
-        <span class="w-8 h-1 bg-coral"></span>
-        Features
+<section id="features" class="py-32">
+  <div class="mx-auto max-w-7xl px-6">
+    <!-- Section header -->
+    <div class="flex items-end justify-between mb-16 fade-in-up">
+      <div>
+        <div class="label-swiss mb-4">002 — Features</div>
+        <h2 class="text-huge font-black">WHAT</h2>
       </div>
-      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
-        Everything<br/>you need
-      </h2>
+      <div class="hidden sm:block text-right">
+        <span class="text-8xl font-black accent-red">04</span>
+      </div>
     </div>
     
-    <div class="grid sm:grid-cols-2 gap-6">
+    <div class="grid-line mb-16"></div>
+    
+    <!-- Features grid -->
+    <div class="grid md:grid-cols-2 gap-0 border-2 border-black">
       {features.map((f, i) => (
-        <div class="card-neo p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <div class={`w-14 h-14 ${f.color} flex items-center justify-center mb-6`}>
-            <span class="text-2xl">{f.icon}</span>
+        <div class={`p-8 sm:p-12 fade-in-up ${i < 2 ? 'border-b-2' : ''} ${i % 2 === 0 ? 'md:border-r-2' : ''} border-black`} style={`transition-delay: ${i * 100}ms`}>
+          <div class="flex items-start justify-between mb-6">
+            <span class="text-6xl font-black text-swiss-light">{f.num}</span>
           </div>
-          <h3 class="font-display text-2xl font-bold mb-3">{f.title}</h3>
-          <p class="text-neo-black/60">{f.desc}</p>
+          <h3 class="text-2xl font-black mb-3">{f.title}</h3>
+          <p class="text-swiss-gray">{f.desc}</p>
         </div>
       ))}
     </div>

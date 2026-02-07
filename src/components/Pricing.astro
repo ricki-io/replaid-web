@@ -1,48 +1,41 @@
 ---
-// Neo-Geo Pricing
+// Swiss Pricing - systematic
 const plans = [
-  { name: 'Starter', price: '29', features: ['1 channel', '500 msgs/mo', 'Basic AI', 'Lead scoring'], highlight: false, shadow: 'bg-sage' },
-  { name: 'Pro', price: '79', features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team access', 'Integrations'], highlight: true, shadow: 'bg-coral' },
-  { name: 'Scale', price: '199', features: ['Unlimited', '25K msgs/mo', 'Custom AI', 'API access', 'Priority support'], highlight: false, shadow: 'bg-gold' },
+  { name: 'Starter', price: '29', features: ['1 channel', '500 msgs/mo', 'Basic AI'], highlight: false },
+  { name: 'Pro', price: '79', features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team'], highlight: true },
+  { name: 'Scale', price: '199', features: ['Unlimited', '25K msgs/mo', 'Custom AI', 'API'], highlight: false },
 ];
 ---
 
-<section id="pricing" class="py-24 sm:py-32 bg-cream-dark">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-16 fade-in-up">
-      <div class="label-neo mb-4 justify-center flex items-center gap-3">
-        <span class="w-8 h-1 bg-coral"></span>
-        Pricing
-        <span class="w-8 h-1 bg-coral"></span>
+<section id="pricing" class="py-32 bg-swiss-light">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="flex items-end justify-between mb-16 fade-in-up">
+      <div>
+        <div class="label-swiss mb-4">004 — Pricing</div>
+        <h2 class="text-huge font-black">COST</h2>
       </div>
-      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
-        Pick your plan
-      </h2>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+    <div class="grid-line mb-16 bg-black"></div>
+    
+    <div class="grid md:grid-cols-3 gap-0">
       {plans.map((p, i) => (
-        <div class={`relative fade-in-up ${p.highlight ? 'md:order-2 order-first' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
-          <div class={`absolute bottom-[-8px] right-[-8px] w-full h-full ${p.shadow}`}></div>
-          <div class="relative bg-white border-3 border-neo-black p-8 flex flex-col h-full">
-            {p.highlight && <div class="label-neo mb-4">Most Popular</div>}
-            <h3 class="font-display text-2xl font-bold mb-2">{p.name}</h3>
-            <div class="mb-6">
-              <span class="font-display text-5xl font-bold">${p.price}</span>
-              <span class="text-neo-black/50">/mo</span>
-            </div>
-            <ul class="space-y-3 mb-8 flex-1">
-              {p.features.map(f => (
-                <li class="flex items-center gap-3 text-neo-black/70">
-                  <span class="w-2 h-2 bg-coral"></span>
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <a href="#cta" class={p.highlight ? 'btn-neo w-full justify-center' : 'btn-neo-outline w-full justify-center'}>
-              Get Started
-            </a>
-          </div>
+        <div class={`bg-white border-2 border-black p-8 sm:p-10 fade-in-up flex flex-col ${p.highlight ? 'md:order-2 order-first bg-black text-white' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
+          {p.highlight && <div class="label-swiss text-red-500 mb-4">Recommended</div>}
+          <div class="label-swiss mb-2 ${p.highlight ? 'text-white/60' : ''}">{String(i+1).padStart(2,'0')}</div>
+          <h3 class="text-2xl font-black mb-4">{p.name}</h3>
+          <div class="text-5xl font-black mb-8">${p.price}<span class="text-lg font-normal opacity-50">/mo</span></div>
+          <ul class="space-y-3 mb-8 flex-1">
+            {p.features.map(f => (
+              <li class={`flex items-center gap-3 ${p.highlight ? 'text-white/70' : 'text-swiss-gray'}`}>
+                <span class={p.highlight ? 'text-red-500' : ''}>→</span>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a href="#cta" class={p.highlight ? 'btn-swiss bg-white text-black hover:bg-red-500 hover:text-white' : 'btn-swiss-outline'}>
+            Select
+          </a>
         </div>
       ))}
     </div>

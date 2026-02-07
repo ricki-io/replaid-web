@@ -1,32 +1,30 @@
 ---
-// Neo-Geo FAQ
+// Swiss FAQ - systematic
 const faqs = [
-  { q: "What channels are supported?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, and Twitter." },
-  { q: "How fast is setup?", a: "Under 10 minutes. Connect, train, launch." },
-  { q: "Can I disable auto-replies?", a: "Yes! Use it for lead scoring only if you prefer." },
-  { q: "Is my data secure?", a: "Absolutely. Encrypted and GDPR compliant." },
+  { q: "Channels?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, Twitter." },
+  { q: "Setup time?", a: "10 minutes." },
+  { q: "Disable auto-reply?", a: "Yes." },
+  { q: "Data security?", a: "Encrypted. GDPR." },
 ];
 ---
 
-<section id="faq" class="py-24 sm:py-32 bg-neo-black text-cream">
-  <div class="mx-auto max-w-3xl px-6">
+<section id="faq" class="py-32">
+  <div class="mx-auto max-w-4xl px-6">
     <div class="text-center mb-16 fade-in-up">
-      <div class="label-neo mb-4 justify-center flex items-center gap-3 text-coral">
-        <span class="w-8 h-1 bg-coral"></span>
-        FAQ
-        <span class="w-8 h-1 bg-coral"></span>
-      </div>
-      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">Questions?</h2>
+      <div class="label-swiss mb-4">006 — FAQ</div>
+      <h2 class="text-huge font-black">?</h2>
     </div>
     
-    <div class="space-y-4">
+    <div class="grid-line mb-16"></div>
+    
+    <div class="space-y-0">
       {faqs.map((f, i) => (
-        <details class="group bg-cream/5 border-2 border-cream/20 fade-in-up" style={`transition-delay: ${i * 50}ms`}>
-          <summary class="p-6 font-display font-semibold cursor-pointer flex justify-between items-center list-none hover:text-coral transition-colors">
+        <details class="group border-b-2 border-black fade-in-up" style={`transition-delay: ${i * 50}ms`}>
+          <summary class="py-6 font-black text-xl cursor-pointer flex justify-between items-center list-none hover:accent-red transition-colors">
             {f.q}
-            <span class="text-coral group-open:rotate-45 transition-transform text-xl">+</span>
+            <span class="group-open:rotate-45 transition-transform text-2xl">+</span>
           </summary>
-          <div class="px-6 pb-6 text-cream/70 leading-relaxed">
+          <div class="pb-6 text-swiss-gray">
             {f.a}
           </div>
         </details>
