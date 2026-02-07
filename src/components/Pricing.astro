@@ -22,9 +22,9 @@ const plans = [
       {plans.map((p, i) => (
         <div class={`bg-white border-2 border-black p-8 sm:p-10 fade-in-up flex flex-col ${p.highlight ? 'md:order-2 order-first bg-black text-white' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
           {p.highlight && <div class="label-swiss text-red-500 mb-4">Recommended</div>}
-          <div class={`label-swiss mb-2 ${p.highlight ? 'text-white/40' : 'text-black/40'}`}>{String(i+1).padStart(2,'0')}</div>
+          <div class={`label-swiss mb-2 ${p.highlight ? 'text-white/70' : 'text-black/40'}`}>{String(i+1).padStart(2,'0')}</div>
           <h3 class="text-2xl font-black mb-4">{p.name}</h3>
-          <div class="text-5xl font-black mb-8">${p.price}<span class={`text-lg font-normal ${p.highlight ? 'text-white/50' : 'text-black/40'}`}>/mo</span></div>
+          <div class="text-5xl font-black mb-8">${p.price}<span class={`text-lg font-normal ${p.highlight ? 'text-white/70' : 'text-black/40'}`}>/mo</span></div>
           <ul class="space-y-3 mb-8 flex-1">
             {p.features.map(f => (
               <li class={`flex items-center gap-3 ${p.highlight ? 'text-white/70' : 'text-swiss-gray'}`}>
