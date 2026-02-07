@@ -16,10 +16,10 @@ export default {
           end: '#0f3460',
         },
         accent: {
-          purple: '#9d4edd',
-          pink: '#e040fb',
-          blue: '#3d5af1',
-          cyan: '#22d1ee',
+          green: '#10b981',
+          emerald: '#34d399',
+          teal: '#14b8a6',
+          cyan: '#22d3ee',
         },
       },
       fontFamily: {
@@ -28,10 +28,10 @@ export default {
       backgroundImage: {
         'glass-gradient': 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
         'mesh-bg': `
-          radial-gradient(at 0% 0%, #9d4edd 0px, transparent 50%),
-          radial-gradient(at 100% 0%, #3d5af1 0px, transparent 50%),
-          radial-gradient(at 100% 100%, #e040fb 0px, transparent 50%),
-          radial-gradient(at 0% 100%, #22d1ee 0px, transparent 50%)
+          radial-gradient(at 0% 0%, #10b981 0px, transparent 50%),
+          radial-gradient(at 100% 0%, #14b8a6 0px, transparent 50%),
+          radial-gradient(at 100% 100%, #34d399 0px, transparent 50%),
+          radial-gradient(at 0% 100%, #22d3ee 0px, transparent 50%)
         `,
       },
       backdropBlur: {

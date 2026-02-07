@@ -20,7 +20,7 @@ const plans = [
     <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
       {plans.map((p, i) => (
         <div class={`card-glass p-8 fade-in-up flex flex-col ${p.highlight ? 'ring-2 ring-white/30 md:order-2 order-first' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
-          {p.highlight && <div class="label-glass text-accent-pink mb-4">Most Popular</div>}
+          {p.highlight && <div class="label-glass text-accent-emerald mb-4">Most Popular</div>}
           <h3 class="text-xl font-semibold mb-2">{p.name}</h3>
           <div class="mb-6">
             <span class="text-5xl font-bold">${p.price}</span>
