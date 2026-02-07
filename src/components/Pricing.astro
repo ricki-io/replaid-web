@@ -56,7 +56,7 @@ const plans = [
         <span class="text-sm text-moss-600 tracking-wide uppercase">Pricing</span>
         <span class="w-8 h-px bg-moss-400"></span>
       </div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-ink-900 mb-6">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-ink-900 mb-6 font-bold">
         Simple, transparent pricing
       </h2>
       <p class="text-lg text-ink-500 leading-relaxed">
@@ -65,13 +65,13 @@ const plans = [
     </div>
     
     <!-- Pricing cards -->
-    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
       {plans.map((plan, index) => (
         <div 
           class:list={[
-            'relative rounded-sm p-8 fade-in-up transition-all duration-300',
+            'relative rounded-sm p-6 sm:p-8 fade-in-up transition-all duration-300',
             plan.highlight 
-              ? 'bg-ink-800 text-sand-50 scale-105 shadow-xl' 
+              ? 'bg-ink-800 text-sand-50 sm:scale-105 shadow-xl order-first lg:order-none' 
               : 'bg-white border border-stone-200 hover:border-stone-300 hover:shadow-sm'
           ]}
           style={`transition-delay: ${index * 100}ms`}
