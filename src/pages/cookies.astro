@@ -1,65 +1,56 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Cookie Policy - Replaid" description="Learn how Replaid uses cookies to improve your experience.">
-  <main class="py-20 sm:py-28">
-    <article class="mx-auto max-w-3xl px-6 prose prose-invert prose-lg">
-      <h1>Cookie Policy</h1>
-      <p class="text-ink-300">Last updated on March 19, 2025</p>
+  <Header />
+  <main class="py-24 sm:py-32">
+    <article class="mx-auto max-w-3xl px-6">
+      <div class="mb-12">
+        <div class="mono-label mb-4">Legal</div>
+        <h1 class="text-display-sm font-bold mb-4">Cookie Policy</h1>
+        <p class="text-ink-300">Last updated on March 19, 2025</p>
+      </div>
 
-      <p>REPLAID.pro ("us", "we", or "our") uses cookies on Replaid (the "Service"). By using the Service, you consent to the use of cookies.</p>
+      <div class="space-y-8 text-ink-200 text-lg leading-relaxed">
+        <p>REPLAID.pro ("us", "we", or "our") uses cookies on Replaid (the "Service"). By using the Service, you consent to the use of cookies.</p>
 
-      <p>Our Cookie Policy explains what cookies are, how we use them, how third parties we may partner with use them, your choices regarding cookies, and further information about cookies.</p>
+        <p>Our Cookie Policy explains what cookies are, how we use them, how third parties we may partner with use them, your choices regarding cookies, and further information about cookies.</p>
 
-      <h3>What Are Cookies</h3>
+        <h3 class="text-xl font-bold text-white pt-8">What Are Cookies</h3>
+        <p>Cookies are small pieces of text sent by your web browser by a website you visit. A cookie file is stored in your browser and allows the Service or a third party to recognize you and make your next visit easier and the Service more useful to you.</p>
+        <p>Cookies can be "persistent" or "session" cookies. They are associated with the browser, not the person, so they do not usually store sensitive information such as credit card or bank details, photos, or personal data.</p>
 
-      <p>Cookies are small pieces of text sent by your web browser by a website you visit. A cookie file is stored in your browser and allows the Service or a third party to recognize you and make your next visit easier and the Service more useful to you.</p>
+        <h3 class="text-xl font-bold text-white pt-8">How We Use Cookies</h3>
+        <p>When you use and access the Service, we may place a number of cookie files in your web browser.</p>
+        <p>We use cookies for the following purposes: to enable certain functions of the Service, to provide analytics, to store your preferences, and to enable advertisement delivery, including behavioral advertising.</p>
 
-      <p>Cookies can be "persistent" or "session" cookies. They are associated with the browser, not the person, so they do not usually store sensitive information such as credit card or bank details, photos, or personal data. The data they contain are typically technical, statistical, or preference-related.</p>
+        <h3 class="text-xl font-bold text-white pt-8">Essential / Technical Cookies</h3>
+        <p>These allow the proper functioning of website features, enabling you to navigate and use various options such as controlling traffic and data communication, identifying sessions, accessing restricted areas, remembering order items, completing purchases, and using security elements during browsing.</p>
 
-      <h3>How We Use Cookies</h3>
+        <h3 class="text-xl font-bold text-white pt-8">Third-Party Cookies</h3>
+        <p>The site may use third-party services, such as Google, to collect information for statistical purposes, analyze site usage, and provide other web-related services.</p>
 
-      <p>When you use and access the Service, we may place a number of cookie files in your web browser.</p>
+        <h3 class="text-xl font-bold text-white pt-8">Manage and Reject Cookies</h3>
+        <p>You can adapt your browser settings at any time to manage or refuse the use of cookies, and to be notified before they are downloaded.</p>
+        <p>If you'd like to delete cookies or instruct your web browser to delete or refuse them, please visit the help pages of your browser:</p>
+        <ul class="list-disc list-inside space-y-2 text-ink-200">
+          <li><a href="https://support.google.com/chrome/answer/95647" class="text-accent hover:underline">Google Chrome</a></li>
+          <li><a href="https://support.microsoft.com/en-us/topic/how-to-delete-cookie-files-in-internet-explorer-bca9446f-d873-78de-77ba-d42645fa52fc" class="text-accent hover:underline">Internet Explorer</a></li>
+          <li><a href="https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox" class="text-accent hover:underline">Mozilla Firefox</a></li>
+          <li><a href="https://help.apple.com/safari/mac/8.0/en.lproj/sfri11471.html" class="text-accent hover:underline">Apple Safari</a></li>
+        </ul>
+        <p>Please note that if you delete or refuse cookies, some parts of our Service may not function properly.</p>
 
-      <p>We use cookies for the following purposes: to enable certain functions of the Service, to provide analytics, to store your preferences, and to enable advertisement delivery, including behavioral advertising.</p>
+        <h3 class="text-xl font-bold text-white pt-8">More Information</h3>
+        <p>You can learn more about cookies at <a href="https://allaboutcookies.org/" class="text-accent hover:underline">AllAboutCookies.org</a>.</p>
 
-      <p>We use both session and persistent cookies on the Service, and different types of cookies to run it efficiently:</p>
-
-      <h4>Essential / Technical Cookies</h4>
-
-      <p>These allow the proper functioning of website features, enabling you to navigate and use various options such as controlling traffic and data communication, identifying sessions, accessing restricted areas, remembering order items, completing purchases, registering for events, using security elements during browsing, storing multimedia content, or sharing through social networks.</p>
-
-      <h4>Third-Party Cookies</h4>
-
-      <p>The site may use third-party services, such as Google, to collect information for statistical purposes, analyze site usage, and provide other web-related services.</p>
-
-      <h3>Manage and Reject Cookies</h3>
-
-      <p>You can adapt your browser settings at any time to manage or refuse the use of cookies, and to be notified before they are downloaded.</p>
-
-      <p>If you'd like to delete cookies or instruct your web browser to delete or refuse them, please visit the help pages of your browser.</p>
-
-      <p>Please note that if you delete or refuse cookies, some parts of our Service may not function properly, certain preferences might not be saved, and some pages may not display correctly.</p>
-
-      <ul>
-        <li><a href="https://support.google.com/chrome/answer/95647">Google Chrome</a></li>
-        <li><a href="https://support.microsoft.com/en-us/topic/how-to-delete-cookie-files-in-internet-explorer-bca9446f-d873-78de-77ba-d42645fa52fc">Internet Explorer</a></li>
-        <li><a href="https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox">Mozilla Firefox</a></li>
-        <li><a href="https://help.apple.com/safari/mac/8.0/en.lproj/sfri11471.html">Apple Safari</a></li>
-      </ul>
-
-      <h3>More Information</h3>
-
-      <p>You can learn more about cookies at the following third-party website:</p>
-
-      <ul>
-        <li><a href="https://allaboutcookies.org/">AllAboutCookies.org</a></li>
-      </ul>
-
-      <h3>Contact</h3>
-
-      <p>If you have any questions regarding this policy or the practices of this Site, please <a href="mailto:hi@replaid.pro">contact us</a>.</p>
+        <h3 class="text-xl font-bold text-white pt-8">Contact</h3>
+        <p>If you have any questions regarding this policy, please <a href="mailto:hi@replaid.pro" class="text-accent hover:underline">contact us</a>.</p>
+      </div>
     </article>
   </main>
+  <Footer />
 </Layout>
