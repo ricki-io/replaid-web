@@ -1,32 +1,35 @@
 ---
-// Swiss How It Works - numbered steps
+// Typography First How It Works - numbered steps with big type
 const steps = [
-  { title: 'Connect', desc: 'Link channels.' },
-  { title: 'Train', desc: 'Add knowledge.' },
-  { title: 'Launch', desc: 'Go live.' },
+  { title: 'Connect', desc: 'Link your channels in one click.' },
+  { title: 'Train', desc: 'Add your knowledge and brand voice.' },
+  { title: 'Launch', desc: 'Watch leads roll in automatically.' },
 ];
 ---
 
-<section id="how-it-works" class="py-32">
-  <div class="mx-auto max-w-7xl px-6">
-    <div class="flex items-end justify-between mb-16 fade-in-up">
-      <div>
-        <div class="label-swiss mb-4">003 — Process</div>
-        <h2 class="text-huge font-black">HOW</h2>
-      </div>
-      <div class="hidden sm:block">
-        <span class="label-swiss">10 MIN SETUP</span>
-      </div>
+<section id="how-it-works" class="py-24 sm:py-40 relative overflow-hidden">
+  <!-- Background text -->
+  <div class="bg-text text-[25vw] -left-20 top-1/2 -translate-y-1/2">HOW</div>
+  
+  <div class="relative mx-auto max-w-7xl px-6">
+    <div class="mb-20 fade-in-up">
+      <div class="mono-label mb-4">Getting Started</div>
+      <h2 class="text-display-md font-bold">
+        Up and running in<br/>
+        <span class="text-accent">10 minutes</span>
+      </h2>
     </div>
     
-    <div class="grid-line mb-16"></div>
-    
-    <div class="grid md:grid-cols-3 gap-0">
+    <div class="space-y-0">
       {steps.map((s, i) => (
-        <div class={`py-12 fade-in-up ${i < 2 ? 'md:border-r-2' : ''} border-black md:pr-12 ${i > 0 ? 'md:pl-12' : ''}`} style={`transition-delay: ${i * 100}ms`}>
-          <div class="text-9xl font-black text-black/15 leading-none mb-6">{i + 1}</div>
-          <h3 class="text-3xl font-black mb-2">{s.title}</h3>
-          <p class="text-swiss-gray">{s.desc}</p>
+        <div class="border-t border-white/10 py-12 sm:py-16 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-20 fade-in-up group" style={`transition-delay: ${i * 100}ms`}>
+          <div class="font-display text-7xl sm:text-9xl font-bold text-ink-800 group-hover:text-accent transition-colors">
+            {String(i + 1).padStart(2, '0')}
+          </div>
+          <div>
+            <h3 class="font-display text-3xl sm:text-4xl font-bold mb-3">{s.title}</h3>
+            <p class="text-ink-200 text-xl">{s.desc}</p>
+          </div>
         </div>
       ))}
     </div>

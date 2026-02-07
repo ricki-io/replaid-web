@@ -14,101 +14,88 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#000000" />
     <meta name="robots" content="noindex, nofollow" />
     
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     
     <title>{title}</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
-  <body class="min-h-screen bg-swiss-white text-swiss-black antialiased overflow-x-hidden">
+  <body class="min-h-screen bg-ink-950 text-white antialiased overflow-x-hidden">
     <slot />
     
     <style is:global>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
-      
       body {
-        font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        background: #fff;
-        color: #000;
+        font-family: 'Inter', system-ui, sans-serif;
+        background: #000;
       }
       
       h1, h2, h3, h4, h5, h6 {
-        font-weight: 900;
-        letter-spacing: -0.04em;
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-weight: 700;
       }
       
       ::selection {
-        background-color: #ff0000;
-        color: #fff;
+        background-color: #ff6b35;
+        color: #000;
       }
       
       html {
         scroll-behavior: smooth;
       }
       
-      /* Swiss button - stark */
-      .btn-swiss {
+      /* Typography First button - text-driven */
+      .btn-type {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         padding: 1rem 2.5rem;
-        font-weight: 700;
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        background: #000;
-        color: #fff;
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-weight: 600;
+        font-size: 1.125rem;
+        letter-spacing: -0.02em;
+        background: #fff;
+        color: #000;
         border: none;
         transition: all 0.15s ease;
       }
       
-      .btn-swiss:hover {
-        background: #ff0000;
+      .btn-type:hover {
+        background: #ff6b35;
+        color: #fff;
       }
       
-      .btn-swiss-outline {
+      .btn-type-outline {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         padding: 1rem 2.5rem;
-        font-weight: 700;
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-weight: 600;
+        font-size: 1.125rem;
+        letter-spacing: -0.02em;
         background: transparent;
-        color: #000;
-        border: 2px solid #000;
+        color: #fff;
+        border: 2px solid #fff;
         transition: all 0.15s ease;
       }
       
-      .btn-swiss-outline:hover {
-        background: #000;
-        color: #fff;
+      .btn-type-outline:hover {
+        background: #fff;
+        color: #000;
       }
       
-      /* Grid line */
-      .grid-line {
-        height: 1px;
-        background: #000;
-      }
-      
-      /* Red accent */
-      .accent-red {
-        color: #ff0000;
-      }
-      
-      .bg-red {
-        background: #ff0000;
-      }
-      
-      /* Mono label */
-      .label-swiss {
-        font-family: 'SF Mono', Monaco, monospace;
-        font-size: 0.625rem;
+      /* Monospace label */
+      .mono-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
         font-weight: 500;
-        letter-spacing: 0.2em;
+        letter-spacing: 0.15em;
         text-transform: uppercase;
         color: #666;
       }
@@ -116,13 +103,24 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
       /* Fade in */
       .fade-in-up {
         opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
       }
       
       .fade-in-up.visible {
         opacity: 1;
         transform: translateY(0);
+      }
+      
+      /* Background text */
+      .bg-text {
+        position: absolute;
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-weight: 700;
+        color: rgba(255,255,255,0.03);
+        pointer-events: none;
+        user-select: none;
+        white-space: nowrap;
       }
     </style>
 

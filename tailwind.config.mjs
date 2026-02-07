@@ -4,24 +4,42 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Swiss brutalist palette - stark
-        swiss: {
-          black: '#000000',
-          white: '#ffffff',
-          red: '#ff0000',
-          gray: '#666666',
-          light: '#f5f5f5',
+        // Pure blacks and whites for Typography First
+        ink: {
+          950: '#000000',
+          900: '#050505',
+          800: '#0a0a0a',
+          700: '#111111',
+          600: '#1a1a1a',
+          500: '#2a2a2a',
+          400: '#404040',
+          300: '#666666',
+          200: '#888888',
+          100: '#aaaaaa',
+          50: '#cccccc',
+        },
+        // Single accent color
+        accent: {
+          DEFAULT: '#ff6b35',
+          light: '#ff8c5a',
+          dark: '#e55a2b',
         },
       },
       fontFamily: {
-        display: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
-        sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
-        mono: ['SF Mono', 'Monaco', 'monospace'],
+        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       fontSize: {
-        'massive': ['clamp(4rem, 20vw, 16rem)', { lineHeight: '0.85', letterSpacing: '-0.04em' }],
-        'huge': ['clamp(3rem, 12vw, 10rem)', { lineHeight: '0.9', letterSpacing: '-0.03em' }],
-        'big': ['clamp(2rem, 6vw, 5rem)', { lineHeight: '0.95', letterSpacing: '-0.02em' }],
+        // Massive display sizes
+        'display-xl': ['clamp(4rem, 15vw, 12rem)', { lineHeight: '0.9', letterSpacing: '-0.04em' }],
+        'display-lg': ['clamp(3rem, 10vw, 8rem)', { lineHeight: '0.95', letterSpacing: '-0.03em' }],
+        'display-md': ['clamp(2rem, 6vw, 5rem)', { lineHeight: '1', letterSpacing: '-0.02em' }],
+        'display-sm': ['clamp(1.5rem, 4vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+      },
+      letterSpacing: {
+        'tightest': '-0.06em',
+        'ultra-wide': '0.3em',
       },
     },
   },

@@ -1,21 +1,29 @@
 ---
-// Swiss Footer - minimal grid
+// Typography First Footer - minimal, type-focused
 ---
 
-<footer class="py-8 border-t-2 border-black">
+<footer class="py-16 sm:py-20 border-t border-white/5">
   <div class="mx-auto max-w-7xl px-6">
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-      <span class="font-black">REPLAID</span>
-      
-      <div class="flex flex-wrap gap-8">
-        <a href="#features" class="label-swiss hover:accent-red transition-colors">Features</a>
-        <a href="#pricing" class="label-swiss hover:accent-red transition-colors">Pricing</a>
-        <a href="#faq" class="label-swiss hover:accent-red transition-colors">FAQ</a>
-        <a href="#" class="label-swiss hover:accent-red transition-colors">Privacy</a>
-        <a href="#" class="label-swiss hover:accent-red transition-colors">Terms</a>
+    <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
+      <!-- Logo -->
+      <div>
+        <a href="/" class="font-display text-3xl font-bold tracking-tight">
+          Replaid<span class="text-accent">.</span>
+        </a>
+        <p class="text-ink-300 mt-2 text-sm">The AI inbox for modern teams.</p>
       </div>
       
-      <span class="label-swiss">© 2026</span>
+      <!-- Links -->
+      <div class="flex flex-wrap gap-8 sm:gap-12">
+        <a href="#features" class="text-ink-200 hover:text-white transition-colors font-medium">Features</a>
+        <a href="#pricing" class="text-ink-200 hover:text-white transition-colors font-medium">Pricing</a>
+        <a href="#faq" class="text-ink-200 hover:text-white transition-colors font-medium">FAQ</a>
+        <a href="#" class="text-ink-200 hover:text-white transition-colors font-medium">Privacy</a>
+        <a href="#" class="text-ink-200 hover:text-white transition-colors font-medium">Terms</a>
+      </div>
+      
+      <!-- Copyright -->
+      <div class="mono-label">© 2026 Replaid</div>
     </div>
   </div>
 </footer>

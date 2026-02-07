@@ -1,20 +1,20 @@
 ---
-// Swiss Stats - bold numbers
+// Typography First Stats - massive numbers
 const stats = [
-  { value: '10×', label: 'Speed' },
-  { value: '90%', label: 'Automated' },
-  { value: '3×', label: 'Conversions' },
-  { value: '24/7', label: 'Uptime' },
+  { value: '10×', label: 'Faster Responses' },
+  { value: '90%', label: 'Less Manual Work' },
+  { value: '3×', label: 'More Conversions' },
+  { value: '24/7', label: 'Always Available' },
 ];
 ---
 
-<section class="py-24 bg-black text-white">
+<section class="py-24 sm:py-32 border-y border-white/5 bg-ink-900/30">
   <div class="mx-auto max-w-7xl px-6">
-    <div class="grid grid-cols-2 lg:grid-cols-4">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8">
       {stats.map((s, i) => (
-        <div class={`py-12 text-center fade-in-up ${i < 3 ? 'lg:border-r' : ''} border-white/20`} style={`transition-delay: ${i * 100}ms`}>
-          <div class="text-6xl sm:text-7xl font-black">{s.value}</div>
-          <div class="label-swiss mt-4 text-white/60">{s.label}</div>
+        <div class="text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <div class="font-display text-5xl sm:text-7xl font-bold tracking-tighter text-accent">{s.value}</div>
+          <div class="mono-label mt-4">{s.label}</div>
         </div>
       ))}
     </div>

@@ -1,40 +1,40 @@
 ---
-// Swiss Pricing - systematic
+// Typography First Pricing - type-driven, minimal cards
 const plans = [
-  { name: 'Starter', price: '29', features: ['1 channel', '500 msgs/mo', 'Basic AI'], highlight: false },
-  { name: 'Pro', price: '79', features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team'], highlight: true },
-  { name: 'Scale', price: '199', features: ['Unlimited', '25K msgs/mo', 'Custom AI', 'API'], highlight: false },
+  { name: 'Starter', price: '29', features: ['1 channel', '500 msgs/mo', 'Basic AI', 'Lead scoring'], highlight: false },
+  { name: 'Pro', price: '79', features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team collab', 'Integrations'], highlight: true },
+  { name: 'Scale', price: '199', features: ['Unlimited', '25K msgs/mo', 'Custom AI', 'API access', 'Dedicated support'], highlight: false },
 ];
 ---
 
-<section id="pricing" class="py-32 bg-swiss-light">
+<section id="pricing" class="py-24 sm:py-40">
   <div class="mx-auto max-w-7xl px-6">
-    <div class="flex items-end justify-between mb-16 fade-in-up">
-      <div>
-        <div class="label-swiss mb-4">004 — Pricing</div>
-        <h2 class="text-huge font-black">COST</h2>
-      </div>
+    <div class="mb-20 fade-in-up text-center">
+      <div class="mono-label mb-4">Pricing</div>
+      <h2 class="text-display-md font-bold">
+        Simple<span class="text-accent">,</span> transparent
+      </h2>
     </div>
     
-    <div class="grid-line mb-16 bg-black"></div>
-    
-    <div class="grid md:grid-cols-3 gap-0">
+    <div class="grid md:grid-cols-3 gap-px bg-white/10 max-w-5xl mx-auto">
       {plans.map((p, i) => (
-        <div class={`border-2 border-black p-8 sm:p-10 fade-in-up flex flex-col ${p.highlight ? 'md:order-2 order-first bg-black text-white' : 'bg-white'} ${i === 0 ? 'md:order-1' : ''} ${i === 2 ? 'md:order-3' : ''}`} style={`transition-delay: ${i * 100}ms`}>
-          {p.highlight && <div class="label-swiss text-red-500 mb-4">Recommended</div>}
-          <div class={`label-swiss mb-2 ${p.highlight ? 'text-white/70' : 'text-black/40'}`}>{String(i+1).padStart(2,'0')}</div>
-          <h3 class="text-2xl font-black mb-4">{p.name}</h3>
-          <div class="text-5xl font-black mb-8">${p.price}<span class={`text-lg font-normal ${p.highlight ? 'text-white/70' : 'text-black/40'}`}>/mo</span></div>
-          <ul class="space-y-3 mb-8 flex-1">
+        <div class={`bg-ink-950 p-8 sm:p-10 fade-in-up flex flex-col ${p.highlight ? 'md:order-2 order-first' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
+          {p.highlight && <div class="mono-label text-accent mb-6">Most Popular</div>}
+          <h3 class="font-display text-2xl font-bold mb-2">{p.name}</h3>
+          <div class="mb-8">
+            <span class="font-display text-6xl sm:text-7xl font-bold tracking-tighter">${p.price}</span>
+            <span class="text-ink-300 text-lg">/mo</span>
+          </div>
+          <ul class="space-y-4 mb-10 flex-1">
             {p.features.map(f => (
-              <li class={`flex items-center gap-3 ${p.highlight ? 'text-white/70' : 'text-swiss-gray'}`}>
-                <span class={p.highlight ? 'text-red-500' : ''}>→</span>
+              <li class="flex items-center gap-3 text-ink-100">
+                <span class="text-accent font-mono">→</span>
                 {f}
               </li>
             ))}
           </ul>
-          <a href="#cta" class={p.highlight ? 'btn-swiss bg-white text-black hover:bg-red-500 hover:text-white' : 'btn-swiss-outline'}>
-            Select
+          <a href="#cta" class={`block text-center py-4 font-display font-semibold transition-colors ${p.highlight ? 'bg-white text-black hover:bg-accent hover:text-white' : 'border-2 border-white/20 text-white hover:border-white'}`}>
+            Get Started
           </a>
         </div>
       ))}

@@ -1,53 +1,52 @@
 ---
-// Swiss brutalist Hero - massive typography
+// Typography First Hero - type as the main visual
 ---
 
-<section class="min-h-screen flex flex-col justify-center pt-16 relative">
-  <!-- Red accent bar -->
-  <div class="absolute top-16 left-0 w-2 h-32 bg-red"></div>
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+  <!-- Background text -->
+  <div class="bg-text text-[20vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">INBOX</div>
   
-  <div class="mx-auto max-w-7xl px-6 py-20">
-    <!-- Label -->
-    <div class="label-swiss mb-8 fade-in-up">001 — AI Customer Support</div>
-    
-    <!-- Massive headline -->
-    <h1 class="text-massive font-black leading-none mb-12 fade-in-up">
-      INBOX<br/>
-      <span class="accent-red">=</span><br/>
-      MONEY
-    </h1>
-    
-    <!-- Grid line -->
-    <div class="grid-line w-full max-w-md mb-8 fade-in-up"></div>
-    
-    <!-- Subheadline -->
-    <p class="text-xl max-w-md mb-12 leading-relaxed fade-in-up text-swiss-gray">
-      AI that qualifies leads, responds instantly, converts 24/7.
-    </p>
-    
-    <!-- CTAs -->
-    <div class="flex flex-wrap gap-4 mb-20 fade-in-up">
-      <a href="#cta" class="btn-swiss">
-        Start Free Trial
-      </a>
-      <a href="mailto:hello@replaid.pro?subject=Demo%20Request" class="btn-swiss-outline">
-        Book Demo
-      </a>
-    </div>
-    
-    <!-- Stats - grid layout -->
-    <div class="grid grid-cols-3 gap-8 max-w-lg fade-in-up">
-      <div>
-        <div class="text-4xl sm:text-5xl font-black">5M+</div>
-        <div class="label-swiss mt-2">Messages</div>
+  <div class="relative mx-auto max-w-7xl px-6 py-20 sm:py-32">
+    <div class="max-w-5xl">
+      <!-- Mono label -->
+      <div class="mono-label mb-8 fade-in-up">AI-Powered Customer Support</div>
+      
+      <!-- Massive headline -->
+      <h1 class="text-display-xl font-bold mb-8 fade-in-up">
+        Turn your<br/>
+        <span class="text-accent">inbox</span> into<br/>
+        revenue<span class="text-ink-400">.</span>
+      </h1>
+      
+      <!-- Subheadline -->
+      <p class="text-xl sm:text-2xl text-ink-100 max-w-xl mb-12 leading-relaxed fade-in-up font-light">
+        AI that qualifies leads, replies instantly, and converts 24/7. No more missed opportunities.
+      </p>
+      
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 mb-20 fade-in-up">
+        <a href="#cta" class="btn-type">
+          Start Free Trial
+        </a>
+        <a href="#how-it-works" class="btn-type-outline">
+          How It Works
+        </a>
       </div>
-      <div>
-        <div class="text-4xl sm:text-5xl font-black">10×</div>
-        <div class="label-swiss mt-2">Faster</div>
-      </div>
-      <div>
-        <div class="text-4xl sm:text-5xl font-black accent-red">4.9</div>
-        <div class="label-swiss mt-2">Rating</div>
+      
+      <!-- Stats in mono -->
+      <div class="flex flex-wrap gap-12 sm:gap-20 fade-in-up">
+        <div>
+          <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">5M+</div>
+          <div class="mono-label mt-2">Messages Processed</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">10×</div>
+          <div class="mono-label mt-2">Faster Response</div>
+        </div>
+        <div>
+          <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">4.9</div>
+          <div class="mono-label mt-2">Average Rating</div>
+        </div>
       </div>
     </div>
   </div>
