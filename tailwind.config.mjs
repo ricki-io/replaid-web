@@ -1,55 +1,45 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        // Dark Mode First palette
-        dark: {
-          950: '#030303',
-          900: '#0a0a0a',
-          800: '#121212',
-          700: '#1a1a1a',
-          600: '#242424',
-          500: '#2e2e2e',
+        // Pure blacks and whites for Typography First
+        ink: {
+          950: '#000000',
+          900: '#050505',
+          800: '#0a0a0a',
+          700: '#111111',
+          600: '#1a1a1a',
+          500: '#2a2a2a',
           400: '#404040',
-          300: '#525252',
-          200: '#737373',
-          100: '#a3a3a3',
-          50: '#e5e5e5',
+          300: '#666666',
+          200: '#888888',
+          100: '#aaaaaa',
+          50: '#cccccc',
         },
-        // Electric accent
-        electric: {
-          DEFAULT: '#6366f1',
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-        },
-        // Glow colors
-        glow: {
-          purple: '#a855f7',
-          blue: '#3b82f6',
-          cyan: '#22d3ee',
-          green: '#22c55e',
+        // Single accent color
+        accent: {
+          DEFAULT: '#ff6b35',
+          light: '#ff8c5a',
+          dark: '#e55a2b',
         },
       },
       fontFamily: {
+        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
-      boxShadow: {
-        'glow': '0 0 20px rgba(99, 102, 241, 0.3)',
-        'glow-lg': '0 0 40px rgba(99, 102, 241, 0.4)',
-        'glow-purple': '0 0 20px rgba(168, 85, 247, 0.3)',
+      fontSize: {
+        // Massive display sizes
+        'display-xl': ['clamp(4rem, 15vw, 12rem)', { lineHeight: '0.9', letterSpacing: '-0.04em' }],
+        'display-lg': ['clamp(3rem, 10vw, 8rem)', { lineHeight: '0.95', letterSpacing: '-0.03em' }],
+        'display-md': ['clamp(2rem, 6vw, 5rem)', { lineHeight: '1', letterSpacing: '-0.02em' }],
+        'display-sm': ['clamp(1.5rem, 4vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'dark-gradient': 'linear-gradient(to bottom, #0a0a0a, #121212)',
+      letterSpacing: {
+        'tightest': '-0.06em',
+        'ultra-wide': '0.3em',
       },
     },
   },

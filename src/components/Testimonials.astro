@@ -1,25 +1,33 @@
 ---
-// Dark Mode First Testimonials
+// Typography First Testimonials - quote-heavy design
 const testimonials = [
-  { quote: "Our response time went from hours to seconds. Replaid is a game changer.", author: "Maria S.", role: "Founder" },
-  { quote: "We 3x'd our conversion rate in the first month. Incredible.", author: "James C.", role: "Sales Director" },
+  { quote: "Our response time went from hours to seconds.", author: "Maria S.", role: "Founder" },
+  { quote: "We 3x'd our conversion rate in the first month.", author: "James C.", role: "Sales Director" },
   { quote: "The AI replies are indistinguishable from human responses.", author: "Lisa P.", role: "Head of Support" },
 ];
 ---
 
-<section class="py-20 sm:py-32 border-t border-white/5">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6">
-    <div class="text-center mb-16 fade-in-up">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4">Loved by teams</h2>
+<section class="py-24 sm:py-40 border-t border-white/5 relative overflow-hidden">
+  <!-- Background text -->
+  <div class="bg-text text-[20vw] right-0 top-20">"</div>
+  
+  <div class="relative mx-auto max-w-7xl px-6">
+    <div class="mb-20 fade-in-up">
+      <div class="mono-label mb-4">Testimonials</div>
+      <h2 class="text-display-md font-bold">
+        Loved by <span class="text-accent">teams</span>
+      </h2>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-3 gap-12 sm:gap-8">
       {testimonials.map((t, i) => (
-        <div class="card-dark p-6 sm:p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <p class="text-lg mb-6">"{t.quote}"</p>
+        <div class="fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <blockquote class="font-display text-2xl sm:text-3xl font-bold leading-snug mb-8">
+            "{t.quote}"
+          </blockquote>
           <div>
-            <div class="font-semibold">{t.author}</div>
-            <div class="text-sm text-dark-200">{t.role}</div>
+            <div class="font-semibold text-lg">{t.author}</div>
+            <div class="mono-label mt-1">{t.role}</div>
           </div>
         </div>
       ))}

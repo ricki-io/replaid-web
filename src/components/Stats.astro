@@ -1,26 +1,22 @@
 ---
-// Dark Mode First Stats
+// Typography First Stats - massive numbers
+const stats = [
+  { value: '10×', label: 'Faster Responses' },
+  { value: '90%', label: 'Less Manual Work' },
+  { value: '3×', label: 'More Conversions' },
+  { value: '24/7', label: 'Always Available' },
+];
 ---
 
-<section class="py-16 sm:py-20 bg-gradient-to-r from-electric-600/10 via-glow-purple/10 to-electric-600/10 border-y border-white/5">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      <div class="fade-in-up">
-        <div class="text-4xl sm:text-5xl font-semibold text-electric-400">10×</div>
-        <div class="text-sm text-dark-100 mt-1">Faster responses</div>
-      </div>
-      <div class="fade-in-up" style="transition-delay:100ms">
-        <div class="text-4xl sm:text-5xl font-semibold text-glow-purple">90%</div>
-        <div class="text-sm text-dark-100 mt-1">Less noise</div>
-      </div>
-      <div class="fade-in-up" style="transition-delay:200ms">
-        <div class="text-4xl sm:text-5xl font-semibold text-glow-cyan">3×</div>
-        <div class="text-sm text-dark-100 mt-1">More conversions</div>
-      </div>
-      <div class="fade-in-up" style="transition-delay:300ms">
-        <div class="text-4xl sm:text-5xl font-semibold text-glow-green">24/7</div>
-        <div class="text-sm text-dark-100 mt-1">Always on</div>
-      </div>
+<section class="py-24 sm:py-32 border-y border-white/5 bg-ink-900/30">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8">
+      {stats.map((s, i) => (
+        <div class="text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <div class="font-display text-5xl sm:text-7xl font-bold tracking-tighter text-accent">{s.value}</div>
+          <div class="mono-label mt-4">{s.label}</div>
+        </div>
+      ))}
     </div>
   </div>
 </section>

@@ -1,55 +1,51 @@
 ---
-// Dark Mode First Hero - elegant, glowing
+// Typography First Hero - type as the main visual
 ---
 
-<section class="relative pt-32 sm:pt-40 pb-20 sm:pb-32 overflow-hidden">
-  <!-- Ambient glow -->
-  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-electric-500/20 rounded-full blur-[120px] pointer-events-none"></div>
-  <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-glow-purple/10 rounded-full blur-[100px] pointer-events-none"></div>
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+  <!-- Background text -->
+  <div class="bg-text text-[20vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">INBOX</div>
   
-  <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
-    <div class="text-center max-w-3xl mx-auto">
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-8 fade-in-up">
-        <span class="w-2 h-2 bg-glow-green rounded-full animate-pulse"></span>
-        <span class="text-sm text-dark-100">#1 on Uneed • 2,500+ teams</span>
-      </div>
+  <div class="relative mx-auto max-w-7xl px-6 py-20 sm:py-32">
+    <div class="max-w-5xl">
+      <!-- Mono label -->
+      <div class="mono-label mb-8 fade-in-up">AI-Powered Customer Support</div>
       
-      <!-- Headline -->
-      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight mb-6 fade-in-up">
-        Your inbox is full of
-        <span class="bg-gradient-to-r from-electric-400 via-glow-purple to-electric-400 bg-clip-text text-transparent"> money</span>
+      <!-- Massive headline -->
+      <h1 class="text-display-xl font-bold mb-8 fade-in-up">
+        Turn your<br/>
+        <span class="text-accent">inbox</span> into<br/>
+        revenue<span class="text-ink-400">.</span>
       </h1>
       
       <!-- Subheadline -->
-      <p class="text-lg sm:text-xl text-dark-100 max-w-2xl mx-auto mb-10 fade-in-up leading-relaxed">
-        Replaid qualifies leads, auto-replies instantly, and keeps your pipeline moving 24/7. Never miss an opportunity again.
+      <p class="text-xl sm:text-2xl text-ink-100 max-w-xl mb-12 leading-relaxed fade-in-up font-light">
+        AI that qualifies leads, replies instantly, and converts 24/7. No more missed opportunities.
       </p>
       
       <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16 fade-in-up">
-        <a href="#cta" class="btn-glow text-base sm:text-lg">
+      <div class="flex flex-col sm:flex-row gap-4 mb-20 fade-in-up">
+        <a href="#cta" class="btn-type">
           Start Free Trial
-          <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         </a>
-        <a href="#how-it-works" class="btn-outline-glow text-base sm:text-lg">
-          See How It Works
+        <a href="#how-it-works" class="btn-type-outline">
+          How It Works
         </a>
       </div>
       
-      <!-- Stats -->
-      <div class="flex flex-wrap justify-center gap-8 sm:gap-12 text-center fade-in-up">
+      <!-- Stats in mono -->
+      <div class="flex flex-wrap gap-12 sm:gap-20 fade-in-up">
         <div>
-          <div class="text-3xl sm:text-4xl font-semibold">5M+</div>
-          <div class="text-sm text-dark-200">Messages processed</div>
+          <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">5M+</div>
+          <div class="mono-label mt-2">Messages Processed</div>
         </div>
         <div>
-          <div class="text-3xl sm:text-4xl font-semibold">10x</div>
-          <div class="text-sm text-dark-200">Faster responses</div>
+          <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">10×</div>
+          <div class="mono-label mt-2">Faster Response</div>
         </div>
         <div>
-          <div class="text-3xl sm:text-4xl font-semibold">4.9★</div>
-          <div class="text-sm text-dark-200">Average rating</div>
+          <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">4.9</div>
+          <div class="mono-label mt-2">Average Rating</div>
         </div>
       </div>
     </div>
