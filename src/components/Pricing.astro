@@ -1,137 +1,62 @@
 ---
-// Japandi Pricing - clean, balanced
+// Neobrutalist Pricing - bold cards
 const plans = [
   {
     name: 'Starter',
     price: '29',
-    description: 'For individuals and small teams beginning their journey.',
-    features: [
-      'One channel connected',
-      '500 messages monthly',
-      'Basic AI responses',
-      'Lead scoring',
-      '7-day history',
-    ],
+    features: ['1 channel', '500 msgs/mo', 'Basic AI', 'Lead scoring'],
+    color: 'bg-brutal-cream',
     highlight: false,
   },
   {
-    name: 'Professional',
+    name: 'Pro',
     price: '79',
-    description: 'For growing teams who value efficiency and insight.',
-    features: [
-      'Five channels connected',
-      '5,000 messages monthly',
-      'Advanced AI with brand voice',
-      'Priority scoring & alerts',
-      'Unlimited history',
-      'Team collaboration',
-      'Integrations',
-    ],
+    features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team collab', 'Integrations'],
+    color: 'bg-brutal-yellow',
     highlight: true,
   },
   {
     name: 'Scale',
     price: '199',
-    description: 'For organizations with high-volume needs.',
-    features: [
-      'Unlimited channels',
-      '25,000 messages monthly',
-      'Custom AI training',
-      'Advanced analytics',
-      'API access',
-      'Dedicated support',
-      'White-label options',
-    ],
+    features: ['Unlimited', '25K msgs/mo', 'Custom AI', 'API access', 'Dedicated support'],
+    color: 'bg-brutal-cyan',
     highlight: false,
   },
 ];
 ---
 
-<section id="pricing" class="section-padding bg-sand-50">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-    <!-- Section header -->
-    <div class="text-center max-w-2xl mx-auto mb-20 fade-in-up">
-      <div class="flex items-center justify-center gap-3 mb-6">
-        <span class="w-8 h-px bg-moss-400"></span>
-        <span class="text-sm text-moss-600 tracking-wide uppercase">Pricing</span>
-        <span class="w-8 h-px bg-moss-400"></span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-ink-900 mb-6 font-bold">
-        Simple, transparent pricing
-      </h2>
-      <p class="text-lg text-ink-500 leading-relaxed">
-        Start free, upgrade when you're ready. No surprises.
-      </p>
-    </div>
+<section id="pricing" class="py-16 sm:py-24 bg-brutal-black text-brutal-cream">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <h2 class="text-3xl sm:text-5xl md:text-6xl font-black uppercase mb-4 fade-in-up">
+      Pricing
+    </h2>
+    <p class="text-lg sm:text-xl mb-12 sm:mb-16 fade-in-up">No BS. No hidden fees. Cancel anytime.</p>
     
-    <!-- Pricing cards -->
-    <div class="grid gap-6 lg:grid-cols-3 lg:gap-8 max-w-md mx-auto lg:max-w-none">
-      {plans.map((plan, index) => (
+    <div class="grid md:grid-cols-3 gap-6">
+      {plans.map((plan, i) => (
         <div 
-          class:list={[
-            'relative rounded-sm p-6 sm:p-8 fade-in-up transition-all duration-300',
-            plan.highlight 
-              ? 'bg-ink-800 text-sand-50 sm:scale-105 shadow-xl order-first lg:order-none' 
-              : 'bg-white border border-stone-200 hover:border-stone-300 hover:shadow-sm'
-          ]}
-          style={`transition-delay: ${index * 100}ms`}
+          class={`border-4 border-brutal-cream p-6 sm:p-8 ${plan.color} text-brutal-black fade-in-up ${plan.highlight ? 'md:-mt-4 md:mb-4' : ''}`}
+          style={`transition-delay: ${i * 100}ms`}
         >
           {plan.highlight && (
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-              <span class="px-4 py-1 bg-moss-500 text-white text-xs tracking-wide uppercase rounded-sm">
-                Most chosen
-              </span>
+            <div class="bg-brutal-black text-brutal-yellow px-3 py-1 text-sm font-bold uppercase inline-block mb-4">
+              Most Popular
             </div>
           )}
-          
-          <div class="mb-8">
-            <h3 class:list={['text-base font-semibold mb-2 font-sans', plan.highlight ? 'text-sand-50' : 'text-ink-800']}>
-              {plan.name}
-            </h3>
-            <p class:list={['text-sm mb-6', plan.highlight ? 'text-sand-300' : 'text-ink-400']}>
-              {plan.description}
-            </p>
-            <div class="flex items-baseline gap-1">
-              <span class:list={['text-4xl sm:text-5xl font-bold', plan.highlight ? 'text-sand-50' : 'text-ink-800']}>
-                ${plan.price}
-              </span>
-              <span class:list={['text-sm', plan.highlight ? 'text-sand-400' : 'text-ink-400']}>
-                /month
-              </span>
-            </div>
-          </div>
-          
-          <ul class="space-y-3 mb-8">
-            {plan.features.map((feature) => (
-              <li class="flex items-start gap-3">
-                <svg class:list={['w-5 h-5 flex-shrink-0 mt-0.5', plan.highlight ? 'text-moss-400' : 'text-moss-500']} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class:list={['text-sm', plan.highlight ? 'text-sand-200' : 'text-ink-500']}>
-                  {feature}
-                </span>
+          <h3 class="text-xl sm:text-2xl font-black uppercase mb-2">{plan.name}</h3>
+          <div class="text-4xl sm:text-5xl font-black mb-6">${plan.price}<span class="text-lg font-bold">/mo</span></div>
+          <ul class="space-y-2 mb-8">
+            {plan.features.map(f => (
+              <li class="font-medium flex items-center gap-2">
+                <span class="font-black">✓</span> {f}
               </li>
             ))}
           </ul>
-          
-          <a 
-            href="#cta" 
-            class:list={[
-              'block w-full py-3 text-center text-sm font-medium rounded-sm transition-all duration-200',
-              plan.highlight 
-                ? 'bg-sand-50 text-ink-800 hover:bg-white' 
-                : 'bg-ink-800 text-sand-50 hover:bg-ink-900'
-            ]}
-          >
-            Get started
+          <a href="#cta" class={`block text-center py-3 px-6 border-4 border-brutal-black font-bold uppercase ${plan.highlight ? 'bg-brutal-black text-brutal-yellow' : 'bg-brutal-black text-brutal-cream'} hover:translate-x-1 hover:translate-y-1 transition-transform`}>
+            Get Started
           </a>
         </div>
       ))}
     </div>
-    
-    <!-- Footer note -->
-    <p class="text-center text-sm text-ink-400 mt-12 fade-in-up">
-      All plans include 14-day free trial. No credit card required.
-    </p>
   </div>
 </section>

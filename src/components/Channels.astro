@@ -1,27 +1,4 @@
 ---
-// Japandi channels - understated, clean
-const channels = [
-  { name: 'Instagram', color: 'bg-gradient-to-br from-purple-400 to-pink-400' },
-  { name: 'WhatsApp', color: 'bg-[#25D366]' },
-  { name: 'Messenger', color: 'bg-[#0084FF]' },
-  { name: 'Email', color: 'bg-accent-400' },
-  { name: 'Telegram', color: 'bg-[#0088cc]' },
-  { name: 'X', color: 'bg-ink-800' },
-];
+// Channels moved to Hero marquee in Neobrutalist style
 ---
-
-<section class="py-12 md:py-16 border-y border-stone-200 bg-stone-50/30 overflow-hidden">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col items-center gap-6 md:gap-8">
-      <p class="text-sm text-ink-400 tracking-wide uppercase text-center">All channels in one place</p>
-      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4">
-        {channels.map((channel) => (
-          <div class="flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-white rounded-sm border border-stone-200 hover:border-stone-300 transition-colors">
-            <div class={`w-2 h-2 rounded-full ${channel.color}`}></div>
-            <span class="text-xs sm:text-sm text-ink-600">{channel.name}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
+<!-- Channels are now part of the Hero marquee banner -->

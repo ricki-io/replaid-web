@@ -17,139 +17,132 @@ const { title, description = "The AI inbox that turns messages into leads. Quali
     
     <meta name="color-scheme" content="light" />
     <meta name="author" content="Replaid" />
-    <meta name="keywords" content="AI inbox, lead qualification, Instagram DMs, WhatsApp automation, customer support, chatbot, omnichannel" />
     <meta name="generator" content={Astro.generator} />
     
-    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:image" content="/og-image.png" />
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
     
     <title>{title}</title>
     
-    <!-- Google Fonts: Cormorant Garamond (elegant serif) + Inter (clean sans) -->
+    <!-- Google Fonts: Inter (bold weights) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
     
-    <meta name="theme-color" content="#6B7F5C" />
+    <meta name="theme-color" content="#FFDE59" />
     <meta name="robots" content="noindex, nofollow" />
-    <link rel="canonical" href={Astro.url} />
   </head>
-  <body class="min-h-screen bg-sand-50 text-ink-800 antialiased overflow-x-hidden">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+  <body class="min-h-screen bg-brutal-cream text-brutal-black antialiased overflow-x-hidden">
     <slot />
     
     <style is:global>
-      /* Japandi Typography */
       body {
         font-family: 'Inter', system-ui, sans-serif;
-        font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
       }
       
-      h1, h2, h3 {
-        font-family: 'Cormorant Garamond', Georgia, serif;
-        font-weight: 700;
-        letter-spacing: -0.01em;
-      }
-      
-      h4, h5, h6 {
+      h1, h2, h3, h4, h5, h6 {
         font-family: 'Inter', system-ui, sans-serif;
-        font-weight: 600;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
       }
       
-      /* Smooth scrolling */
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 100px;
-      }
-      
-      /* Selection */
+      /* Neobrutalist selection */
       ::selection {
-        background-color: rgb(107 127 92 / 0.2);
-        color: #1A1A17;
+        background-color: #FFDE59;
+        color: #000000;
       }
       
-      /* Skip link */
-      .skip-link {
-        position: absolute;
-        top: -100px;
-        left: 1rem;
-        z-index: 50;
-        background-color: #6B7F5C;
-        color: white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 0.5rem;
-        transition: top 0.3s;
-      }
-
-      .skip-link:focus {
-        top: 1rem;
+      /* No smooth scroll - brutal is instant */
+      html {
+        scroll-behavior: auto;
       }
       
-      /* Fade in animation */
+      /* Brutal focus */
+      a:focus-visible, button:focus-visible {
+        outline: 4px solid #000000;
+        outline-offset: 2px;
+      }
+      
+      /* Brutal buttons */
+      .btn-brutal {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 2rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border: 4px solid #000000;
+        background: #FFDE59;
+        color: #000000;
+        box-shadow: 4px 4px 0 0 #000000;
+        transition: all 0.1s ease;
+      }
+      
+      .btn-brutal:hover {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0 0 #000000;
+      }
+      
+      .btn-brutal:active {
+        transform: translate(4px, 4px);
+        box-shadow: none;
+      }
+      
+      .btn-brutal-outline {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 2rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border: 4px solid #000000;
+        background: transparent;
+        color: #000000;
+        box-shadow: 4px 4px 0 0 #000000;
+        transition: all 0.1s ease;
+      }
+      
+      .btn-brutal-outline:hover {
+        background: #000000;
+        color: #FFFFFF;
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0 0 #000000;
+      }
+      
+      /* Brutal card */
+      .card-brutal {
+        border: 4px solid #000000;
+        background: #FFFFFF;
+        box-shadow: 4px 4px 0 0 #000000;
+      }
+      
+      /* Fade in */
       .fade-in-up {
         opacity: 0;
-        transform: translateY(24px);
-        transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
       }
       
       .fade-in-up.visible {
         opacity: 1;
         transform: translateY(0);
       }
-      
-      /* Stagger delays */
-      .stagger-1 { transition-delay: 0.1s; }
-      .stagger-2 { transition-delay: 0.2s; }
-      .stagger-3 { transition-delay: 0.3s; }
-      .stagger-4 { transition-delay: 0.4s; }
-      
-      /* Focus styles */
-      a:focus-visible,
-      button:focus-visible {
-        outline: 2px solid #6B7F5C;
-        outline-offset: 2px;
-      }
-      
-      /* Reduced motion */
-      @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-        html { scroll-behavior: auto; }
-      }
     </style>
 
     <script>
-      // Intersection Observer for fade-in animations
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
           }
         });
-      }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -60px 0px'
-      });
+      }, { threshold: 0.1 });
 
-      document.querySelectorAll('.fade-in-up').forEach(el => {
-        observer.observe(el);
-      });
+      document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
     </script>
   </body>
 </html>

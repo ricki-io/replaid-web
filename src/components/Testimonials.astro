@@ -1,67 +1,25 @@
 ---
-// Japandi Testimonials - minimal, authentic
+// Neobrutalist Testimonials
 const testimonials = [
-  {
-    quote: "Replaid brought a sense of calm to our inbox chaos. We respond faster, miss nothing, and actually have time to focus on meaningful conversations.",
-    author: "Elena Rodriguez",
-    role: "Founder, Studio Forma",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
-  },
-  {
-    quote: "The AI feels invisible in the best way. It handles the routine so gracefully that our customers never know the difference.",
-    author: "Thomas Lindqvist",
-    role: "Head of Support, Nuvo",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-  },
-  {
-    quote: "We tripled our response rate without adding headcount. Replaid understands which leads matter and surfaces them beautifully.",
-    author: "Maya Patel",
-    role: "Sales Director, Clearview",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
-  },
+  { quote: "Replaid is insane. Our response time went from hours to seconds.", author: "Maria S.", role: "Founder" },
+  { quote: "We 3x'd our lead conversion in the first month. Not kidding.", author: "James C.", role: "Sales Director" },
+  { quote: "The AI replies are so good customers can't tell the difference.", author: "Lisa P.", role: "Head of Support" },
 ];
 ---
 
-<section class="section-padding bg-stone-50/50">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-    <!-- Section header -->
-    <div class="text-center max-w-2xl mx-auto mb-20 fade-in-up">
-      <div class="flex items-center justify-center gap-3 mb-6">
-        <span class="w-8 h-px bg-moss-400"></span>
-        <span class="text-sm text-moss-600 tracking-wide uppercase">Testimonials</span>
-        <span class="w-8 h-px bg-moss-400"></span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-ink-900 font-bold">
-        Trusted by thoughtful teams
-      </h2>
-    </div>
+<section class="py-16 sm:py-24 bg-brutal-cream border-t-4 border-brutal-black">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <h2 class="text-3xl sm:text-5xl md:text-6xl font-black uppercase mb-12 sm:mb-16 fade-in-up">
+      What people <span class="bg-brutal-magenta text-brutal-cream px-2 inline-block">say</span>
+    </h2>
     
-    <!-- Testimonials grid -->
-    <div class="grid gap-6 md:grid-cols-3 md:gap-8 lg:gap-12">
-      {testimonials.map((testimonial, index) => (
-        <div class="fade-in-up" style={`transition-delay: ${index * 100}ms`}>
-          <div class="bg-white rounded-sm border border-stone-200 p-8 h-full flex flex-col">
-            <!-- Quote mark -->
-            <div class="text-4xl font-serif text-moss-300 mb-4 leading-none">"</div>
-            
-            <!-- Quote -->
-            <blockquote class="text-ink-600 leading-relaxed mb-8 flex-1">
-              {testimonial.quote}
-            </blockquote>
-            
-            <!-- Author -->
-            <div class="flex items-center gap-4">
-              <img 
-                src={testimonial.image} 
-                alt={testimonial.author}
-                class="w-12 h-12 rounded-full object-cover"
-                loading="lazy"
-              />
-              <div>
-                <div class="font-medium text-ink-800">{testimonial.author}</div>
-                <div class="text-sm text-ink-400">{testimonial.role}</div>
-              </div>
-            </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      {testimonials.map((t, i) => (
+        <div class="card-brutal p-6 sm:p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <p class="text-lg sm:text-xl font-bold mb-6">"{t.quote}"</p>
+          <div>
+            <div class="font-black uppercase">{t.author}</div>
+            <div class="text-sm text-brutal-black/60 font-bold uppercase">{t.role}</div>
           </div>
         </div>
       ))}

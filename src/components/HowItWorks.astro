@@ -1,57 +1,24 @@
 ---
-// Japandi How It Works - clean process visualization
+// Neobrutalist How It Works - numbered steps
 const steps = [
-  {
-    number: '01',
-    title: 'Connect',
-    description: 'Link your channels in moments. Instagram, WhatsApp, email — they all come together in one peaceful workspace.',
-  },
-  {
-    number: '02',
-    title: 'Teach',
-    description: 'Share your knowledge and brand voice. The AI learns your way of communicating, your FAQs, your tone.',
-  },
-  {
-    number: '03',
-    title: 'Flow',
-    description: 'Watch as Replaid handles the routine, surfaces the important, and keeps your pipeline moving. You focus on what matters.',
-  },
+  { num: '01', title: 'Connect', desc: 'Link your channels. One click. Done.' },
+  { num: '02', title: 'Train', desc: 'Add your knowledge. AI learns your voice.' },
+  { num: '03', title: 'Profit', desc: 'Watch leads roll in. Automatically.' },
 ];
 ---
 
-<section id="how-it-works" class="section-padding bg-stone-50/50">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-    <!-- Section header -->
-    <div class="text-center max-w-2xl mx-auto mb-20 fade-in-up">
-      <div class="flex items-center justify-center gap-3 mb-6">
-        <span class="w-8 h-px bg-moss-400"></span>
-        <span class="text-sm text-moss-600 tracking-wide uppercase">Process</span>
-        <span class="w-8 h-px bg-moss-400"></span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-ink-900 mb-6 font-bold">
-        Three simple steps
-      </h2>
-      <p class="text-lg text-ink-500 leading-relaxed">
-        From setup to serenity in under ten minutes.
-      </p>
-    </div>
+<section id="how-it-works" class="py-16 sm:py-24 bg-brutal-cream border-t-4 border-brutal-black">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <h2 class="text-3xl sm:text-5xl md:text-6xl font-black uppercase mb-12 sm:mb-16 fade-in-up">
+      How it <span class="bg-brutal-cyan px-2 inline-block">works</span>
+    </h2>
     
-    <!-- Steps -->
-    <div class="grid sm:grid-cols-3 gap-8 sm:gap-10 lg:gap-16">
-      {steps.map((step, index) => (
-        <div class="relative fade-in-up" style={`transition-delay: ${index * 100}ms`}>
-          <!-- Connector line -->
-          {index < steps.length - 1 && (
-            <div class="hidden md:block absolute top-8 left-full w-full h-px bg-stone-200 -translate-y-1/2" style="width: calc(100% - 2rem); left: calc(100% + 1rem);"></div>
-          )}
-          
-          <div class="text-center">
-            <div class="inline-flex items-center justify-center w-16 h-16 bg-white border border-stone-200 rounded-sm mb-6 text-2xl font-serif text-moss-600">
-              {step.number}
-            </div>
-            <h3 class="text-lg font-semibold text-ink-800 mb-2 font-sans">{step.title}</h3>
-            <p class="text-ink-500 leading-relaxed">{step.description}</p>
-          </div>
+    <div class="grid md:grid-cols-3 gap-6 sm:gap-8">
+      {steps.map((step, i) => (
+        <div class="fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <div class="text-6xl sm:text-8xl font-black text-brutal-black/10 leading-none">{step.num}</div>
+          <h3 class="text-2xl sm:text-3xl font-black uppercase mt-2 mb-3">{step.title}</h3>
+          <p class="text-base sm:text-lg font-medium">{step.desc}</p>
         </div>
       ))}
     </div>

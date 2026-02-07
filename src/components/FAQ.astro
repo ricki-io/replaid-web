@@ -1,58 +1,28 @@
 ---
-// Japandi FAQ - clean, minimal
+// Neobrutalist FAQ
 const faqs = [
-  {
-    question: "Which channels can I connect?",
-    answer: "Instagram, WhatsApp, Facebook Messenger, Twitter/X, Telegram, and email. We're continuously adding more based on what our community needs."
-  },
-  {
-    question: "How does the AI learn my voice?",
-    answer: "Upload your FAQs, knowledge base, and brand guidelines. The AI adapts to your tone and style, ensuring every response feels authentically yours."
-  },
-  {
-    question: "Can I use Replaid without automation?",
-    answer: "Absolutely. Many teams use Replaid purely for intelligent prioritization and lead scoring while handling all replies manually."
-  },
-  {
-    question: "How quickly can I get started?",
-    answer: "Most teams are fully operational within 10 minutes. Connect your channels, share your knowledge, and you're ready to go."
-  },
-  {
-    question: "What about data privacy?",
-    answer: "Your data is encrypted in transit and at rest. We're GDPR compliant, never share your information, and you can delete everything at any time."
-  },
+  { q: "What channels work?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, Twitter. More coming." },
+  { q: "How fast is setup?", a: "Under 10 minutes. Connect, configure, done." },
+  { q: "Can I turn off auto-replies?", a: "Yes. Use it just for scoring and notifications if you want." },
+  { q: "Is my data safe?", a: "Encrypted. GDPR compliant. We never sell your data." },
 ];
 ---
 
-<section id="faq" class="section-padding bg-sand-50">
-  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-    <!-- Section header -->
-    <div class="text-center mb-16 fade-in-up">
-      <div class="flex items-center justify-center gap-3 mb-6">
-        <span class="w-8 h-px bg-moss-400"></span>
-        <span class="text-sm text-moss-600 tracking-wide uppercase">Questions</span>
-        <span class="w-8 h-px bg-moss-400"></span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-ink-900 font-bold">
-        Common questions
-      </h2>
-    </div>
+<section id="faq" class="py-16 sm:py-24 bg-brutal-yellow border-t-4 border-brutal-black">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6">
+    <h2 class="text-3xl sm:text-5xl md:text-6xl font-black uppercase mb-12 sm:mb-16 fade-in-up">
+      FAQ
+    </h2>
     
-    <!-- FAQ list -->
     <div class="space-y-4">
-      {faqs.map((faq, index) => (
-        <details 
-          class="group bg-white rounded-sm border border-stone-200 overflow-hidden fade-in-up hover:border-stone-300 transition-colors" 
-          style={`transition-delay: ${index * 50}ms`}
-        >
-          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 text-ink-800 font-medium select-none list-none">
-            <span>{faq.question}</span>
-            <svg class="w-5 h-5 text-ink-400 group-open:rotate-45 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-            </svg>
+      {faqs.map((faq, i) => (
+        <details class="card-brutal group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
+          <summary class="p-4 sm:p-6 font-black uppercase text-lg sm:text-xl cursor-pointer flex justify-between items-center list-none">
+            {faq.q}
+            <span class="text-2xl group-open:rotate-45 transition-transform">+</span>
           </summary>
-          <div class="px-6 pb-5 text-ink-500 leading-relaxed">
-            {faq.answer}
+          <div class="px-4 sm:px-6 pb-4 sm:pb-6 text-base sm:text-lg font-medium border-t-4 border-brutal-black pt-4">
+            {faq.a}
           </div>
         </details>
       ))}

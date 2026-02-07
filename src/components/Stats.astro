@@ -1,22 +1,26 @@
 ---
-// Japandi Stats - subtle, refined
-const stats = [
-  { value: '10×', label: 'Faster responses' },
-  { value: '90%', label: 'Less noise' },
-  { value: '3×', label: 'More conversions' },
-  { value: '24/7', label: 'Availability' },
-];
+// Neobrutalist Stats - bold, high contrast
 ---
 
-<section class="py-20 bg-moss-600">
-  <div class="mx-auto max-w-6xl px-6 lg:px-8">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-      {stats.map((stat, index) => (
-        <div class="text-center fade-in-up" style={`transition-delay: ${index * 50}ms`}>
-          <div class="text-4xl md:text-5xl font-serif text-white mb-2">{stat.value}</div>
-          <div class="text-moss-200 text-sm tracking-wide">{stat.label}</div>
-        </div>
-      ))}
+<section class="py-12 sm:py-16 bg-brutal-black text-brutal-cream border-y-4 border-brutal-black">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
+      <div class="fade-in-up">
+        <div class="text-4xl sm:text-6xl font-black text-brutal-yellow">10×</div>
+        <div class="text-sm font-bold uppercase mt-1">Faster</div>
+      </div>
+      <div class="fade-in-up" style="transition-delay: 100ms">
+        <div class="text-4xl sm:text-6xl font-black text-brutal-cyan">90%</div>
+        <div class="text-sm font-bold uppercase mt-1">Less Noise</div>
+      </div>
+      <div class="fade-in-up" style="transition-delay: 200ms">
+        <div class="text-4xl sm:text-6xl font-black text-brutal-magenta">3×</div>
+        <div class="text-sm font-bold uppercase mt-1">More Leads</div>
+      </div>
+      <div class="fade-in-up" style="transition-delay: 300ms">
+        <div class="text-4xl sm:text-6xl font-black text-brutal-yellow">24/7</div>
+        <div class="text-sm font-bold uppercase mt-1">Always On</div>
+      </div>
     </div>
   </div>
 </section>
