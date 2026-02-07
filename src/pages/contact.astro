@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Contact - Replaid" description="Get in touch with the Replaid team.">
+  <Header />
+  <main class="py-24 sm:py-32">
+    <div class="mx-auto max-w-2xl px-6">
+      <div class="mb-12 text-center">
+        <div class="mono-label mb-4">Get in Touch</div>
+        <h1 class="text-display-sm font-bold mb-4">Contact Us</h1>
+        <p class="text-ink-200 text-lg">Have a question or feedback? We'd love to hear from you.</p>
+      </div>
+
+      <form 
+        action="https://api.web3forms.com/submit" 
+        method="POST"
+        class="space-y-6"
+      >
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+        <input type="hidden" name="subject" value="New Contact from Replaid.pro" />
+        <input type="hidden" name="redirect" value="https://replaid-web.pages.dev/contact?success=true" />
+        
+        <!-- Honeypot spam protection -->
+        <input type="checkbox" name="botcheck" class="hidden" />
+
+        <div>
+          <label for="name" class="block text-sm font-medium text-ink-100 mb-2">Name</label>
+          <input 
+            type="text" 
+            name="name" 
+            id="name"
+            required
+            class="w-full px-4 py-3 bg-ink-800 border border-ink-600 rounded-lg text-white placeholder-ink-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+            placeholder="Your name"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-ink-100 mb-2">Email</label>
+          <input 
+            type="email" 
+            name="email" 
+            id="email"
+            required
+            class="w-full px-4 py-3 bg-ink-800 border border-ink-600 rounded-lg text-white placeholder-ink-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-ink-100 mb-2">Message</label>
+          <textarea 
+            name="message" 
+            id="message"
+            rows="5"
+            required
+            class="w-full px-4 py-3 bg-ink-800 border border-ink-600 rounded-lg text-white placeholder-ink-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"
+            placeholder="How can we help?"
+          ></textarea>
+        </div>
+
+        <button 
+          type="submit"
+          class="w-full py-4 bg-accent hover:bg-accent-light text-white font-bold text-lg rounded-lg transition-colors"
+        >
+          Send Message
+        </button>
+      </form>
+
+      <!-- Success message -->
+      <div id="success-message" class="hidden mt-8 p-6 bg-green-900/30 border border-green-500/30 rounded-lg text-center">
+        <p class="text-green-400 font-medium">Thanks! Your message has been sent. We'll get back to you soon.</p>
+      </div>
+    </div>
+  </main>
+  <Footer />
+
+  <script>
+    // Show success message if redirected after form submission
+    if (window.location.search.includes('success=true')) {
+      document.getElementById('success-message')?.classList.remove('hidden');
+      document.querySelector('form')?.classList.add('hidden');
+    }
+  </script>
+</Layout>
