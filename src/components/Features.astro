@@ -1,32 +1,34 @@
 ---
-// Retro-futuristic Features
+// Art Deco Features
 const features = [
-  { id: 'SYS_01', title: 'Unified Inbox', desc: 'All messages in one interface. No more tab chaos.' },
-  { id: 'SYS_02', title: 'Smart Scoring', desc: 'AI identifies who\'s ready to buy.' },
-  { id: 'SYS_03', title: 'Auto-Replies', desc: 'Respond instantly, even while you sleep.' },
-  { id: 'SYS_04', title: 'Human Handoff', desc: 'AI handles routine. You handle exceptions.' },
+  { title: 'Unified Inbox', desc: 'All messages consolidated in one magnificent interface.' },
+  { title: 'Smart Scoring', desc: 'AI identifies your most distinguished prospects.' },
+  { title: 'Auto-Replies', desc: 'Respond with grace, even in your absence.' },
+  { title: 'Human Handoff', desc: 'AI attends to routine. You attend to excellence.' },
 ];
 ---
 
 <section id="features" class="py-24 sm:py-40 relative">
-  <div class="mx-auto max-w-7xl px-6">
-    <div class="mb-20 fade-in-up text-center">
-      <div class="mono-label mb-4">// System.features</div>
-      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
-        <span class="text-chrome">CORE</span> <span class="text-neon-pink">MODULES</span>
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="text-center mb-20 fade-in-up">
+      <div class="label-deco mb-4">Capabilities</div>
+      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+        <span class="text-gold-gradient">Distinguished</span> Features
       </h2>
+      <div class="flex justify-center mt-6">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-px bg-gold/30"></div>
+          <div class="text-gold">◆</div>
+          <div class="w-12 h-px bg-gold/30"></div>
+        </div>
+      </div>
     </div>
     
     <div class="grid md:grid-cols-2 gap-6">
       {features.map((f, i) => (
-        <div class="card-retro p-8 fade-in-up hover:border-neon-pink/50 transition-colors" style={`transition-delay: ${i * 100}ms`}>
-          <div class="flex items-start gap-4">
-            <span class="font-mono text-neon-cyan text-sm">{f.id}</span>
-            <div>
-              <h3 class="font-display text-xl sm:text-2xl font-bold mb-3 text-chrome">{f.title}</h3>
-              <p class="text-chrome/60 font-mono text-sm leading-relaxed">{f.desc}</p>
-            </div>
-          </div>
+        <div class="card-deco p-8 sm:p-10 fade-in-up corner-deco" style={`transition-delay: ${i * 100}ms`}>
+          <h3 class="font-display text-2xl sm:text-3xl font-bold mb-4 text-gold">{f.title}</h3>
+          <p class="text-ivory/60 leading-relaxed">{f.desc}</p>
         </div>
       ))}
     </div>

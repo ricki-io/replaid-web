@@ -1,23 +1,24 @@
 ---
-// Retro-futuristic Stats
+// Art Deco Stats
 const stats = [
-  { value: '10×', label: 'response_speed' },
-  { value: '90%', label: 'noise_reduction' },
-  { value: '3×', label: 'conversion_rate' },
-  { value: '24/7', label: 'uptime_status' },
+  { value: '10×', label: 'Swifter Response' },
+  { value: '90%', label: 'Noise Eliminated' },
+  { value: '3×', label: 'More Conversions' },
+  { value: '24/7', label: 'Perpetual Service' },
 ];
 ---
 
-<section class="py-24 sm:py-32 border-y border-neon-cyan/20 relative overflow-hidden">
-  <!-- Background glow -->
-  <div class="absolute inset-0 bg-gradient-to-r from-neon-pink/5 via-transparent to-neon-cyan/5"></div>
+<section class="py-24 sm:py-32 relative overflow-hidden">
+  <!-- Decorative borders -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
   
-  <div class="relative mx-auto max-w-7xl px-6">
+  <div class="mx-auto max-w-6xl px-6">
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
       {stats.map((s, i) => (
         <div class="text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <div class="font-display text-5xl sm:text-7xl font-black tracking-tight text-neon-cyan animate-pulse-glow">{s.value}</div>
-          <div class="mono-label mt-4 text-neon-pink/70">{s.label}</div>
+          <div class="font-display text-5xl sm:text-7xl font-bold text-gold-gradient">{s.value}</div>
+          <div class="mt-4 text-sm text-ivory/40 tracking-widest uppercase">{s.label}</div>
         </div>
       ))}
     </div>

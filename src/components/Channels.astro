@@ -1,15 +1,20 @@
 ---
-// Retro-futuristic channels
+// Art Deco channels
 const channels = ['Instagram', 'WhatsApp', 'Messenger', 'Email', 'Telegram', 'Twitter'];
 ---
 
-<section class="py-12 border-y border-neon-cyan/20 bg-void-900/50">
+<section class="py-12 border-y border-gold/10">
   <div class="mx-auto max-w-7xl px-6">
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
-      <span class="mono-label">Connections://</span>
-      <div class="flex flex-wrap justify-center gap-4 sm:gap-8">
-        {channels.map((ch, i) => (
-          <span class="font-mono text-sm text-neon-cyan/60 hover:text-neon-cyan transition-colors cursor-default">[{ch}]</span>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-4">
+      <span class="label-deco text-xs">Integrated With</span>
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-px bg-gold/30"></div>
+        <div class="text-gold text-xs">◆</div>
+        <div class="w-8 h-px bg-gold/30"></div>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 sm:gap-8">
+        {channels.map(ch => (
+          <span class="text-sm text-ivory/40 hover:text-gold transition-colors cursor-default tracking-wider">{ch}</span>
         ))}
       </div>
     </div>

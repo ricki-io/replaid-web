@@ -1,11 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#0a0010"/>
-  <text x="4" y="23" font-family="system-ui, sans-serif" font-weight="900" font-size="18" fill="#00f5ff" style="text-shadow: 0 0 10px #00f5ff">R</text>
-  <rect x="20" y="8" width="8" height="16" fill="url(#sun)"/>
-  <defs>
-    <linearGradient id="sun" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#ff00ff"/>
-      <stop offset="100%" stop-color="#ff6b00"/>
-    </linearGradient>
-  </defs>
+  <rect width="32" height="32" fill="#0d0d0d"/>
+  <rect x="4" y="4" width="24" height="24" fill="none" stroke="#d4af37" stroke-width="1"/>
+  <rect x="8" y="8" width="16" height="16" fill="none" stroke="#d4af37" stroke-width="0.5" transform="rotate(45 16 16)"/>
+  <text x="16" y="20" font-family="Georgia, serif" font-weight="700" font-size="14" fill="#d4af37" text-anchor="middle">R</text>
 </svg>

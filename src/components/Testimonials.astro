@@ -1,32 +1,40 @@
 ---
-// Retro-futuristic Testimonials
+// Art Deco Testimonials
 const testimonials = [
-  { quote: "Response time went from hours to seconds.", author: "Maria S.", role: "Founder", id: "USR_001" },
-  { quote: "We 3x'd our conversion rate in month one.", author: "James C.", role: "Sales Director", id: "USR_002" },
-  { quote: "The AI replies are indistinguishable from humans.", author: "Lisa P.", role: "Head of Support", id: "USR_003" },
+  { quote: "Response time transformed from hours to mere seconds. Utterly remarkable.", author: "Maria S.", role: "Founder" },
+  { quote: "We tripled our conversion rate in the inaugural month. Extraordinary.", author: "James C.", role: "Sales Director" },
+  { quote: "The AI responses are indistinguishable from our finest staff.", author: "Lisa P.", role: "Head of Support" },
 ];
 ---
 
-<section class="py-24 sm:py-40 border-t border-neon-cyan/20">
-  <div class="mx-auto max-w-7xl px-6">
-    <div class="mb-20 fade-in-up text-center">
-      <div class="mono-label mb-4">// User.feedback</div>
+<section class="py-24 sm:py-40 relative">
+  <!-- Decorative border -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="text-center mb-20 fade-in-up">
+      <div class="label-deco mb-4">Acclaim</div>
       <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
-        <span class="text-neon-cyan">TRANS</span><span class="text-chrome">MISSIONS</span>
+        <span class="text-gold-gradient italic">Distinguished</span> Voices
       </h2>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-3 gap-8">
       {testimonials.map((t, i) => (
-        <div class="card-retro p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <div class="mono-label text-neon-pink/50 mb-6">{t.id}</div>
-          <blockquote class="font-mono text-lg text-chrome/80 leading-relaxed mb-8">
-            "{t.quote}"
+        <div class="fade-in-up text-center" style={`transition-delay: ${i * 100}ms`}>
+          <div class="text-gold text-4xl font-display mb-6">"</div>
+          <blockquote class="font-display text-xl italic text-ivory/80 leading-relaxed mb-8">
+            {t.quote}
           </blockquote>
-          <div class="border-t border-neon-cyan/20 pt-6">
-            <div class="font-display font-bold text-chrome">{t.author}</div>
-            <div class="mono-label text-chrome/40 mt-1">{t.role}</div>
+          <div class="flex justify-center mb-4">
+            <div class="flex items-center gap-2">
+              <div class="w-6 h-px bg-gold/50"></div>
+              <div class="text-gold text-xs">◆</div>
+              <div class="w-6 h-px bg-gold/50"></div>
+            </div>
           </div>
+          <div class="font-semibold">{t.author}</div>
+          <div class="text-sm text-ivory/40">{t.role}</div>
         </div>
       ))}
     </div>

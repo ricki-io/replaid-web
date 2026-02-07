@@ -4,61 +4,39 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Retro-futuristic palette
-        void: {
-          950: '#0a0010',
-          900: '#0d0015',
-          800: '#12001f',
-          700: '#1a0030',
-          600: '#250045',
+        // Art Deco palette
+        deco: {
+          black: '#0d0d0d',
+          navy: '#0a1628',
+          charcoal: '#1a1a2e',
         },
-        neon: {
-          cyan: '#00f5ff',
-          pink: '#ff00ff',
-          purple: '#bf00ff',
-          blue: '#4d4dff',
-          yellow: '#ffff00',
+        gold: {
+          DEFAULT: '#d4af37',
+          light: '#f4d03f',
+          dark: '#b8860b',
+          muted: '#c9a227',
         },
-        chrome: {
-          DEFAULT: '#c0c0c0',
-          light: '#e8e8e8',
-          dark: '#808080',
+        ivory: {
+          DEFAULT: '#fffff0',
+          dark: '#f5f5dc',
+          muted: '#e8e4d9',
         },
-        sunset: {
-          orange: '#ff6b00',
-          pink: '#ff1493',
-          purple: '#8b00ff',
+        accent: {
+          emerald: '#046307',
+          burgundy: '#722f37',
         },
       },
       fontFamily: {
-        display: ['Orbitron', 'system-ui', 'sans-serif'],
+        display: ['Playfair Display', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['Share Tech Mono', 'monospace'],
+        accent: ['Poiret One', 'cursive'],
       },
       backgroundImage: {
-        'grid-pattern': `linear-gradient(rgba(0,245,255,0.1) 1px, transparent 1px),
-                         linear-gradient(90deg, rgba(0,245,255,0.1) 1px, transparent 1px)`,
-        'sunset-gradient': 'linear-gradient(180deg, #0a0010 0%, #1a0030 30%, #ff1493 70%, #ff6b00 100%)',
-        'horizon-glow': 'radial-gradient(ellipse at 50% 100%, rgba(255,20,147,0.4) 0%, transparent 60%)',
+        'deco-pattern': `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='none' stroke='%23d4af3710' stroke-width='1'/%3E%3C/svg%3E")`,
+        'sunburst': `conic-gradient(from 0deg at 50% 100%, transparent 0deg, rgba(212,175,55,0.03) 10deg, transparent 20deg, rgba(212,175,55,0.03) 30deg, transparent 40deg, rgba(212,175,55,0.03) 50deg, transparent 60deg, rgba(212,175,55,0.03) 70deg, transparent 80deg, rgba(212,175,55,0.03) 90deg, transparent 100deg, rgba(212,175,55,0.03) 110deg, transparent 120deg, rgba(212,175,55,0.03) 130deg, transparent 140deg, rgba(212,175,55,0.03) 150deg, transparent 160deg, rgba(212,175,55,0.03) 170deg, transparent 180deg)`,
       },
-      boxShadow: {
-        'neon-cyan': '0 0 10px #00f5ff, 0 0 20px #00f5ff, 0 0 40px #00f5ff',
-        'neon-pink': '0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff',
-        'neon-subtle': '0 0 10px rgba(0,245,255,0.5)',
-      },
-      animation: {
-        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-        'scan': 'scan 8s linear infinite',
-      },
-      keyframes: {
-        'pulse-glow': {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.7' },
-        },
-        'scan': {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(100vh)' },
-        },
+      borderWidth: {
+        '3': '3px',
       },
     },
   },

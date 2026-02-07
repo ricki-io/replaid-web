@@ -1,31 +1,51 @@
 ---
-// Retro-futuristic CTA
+// Art Deco CTA
 ---
 
 <section id="cta" class="py-24 sm:py-40 relative overflow-hidden">
-  <!-- Glow effects -->
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-pink/10 rounded-full blur-[120px]"></div>
-  <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-neon-cyan/10 rounded-full blur-[100px]"></div>
+  <!-- Sunburst background -->
+  <div class="absolute bottom-0 left-0 right-0 h-full bg-sunburst opacity-30"></div>
   
-  <div class="relative mx-auto max-w-5xl px-6 text-center">
-    <div class="mono-label mb-8 fade-in-up">// Ready.to.launch?</div>
+  <!-- Decorative border -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  
+  <div class="relative mx-auto max-w-4xl px-6 text-center">
+    <!-- Decorative element -->
+    <div class="flex justify-center mb-8 fade-in-up">
+      <div class="flex items-center gap-4">
+        <div class="w-16 h-px bg-gold"></div>
+        <div class="w-3 h-3 rotate-45 border border-gold"></div>
+        <div class="w-16 h-px bg-gold"></div>
+      </div>
+    </div>
     
-    <h2 class="font-display text-5xl sm:text-6xl md:text-7xl font-black mb-8 fade-in-up tracking-wider">
-      <span class="text-neon-pink">INITIATE</span><br/>
-      <span class="text-chrome">PROTOCOL</span>
+    <div class="label-deco mb-6 fade-in-up">Begin Today</div>
+    
+    <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-8 fade-in-up">
+      Elevate Your<br/>
+      <span class="text-gold-gradient italic">Enterprise</span>
     </h2>
     
-    <p class="font-mono text-lg text-chrome/60 mb-12 fade-in-up max-w-xl mx-auto">
-      14-day free trial // No credit card required // Cancel anytime
+    <p class="text-lg text-ivory/60 mb-12 fade-in-up max-w-xl mx-auto">
+      Fourteen days complimentary. No commitment required.
     </p>
     
     <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
-      <a href="#" class="btn-neon">
-        &lt; Start Free Trial /&gt;
+      <a href="#" class="btn-deco">
+        Commence Trial
       </a>
-      <a href="mailto:hello@replaid.pro?subject=Demo%20Request" class="btn-neon-pink">
-        Book Demo
+      <a href="mailto:hello@replaid.pro?subject=Demo%20Request" class="btn-deco-outline">
+        Arrange Demonstration
       </a>
+    </div>
+    
+    <!-- Bottom decorative element -->
+    <div class="flex justify-center mt-16 fade-in-up">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-px bg-gold/50"></div>
+        <div class="text-gold">◆</div>
+        <div class="w-8 h-px bg-gold/50"></div>
+      </div>
     </div>
   </div>
 </section>

@@ -1,28 +1,30 @@
 ---
-// Retro-futuristic FAQ
+// Art Deco FAQ
 const faqs = [
-  { q: "What channels are supported?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, and Twitter. More coming soon." },
-  { q: "How fast is setup?", a: "Under 10 minutes. Connect your channels, add your knowledge, and go." },
-  { q: "Can I disable auto-replies?", a: "Yes. Use Replaid just for scoring and notifications if you prefer." },
-  { q: "Is my data secure?", a: "Yes. All data is encrypted. We're GDPR compliant and never sell your data." },
+  { q: "Which channels are supported?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, and Twitter. Additional channels forthcoming." },
+  { q: "How swiftly can one begin?", a: "Within ten minutes. Connect your channels, impart your knowledge, and commence." },
+  { q: "May one disable auto-replies?", a: "Certainly. Employ Replaid solely for scoring and notifications if preferred." },
+  { q: "Is my data secure?", a: "Absolutely. All data is encrypted. We maintain GDPR compliance and never commercialize your data." },
 ];
 ---
 
 <section id="faq" class="py-24 sm:py-40">
-  <div class="mx-auto max-w-4xl px-6">
-    <div class="mb-20 fade-in-up text-center">
-      <div class="mono-label mb-4">// Help.database</div>
-      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-chrome">FAQ</h2>
+  <div class="mx-auto max-w-3xl px-6">
+    <div class="text-center mb-20 fade-in-up">
+      <div class="label-deco mb-4">Inquiries</div>
+      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
+        Common <span class="text-gold-gradient italic">Questions</span>
+      </h2>
     </div>
     
     <div class="space-y-4">
       {faqs.map((f, i) => (
-        <details class="card-retro group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
-          <summary class="p-6 font-display text-lg font-bold cursor-pointer flex justify-between items-center list-none text-chrome hover:text-neon-cyan transition-colors">
-            <span>&gt; {f.q}</span>
-            <span class="font-mono text-neon-cyan group-open:rotate-45 transition-transform">+</span>
+        <details class="card-deco group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
+          <summary class="p-6 font-display text-lg font-semibold cursor-pointer flex justify-between items-center list-none hover:text-gold transition-colors">
+            {f.q}
+            <span class="text-gold group-open:rotate-45 transition-transform">◆</span>
           </summary>
-          <div class="px-6 pb-6 font-mono text-chrome/60 text-sm leading-relaxed border-t border-neon-cyan/10 pt-4 ml-4">
+          <div class="px-6 pb-6 text-ivory/60 leading-relaxed border-t border-gold/10 pt-4">
             {f.a}
           </div>
         </details>

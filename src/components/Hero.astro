@@ -1,58 +1,71 @@
 ---
-// Retro-futuristic Hero - synth sunset vibes
+// Art Deco Hero - glamorous and elegant
 ---
 
 <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-  <!-- Sun/horizon element -->
-  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px]">
-    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-t-full bg-gradient-to-t from-sunset-orange via-sunset-pink to-sunset-purple opacity-60 blur-sm"></div>
-    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] rounded-t-full bg-gradient-to-t from-sunset-orange via-sunset-pink to-transparent opacity-80"></div>
-    <!-- Horizon lines -->
-    <div class="absolute bottom-[50px] left-0 right-0 h-px bg-neon-cyan/50"></div>
-    <div class="absolute bottom-[100px] left-0 right-0 h-px bg-neon-cyan/30"></div>
-    <div class="absolute bottom-[150px] left-0 right-0 h-px bg-neon-cyan/20"></div>
-  </div>
+  <!-- Sunburst background -->
+  <div class="absolute bottom-0 left-0 right-0 h-[80vh] bg-sunburst opacity-50"></div>
   
-  <div class="relative mx-auto max-w-7xl px-6 py-20 sm:py-32 text-center">
-    <!-- Mono label -->
-    <div class="mono-label mb-8 fade-in-up">// AI-Powered Customer Support System</div>
+  <!-- Decorative lines -->
+  <div class="absolute top-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  <div class="absolute bottom-32 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  
+  <div class="relative mx-auto max-w-6xl px-6 py-20 sm:py-32 text-center">
+    <!-- Decorative element -->
+    <div class="flex justify-center mb-8 fade-in-up">
+      <div class="flex items-center gap-4">
+        <div class="w-16 h-px bg-gold"></div>
+        <div class="w-3 h-3 rotate-45 border border-gold"></div>
+        <div class="w-16 h-px bg-gold"></div>
+      </div>
+    </div>
     
-    <!-- Massive headline -->
-    <h1 class="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-8 fade-in-up tracking-wider">
-      <span class="text-chrome">YOUR</span><br/>
-      <span class="text-neon-pink">INBOX</span><br/>
-      <span class="text-chrome">IS</span> <span class="text-neon-cyan">MONEY</span>
+    <!-- Label -->
+    <div class="label-deco mb-6 fade-in-up">AI-Powered Excellence</div>
+    
+    <!-- Headline -->
+    <h1 class="font-display text-5xl sm:text-7xl md:text-8xl font-bold mb-8 fade-in-up leading-tight">
+      Your Inbox<br/>
+      <span class="text-gold-gradient italic">Is Fortune</span>
     </h1>
     
     <!-- Subheadline -->
-    <p class="text-lg sm:text-xl text-chrome/70 max-w-2xl mx-auto mb-12 leading-relaxed fade-in-up font-mono">
-      AI qualifies leads, auto-replies instantly, converts 24/7.<br/>
-      The future of customer support is here.
+    <p class="text-lg sm:text-xl text-ivory/60 max-w-2xl mx-auto mb-12 leading-relaxed fade-in-up">
+      An exquisite AI that qualifies leads, replies with elegance, and converts around the clock. The pinnacle of customer support.
     </p>
     
     <!-- CTAs -->
     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-20 fade-in-up">
-      <a href="#cta" class="btn-neon">
-        &lt; Start Free Trial /&gt;
+      <a href="#cta" class="btn-deco">
+        Begin Your Journey
       </a>
-      <a href="mailto:hello@replaid.pro?subject=Demo%20Request" class="btn-neon-pink">
-        Book Demo
+      <a href="mailto:hello@replaid.pro?subject=Demo%20Request" class="btn-deco-outline">
+        Request Demo
       </a>
+    </div>
+    
+    <!-- Decorative divider -->
+    <div class="flex justify-center mb-12 fade-in-up">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-px bg-gold/50"></div>
+        <div class="text-gold">◆</div>
+        <div class="w-8 h-px bg-gold/50"></div>
+      </div>
     </div>
     
     <!-- Stats -->
     <div class="flex flex-wrap justify-center gap-12 sm:gap-20 fade-in-up">
       <div class="text-center">
-        <div class="font-display text-4xl sm:text-5xl font-bold text-neon-cyan">5M+</div>
-        <div class="mono-label mt-2 text-chrome/50">Messages.processed</div>
+        <div class="font-display text-4xl sm:text-5xl font-bold text-gold">5M+</div>
+        <div class="text-sm text-ivory/40 mt-2 tracking-wider uppercase">Messages</div>
       </div>
       <div class="text-center">
-        <div class="font-display text-4xl sm:text-5xl font-bold text-neon-pink">10×</div>
-        <div class="mono-label mt-2 text-chrome/50">Speed.increase</div>
+        <div class="font-display text-4xl sm:text-5xl font-bold text-gold">10×</div>
+        <div class="text-sm text-ivory/40 mt-2 tracking-wider uppercase">Faster</div>
       </div>
       <div class="text-center">
-        <div class="font-display text-4xl sm:text-5xl font-bold text-neon-cyan">4.9</div>
-        <div class="mono-label mt-2 text-chrome/50">User.rating</div>
+        <div class="font-display text-4xl sm:text-5xl font-bold text-gold">4.9★</div>
+        <div class="text-sm text-ivory/40 mt-2 tracking-wider uppercase">Rating</div>
       </div>
     </div>
   </div>

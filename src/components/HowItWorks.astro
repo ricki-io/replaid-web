@@ -1,36 +1,32 @@
 ---
-// Retro-futuristic How It Works
+// Art Deco How It Works
 const steps = [
-  { cmd: 'CONNECT', desc: 'Link your channels in one click.' },
-  { cmd: 'TRAIN', desc: 'Add your knowledge and brand voice.' },
-  { cmd: 'LAUNCH', desc: 'Watch leads roll in automatically.' },
+  { num: 'I', title: 'Connect', desc: 'Link your channels with a single flourish.' },
+  { num: 'II', title: 'Cultivate', desc: 'Impart your knowledge and brand character.' },
+  { num: 'III', title: 'Prosper', desc: 'Observe as leads arrive in abundance.' },
 ];
 ---
 
 <section id="how-it-works" class="py-24 sm:py-40">
-  <div class="mx-auto max-w-7xl px-6">
-    <div class="mb-20 fade-in-up text-center">
-      <div class="mono-label mb-4">// Boot.sequence</div>
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="text-center mb-20 fade-in-up">
+      <div class="label-deco mb-4">Process</div>
       <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
-        <span class="text-neon-cyan">INITIALIZE</span> <span class="text-chrome">IN</span> <span class="text-neon-pink">10:00</span>
+        The <span class="text-gold-gradient italic">Method</span>
       </h2>
+      <p class="text-ivory/60 mt-4 text-lg">Operational excellence in mere moments.</p>
     </div>
     
-    <div class="max-w-4xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-8">
       {steps.map((s, i) => (
-        <div class="border-t border-neon-cyan/20 py-12 flex flex-col sm:flex-row items-start gap-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <div class="flex items-center gap-4">
-            <span class="font-mono text-neon-pink text-sm">0{i + 1}</span>
-            <span class="font-display text-3xl sm:text-4xl font-bold text-neon-cyan">&gt;_</span>
+        <div class="text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <div class="inline-flex items-center justify-center w-20 h-20 border-2 border-gold mb-8 rotate-45">
+            <span class="font-display text-2xl font-bold text-gold -rotate-45">{s.num}</span>
           </div>
-          <div class="flex-1">
-            <h3 class="font-display text-2xl sm:text-3xl font-bold text-chrome mb-3">{s.cmd}</h3>
-            <p class="font-mono text-chrome/60">{s.desc}</p>
-          </div>
-          <div class="hidden sm:block font-mono text-neon-cyan/30 text-sm">[READY]</div>
+          <h3 class="font-display text-2xl font-bold mb-4">{s.title}</h3>
+          <p class="text-ivory/60">{s.desc}</p>
         </div>
       ))}
-      <div class="border-t border-neon-cyan/20"></div>
     </div>
   </div>
 </section>

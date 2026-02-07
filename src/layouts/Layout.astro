@@ -14,7 +14,7 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#0a0010" />
+    <meta name="theme-color" content="#0d0d0d" />
     <meta name="robots" content="noindex, nofollow" />
     
     <meta property="og:title" content={title} />
@@ -24,19 +24,11 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700;800;900&family=Poiret+One&display=swap" rel="stylesheet" />
   </head>
-  <body class="min-h-screen bg-void-950 text-white antialiased overflow-x-hidden">
-    <!-- Grid overlay -->
-    <div class="fixed inset-0 bg-grid-pattern bg-[size:60px_60px] pointer-events-none opacity-40 z-0"></div>
-    
-    <!-- Horizon glow -->
-    <div class="fixed bottom-0 left-0 right-0 h-[50vh] bg-horizon-glow pointer-events-none z-0"></div>
-    
-    <!-- Scanline effect -->
-    <div class="fixed inset-0 pointer-events-none z-50 overflow-hidden opacity-[0.03]">
-      <div class="absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(0,0,0,0.3)_2px,rgba(0,0,0,0.3)_4px)]"></div>
-    </div>
+  <body class="min-h-screen bg-deco-black text-ivory antialiased overflow-x-hidden">
+    <!-- Art Deco pattern overlay -->
+    <div class="fixed inset-0 bg-deco-pattern pointer-events-none opacity-50 z-0"></div>
     
     <div class="relative z-10">
       <slot />
@@ -45,116 +37,124 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     <style is:global>
       body {
         font-family: 'Inter', system-ui, sans-serif;
-        background: linear-gradient(180deg, #0a0010 0%, #12001f 50%, #1a0030 100%);
+        background: linear-gradient(180deg, #0d0d0d 0%, #0a1628 50%, #0d0d0d 100%);
       }
       
       h1, h2, h3, h4, h5, h6 {
-        font-family: 'Orbitron', system-ui, sans-serif;
+        font-family: 'Playfair Display', Georgia, serif;
         font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
       }
       
       ::selection {
-        background-color: #ff00ff;
-        color: #000;
+        background-color: #d4af37;
+        color: #0d0d0d;
       }
       
       html {
         scroll-behavior: smooth;
       }
       
-      /* Neon button */
-      .btn-neon {
+      /* Art Deco button */
+      .btn-deco {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         padding: 1rem 2.5rem;
-        font-family: 'Orbitron', system-ui, sans-serif;
+        font-family: 'Inter', system-ui, sans-serif;
         font-weight: 600;
         font-size: 0.875rem;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
-        background: transparent;
-        color: #00f5ff;
-        border: 2px solid #00f5ff;
+        letter-spacing: 0.15em;
+        background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+        color: #0d0d0d;
+        border: none;
         position: relative;
         transition: all 0.3s ease;
-        box-shadow: 0 0 10px rgba(0,245,255,0.3), inset 0 0 10px rgba(0,245,255,0.1);
       }
       
-      .btn-neon:hover {
-        background: #00f5ff;
-        color: #0a0010;
-        box-shadow: 0 0 20px #00f5ff, 0 0 40px #00f5ff, inset 0 0 20px rgba(255,255,255,0.2);
+      .btn-deco::before {
+        content: '';
+        position: absolute;
+        inset: 4px;
+        border: 1px solid #0d0d0d;
+        pointer-events: none;
       }
       
-      .btn-neon-pink {
+      .btn-deco:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(212,175,55,0.3);
+      }
+      
+      .btn-deco-outline {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         padding: 1rem 2.5rem;
-        font-family: 'Orbitron', system-ui, sans-serif;
+        font-family: 'Inter', system-ui, sans-serif;
         font-weight: 600;
         font-size: 0.875rem;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.15em;
         background: transparent;
-        color: #ff00ff;
-        border: 2px solid #ff00ff;
+        color: #d4af37;
+        border: 2px solid #d4af37;
         position: relative;
         transition: all 0.3s ease;
-        box-shadow: 0 0 10px rgba(255,0,255,0.3), inset 0 0 10px rgba(255,0,255,0.1);
       }
       
-      .btn-neon-pink:hover {
-        background: #ff00ff;
-        color: #0a0010;
-        box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+      .btn-deco-outline:hover {
+        background: #d4af37;
+        color: #0d0d0d;
       }
       
-      /* Chrome text */
-      .text-chrome {
-        background: linear-gradient(180deg, #fff 0%, #c0c0c0 40%, #606060 50%, #c0c0c0 60%, #fff 100%);
+      /* Gold text */
+      .text-gold-gradient {
+        background: linear-gradient(135deg, #f4d03f 0%, #d4af37 50%, #b8860b 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
       
-      /* Neon text glow */
-      .text-neon-cyan {
-        color: #00f5ff;
-        text-shadow: 0 0 10px #00f5ff, 0 0 20px #00f5ff, 0 0 40px #00f5ff;
+      /* Decorative line */
+      .deco-line {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
       }
       
-      .text-neon-pink {
-        color: #ff00ff;
-        text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+      .deco-line::before,
+      .deco-line::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #d4af37, transparent);
       }
       
-      /* Retro card */
-      .card-retro {
-        background: linear-gradient(135deg, rgba(0,245,255,0.05) 0%, rgba(255,0,255,0.05) 100%);
-        border: 1px solid rgba(0,245,255,0.3);
+      /* Art Deco card */
+      .card-deco {
+        background: linear-gradient(135deg, rgba(212,175,55,0.03) 0%, transparent 50%, rgba(212,175,55,0.03) 100%);
+        border: 1px solid rgba(212,175,55,0.2);
         position: relative;
       }
       
-      .card-retro::before {
+      .card-deco::before {
         content: '';
         position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(0,245,255,0.1) 0%, transparent 50%);
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        border: 1px solid rgba(212,175,55,0.1);
         pointer-events: none;
       }
       
-      /* Mono label */
-      .mono-label {
-        font-family: 'Share Tech Mono', monospace;
-        font-size: 0.75rem;
-        letter-spacing: 0.2em;
+      /* Accent label */
+      .label-deco {
+        font-family: 'Poiret One', cursive;
+        font-size: 0.875rem;
+        letter-spacing: 0.3em;
         text-transform: uppercase;
-        color: #00f5ff;
-        opacity: 0.8;
+        color: #d4af37;
       }
       
       /* Fade in */
@@ -167,6 +167,33 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
       .fade-in-up.visible {
         opacity: 1;
         transform: translateY(0);
+      }
+      
+      /* Decorative corner */
+      .corner-deco {
+        position: relative;
+      }
+      
+      .corner-deco::before,
+      .corner-deco::after {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-color: #d4af37;
+        border-style: solid;
+      }
+      
+      .corner-deco::before {
+        top: 0;
+        left: 0;
+        border-width: 2px 0 0 2px;
+      }
+      
+      .corner-deco::after {
+        bottom: 0;
+        right: 0;
+        border-width: 0 2px 2px 0;
       }
     </style>
 
