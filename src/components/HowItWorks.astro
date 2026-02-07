@@ -23,7 +23,7 @@ const steps = [
     
     <div class="grid md:grid-cols-3 gap-0">
       {steps.map((s, i) => (
-        <div class={`py-12 fade-in-up ${i < 2 ? 'md:border-r-2' : ''} border-black md:pr-12`} style={`transition-delay: ${i * 100}ms`}>
+        <div class={`py-12 fade-in-up ${i < 2 ? 'md:border-r-2' : ''} border-black md:pr-12 ${i > 0 ? 'md:pl-12' : ''}`} style={`transition-delay: ${i * 100}ms`}>
           <div class="text-9xl font-black text-black/15 leading-none mb-6">{i + 1}</div>
           <h3 class="text-3xl font-black mb-2">{s.title}</h3>
           <p class="text-swiss-gray">{s.desc}</p>
