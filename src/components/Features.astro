@@ -1,31 +1,31 @@
 ---
-// Tech Forward Features
+// Gradient Modern Features
 const features = [
-  { icon: '📥', title: 'Unified Inbox', desc: 'Aggregate all channels into one intelligent dashboard.' },
-  { icon: '🎯', title: 'Lead Scoring', desc: 'ML-powered scoring identifies high-intent prospects.' },
-  { icon: '⚡', title: 'Instant Replies', desc: 'Sub-second response times, 24/7 availability.' },
-  { icon: '🔄', title: 'Smart Handoff', desc: 'Seamless escalation to human agents when needed.' },
+  { icon: '📥', title: 'Unified Inbox', desc: 'Every channel, one beautiful dashboard.' },
+  { icon: '🎯', title: 'Smart Scoring', desc: 'AI finds your hottest leads instantly.' },
+  { icon: '⚡', title: 'Auto-Replies', desc: 'Lightning responses, 24/7.' },
+  { icon: '🤝', title: 'Human Handoff', desc: 'Seamless escalation when it matters.' },
 ];
 ---
 
 <section id="features" class="py-24 sm:py-32">
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-16 fade-in-up">
-      <div class="label-tech mb-4">// FEATURES</div>
+      <div class="label-aurora mb-4">Features</div>
       <h2 class="text-4xl sm:text-5xl font-bold mb-4">
-        Built for <span class="text-gradient">scale</span>
+        Everything you need to <span class="text-aurora">convert</span>
       </h2>
-      <p class="text-tech-400 text-lg max-w-xl mx-auto">
-        Enterprise-grade infrastructure with startup-level simplicity.
+      <p class="text-dark-400 text-lg max-w-xl mx-auto">
+        Powerful tools, beautifully simple.
       </p>
     </div>
     
     <div class="grid sm:grid-cols-2 gap-4">
       {features.map((f, i) => (
-        <div class="card-tech p-6 sm:p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+        <div class="card-gradient p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
           <div class="text-3xl mb-4">{f.icon}</div>
           <h3 class="text-xl font-semibold mb-2">{f.title}</h3>
-          <p class="text-tech-400 leading-relaxed">{f.desc}</p>
+          <p class="text-dark-400">{f.desc}</p>
         </div>
       ))}
     </div>

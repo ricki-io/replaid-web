@@ -14,7 +14,7 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#020617" />
+    <meta name="theme-color" content="#09090b" />
     <meta name="robots" content="noindex, nofollow" />
     
     <meta property="og:title" content={title} />
@@ -24,15 +24,11 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
-  <body class="min-h-screen bg-tech-950 text-white antialiased overflow-x-hidden">
-    <!-- Grid background -->
-    <div class="fixed inset-0 bg-grid-tech pointer-events-none opacity-50"></div>
-    
-    <!-- Gradient orbs -->
-    <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-electric/5 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="fixed bottom-0 right-1/4 w-[500px] h-[500px] bg-violet/5 rounded-full blur-[100px] pointer-events-none"></div>
+  <body class="min-h-screen bg-dark-950 text-white antialiased overflow-x-hidden">
+    <!-- Mesh gradient background -->
+    <div class="fixed inset-0 bg-mesh pointer-events-none"></div>
     
     <div class="relative z-10">
       <slot />
@@ -41,17 +37,16 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     <style is:global>
       body {
         font-family: 'Inter', system-ui, sans-serif;
-        background: #020617;
+        background: #09090b;
       }
       
       h1, h2, h3, h4, h5, h6 {
-        font-family: 'Inter', system-ui, sans-serif;
         font-weight: 700;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.025em;
       }
       
       ::selection {
-        background-color: #0ea5e9;
+        background: linear-gradient(135deg, #a855f7, #ec4899);
         color: #fff;
       }
       
@@ -59,76 +54,110 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
         scroll-behavior: smooth;
       }
       
-      /* Tech button - gradient */
-      .btn-tech {
+      /* Gradient button */
+      .btn-gradient {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 0.875rem 1.75rem;
+        padding: 0.875rem 2rem;
         font-weight: 600;
         font-size: 0.9375rem;
-        background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%);
+        background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f97316 100%);
+        background-size: 200% 200%;
         color: #fff;
         border: none;
-        border-radius: 0.5rem;
-        transition: all 0.2s ease;
-        box-shadow: 0 4px 20px rgba(14,165,233,0.3);
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(168,85,247,0.3);
       }
       
-      .btn-tech:hover {
+      .btn-gradient:hover {
+        background-position: 100% 100%;
         transform: translateY(-2px);
-        box-shadow: 0 8px 30px rgba(14,165,233,0.4);
+        box-shadow: 0 8px 30px rgba(236,72,153,0.4);
       }
       
-      .btn-tech-outline {
+      .btn-gradient-outline {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 0.875rem 1.75rem;
+        padding: 0.875rem 2rem;
         font-weight: 600;
         font-size: 0.9375rem;
         background: transparent;
         color: #fff;
         border: 1px solid rgba(255,255,255,0.2);
-        border-radius: 0.5rem;
-        transition: all 0.2s ease;
-      }
-      
-      .btn-tech-outline:hover {
-        background: rgba(255,255,255,0.05);
-        border-color: rgba(255,255,255,0.3);
-      }
-      
-      /* Tech card */
-      .card-tech {
-        background: rgba(255,255,255,0.02);
-        border: 1px solid rgba(255,255,255,0.05);
         border-radius: 0.75rem;
-        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      
+      .btn-gradient-outline::before {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        background: linear-gradient(135deg, #a855f7, #ec4899, #f97316);
+        border-radius: 0.8rem;
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.3s ease;
+      }
+      
+      .btn-gradient-outline:hover {
+        border-color: transparent;
+      }
+      
+      .btn-gradient-outline:hover::before {
+        opacity: 1;
+      }
+      
+      /* Gradient card */
+      .card-gradient {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 1rem;
+        position: relative;
         transition: all 0.3s ease;
       }
       
-      .card-tech:hover {
-        background: rgba(255,255,255,0.04);
-        border-color: rgba(14,165,233,0.2);
-        box-shadow: 0 4px 30px rgba(14,165,233,0.1);
+      .card-gradient::before {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        background: linear-gradient(135deg, rgba(168,85,247,0.3), rgba(236,72,153,0.3), rgba(249,115,22,0.3));
+        border-radius: 1rem;
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.3s ease;
+      }
+      
+      .card-gradient:hover::before {
+        opacity: 1;
+      }
+      
+      .card-gradient:hover {
+        border-color: transparent;
+        background: rgba(255,255,255,0.05);
       }
       
       /* Gradient text */
-      .text-gradient {
-        background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%);
+      .text-aurora {
+        background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f97316 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
       
-      /* Tech label */
-      .label-tech {
-        font-family: 'JetBrains Mono', monospace;
+      /* Label */
+      .label-aurora {
         font-size: 0.75rem;
-        font-weight: 500;
-        letter-spacing: 0.05em;
-        color: #0ea5e9;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #a855f7, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
       
       /* Fade in */
