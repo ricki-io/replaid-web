@@ -34,16 +34,37 @@ const { title, description = "The AI inbox that turns messages into leads. Quali
     
     <title>{title}</title>
     
+    <!-- Google Fonts: DM Serif Display (headings) + Inter (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     
     <meta name="theme-color" content="#10b981" />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="canonical" href={Astro.url} />
+    
+    <style is:global>
+      /* Font assignments */
+      body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'DM Serif Display', Georgia, serif;
+        font-weight: 400; /* DM Serif Display only has 400, but it looks bold */
+      }
+      
+      .font-serif {
+        font-family: 'DM Serif Display', Georgia, serif;
+      }
+      
+      .font-sans {
+        font-family: 'Inter', system-ui, sans-serif;
+      }
+    </style>
   </head>
   <body class="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900 antialiased overflow-x-hidden">
     <a href="#main-content" class="skip-link">Skip to main content</a>

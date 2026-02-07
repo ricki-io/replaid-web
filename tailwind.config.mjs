@@ -11,7 +11,7 @@ export default {
           200: '#a7f3d0',
           300: '#6ee7b7',
           400: '#34d399',
-          500: '#10b981', // emerald-500
+          500: '#10b981',
           600: '#059669',
           700: '#047857',
           800: '#065f46',
@@ -23,7 +23,7 @@ export default {
           100: '#ccfbf1',
           200: '#99f6e4',
           300: '#5eead4',
-          400: '#2dd4bf', // teal-400
+          400: '#2dd4bf',
           500: '#14b8a6',
           600: '#0d9488',
           700: '#0f766e',
@@ -33,8 +33,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Cal Sans', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        serif: ['DM Serif Display', 'Georgia', 'serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
