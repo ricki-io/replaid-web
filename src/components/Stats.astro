@@ -1,24 +1,26 @@
 ---
-// Glassmorphism Stats
+// Neo-Geo Stats - bold geometric
 const stats = [
-  { value: '10×', label: 'Faster' },
-  { value: '90%', label: 'Automated' },
-  { value: '3×', label: 'Conversions' },
-  { value: '24/7', label: 'Active' },
+  { value: '10×', label: 'Faster', color: 'bg-coral text-white' },
+  { value: '90%', label: 'Automated', color: 'bg-sage text-neo-black' },
+  { value: '3×', label: 'Conversions', color: 'bg-gold text-neo-black' },
+  { value: '24/7', label: 'Active', color: 'bg-neo-black text-cream' },
 ];
 ---
 
-<section class="py-20 sm:py-24">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="card-glass p-8 sm:p-12">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
-        {stats.map((s, i) => (
-          <div class="text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-            <div class="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-accent-green to-accent-emerald bg-clip-text text-transparent">{s.value}</div>
-            <div class="mt-2 text-white/50">{s.label}</div>
-          </div>
-        ))}
-      </div>
+<section class="py-20 sm:py-28 bg-neo-navy relative overflow-hidden">
+  <!-- Geometric decoration -->
+  <div class="absolute -top-10 -right-10 w-40 h-40 bg-coral/20 rounded-full"></div>
+  <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-sage/20"></div>
+  
+  <div class="relative mx-auto max-w-6xl px-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      {stats.map((s, i) => (
+        <div class={`${s.color} p-8 text-center fade-in-up`} style={`transition-delay: ${i * 100}ms`}>
+          <div class="font-display text-5xl sm:text-6xl font-bold">{s.value}</div>
+          <div class="mt-2 opacity-70 font-semibold">{s.label}</div>
+        </div>
+      ))}
     </div>
   </div>
 </section>

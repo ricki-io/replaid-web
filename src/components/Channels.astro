@@ -1,18 +1,16 @@
 ---
-// Glassmorphism channels
+// Neo-Geo channels
 const channels = ['Instagram', 'WhatsApp', 'Messenger', 'Email', 'Telegram', 'Twitter'];
 ---
 
-<section class="py-10">
+<section class="py-10 bg-neo-black">
   <div class="mx-auto max-w-6xl px-6">
-    <div class="card-glass py-6 px-8">
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
-        <span class="text-sm text-white/50">Integrates with</span>
-        <div class="flex flex-wrap justify-center gap-6">
-          {channels.map(ch => (
-            <span class="text-sm text-white/70 hover:text-white transition-colors cursor-default font-medium">{ch}</span>
-          ))}
-        </div>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
+      <span class="text-sm text-cream/60 font-display">Works with</span>
+      <div class="flex flex-wrap justify-center gap-6">
+        {channels.map(ch => (
+          <span class="text-sm text-cream/80 hover:text-coral transition-colors cursor-default font-semibold">{ch}</span>
+        ))}
       </div>
     </div>
   </div>

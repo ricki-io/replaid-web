@@ -1,42 +1,48 @@
 ---
-// Glassmorphism Pricing
+// Neo-Geo Pricing
 const plans = [
-  { name: 'Starter', price: '29', features: ['1 channel', '500 msgs/mo', 'Basic AI', 'Lead scoring'], highlight: false },
-  { name: 'Pro', price: '79', features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team access', 'Integrations'], highlight: true },
-  { name: 'Scale', price: '199', features: ['Unlimited', '25K msgs/mo', 'Custom AI', 'API access', 'Priority support'], highlight: false },
+  { name: 'Starter', price: '29', features: ['1 channel', '500 msgs/mo', 'Basic AI', 'Lead scoring'], highlight: false, shadow: 'bg-sage' },
+  { name: 'Pro', price: '79', features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team access', 'Integrations'], highlight: true, shadow: 'bg-coral' },
+  { name: 'Scale', price: '199', features: ['Unlimited', '25K msgs/mo', 'Custom AI', 'API access', 'Priority support'], highlight: false, shadow: 'bg-gold' },
 ];
 ---
 
-<section id="pricing" class="py-24 sm:py-32">
+<section id="pricing" class="py-24 sm:py-32 bg-cream-dark">
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-16 fade-in-up">
-      <div class="label-glass mb-4">Pricing</div>
-      <h2 class="text-4xl sm:text-5xl font-bold mb-4">
-        Simple pricing
+      <div class="label-neo mb-4 justify-center flex items-center gap-3">
+        <span class="w-8 h-1 bg-coral"></span>
+        Pricing
+        <span class="w-8 h-1 bg-coral"></span>
+      </div>
+      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
+        Pick your plan
       </h2>
-      <p class="text-white/60">Start free. Upgrade anytime.</p>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
       {plans.map((p, i) => (
-        <div class={`card-glass p-8 fade-in-up flex flex-col ${p.highlight ? 'ring-2 ring-white/30 md:order-2 order-first' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
-          {p.highlight && <div class="label-glass text-accent-emerald mb-4">Most Popular</div>}
-          <h3 class="text-xl font-semibold mb-2">{p.name}</h3>
-          <div class="mb-6">
-            <span class="text-5xl font-bold">${p.price}</span>
-            <span class="text-white/50">/mo</span>
+        <div class={`relative fade-in-up ${p.highlight ? 'md:order-2 order-first' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
+          <div class={`absolute bottom-[-8px] right-[-8px] w-full h-full ${p.shadow}`}></div>
+          <div class="relative bg-white border-3 border-neo-black p-8 flex flex-col h-full">
+            {p.highlight && <div class="label-neo mb-4">Most Popular</div>}
+            <h3 class="font-display text-2xl font-bold mb-2">{p.name}</h3>
+            <div class="mb-6">
+              <span class="font-display text-5xl font-bold">${p.price}</span>
+              <span class="text-neo-black/50">/mo</span>
+            </div>
+            <ul class="space-y-3 mb-8 flex-1">
+              {p.features.map(f => (
+                <li class="flex items-center gap-3 text-neo-black/70">
+                  <span class="w-2 h-2 bg-coral"></span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <a href="#cta" class={p.highlight ? 'btn-neo w-full justify-center' : 'btn-neo-outline w-full justify-center'}>
+              Get Started
+            </a>
           </div>
-          <ul class="space-y-3 mb-8 flex-1">
-            {p.features.map(f => (
-              <li class="flex items-center gap-3 text-white/70 text-sm">
-                <span class="text-accent-cyan">✓</span>
-                {f}
-              </li>
-            ))}
-          </ul>
-          <a href="#cta" class={p.highlight ? 'btn-glass-solid' : 'btn-glass'}>
-            Get Started
-          </a>
         </div>
       ))}
     </div>

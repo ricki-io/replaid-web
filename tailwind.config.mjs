@@ -4,38 +4,34 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Glassmorphism palette
-        glass: {
-          white: 'rgba(255,255,255,0.15)',
-          border: 'rgba(255,255,255,0.2)',
-          light: 'rgba(255,255,255,0.25)',
+        // Neo-Geo palette - bold and artistic
+        neo: {
+          black: '#1a1a2e',
+          navy: '#16213e',
         },
-        bg: {
-          start: '#1a1a2e',
-          mid: '#16213e',
-          end: '#0f3460',
+        // Mediterranean-inspired accents
+        coral: {
+          DEFAULT: '#e07a5f',
+          light: '#f2a391',
+          dark: '#c9614a',
         },
-        accent: {
-          green: '#10b981',
-          emerald: '#34d399',
-          teal: '#14b8a6',
-          cyan: '#22d3ee',
+        cream: {
+          DEFAULT: '#f4f1de',
+          dark: '#e8e4cc',
+        },
+        sage: {
+          DEFAULT: '#81b29a',
+          light: '#a8d5ba',
+          dark: '#5f9178',
+        },
+        gold: {
+          DEFAULT: '#f2cc8f',
+          dark: '#ddb870',
         },
       },
       fontFamily: {
+        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
-      },
-      backgroundImage: {
-        'glass-gradient': 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
-        'mesh-bg': `
-          radial-gradient(at 0% 0%, #10b981 0px, transparent 50%),
-          radial-gradient(at 100% 0%, #14b8a6 0px, transparent 50%),
-          radial-gradient(at 100% 100%, #34d399 0px, transparent 50%),
-          radial-gradient(at 0% 100%, #22d3ee 0px, transparent 50%)
-        `,
-      },
-      backdropBlur: {
-        'glass': '20px',
       },
     },
   },

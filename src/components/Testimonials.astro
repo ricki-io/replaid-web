@@ -1,30 +1,34 @@
 ---
-// Glassmorphism Testimonials
+// Neo-Geo Testimonials
 const testimonials = [
-  { quote: "Response time dropped from hours to seconds. Incredible.", author: "Maria S.", role: "Founder" },
-  { quote: "3x conversion rate in month one. Mind-blowing ROI.", author: "James C.", role: "Sales Director" },
-  { quote: "AI replies are indistinguishable from our team.", author: "Lisa P.", role: "Head of Support" },
+  { quote: "Response time dropped from hours to seconds. Game changer.", author: "Maria S.", role: "Founder", color: 'bg-sage' },
+  { quote: "3x conversion rate in month one. Unbelievable.", author: "James C.", role: "Sales Director", color: 'bg-coral' },
+  { quote: "AI replies are indistinguishable from our team.", author: "Lisa P.", role: "Head of Support", color: 'bg-gold' },
 ];
 ---
 
 <section class="py-24 sm:py-32">
   <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-16 fade-in-up">
-      <div class="label-glass mb-4">Testimonials</div>
-      <h2 class="text-4xl sm:text-5xl font-bold">
+    <div class="mb-16 fade-in-up">
+      <div class="label-neo mb-4 flex items-center gap-3">
+        <span class="w-8 h-1 bg-coral"></span>
+        Testimonials
+      </div>
+      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
         Loved by teams
       </h2>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-3 gap-8">
       {testimonials.map((t, i) => (
-        <div class="card-glass p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <blockquote class="text-lg text-white/80 leading-relaxed mb-6">
+        <div class="fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <div class={`${t.color} h-2 w-20 mb-6`}></div>
+          <blockquote class="font-display text-xl font-semibold leading-snug mb-6">
             "{t.quote}"
           </blockquote>
           <div>
-            <div class="font-semibold">{t.author}</div>
-            <div class="text-sm text-white/50">{t.role}</div>
+            <div class="font-bold">{t.author}</div>
+            <div class="text-sm text-neo-black/60">{t.role}</div>
           </div>
         </div>
       ))}

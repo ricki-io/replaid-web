@@ -1,29 +1,33 @@
 ---
-// Glassmorphism How It Works
+// Neo-Geo How It Works
 const steps = [
-  { num: '1', title: 'Connect', desc: 'Link your channels instantly.' },
-  { num: '2', title: 'Train', desc: 'Add your knowledge base.' },
-  { num: '3', title: 'Launch', desc: 'Go live in minutes.' },
+  { num: '01', title: 'Connect', desc: 'Link your channels in one click.', color: 'bg-coral' },
+  { num: '02', title: 'Train', desc: 'Add your knowledge base.', color: 'bg-sage' },
+  { num: '03', title: 'Launch', desc: 'Go live in 10 minutes.', color: 'bg-gold' },
 ];
 ---
 
 <section id="how-it-works" class="py-24 sm:py-32">
   <div class="mx-auto max-w-6xl px-6">
-    <div class="text-center mb-16 fade-in-up">
-      <div class="label-glass mb-4">How it works</div>
-      <h2 class="text-4xl sm:text-5xl font-bold">
-        Ready in 10 minutes
+    <div class="mb-16 fade-in-up">
+      <div class="label-neo mb-4 flex items-center gap-3">
+        <span class="w-8 h-1 bg-coral"></span>
+        How it works
+      </div>
+      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
+        Three steps to<br/>
+        <span class="text-coral">success</span>
       </h2>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-3 gap-8">
       {steps.map((s, i) => (
-        <div class="card-glass p-8 text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <div class="w-14 h-14 card-glass flex items-center justify-center mx-auto mb-6 rounded-full">
-            <span class="font-bold text-xl">{s.num}</span>
+        <div class="fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <div class={`${s.color} w-20 h-20 flex items-center justify-center mb-6`}>
+            <span class="font-display text-2xl font-bold text-white">{s.num}</span>
           </div>
-          <h3 class="text-xl font-semibold mb-3">{s.title}</h3>
-          <p class="text-white/60">{s.desc}</p>
+          <h3 class="font-display text-2xl font-bold mb-3">{s.title}</h3>
+          <p class="text-neo-black/60">{s.desc}</p>
         </div>
       ))}
     </div>

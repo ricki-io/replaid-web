@@ -1,5 +1,5 @@
 ---
-// Glassmorphism FAQ
+// Neo-Geo FAQ
 const faqs = [
   { q: "What channels are supported?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, and Twitter." },
   { q: "How fast is setup?", a: "Under 10 minutes. Connect, train, launch." },
@@ -8,21 +8,25 @@ const faqs = [
 ];
 ---
 
-<section id="faq" class="py-24 sm:py-32">
+<section id="faq" class="py-24 sm:py-32 bg-neo-black text-cream">
   <div class="mx-auto max-w-3xl px-6">
     <div class="text-center mb-16 fade-in-up">
-      <div class="label-glass mb-4">FAQ</div>
-      <h2 class="text-4xl sm:text-5xl font-bold">Questions?</h2>
+      <div class="label-neo mb-4 justify-center flex items-center gap-3 text-coral">
+        <span class="w-8 h-1 bg-coral"></span>
+        FAQ
+        <span class="w-8 h-1 bg-coral"></span>
+      </div>
+      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">Questions?</h2>
     </div>
     
     <div class="space-y-4">
       {faqs.map((f, i) => (
-        <details class="card-glass group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
-          <summary class="p-6 font-semibold cursor-pointer flex justify-between items-center list-none hover:text-accent-emerald transition-colors">
+        <details class="group bg-cream/5 border-2 border-cream/20 fade-in-up" style={`transition-delay: ${i * 50}ms`}>
+          <summary class="p-6 font-display font-semibold cursor-pointer flex justify-between items-center list-none hover:text-coral transition-colors">
             {f.q}
-            <span class="text-white/50 group-open:rotate-45 transition-transform">+</span>
+            <span class="text-coral group-open:rotate-45 transition-transform text-xl">+</span>
           </summary>
-          <div class="px-6 pb-6 text-white/60 leading-relaxed">
+          <div class="px-6 pb-6 text-cream/70 leading-relaxed">
             {f.a}
           </div>
         </details>
