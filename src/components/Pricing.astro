@@ -1,40 +1,40 @@
 ---
-// Typography First Pricing - type-driven, minimal cards
+// Retro-futuristic Pricing
 const plans = [
-  { name: 'Starter', price: '29', features: ['1 channel', '500 msgs/mo', 'Basic AI', 'Lead scoring'], highlight: false },
-  { name: 'Pro', price: '79', features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team collab', 'Integrations'], highlight: true },
-  { name: 'Scale', price: '199', features: ['Unlimited', '25K msgs/mo', 'Custom AI', 'API access', 'Dedicated support'], highlight: false },
+  { name: 'STARTER', price: '29', features: ['1 channel', '500 msgs/mo', 'Basic AI', 'Lead scoring'], highlight: false },
+  { name: 'PRO', price: '79', features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team collab', 'Integrations'], highlight: true },
+  { name: 'SCALE', price: '199', features: ['Unlimited', '25K msgs/mo', 'Custom AI', 'API access', 'Priority support'], highlight: false },
 ];
 ---
 
 <section id="pricing" class="py-24 sm:py-40">
   <div class="mx-auto max-w-7xl px-6">
     <div class="mb-20 fade-in-up text-center">
-      <div class="mono-label mb-4">Pricing</div>
-      <h2 class="text-display-md font-bold">
-        Simple<span class="text-accent">,</span> transparent
+      <div class="mono-label mb-4">// Pricing.matrix</div>
+      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
+        <span class="text-chrome">SELECT</span> <span class="text-neon-pink">TIER</span>
       </h2>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-px bg-white/10 max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
       {plans.map((p, i) => (
-        <div class={`bg-ink-950 p-8 sm:p-10 fade-in-up flex flex-col ${p.highlight ? 'md:order-2 order-first' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
-          {p.highlight && <div class="mono-label text-accent mb-6">Most Popular</div>}
-          <h3 class="font-display text-2xl font-bold mb-2">{p.name}</h3>
+        <div class={`card-retro p-8 fade-in-up flex flex-col ${p.highlight ? 'border-neon-pink shadow-neon-pink md:order-2 order-first' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
+          {p.highlight && <div class="mono-label text-neon-pink mb-4">[RECOMMENDED]</div>}
+          <h3 class="font-display text-2xl font-bold text-chrome mb-2">{p.name}</h3>
           <div class="mb-8">
-            <span class="font-display text-6xl sm:text-7xl font-bold tracking-tighter">${p.price}</span>
-            <span class="text-ink-300 text-lg">/mo</span>
+            <span class="font-display text-5xl sm:text-6xl font-black text-neon-cyan">${p.price}</span>
+            <span class="font-mono text-chrome/50 text-sm">/month</span>
           </div>
-          <ul class="space-y-4 mb-10 flex-1">
+          <ul class="space-y-4 mb-10 flex-1 font-mono text-sm">
             {p.features.map(f => (
-              <li class="flex items-center gap-3 text-ink-100">
-                <span class="text-accent font-mono">→</span>
+              <li class="flex items-center gap-3 text-chrome/70">
+                <span class="text-neon-cyan">▸</span>
                 {f}
               </li>
             ))}
           </ul>
-          <a href="#cta" class={`block text-center py-4 font-display font-semibold transition-colors ${p.highlight ? 'bg-white text-black hover:bg-accent hover:text-white' : 'border-2 border-white/20 text-white hover:border-white'}`}>
-            Get Started
+          <a href="#cta" class={`block text-center py-4 font-display font-semibold text-sm uppercase tracking-wider transition-all ${p.highlight ? 'btn-neon-pink' : 'btn-neon'}`}>
+            Activate
           </a>
         </div>
       ))}

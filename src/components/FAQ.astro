@@ -1,5 +1,5 @@
 ---
-// Typography First FAQ - clean, type-focused
+// Retro-futuristic FAQ
 const faqs = [
   { q: "What channels are supported?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, and Twitter. More coming soon." },
   { q: "How fast is setup?", a: "Under 10 minutes. Connect your channels, add your knowledge, and go." },
@@ -11,18 +11,18 @@ const faqs = [
 <section id="faq" class="py-24 sm:py-40">
   <div class="mx-auto max-w-4xl px-6">
     <div class="mb-20 fade-in-up text-center">
-      <div class="mono-label mb-4">Questions</div>
-      <h2 class="text-display-md font-bold">FAQ</h2>
+      <div class="mono-label mb-4">// Help.database</div>
+      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-chrome">FAQ</h2>
     </div>
     
-    <div class="divide-y divide-white/10">
+    <div class="space-y-4">
       {faqs.map((f, i) => (
-        <details class="group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
-          <summary class="py-8 font-display text-xl sm:text-2xl font-bold cursor-pointer flex justify-between items-center list-none hover:text-accent transition-colors">
-            {f.q}
-            <span class="font-mono text-2xl text-ink-400 group-open:rotate-45 transition-transform">+</span>
+        <details class="card-retro group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
+          <summary class="p-6 font-display text-lg font-bold cursor-pointer flex justify-between items-center list-none text-chrome hover:text-neon-cyan transition-colors">
+            <span>&gt; {f.q}</span>
+            <span class="font-mono text-neon-cyan group-open:rotate-45 transition-transform">+</span>
           </summary>
-          <div class="pb-8 text-ink-200 text-lg leading-relaxed -mt-2">
+          <div class="px-6 pb-6 font-mono text-chrome/60 text-sm leading-relaxed border-t border-neon-cyan/10 pt-4 ml-4">
             {f.a}
           </div>
         </details>

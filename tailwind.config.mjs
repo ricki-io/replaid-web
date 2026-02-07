@@ -4,42 +4,61 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Pure blacks and whites for Typography First
-        ink: {
-          950: '#000000',
-          900: '#050505',
-          800: '#0a0a0a',
-          700: '#111111',
-          600: '#1a1a1a',
-          500: '#2a2a2a',
-          400: '#404040',
-          300: '#666666',
-          200: '#888888',
-          100: '#aaaaaa',
-          50: '#cccccc',
+        // Retro-futuristic palette
+        void: {
+          950: '#0a0010',
+          900: '#0d0015',
+          800: '#12001f',
+          700: '#1a0030',
+          600: '#250045',
         },
-        // Single accent color
-        accent: {
-          DEFAULT: '#ff6b35',
-          light: '#ff8c5a',
-          dark: '#e55a2b',
+        neon: {
+          cyan: '#00f5ff',
+          pink: '#ff00ff',
+          purple: '#bf00ff',
+          blue: '#4d4dff',
+          yellow: '#ffff00',
+        },
+        chrome: {
+          DEFAULT: '#c0c0c0',
+          light: '#e8e8e8',
+          dark: '#808080',
+        },
+        sunset: {
+          orange: '#ff6b00',
+          pink: '#ff1493',
+          purple: '#8b00ff',
         },
       },
       fontFamily: {
-        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        display: ['Orbitron', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        mono: ['Share Tech Mono', 'monospace'],
       },
-      fontSize: {
-        // Massive display sizes
-        'display-xl': ['clamp(4rem, 15vw, 12rem)', { lineHeight: '0.9', letterSpacing: '-0.04em' }],
-        'display-lg': ['clamp(3rem, 10vw, 8rem)', { lineHeight: '0.95', letterSpacing: '-0.03em' }],
-        'display-md': ['clamp(2rem, 6vw, 5rem)', { lineHeight: '1', letterSpacing: '-0.02em' }],
-        'display-sm': ['clamp(1.5rem, 4vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+      backgroundImage: {
+        'grid-pattern': `linear-gradient(rgba(0,245,255,0.1) 1px, transparent 1px),
+                         linear-gradient(90deg, rgba(0,245,255,0.1) 1px, transparent 1px)`,
+        'sunset-gradient': 'linear-gradient(180deg, #0a0010 0%, #1a0030 30%, #ff1493 70%, #ff6b00 100%)',
+        'horizon-glow': 'radial-gradient(ellipse at 50% 100%, rgba(255,20,147,0.4) 0%, transparent 60%)',
       },
-      letterSpacing: {
-        'tightest': '-0.06em',
-        'ultra-wide': '0.3em',
+      boxShadow: {
+        'neon-cyan': '0 0 10px #00f5ff, 0 0 20px #00f5ff, 0 0 40px #00f5ff',
+        'neon-pink': '0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff',
+        'neon-subtle': '0 0 10px rgba(0,245,255,0.5)',
+      },
+      animation: {
+        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+        'scan': 'scan 8s linear infinite',
+      },
+      keyframes: {
+        'pulse-glow': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.7' },
+        },
+        'scan': {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(100vh)' },
+        },
       },
     },
   },

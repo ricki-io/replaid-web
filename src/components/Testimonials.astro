@@ -1,33 +1,31 @@
 ---
-// Typography First Testimonials - quote-heavy design
+// Retro-futuristic Testimonials
 const testimonials = [
-  { quote: "Our response time went from hours to seconds.", author: "Maria S.", role: "Founder" },
-  { quote: "We 3x'd our conversion rate in the first month.", author: "James C.", role: "Sales Director" },
-  { quote: "The AI replies are indistinguishable from human responses.", author: "Lisa P.", role: "Head of Support" },
+  { quote: "Response time went from hours to seconds.", author: "Maria S.", role: "Founder", id: "USR_001" },
+  { quote: "We 3x'd our conversion rate in month one.", author: "James C.", role: "Sales Director", id: "USR_002" },
+  { quote: "The AI replies are indistinguishable from humans.", author: "Lisa P.", role: "Head of Support", id: "USR_003" },
 ];
 ---
 
-<section class="py-24 sm:py-40 border-t border-white/5 relative overflow-hidden">
-  <!-- Background text -->
-  <div class="bg-text text-[20vw] right-0 top-20">"</div>
-  
-  <div class="relative mx-auto max-w-7xl px-6">
-    <div class="mb-20 fade-in-up">
-      <div class="mono-label mb-4">Testimonials</div>
-      <h2 class="text-display-md font-bold">
-        Loved by <span class="text-accent">teams</span>
+<section class="py-24 sm:py-40 border-t border-neon-cyan/20">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-20 fade-in-up text-center">
+      <div class="mono-label mb-4">// User.feedback</div>
+      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
+        <span class="text-neon-cyan">TRANS</span><span class="text-chrome">MISSIONS</span>
       </h2>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-12 sm:gap-8">
+    <div class="grid md:grid-cols-3 gap-6">
       {testimonials.map((t, i) => (
-        <div class="fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <blockquote class="font-display text-2xl sm:text-3xl font-bold leading-snug mb-8">
+        <div class="card-retro p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <div class="mono-label text-neon-pink/50 mb-6">{t.id}</div>
+          <blockquote class="font-mono text-lg text-chrome/80 leading-relaxed mb-8">
             "{t.quote}"
           </blockquote>
-          <div>
-            <div class="font-semibold text-lg">{t.author}</div>
-            <div class="mono-label mt-1">{t.role}</div>
+          <div class="border-t border-neon-cyan/20 pt-6">
+            <div class="font-display font-bold text-chrome">{t.author}</div>
+            <div class="mono-label text-chrome/40 mt-1">{t.role}</div>
           </div>
         </div>
       ))}

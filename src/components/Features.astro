@@ -1,32 +1,32 @@
 ---
-// Typography First Features - big type, minimal decoration
+// Retro-futuristic Features
 const features = [
-  { num: '01', title: 'Unified Inbox', desc: 'All messages in one place. No more tab chaos.' },
-  { num: '02', title: 'Smart Scoring', desc: 'AI identifies who\'s ready to buy.' },
-  { num: '03', title: 'Auto-Replies', desc: 'Respond instantly, even while you sleep.' },
-  { num: '04', title: 'Human Handoff', desc: 'AI handles routine. You handle exceptions.' },
+  { id: 'SYS_01', title: 'Unified Inbox', desc: 'All messages in one interface. No more tab chaos.' },
+  { id: 'SYS_02', title: 'Smart Scoring', desc: 'AI identifies who\'s ready to buy.' },
+  { id: 'SYS_03', title: 'Auto-Replies', desc: 'Respond instantly, even while you sleep.' },
+  { id: 'SYS_04', title: 'Human Handoff', desc: 'AI handles routine. You handle exceptions.' },
 ];
 ---
 
-<section id="features" class="py-24 sm:py-40 relative overflow-hidden">
-  <!-- Background text -->
-  <div class="bg-text text-[30vw] -right-20 top-1/2 -translate-y-1/2">FEATURES</div>
-  
-  <div class="relative mx-auto max-w-7xl px-6">
-    <div class="mb-20 fade-in-up">
-      <div class="mono-label mb-4">What We Do</div>
-      <h2 class="text-display-md font-bold max-w-3xl">
-        Everything you need to<br/>
-        <span class="text-accent">automate</span> your inbox
+<section id="features" class="py-24 sm:py-40 relative">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-20 fade-in-up text-center">
+      <div class="mono-label mb-4">// System.features</div>
+      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
+        <span class="text-chrome">CORE</span> <span class="text-neon-pink">MODULES</span>
       </h2>
     </div>
     
-    <div class="grid md:grid-cols-2 gap-px bg-white/5">
+    <div class="grid md:grid-cols-2 gap-6">
       {features.map((f, i) => (
-        <div class="bg-ink-950 p-8 sm:p-12 fade-in-up group hover:bg-ink-900 transition-colors" style={`transition-delay: ${i * 100}ms`}>
-          <span class="mono-label text-accent">{f.num}</span>
-          <h3 class="font-display text-2xl sm:text-3xl font-bold mt-4 mb-4 tracking-tight">{f.title}</h3>
-          <p class="text-ink-200 text-lg leading-relaxed">{f.desc}</p>
+        <div class="card-retro p-8 fade-in-up hover:border-neon-pink/50 transition-colors" style={`transition-delay: ${i * 100}ms`}>
+          <div class="flex items-start gap-4">
+            <span class="font-mono text-neon-cyan text-sm">{f.id}</span>
+            <div>
+              <h3 class="font-display text-xl sm:text-2xl font-bold mb-3 text-chrome">{f.title}</h3>
+              <p class="text-chrome/60 font-mono text-sm leading-relaxed">{f.desc}</p>
+            </div>
+          </div>
         </div>
       ))}
     </div>

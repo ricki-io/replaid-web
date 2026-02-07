@@ -1,37 +1,36 @@
 ---
-// Typography First How It Works - numbered steps with big type
+// Retro-futuristic How It Works
 const steps = [
-  { title: 'Connect', desc: 'Link your channels in one click.' },
-  { title: 'Train', desc: 'Add your knowledge and brand voice.' },
-  { title: 'Launch', desc: 'Watch leads roll in automatically.' },
+  { cmd: 'CONNECT', desc: 'Link your channels in one click.' },
+  { cmd: 'TRAIN', desc: 'Add your knowledge and brand voice.' },
+  { cmd: 'LAUNCH', desc: 'Watch leads roll in automatically.' },
 ];
 ---
 
-<section id="how-it-works" class="py-24 sm:py-40 relative overflow-hidden">
-  <!-- Background text -->
-  <div class="bg-text text-[25vw] -left-20 top-1/2 -translate-y-1/2">HOW</div>
-  
-  <div class="relative mx-auto max-w-7xl px-6">
-    <div class="mb-20 fade-in-up">
-      <div class="mono-label mb-4">Getting Started</div>
-      <h2 class="text-display-md font-bold">
-        Up and running in<br/>
-        <span class="text-accent">10 minutes</span>
+<section id="how-it-works" class="py-24 sm:py-40">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-20 fade-in-up text-center">
+      <div class="mono-label mb-4">// Boot.sequence</div>
+      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold">
+        <span class="text-neon-cyan">INITIALIZE</span> <span class="text-chrome">IN</span> <span class="text-neon-pink">10:00</span>
       </h2>
     </div>
     
-    <div class="space-y-0">
+    <div class="max-w-4xl mx-auto">
       {steps.map((s, i) => (
-        <div class="border-t border-white/10 py-12 sm:py-16 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-20 fade-in-up group" style={`transition-delay: ${i * 100}ms`}>
-          <div class="font-display text-7xl sm:text-9xl font-bold text-ink-800 group-hover:text-accent transition-colors">
-            {String(i + 1).padStart(2, '0')}
+        <div class="border-t border-neon-cyan/20 py-12 flex flex-col sm:flex-row items-start gap-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-neon-pink text-sm">0{i + 1}</span>
+            <span class="font-display text-3xl sm:text-4xl font-bold text-neon-cyan">&gt;_</span>
           </div>
-          <div>
-            <h3 class="font-display text-3xl sm:text-4xl font-bold mb-3">{s.title}</h3>
-            <p class="text-ink-200 text-xl">{s.desc}</p>
+          <div class="flex-1">
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-chrome mb-3">{s.cmd}</h3>
+            <p class="font-mono text-chrome/60">{s.desc}</p>
           </div>
+          <div class="hidden sm:block font-mono text-neon-cyan/30 text-sm">[READY]</div>
         </div>
       ))}
+      <div class="border-t border-neon-cyan/20"></div>
     </div>
   </div>
 </section>

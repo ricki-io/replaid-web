@@ -14,7 +14,7 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#0a0010" />
     <meta name="robots" content="noindex, nofollow" />
     
     <meta property="og:title" content={title} />
@@ -24,24 +24,39 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   </head>
-  <body class="min-h-screen bg-ink-950 text-white antialiased overflow-x-hidden">
-    <slot />
+  <body class="min-h-screen bg-void-950 text-white antialiased overflow-x-hidden">
+    <!-- Grid overlay -->
+    <div class="fixed inset-0 bg-grid-pattern bg-[size:60px_60px] pointer-events-none opacity-40 z-0"></div>
+    
+    <!-- Horizon glow -->
+    <div class="fixed bottom-0 left-0 right-0 h-[50vh] bg-horizon-glow pointer-events-none z-0"></div>
+    
+    <!-- Scanline effect -->
+    <div class="fixed inset-0 pointer-events-none z-50 overflow-hidden opacity-[0.03]">
+      <div class="absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(0,0,0,0.3)_2px,rgba(0,0,0,0.3)_4px)]"></div>
+    </div>
+    
+    <div class="relative z-10">
+      <slot />
+    </div>
     
     <style is:global>
       body {
         font-family: 'Inter', system-ui, sans-serif;
-        background: #000;
+        background: linear-gradient(180deg, #0a0010 0%, #12001f 50%, #1a0030 100%);
       }
       
       h1, h2, h3, h4, h5, h6 {
-        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-family: 'Orbitron', system-ui, sans-serif;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
       
       ::selection {
-        background-color: #ff6b35;
+        background-color: #ff00ff;
         color: #000;
       }
       
@@ -49,55 +64,85 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
         scroll-behavior: smooth;
       }
       
-      /* Typography First button - text-driven */
-      .btn-type {
+      /* Neon button */
+      .btn-neon {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         padding: 1rem 2.5rem;
-        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-family: 'Orbitron', system-ui, sans-serif;
         font-weight: 600;
-        font-size: 1.125rem;
-        letter-spacing: -0.02em;
-        background: #fff;
-        color: #000;
-        border: none;
-        transition: all 0.15s ease;
-      }
-      
-      .btn-type:hover {
-        background: #ff6b35;
-        color: #fff;
-      }
-      
-      .btn-type-outline {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem 2.5rem;
-        font-family: 'Space Grotesk', system-ui, sans-serif;
-        font-weight: 600;
-        font-size: 1.125rem;
-        letter-spacing: -0.02em;
-        background: transparent;
-        color: #fff;
-        border: 2px solid #fff;
-        transition: all 0.15s ease;
-      }
-      
-      .btn-type-outline:hover {
-        background: #fff;
-        color: #000;
-      }
-      
-      /* Monospace label */
-      .mono-label {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.75rem;
-        font-weight: 500;
-        letter-spacing: 0.15em;
+        font-size: 0.875rem;
         text-transform: uppercase;
-        color: #666;
+        letter-spacing: 0.1em;
+        background: transparent;
+        color: #00f5ff;
+        border: 2px solid #00f5ff;
+        position: relative;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px rgba(0,245,255,0.3), inset 0 0 10px rgba(0,245,255,0.1);
+      }
+      
+      .btn-neon:hover {
+        background: #00f5ff;
+        color: #0a0010;
+        box-shadow: 0 0 20px #00f5ff, 0 0 40px #00f5ff, inset 0 0 20px rgba(255,255,255,0.2);
+      }
+      
+      .btn-neon-pink {
+        color: #ff00ff;
+        border-color: #ff00ff;
+        box-shadow: 0 0 10px rgba(255,0,255,0.3), inset 0 0 10px rgba(255,0,255,0.1);
+      }
+      
+      .btn-neon-pink:hover {
+        background: #ff00ff;
+        color: #0a0010;
+        box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+      }
+      
+      /* Chrome text */
+      .text-chrome {
+        background: linear-gradient(180deg, #fff 0%, #c0c0c0 40%, #606060 50%, #c0c0c0 60%, #fff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      /* Neon text glow */
+      .text-neon-cyan {
+        color: #00f5ff;
+        text-shadow: 0 0 10px #00f5ff, 0 0 20px #00f5ff, 0 0 40px #00f5ff;
+      }
+      
+      .text-neon-pink {
+        color: #ff00ff;
+        text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+      }
+      
+      /* Retro card */
+      .card-retro {
+        background: linear-gradient(135deg, rgba(0,245,255,0.05) 0%, rgba(255,0,255,0.05) 100%);
+        border: 1px solid rgba(0,245,255,0.3);
+        position: relative;
+      }
+      
+      .card-retro::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,245,255,0.1) 0%, transparent 50%);
+        pointer-events: none;
+      }
+      
+      /* Mono label */
+      .mono-label {
+        font-family: 'Share Tech Mono', monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #00f5ff;
+        opacity: 0.8;
       }
       
       /* Fade in */
@@ -110,17 +155,6 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
       .fade-in-up.visible {
         opacity: 1;
         transform: translateY(0);
-      }
-      
-      /* Background text */
-      .bg-text {
-        position: absolute;
-        font-family: 'Space Grotesk', system-ui, sans-serif;
-        font-weight: 700;
-        color: rgba(255,255,255,0.03);
-        pointer-events: none;
-        user-select: none;
-        white-space: nowrap;
       }
     </style>
 
