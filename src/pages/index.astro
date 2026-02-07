@@ -1,8 +1,9 @@
 ---
-// Replaid - Neobrutalist Landing Page
+// Replaid - Dark Mode First Landing Page
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import Channels from '../components/Channels.astro';
 import Features from '../components/Features.astro';
 import Stats from '../components/Stats.astro';
 import HowItWorks from '../components/HowItWorks.astro';
@@ -15,12 +16,13 @@ import '../styles/global.css';
 ---
 
 <Layout 
-  title="REPLAID — Your Inbox Is Full Of Money" 
+  title="Replaid — Your Inbox Is Full Of Money" 
   description="Stop missing leads. Replaid qualifies conversations, auto-replies instantly, and keeps your pipeline moving 24/7."
 >
   <Header />
   <main>
     <Hero />
+    <Channels />
     <Features />
     <Stats />
     <HowItWorks />

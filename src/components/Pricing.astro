@@ -1,58 +1,38 @@
 ---
-// Neobrutalist Pricing - bold cards
+// Dark Mode First Pricing
 const plans = [
-  {
-    name: 'Starter',
-    price: '29',
-    features: ['1 channel', '500 msgs/mo', 'Basic AI', 'Lead scoring'],
-    color: 'bg-brutal-cream',
-    highlight: false,
-  },
-  {
-    name: 'Pro',
-    price: '79',
-    features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team collab', 'Integrations'],
-    color: 'bg-brutal-yellow',
-    highlight: true,
-  },
-  {
-    name: 'Scale',
-    price: '199',
-    features: ['Unlimited', '25K msgs/mo', 'Custom AI', 'API access', 'Dedicated support'],
-    color: 'bg-brutal-cyan',
-    highlight: false,
-  },
+  { name: 'Starter', price: '29', features: ['1 channel', '500 msgs/mo', 'Basic AI', 'Lead scoring'], highlight: false },
+  { name: 'Pro', price: '79', features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team collab', 'Integrations'], highlight: true },
+  { name: 'Scale', price: '199', features: ['Unlimited', '25K msgs/mo', 'Custom AI', 'API access', 'Dedicated support'], highlight: false },
 ];
 ---
 
-<section id="pricing" class="py-16 sm:py-24 bg-brutal-black text-brutal-cream">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6">
-    <h2 class="text-3xl sm:text-5xl md:text-6xl font-black uppercase mb-4 fade-in-up">
-      Pricing
-    </h2>
-    <p class="text-lg sm:text-xl mb-12 sm:mb-16 fade-in-up">No BS. No hidden fees. Cancel anytime.</p>
+<section id="pricing" class="py-20 sm:py-32">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="text-center mb-16 fade-in-up">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4">Simple pricing</h2>
+      <p class="text-lg text-dark-100">Start free. Upgrade when you're ready.</p>
+    </div>
     
-    <div class="grid md:grid-cols-3 gap-6">
-      {plans.map((plan, i) => (
-        <div 
-          class={`border-4 border-brutal-cream p-6 sm:p-8 ${plan.color} text-brutal-black fade-in-up ${plan.highlight ? 'md:-mt-4 md:mb-4' : ''}`}
-          style={`transition-delay: ${i * 100}ms`}
-        >
-          {plan.highlight && (
-            <div class="bg-brutal-black text-brutal-yellow px-3 py-1 text-sm font-bold uppercase inline-block mb-4">
-              Most Popular
+    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      {plans.map((p, i) => (
+        <div class={`card-dark p-6 sm:p-8 fade-in-up relative ${p.highlight ? 'border-electric-500/50 shadow-glow' : ''}`} style={`transition-delay: ${i * 100}ms`}>
+          {p.highlight && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-electric-500 text-white text-xs font-semibold rounded-full">
+              Popular
             </div>
           )}
-          <h3 class="text-xl sm:text-2xl font-black uppercase mb-2">{plan.name}</h3>
-          <div class="text-4xl sm:text-5xl font-black mb-6">${plan.price}<span class="text-lg font-bold">/mo</span></div>
-          <ul class="space-y-2 mb-8">
-            {plan.features.map(f => (
-              <li class="font-medium flex items-center gap-2">
-                <span class="font-black">✓</span> {f}
+          <h3 class="text-xl font-semibold mb-2">{p.name}</h3>
+          <div class="text-4xl font-semibold mb-6">${p.price}<span class="text-lg text-dark-200">/mo</span></div>
+          <ul class="space-y-3 mb-8">
+            {p.features.map(f => (
+              <li class="flex items-center gap-2 text-dark-100">
+                <svg class="w-5 h-5 text-glow-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                {f}
               </li>
             ))}
           </ul>
-          <a href="#cta" class={`block text-center py-3 px-6 border-4 border-brutal-black font-bold uppercase ${plan.highlight ? 'bg-brutal-black text-brutal-yellow' : 'bg-brutal-black text-brutal-cream'} hover:translate-x-1 hover:translate-y-1 transition-transform`}>
+          <a href="#cta" class={`block text-center py-3 rounded-lg font-semibold transition-all ${p.highlight ? 'btn-glow' : 'bg-white/5 border border-white/10 hover:bg-white/10'}`}>
             Get Started
           </a>
         </div>

@@ -1,25 +1,25 @@
 ---
-// Neobrutalist Testimonials
+// Dark Mode First Testimonials
 const testimonials = [
-  { quote: "Replaid is insane. Our response time went from hours to seconds.", author: "Maria S.", role: "Founder" },
-  { quote: "We 3x'd our lead conversion in the first month. Not kidding.", author: "James C.", role: "Sales Director" },
-  { quote: "The AI replies are so good customers can't tell the difference.", author: "Lisa P.", role: "Head of Support" },
+  { quote: "Our response time went from hours to seconds. Replaid is a game changer.", author: "Maria S.", role: "Founder" },
+  { quote: "We 3x'd our conversion rate in the first month. Incredible.", author: "James C.", role: "Sales Director" },
+  { quote: "The AI replies are indistinguishable from human responses.", author: "Lisa P.", role: "Head of Support" },
 ];
 ---
 
-<section class="py-16 sm:py-24 bg-brutal-cream border-t-4 border-brutal-black">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6">
-    <h2 class="text-3xl sm:text-5xl md:text-6xl font-black uppercase mb-12 sm:mb-16 fade-in-up">
-      What people <span class="bg-brutal-magenta text-brutal-cream px-2 inline-block">say</span>
-    </h2>
+<section class="py-20 sm:py-32 border-t border-white/5">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="text-center mb-16 fade-in-up">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4">Loved by teams</h2>
+    </div>
     
     <div class="grid md:grid-cols-3 gap-6">
       {testimonials.map((t, i) => (
-        <div class="card-brutal p-6 sm:p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <p class="text-lg sm:text-xl font-bold mb-6">"{t.quote}"</p>
+        <div class="card-dark p-6 sm:p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <p class="text-lg mb-6">"{t.quote}"</p>
           <div>
-            <div class="font-black uppercase">{t.author}</div>
-            <div class="text-sm text-brutal-black/60 font-bold uppercase">{t.role}</div>
+            <div class="font-semibold">{t.author}</div>
+            <div class="text-sm text-dark-200">{t.role}</div>
           </div>
         </div>
       ))}

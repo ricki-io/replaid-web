@@ -1,45 +1,30 @@
 ---
-// Neobrutalist Features - bold cards, thick borders
+// Dark Mode First Features
 const features = [
-  {
-    title: 'Unified Inbox',
-    description: 'All your messages. One place. No more tab chaos.',
-    color: 'bg-brutal-cyan',
-  },
-  {
-    title: 'Smart Scoring',
-    description: 'AI knows who wants to buy. You focus on closers.',
-    color: 'bg-brutal-yellow',
-  },
-  {
-    title: 'Auto-Replies',
-    description: 'Respond in seconds. Even while you sleep.',
-    color: 'bg-brutal-magenta',
-  },
-  {
-    title: 'Human Handoff',
-    description: 'AI handles routine. You handle exceptions.',
-    color: 'bg-brutal-cyan',
-  },
+  { icon: '📥', title: 'Unified Inbox', desc: 'All messages in one place. No more tab chaos.' },
+  { icon: '🎯', title: 'Smart Scoring', desc: 'AI identifies who\'s ready to buy.' },
+  { icon: '⚡', title: 'Auto-Replies', desc: 'Respond instantly, even while you sleep.' },
+  { icon: '🤝', title: 'Human Handoff', desc: 'AI handles routine. You handle exceptions.' },
 ];
 ---
 
-<section id="features" class="py-16 sm:py-24 bg-brutal-cream">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6">
-    <!-- Header -->
-    <div class="mb-12 sm:mb-16 fade-in-up">
-      <h2 class="text-3xl sm:text-5xl md:text-6xl font-black uppercase mb-4">
-        Features that <span class="bg-brutal-yellow px-2 -rotate-1 inline-block">slap</span>
+<section id="features" class="py-20 sm:py-32">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="text-center mb-16 fade-in-up">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4">
+        Everything you need
       </h2>
-      <p class="text-lg sm:text-xl max-w-xl">No fluff. Just tools that actually work.</p>
+      <p class="text-lg text-dark-100 max-w-xl mx-auto">
+        Powerful features to automate your inbox and convert more leads.
+      </p>
     </div>
     
-    <!-- Grid -->
     <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
-      {features.map((feature, i) => (
-        <div class={`card-brutal p-6 sm:p-8 fade-in-up ${feature.color}`} style={`transition-delay: ${i * 100}ms`}>
-          <h3 class="text-xl sm:text-2xl font-black uppercase mb-3">{feature.title}</h3>
-          <p class="text-base sm:text-lg font-medium">{feature.description}</p>
+      {features.map((f, i) => (
+        <div class="card-dark p-6 sm:p-8 fade-in-up transition-all duration-300" style={`transition-delay: ${i * 100}ms`}>
+          <div class="text-3xl mb-4">{f.icon}</div>
+          <h3 class="text-xl font-semibold mb-2">{f.title}</h3>
+          <p class="text-dark-100">{f.desc}</p>
         </div>
       ))}
     </div>

@@ -1,28 +1,28 @@
 ---
-// Neobrutalist FAQ
+// Dark Mode First FAQ
 const faqs = [
-  { q: "What channels work?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, Twitter. More coming." },
-  { q: "How fast is setup?", a: "Under 10 minutes. Connect, configure, done." },
-  { q: "Can I turn off auto-replies?", a: "Yes. Use it just for scoring and notifications if you want." },
-  { q: "Is my data safe?", a: "Encrypted. GDPR compliant. We never sell your data." },
+  { q: "What channels are supported?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, and Twitter. More coming soon." },
+  { q: "How fast is setup?", a: "Under 10 minutes. Connect your channels, add your knowledge, and go." },
+  { q: "Can I disable auto-replies?", a: "Yes. Use Replaid just for scoring and notifications if you prefer." },
+  { q: "Is my data secure?", a: "Yes. All data is encrypted. We're GDPR compliant and never sell your data." },
 ];
 ---
 
-<section id="faq" class="py-16 sm:py-24 bg-brutal-yellow border-t-4 border-brutal-black">
-  <div class="mx-auto max-w-4xl px-4 sm:px-6">
-    <h2 class="text-3xl sm:text-5xl md:text-6xl font-black uppercase mb-12 sm:mb-16 fade-in-up">
-      FAQ
-    </h2>
+<section id="faq" class="py-20 sm:py-32">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6">
+    <div class="text-center mb-16 fade-in-up">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4">FAQ</h2>
+    </div>
     
     <div class="space-y-4">
-      {faqs.map((faq, i) => (
-        <details class="card-brutal group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
-          <summary class="p-4 sm:p-6 font-black uppercase text-lg sm:text-xl cursor-pointer flex justify-between items-center list-none">
-            {faq.q}
-            <span class="text-2xl group-open:rotate-45 transition-transform">+</span>
+      {faqs.map((f, i) => (
+        <details class="card-dark group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
+          <summary class="p-5 sm:p-6 font-semibold cursor-pointer flex justify-between items-center list-none">
+            {f.q}
+            <svg class="w-5 h-5 text-dark-200 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </summary>
-          <div class="px-4 sm:px-6 pb-4 sm:pb-6 text-base sm:text-lg font-medium border-t-4 border-brutal-black pt-4">
-            {faq.a}
+          <div class="px-5 sm:px-6 pb-5 sm:pb-6 text-dark-100 border-t border-white/5 pt-4">
+            {f.a}
           </div>
         </details>
       ))}

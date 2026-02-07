@@ -5,43 +5,51 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Neobrutalist palette - high contrast, bold
-        brutal: {
-          black: '#000000',
-          white: '#FFFFFF',
-          cream: '#FFFEF0',
-          yellow: '#FFDE59',
-          cyan: '#00FFFF',
-          magenta: '#FF00FF',
-          red: '#FF3333',
-          blue: '#0066FF',
+        // Dark Mode First palette
+        dark: {
+          950: '#030303',
+          900: '#0a0a0a',
+          800: '#121212',
+          700: '#1a1a1a',
+          600: '#242424',
+          500: '#2e2e2e',
+          400: '#404040',
+          300: '#525252',
+          200: '#737373',
+          100: '#a3a3a3',
+          50: '#e5e5e5',
+        },
+        // Electric accent
+        electric: {
+          DEFAULT: '#6366f1',
+          50: '#eef2ff',
+          100: '#e0e7ff',
+          200: '#c7d2fe',
+          300: '#a5b4fc',
+          400: '#818cf8',
+          500: '#6366f1',
+          600: '#4f46e5',
+          700: '#4338ca',
+        },
+        // Glow colors
+        glow: {
+          purple: '#a855f7',
+          blue: '#3b82f6',
+          cyan: '#22d3ee',
+          green: '#22c55e',
         },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
-        display: ['Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'brutal': '4px 4px 0 0 #000000',
-        'brutal-lg': '6px 6px 0 0 #000000',
-        'brutal-xl': '8px 8px 0 0 #000000',
-        'brutal-yellow': '4px 4px 0 0 #FFDE59',
-        'brutal-cyan': '4px 4px 0 0 #00FFFF',
+        'glow': '0 0 20px rgba(99, 102, 241, 0.3)',
+        'glow-lg': '0 0 40px rgba(99, 102, 241, 0.4)',
+        'glow-purple': '0 0 20px rgba(168, 85, 247, 0.3)',
       },
-      animation: {
-        'marquee': 'marquee 20s linear infinite',
-        'bounce-brutal': 'bounce-brutal 0.5s ease-in-out',
-      },
-      keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-50%)' },
-        },
-        'bounce-brutal': {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'dark-gradient': 'linear-gradient(to bottom, #0a0a0a, #121212)',
       },
     },
   },
