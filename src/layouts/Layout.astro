@@ -90,8 +90,20 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
       }
       
       .btn-neon-pink {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 2.5rem;
+        font-family: 'Orbitron', system-ui, sans-serif;
+        font-weight: 600;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        background: transparent;
         color: #ff00ff;
-        border-color: #ff00ff;
+        border: 2px solid #ff00ff;
+        position: relative;
+        transition: all 0.3s ease;
         box-shadow: 0 0 10px rgba(255,0,255,0.3), inset 0 0 10px rgba(255,0,255,0.1);
       }
       
