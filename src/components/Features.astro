@@ -1,31 +1,31 @@
 ---
-// Scandinavian Features - clean cards
+// Tech Forward Features
 const features = [
-  { icon: '📥', title: 'Unified Inbox', desc: 'All your messages in one calm, organized space.' },
-  { icon: '✨', title: 'Smart Scoring', desc: 'AI quietly identifies your best opportunities.' },
-  { icon: '💬', title: 'Auto-Replies', desc: 'Thoughtful responses, even while you rest.' },
-  { icon: '🤝', title: 'Human Handoff', desc: 'AI handles the routine. You handle what matters.' },
+  { icon: '📥', title: 'Unified Inbox', desc: 'Aggregate all channels into one intelligent dashboard.' },
+  { icon: '🎯', title: 'Lead Scoring', desc: 'ML-powered scoring identifies high-intent prospects.' },
+  { icon: '⚡', title: 'Instant Replies', desc: 'Sub-second response times, 24/7 availability.' },
+  { icon: '🔄', title: 'Smart Handoff', desc: 'Seamless escalation to human agents when needed.' },
 ];
 ---
 
 <section id="features" class="py-24 sm:py-32">
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-16 fade-in-up">
-      <div class="label-soft mb-4">Features</div>
-      <h2 class="font-display text-4xl sm:text-5xl text-charcoal mb-4">
-        Everything you need
+      <div class="label-tech mb-4">// FEATURES</div>
+      <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+        Built for <span class="text-gradient">scale</span>
       </h2>
-      <p class="text-charcoal-muted text-lg max-w-xl mx-auto">
-        Simple tools that work together beautifully.
+      <p class="text-tech-400 text-lg max-w-xl mx-auto">
+        Enterprise-grade infrastructure with startup-level simplicity.
       </p>
     </div>
     
-    <div class="grid sm:grid-cols-2 gap-6">
+    <div class="grid sm:grid-cols-2 gap-4">
       {features.map((f, i) => (
-        <div class="card-scandi p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+        <div class="card-tech p-6 sm:p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
           <div class="text-3xl mb-4">{f.icon}</div>
-          <h3 class="font-display text-2xl mb-3 text-charcoal">{f.title}</h3>
-          <p class="text-charcoal-muted leading-relaxed">{f.desc}</p>
+          <h3 class="text-xl font-semibold mb-2">{f.title}</h3>
+          <p class="text-tech-400 leading-relaxed">{f.desc}</p>
         </div>
       ))}
     </div>

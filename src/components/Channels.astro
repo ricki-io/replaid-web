@@ -1,15 +1,15 @@
 ---
-// Scandinavian channels
+// Tech Forward channels
 const channels = ['Instagram', 'WhatsApp', 'Messenger', 'Email', 'Telegram', 'Twitter'];
 ---
 
-<section class="py-12 bg-cream-dark">
+<section class="py-10 border-y border-white/5 bg-white/[0.01]">
   <div class="mx-auto max-w-6xl px-6">
     <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
-      <span class="text-sm text-charcoal-muted">Works with</span>
-      <div class="flex flex-wrap justify-center gap-6 sm:gap-8">
+      <span class="text-sm text-tech-500">Integrates with</span>
+      <div class="flex flex-wrap justify-center gap-6">
         {channels.map(ch => (
-          <span class="text-sm font-medium text-charcoal/60 hover:text-charcoal transition-colors cursor-default">{ch}</span>
+          <span class="text-sm text-tech-400 hover:text-electric transition-colors cursor-default">{ch}</span>
         ))}
       </div>
     </div>

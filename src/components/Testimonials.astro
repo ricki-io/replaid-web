@@ -1,30 +1,30 @@
 ---
-// Scandinavian Testimonials
+// Tech Forward Testimonials
 const testimonials = [
-  { quote: "Our response time dropped from hours to seconds. Such a relief.", author: "Maria S.", role: "Founder" },
-  { quote: "We tripled our conversion rate in the first month. Quietly impressive.", author: "James C.", role: "Sales Director" },
-  { quote: "The AI replies feel natural and warm—just like our team.", author: "Lisa P.", role: "Head of Support" },
+  { quote: "Response time dropped from 4 hours to 4 seconds. Game changer.", author: "Maria S.", role: "Founder @ Acme" },
+  { quote: "3x conversion rate in month one. The ROI is insane.", author: "James C.", role: "Head of Sales" },
+  { quote: "AI replies are indistinguishable from our best agents.", author: "Lisa P.", role: "VP Support" },
 ];
 ---
 
-<section class="py-24 sm:py-32">
+<section class="py-24 sm:py-32 border-t border-white/5">
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-16 fade-in-up">
-      <div class="label-soft mb-4">Testimonials</div>
-      <h2 class="font-display text-4xl sm:text-5xl text-charcoal">
-        Loved by teams
+      <div class="label-tech mb-4">// TESTIMONIALS</div>
+      <h2 class="text-4xl sm:text-5xl font-bold">
+        Trusted by <span class="text-gradient">fast-movers</span>
       </h2>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-3 gap-6">
       {testimonials.map((t, i) => (
-        <div class="card-scandi p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <blockquote class="text-lg text-charcoal leading-relaxed mb-6">
+        <div class="card-tech p-6 sm:p-8 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <blockquote class="text-lg text-tech-200 leading-relaxed mb-6">
             "{t.quote}"
           </blockquote>
           <div>
-            <div class="font-semibold text-charcoal">{t.author}</div>
-            <div class="text-sm text-charcoal-muted">{t.role}</div>
+            <div class="font-semibold">{t.author}</div>
+            <div class="text-sm text-tech-500">{t.role}</div>
           </div>
         </div>
       ))}

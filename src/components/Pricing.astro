@@ -1,41 +1,41 @@
 ---
-// Scandinavian Pricing
+// Tech Forward Pricing
 const plans = [
-  { name: 'Starter', price: '29', features: ['1 channel', '500 msgs/mo', 'Basic AI', 'Lead scoring'], highlight: false },
-  { name: 'Pro', price: '79', features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team features', 'Integrations'], highlight: true },
-  { name: 'Scale', price: '199', features: ['Unlimited', '25K msgs/mo', 'Custom AI', 'API access', 'Priority support'], highlight: false },
+  { name: 'Starter', price: '29', features: ['1 channel', '500 msgs/mo', 'GPT-3.5', 'Lead scoring'], highlight: false },
+  { name: 'Pro', price: '79', features: ['5 channels', '5K msgs/mo', 'GPT-4o', 'Team seats', 'API access'], highlight: true },
+  { name: 'Enterprise', price: '199', features: ['Unlimited', '25K msgs/mo', 'Custom models', 'SSO', 'SLA'], highlight: false },
 ];
 ---
 
-<section id="pricing" class="py-24 sm:py-32 bg-cream-dark">
+<section id="pricing" class="py-24 sm:py-32">
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-16 fade-in-up">
-      <div class="label-soft mb-4">Pricing</div>
-      <h2 class="font-display text-4xl sm:text-5xl text-charcoal mb-4">
-        Simple, honest pricing
+      <div class="label-tech mb-4">// PRICING</div>
+      <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+        Simple <span class="text-gradient">pricing</span>
       </h2>
-      <p class="text-charcoal-muted">Start free. Upgrade when you're ready.</p>
+      <p class="text-tech-400">Start free. Scale as you grow.</p>
     </div>
     
     <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
       {plans.map((p, i) => (
-        <div class={`card-scandi p-8 fade-in-up flex flex-col ${p.highlight ? 'ring-2 ring-wood md:order-2 order-first' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
-          {p.highlight && <div class="label-soft text-wood mb-4">Most popular</div>}
-          <h3 class="font-display text-2xl mb-2 text-charcoal">{p.name}</h3>
+        <div class={`card-tech p-6 sm:p-8 fade-in-up flex flex-col ${p.highlight ? 'border-electric/50 shadow-tech md:order-2 order-first' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
+          {p.highlight && <div class="label-tech mb-4">MOST POPULAR</div>}
+          <h3 class="text-xl font-semibold mb-2">{p.name}</h3>
           <div class="mb-6">
-            <span class="font-display text-5xl text-charcoal">${p.price}</span>
-            <span class="text-charcoal-muted">/mo</span>
+            <span class="text-5xl font-bold">${p.price}</span>
+            <span class="text-tech-500">/mo</span>
           </div>
           <ul class="space-y-3 mb-8 flex-1">
             {p.features.map(f => (
-              <li class="flex items-center gap-3 text-charcoal-muted">
-                <span class="text-sage">✓</span>
+              <li class="flex items-center gap-3 text-tech-300 text-sm">
+                <span class="text-electric">✓</span>
                 {f}
               </li>
             ))}
           </ul>
-          <a href="#cta" class={p.highlight ? 'btn-wood' : 'btn-scandi-outline'}>
-            Get started
+          <a href="#cta" class={p.highlight ? 'btn-tech' : 'btn-tech-outline'}>
+            Get Started
           </a>
         </div>
       ))}

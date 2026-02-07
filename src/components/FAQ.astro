@@ -1,30 +1,30 @@
 ---
-// Scandinavian FAQ
+// Tech Forward FAQ
 const faqs = [
-  { q: "What channels do you support?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, and Twitter. More on the way." },
-  { q: "How long does setup take?", a: "About 10 minutes. Connect your channels, add your info, and you're ready." },
-  { q: "Can I turn off auto-replies?", a: "Of course. Use Replaid just for lead scoring if that's what you prefer." },
-  { q: "Is my data safe?", a: "Yes. Everything is encrypted, we're GDPR compliant, and we never sell your data." },
+  { q: "Which channels do you support?", a: "Instagram, WhatsApp, Messenger, Email, Telegram, Twitter. Slack and Discord coming soon." },
+  { q: "How long does setup take?", a: "Under 10 minutes. OAuth-based integration, no engineering required." },
+  { q: "Can I use my own AI models?", a: "Enterprise plans support custom model deployment via API." },
+  { q: "What's your uptime SLA?", a: "99.9% uptime SLA on Pro plans and above. Status page at status.replaid.pro." },
 ];
 ---
 
-<section id="faq" class="py-24 sm:py-32 bg-cream-dark">
+<section id="faq" class="py-24 sm:py-32">
   <div class="mx-auto max-w-3xl px-6">
     <div class="text-center mb-16 fade-in-up">
-      <div class="label-soft mb-4">FAQ</div>
-      <h2 class="font-display text-4xl sm:text-5xl text-charcoal">
-        Common questions
+      <div class="label-tech mb-4">// FAQ</div>
+      <h2 class="text-4xl sm:text-5xl font-bold">
+        Questions?
       </h2>
     </div>
     
-    <div class="space-y-4">
+    <div class="space-y-3">
       {faqs.map((f, i) => (
-        <details class="card-scandi group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
-          <summary class="p-6 font-semibold cursor-pointer flex justify-between items-center list-none text-charcoal hover:text-wood transition-colors">
+        <details class="card-tech group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
+          <summary class="p-5 font-semibold cursor-pointer flex justify-between items-center list-none hover:text-electric transition-colors">
             {f.q}
-            <span class="text-charcoal-muted group-open:rotate-45 transition-transform text-xl">+</span>
+            <span class="text-tech-500 group-open:rotate-45 transition-transform">+</span>
           </summary>
-          <div class="px-6 pb-6 text-charcoal-muted leading-relaxed">
+          <div class="px-5 pb-5 text-tech-400 text-sm leading-relaxed">
             {f.a}
           </div>
         </details>

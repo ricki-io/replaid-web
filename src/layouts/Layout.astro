@@ -14,7 +14,7 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#faf8f5" />
+    <meta name="theme-color" content="#020617" />
     <meta name="robots" content="noindex, nofollow" />
     
     <meta property="og:title" content={title} />
@@ -24,24 +24,34 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   </head>
-  <body class="min-h-screen bg-cream text-charcoal antialiased overflow-x-hidden">
-    <slot />
+  <body class="min-h-screen bg-tech-950 text-white antialiased overflow-x-hidden">
+    <!-- Grid background -->
+    <div class="fixed inset-0 bg-grid-tech pointer-events-none opacity-50"></div>
+    
+    <!-- Gradient orbs -->
+    <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-electric/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="fixed bottom-0 right-1/4 w-[500px] h-[500px] bg-violet/5 rounded-full blur-[100px] pointer-events-none"></div>
+    
+    <div class="relative z-10">
+      <slot />
+    </div>
     
     <style is:global>
       body {
-        font-family: 'DM Sans', system-ui, sans-serif;
-        background: #faf8f5;
+        font-family: 'Inter', system-ui, sans-serif;
+        background: #020617;
       }
       
       h1, h2, h3, h4, h5, h6 {
-        font-family: 'DM Serif Display', Georgia, serif;
-        font-weight: 400;
+        font-family: 'Inter', system-ui, sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.02em;
       }
       
       ::selection {
-        background-color: #9caa97;
+        background-color: #0ea5e9;
         color: #fff;
       }
       
@@ -49,92 +59,76 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
         scroll-behavior: smooth;
       }
       
-      /* Scandinavian button - warm and inviting */
-      .btn-scandi {
+      /* Tech button - gradient */
+      .btn-tech {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 1rem 2rem;
-        font-family: 'DM Sans', system-ui, sans-serif;
+        padding: 0.875rem 1.75rem;
         font-weight: 600;
         font-size: 0.9375rem;
-        background: #2d2d2d;
-        color: #faf8f5;
+        background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%);
+        color: #fff;
         border: none;
-        border-radius: 0.75rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        border-radius: 0.5rem;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 20px rgba(14,165,233,0.3);
       }
       
-      .btn-scandi:hover {
-        background: #4a4a4a;
+      .btn-tech:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        box-shadow: 0 8px 30px rgba(14,165,233,0.4);
       }
       
-      .btn-scandi-outline {
+      .btn-tech-outline {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 1rem 2rem;
-        font-family: 'DM Sans', system-ui, sans-serif;
+        padding: 0.875rem 1.75rem;
         font-weight: 600;
         font-size: 0.9375rem;
         background: transparent;
-        color: #2d2d2d;
-        border: 2px solid #2d2d2d;
-        border-radius: 0.75rem;
-        transition: all 0.3s ease;
-      }
-      
-      .btn-scandi-outline:hover {
-        background: #2d2d2d;
-        color: #faf8f5;
-      }
-      
-      /* Wood accent button */
-      .btn-wood {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem 2rem;
-        font-family: 'DM Sans', system-ui, sans-serif;
-        font-weight: 600;
-        font-size: 0.9375rem;
-        background: #b8956c;
         color: #fff;
-        border: none;
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 0.5rem;
+        transition: all 0.2s ease;
+      }
+      
+      .btn-tech-outline:hover {
+        background: rgba(255,255,255,0.05);
+        border-color: rgba(255,255,255,0.3);
+      }
+      
+      /* Tech card */
+      .card-tech {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.05);
         border-radius: 0.75rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 20px rgba(184,149,108,0.3);
-      }
-      
-      .btn-wood:hover {
-        background: #a07d5a;
-        transform: translateY(-2px);
-      }
-      
-      /* Scandi card */
-      .card-scandi {
-        background: #fff;
-        border: 1px solid rgba(0,0,0,0.05);
-        border-radius: 1rem;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        backdrop-filter: blur(10px);
         transition: all 0.3s ease;
       }
       
-      .card-scandi:hover {
-        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-        transform: translateY(-2px);
+      .card-tech:hover {
+        background: rgba(255,255,255,0.04);
+        border-color: rgba(14,165,233,0.2);
+        box-shadow: 0 4px 30px rgba(14,165,233,0.1);
       }
       
-      /* Soft label */
-      .label-soft {
+      /* Gradient text */
+      .text-gradient {
+        background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      /* Tech label */
+      .label-tech {
+        font-family: 'JetBrains Mono', monospace;
         font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: #9caa97;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        color: #0ea5e9;
       }
       
       /* Fade in */

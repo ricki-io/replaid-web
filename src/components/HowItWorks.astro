@@ -1,29 +1,29 @@
 ---
-// Scandinavian How It Works
+// Tech Forward How It Works
 const steps = [
-  { num: '1', title: 'Connect', desc: 'Link your channels in just a few clicks.' },
-  { num: '2', title: 'Teach', desc: 'Add your knowledge and tone of voice.' },
-  { num: '3', title: 'Relax', desc: 'Watch your inbox take care of itself.' },
+  { num: '01', title: 'Connect', desc: 'One-click OAuth integration with all major platforms.' },
+  { num: '02', title: 'Configure', desc: 'Train on your docs, FAQ, and brand guidelines.' },
+  { num: '03', title: 'Deploy', desc: 'Go live in minutes. Monitor everything in real-time.' },
 ];
 ---
 
 <section id="how-it-works" class="py-24 sm:py-32">
   <div class="mx-auto max-w-6xl px-6">
     <div class="text-center mb-16 fade-in-up">
-      <div class="label-soft mb-4">How it works</div>
-      <h2 class="font-display text-4xl sm:text-5xl text-charcoal">
-        Ready in 10 minutes
+      <div class="label-tech mb-4">// SETUP</div>
+      <h2 class="text-4xl sm:text-5xl font-bold">
+        Live in <span class="text-gradient">10 minutes</span>
       </h2>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-8 sm:gap-12">
+    <div class="grid md:grid-cols-3 gap-8">
       {steps.map((s, i) => (
-        <div class="text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <div class="inline-flex items-center justify-center w-16 h-16 bg-wood/10 text-wood font-display text-2xl rounded-2xl mb-6">
-            {s.num}
+        <div class="card-tech p-8 text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
+          <div class="inline-flex items-center justify-center w-12 h-12 bg-tech-gradient rounded-lg mb-6">
+            <span class="font-mono font-bold text-sm">{s.num}</span>
           </div>
-          <h3 class="font-display text-2xl mb-3 text-charcoal">{s.title}</h3>
-          <p class="text-charcoal-muted">{s.desc}</p>
+          <h3 class="text-xl font-semibold mb-3">{s.title}</h3>
+          <p class="text-tech-400">{s.desc}</p>
         </div>
       ))}
     </div>
