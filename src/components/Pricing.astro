@@ -56,7 +56,7 @@ const plans = [
         <span class="text-sm text-moss-600 tracking-wide uppercase">Pricing</span>
         <span class="w-8 h-px bg-moss-400"></span>
       </div>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-ink-900 mb-6 font-bold">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-ink-900 mb-6 font-bold">
         Simple, transparent pricing
       </h2>
       <p class="text-lg text-ink-500 leading-relaxed">
@@ -85,14 +85,14 @@ const plans = [
           )}
           
           <div class="mb-8">
-            <h3 class:list={['text-lg font-semibold mb-2 font-sans', plan.highlight ? 'text-sand-50' : 'text-ink-800']}>
+            <h3 class:list={['text-base font-semibold mb-2 font-sans', plan.highlight ? 'text-sand-50' : 'text-ink-800']}>
               {plan.name}
             </h3>
             <p class:list={['text-sm mb-6', plan.highlight ? 'text-sand-300' : 'text-ink-400']}>
               {plan.description}
             </p>
             <div class="flex items-baseline gap-1">
-              <span class:list={['text-4xl font-serif', plan.highlight ? 'text-sand-50' : 'text-ink-800']}>
+              <span class:list={['text-4xl sm:text-5xl font-bold', plan.highlight ? 'text-sand-50' : 'text-ink-800']}>
                 ${plan.price}
               </span>
               <span class:list={['text-sm', plan.highlight ? 'text-sand-400' : 'text-ink-400']}>
