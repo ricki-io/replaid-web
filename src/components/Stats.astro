@@ -1,20 +1,20 @@
 ---
-// Social proof stats
+// Japandi Stats - subtle, refined
 const stats = [
-  { value: '10x', label: 'Faster response times' },
-  { value: '90%', label: 'Less time on spam' },
-  { value: '3x', label: 'More leads converted' },
+  { value: '10×', label: 'Faster responses' },
+  { value: '90%', label: 'Less noise' },
+  { value: '3×', label: 'More conversions' },
   { value: '24/7', label: 'Availability' },
 ];
 ---
 
-<section class="py-16 bg-gradient-to-r from-primary-600 via-primary-500 to-accent-500">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="py-20 bg-moss-600">
+  <div class="mx-auto max-w-6xl px-6 lg:px-8">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
       {stats.map((stat, index) => (
         <div class="text-center fade-in-up" style={`transition-delay: ${index * 50}ms`}>
-          <div class="text-4xl md:text-5xl font-extrabold text-white mb-2">{stat.value}</div>
-          <div class="text-primary-100 text-sm md:text-base">{stat.label}</div>
+          <div class="text-4xl md:text-5xl font-serif text-white mb-2">{stat.value}</div>
+          <div class="text-moss-200 text-sm tracking-wide">{stat.label}</div>
         </div>
       ))}
     </div>

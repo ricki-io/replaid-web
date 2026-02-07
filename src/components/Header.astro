@@ -1,109 +1,49 @@
 ---
-// Navigation header with scroll-aware styling
+// Japandi header - minimal, intentional
 ---
 
-<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <nav class="flex items-center justify-between h-20">
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <div class="mx-auto max-w-6xl px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-20 md:h-24">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-2.5 group">
-        <div class="w-10 h-10 bg-gradient-to-br from-primary-500 to-accent-500 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 group-hover:scale-105 transition-all duration-200">
-          <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-8 h-8 bg-moss-500 rounded-sm flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+          <svg class="w-4 h-4 text-sand-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M8 9h8M8 13h6" stroke-linecap="round"/>
           </svg>
         </div>
-        <span class="text-xl font-bold text-gray-900">Replaid</span>
+        <span class="text-lg font-medium text-ink-800 tracking-tight">Replaid</span>
       </a>
       
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#features" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors relative group">
-          Features
-          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-200"></span>
-        </a>
-        <a href="#how-it-works" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors relative group">
-          How it Works
-          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-200"></span>
-        </a>
-        <a href="#pricing" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors relative group">
-          Pricing
-          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-200"></span>
-        </a>
-        <a href="#faq" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors relative group">
-          FAQ
-          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-200"></span>
-        </a>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#features" class="text-sm text-ink-500 hover:text-ink-800 transition-colors duration-200">Features</a>
+        <a href="#how-it-works" class="text-sm text-ink-500 hover:text-ink-800 transition-colors duration-200">Process</a>
+        <a href="#pricing" class="text-sm text-ink-500 hover:text-ink-800 transition-colors duration-200">Pricing</a>
       </div>
       
-      <!-- CTA Buttons -->
-      <div class="flex items-center gap-4">
-        <a href="#" class="hidden sm:inline-flex text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
-          Log in
-        </a>
-        <a href="#cta" class="btn-primary text-sm !py-2.5 !px-5 group">
-          Get Started Free
-          <svg class="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
+      <!-- CTA -->
+      <div class="flex items-center gap-6">
+        <a href="#" class="hidden sm:inline text-sm text-ink-500 hover:text-ink-800 transition-colors duration-200">Sign in</a>
+        <a href="#cta" class="px-5 py-2.5 text-sm font-medium bg-ink-800 text-sand-50 rounded-sm hover:bg-ink-900 transition-all duration-200">
+          Get Started
         </a>
       </div>
-      
-      <!-- Mobile menu button -->
-      <button id="mobile-menu-btn" class="md:hidden p-2 -mr-2 text-gray-600 hover:text-gray-900" aria-label="Toggle menu">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
     </nav>
-  </div>
-  
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100">
-    <div class="px-4 py-4 space-y-3">
-      <a href="#features" class="block py-2 text-gray-600 hover:text-gray-900 font-medium">Features</a>
-      <a href="#how-it-works" class="block py-2 text-gray-600 hover:text-gray-900 font-medium">How it Works</a>
-      <a href="#pricing" class="block py-2 text-gray-600 hover:text-gray-900 font-medium">Pricing</a>
-      <a href="#faq" class="block py-2 text-gray-600 hover:text-gray-900 font-medium">FAQ</a>
-      <div class="pt-3 border-t border-gray-100">
-        <a href="#cta" class="btn-primary w-full justify-center">Get Started Free</a>
-      </div>
-    </div>
   </div>
 </header>
 
 <script>
-  // Scroll-aware header
   const header = document.getElementById('site-header');
-  let lastScroll = 0;
   
   function updateHeader() {
-    const scroll = window.scrollY;
-    
-    if (scroll > 20) {
-      header?.classList.add('bg-white/80', 'backdrop-blur-xl', 'shadow-sm', 'border-b', 'border-gray-100/50');
+    if (window.scrollY > 50) {
+      header?.classList.add('bg-sand-50/90', 'backdrop-blur-md', 'border-b', 'border-stone-200/50');
     } else {
-      header?.classList.remove('bg-white/80', 'backdrop-blur-xl', 'shadow-sm', 'border-b', 'border-gray-100/50');
+      header?.classList.remove('bg-sand-50/90', 'backdrop-blur-md', 'border-b', 'border-stone-200/50');
     }
-    
-    lastScroll = scroll;
   }
   
   window.addEventListener('scroll', updateHeader, { passive: true });
   updateHeader();
-  
-  // Mobile menu toggle
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  menuBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-  });
-  
-  // Close mobile menu on link click
-  mobileMenu?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu?.classList.add('hidden');
-    });
-  });
 </script>

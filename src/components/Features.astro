@@ -1,71 +1,62 @@
 ---
-// Features section with improved cards
+// Japandi Features - spacious, intentional
 const features = [
   {
-    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" /></svg>`,
     title: 'Unified Inbox',
-    description: 'All your messages in one place. Instagram, WhatsApp, Messenger, email — no more tab chaos.',
-    gradient: 'from-blue-500 to-cyan-500',
+    description: 'Every conversation, every channel, one calm space. No more switching between apps or missing important messages.',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />`,
   },
   {
-    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>`,
-    title: 'Smart Lead Scoring',
-    description: 'AI analyzes intent, sentiment, and urgency. Know instantly which conversations matter most.',
-    gradient: 'from-amber-500 to-orange-500',
+    title: 'Intelligent Scoring',
+    description: 'Know which conversations need your attention. AI quietly analyzes intent and surfaces what matters most.',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />`,
   },
   {
-    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
-    title: 'Instant Auto-Replies',
-    description: 'Respond in seconds, not hours. AI handles FAQs and routine questions while you sleep.',
-    gradient: 'from-primary-500 to-accent-500',
+    title: 'Thoughtful Automation',
+    description: 'Respond instantly with answers that sound like you. Train the AI with your knowledge and brand voice.',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />`,
   },
   {
-    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>`,
-    title: 'Spam & Noise Filter',
-    description: 'Stop wasting time on junk. AI filters spam and surfaces only real opportunities.',
-    gradient: 'from-red-500 to-pink-500',
-  },
-  {
-    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" /></svg>`,
-    title: 'Human Handoff',
-    description: 'AI handles the routine — you handle the exceptions. Jump in with full context anytime.',
-    gradient: 'from-violet-500 to-purple-500',
-  },
-  {
-    icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>`,
-    title: 'Brand Knowledge',
-    description: 'Train AI with your tone and docs. Every reply stays on-brand and accurate.',
-    gradient: 'from-emerald-500 to-teal-500',
+    title: 'Graceful Handoff',
+    description: 'When a human touch is needed, step in with full context. The AI knows when to pause and let you lead.',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />`,
   },
 ];
 ---
 
-<section id="features" class="py-24 md:py-32">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
-      <span class="inline-block px-4 py-1.5 bg-primary-50 text-primary-700 text-sm font-medium rounded-full mb-4">Features</span>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-        Everything you need to <span class="gradient-text">automate your inbox</span>
+<section id="features" class="section-padding bg-sand-50">
+  <div class="mx-auto max-w-6xl px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="max-w-2xl mb-20 fade-in-up">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-8 h-px bg-moss-400"></span>
+        <span class="text-sm text-moss-600 tracking-wide uppercase">Capabilities</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-ink-900 mb-6 text-balance">
+        Designed for focus, <br/>built for flow
       </h2>
-      <p class="text-lg text-gray-600">
-        Connect every channel, filter the noise, and let AI handle replies while your team stays in control.
+      <p class="text-lg text-ink-500 leading-relaxed">
+        Every feature exists to reduce noise and amplify what matters. Less clutter, more clarity.
       </p>
     </div>
     
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+    <!-- Features grid -->
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
       {features.map((feature, index) => (
-        <div 
-          class="group card p-6 md:p-8 fade-in-up hover:-translate-y-1 cursor-pointer" 
-          style={`transition-delay: ${index * 50}ms`}
-        >
-          <div class:list={[
-            'w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg transition-transform group-hover:scale-110 duration-300',
-            `bg-gradient-to-br ${feature.gradient}`
-          ]} style={`box-shadow: 0 8px 20px -4px color-mix(in srgb, currentColor 30%, transparent);`}>
-            <Fragment set:html={feature.icon} />
+        <div class="group fade-in-up" style={`transition-delay: ${index * 100}ms`}>
+          <div class="flex gap-6">
+            <div class="flex-shrink-0">
+              <div class="w-12 h-12 bg-moss-100 rounded-sm flex items-center justify-center group-hover:bg-moss-200 transition-colors duration-300">
+                <svg class="w-6 h-6 text-moss-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <Fragment set:html={feature.icon} />
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-ink-800 mb-3 font-sans">{feature.title}</h3>
+              <p class="text-ink-500 leading-relaxed">{feature.description}</p>
+            </div>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">{feature.title}</h3>
-          <p class="text-gray-600 leading-relaxed">{feature.description}</p>
         </div>
       ))}
     </div>
