@@ -1,7 +1,7 @@
 ---
 title: "How Replaid Turns Chats Into Leads in Minutes"
 description: "Learn how Replaid's AI inbox assistant turns messages into leads automatically with smart workflows and unified inboxing."
-pubDate: 2025-10-15
+date: 2025-10-15
 category: "Product"
 author: "Ricard P"
 ---

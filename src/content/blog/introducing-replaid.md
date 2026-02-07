@@ -1,7 +1,7 @@
 ---
 title: "Introducing Replaid: Automate Your Inbox with AI"
 description: "Meet Replaid: the AI inbox assistant that unifies all your channels, prioritizes real leads, and replies instantly on-brand."
-pubDate: 2025-10-15
+date: 2025-10-15
 category: "Announcement"
 author: "Ricard P"
 ---

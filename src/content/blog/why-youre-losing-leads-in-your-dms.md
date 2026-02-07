@@ -1,7 +1,7 @@
 ---
 title: "Why You're Losing Leads in Your DMs"
 description: "Your inbox looks busy, but most messages never become customers. Learn how to fix lead leakage with AI-powered automation."
-pubDate: 2025-10-16
+date: 2025-10-16
 category: "Automation"
 author: "Ricard P"
 ---

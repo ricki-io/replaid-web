@@ -1,7 +1,7 @@
 ---
 title: "Centralize All Your Messages with AI"
 description: "From chaos to clarity: why centralizing your messages across Instagram, WhatsApp, and Facebook changes everything for your business."
-pubDate: 2025-10-20
+date: 2025-10-20
 category: "Automation"
 author: "Ricard P"
 ---
