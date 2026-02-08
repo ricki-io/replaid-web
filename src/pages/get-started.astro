@@ -1,0 +1,242 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const features = [
+  { num: '01', title: 'Detects real leads automatically', desc: 'AI analyzes every conversation for high-intent prospects and routes qualified messages to your team — no manual sorting required.' },
+  { num: '02', title: 'Instant AI replies to common questions', desc: 'Train on your website and documents. Replaid provides 24/7 on-brand responses so no lead goes unanswered.' },
+  { num: '03', title: 'Works across all social channels', desc: 'Website chat, Facebook Messenger, Instagram DMs, WhatsApp, and more — all unified in one smart inbox.' },
+  { num: '04', title: 'Automate Workflows & Smart Handoffs', desc: 'Custom workflows for booking, feedback collection, and lead routing. AI escalates to humans when it matters.' },
+];
+
+const faqs = [
+  { q: "Do I need coding skills to use Replaid?", a: "Not at all. Replaid is fully no-code. Connect your channels, configure your preferences, and you're ready to go in under 5 minutes." },
+  { q: "Can I customize the AI's tone and voice?", a: "Yes. You can train the AI with your brand guidelines, tone of voice, and internal documents so every reply stays consistent and on-brand." },
+  { q: "Which platforms does Replaid support?", a: "Instagram DMs and comments, WhatsApp, Facebook Messenger, Website chat, Telegram, and more. We're continuously adding new channels." },
+  { q: "Is my data secure?", a: "Absolutely. All data is encrypted in transit and at rest. We follow industry-standard security practices to keep your conversations safe." },
+  { q: "How quickly can I get started?", a: "Most teams are up and running in under 5 minutes. Just connect your channels, add your brand knowledge, and Replaid handles the rest." },
+];
+---
+
+<Layout title="Get Started — Replaid">
+  <Header />
+
+  <!-- Hero -->
+  <section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-20">
+    <div class="bg-text text-[20vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">START</div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-32 w-full">
+      <div class="max-w-5xl mx-auto text-center">
+        <div class="mono-label mb-8 fade-in-up">Get Started</div>
+
+        <h1 class="text-7xl sm:text-8xl lg:text-[7rem] xl:text-display-xl font-bold mb-8 fade-in-up" style="line-height: 0.95; letter-spacing: -0.04em;">
+          Turn messages<br/>
+          into <span class="text-accent">leads</span><span class="text-ink-400">.</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl md:text-2xl text-ink-100 max-w-2xl mx-auto mb-12 leading-relaxed fade-in-up font-light">
+          Connect Instagram, WhatsApp, and Facebook — let AI filter messages, detect leads, and reply instantly so you never miss an opportunity.
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4 fade-in-up">
+          <a href="#" class="btn-type">
+            Get Started FREE
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 01: Who Uses Replaid -->
+  <section class="py-16 sm:py-24 border-t border-white/5 relative overflow-hidden">
+    <div class="bg-text text-[25vw] -right-20 top-1/2 -translate-y-1/2">WHO</div>
+
+    <div class="relative mx-auto max-w-7xl px-6">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="fade-in-up">
+          <span class="font-mono text-3xl sm:text-4xl font-medium tracking-[0.15em] text-accent">01</span>
+          <h2 class="text-display-sm sm:text-display-md font-bold mt-4 mb-6">
+            Who Uses <span class="text-accent">Replaid</span>
+          </h2>
+        </div>
+        <div class="fade-in-up">
+          <p class="text-ink-200 text-lg sm:text-xl leading-relaxed mb-6">
+            Small businesses, agencies, and creators managing multiple social channels. If you're handling dozens — or hundreds — of messages every day, you need a smarter way to work.
+          </p>
+          <p class="text-ink-200 text-lg sm:text-xl leading-relaxed">
+            Replaid detects real leads in the noise, auto-replies to common questions, and routes high-value conversations to your team — so nothing falls through the cracks.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 02: How It Works -->
+  <section class="py-16 sm:py-24 border-t border-white/5 relative overflow-hidden">
+    <div class="bg-text text-[25vw] -left-20 top-1/2 -translate-y-1/2">HOW</div>
+
+    <div class="relative mx-auto max-w-7xl px-6">
+      <div class="mb-16 fade-in-up">
+        <span class="font-mono text-3xl sm:text-4xl font-medium tracking-[0.15em] text-accent">02</span>
+        <h2 class="text-display-sm sm:text-display-md font-bold mt-4">
+          How Replaid Turns<br/>
+          Messages into <span class="text-accent">Leads</span>
+        </h2>
+      </div>
+
+      <div class="space-y-0">
+        {[
+          { step: '01', title: 'Connect your channels', desc: 'Link Instagram, WhatsApp, Facebook, and more with a single click. No API tokens or complex setups.' },
+          { step: '02', title: 'AI analyzes intent', desc: 'Every message is analyzed for intent, urgency, and buying signals. Real leads are flagged instantly.' },
+          { step: '03', title: 'Auto-reply & route', desc: 'Common questions get instant AI responses. High-value leads are routed to the right team member with full context.' },
+        ].map((s, i) => (
+          <div class="border-t border-white/10 py-10 sm:py-14 flex flex-col sm:flex-row items-start gap-6 sm:gap-12 fade-in-up group" style={`transition-delay: ${i * 100}ms`}>
+            <div class="font-display text-5xl sm:text-7xl font-bold text-accent sm:text-ink-500 sm:group-hover:text-accent transition-colors shrink-0">
+              {s.step}
+            </div>
+            <div>
+              <h3 class="font-display text-2xl sm:text-3xl font-bold mb-3">{s.title}</h3>
+              <p class="text-ink-200 text-lg sm:text-xl max-w-xl">{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 03: Why — with stat -->
+  <section class="py-16 sm:py-24 border-t border-white/5 bg-ink-900/30 relative overflow-hidden">
+    <div class="bg-text text-[30vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">WHY</div>
+
+    <div class="relative mx-auto max-w-7xl px-6">
+      <div class="mb-16 fade-in-up">
+        <span class="font-mono text-3xl sm:text-4xl font-medium tracking-[0.15em] text-accent">03</span>
+        <h2 class="text-display-sm sm:text-display-md font-bold mt-4">
+          Why Businesses<br/>
+          Choose <span class="text-accent">Replaid</span>
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="fade-in-up">
+          <div class="font-display text-7xl sm:text-9xl font-bold tracking-tighter text-accent mb-6">82%</div>
+          <p class="text-ink-100 text-xl sm:text-2xl font-display font-semibold leading-snug">
+            of people expect a reply within minutes when messaging a brand.
+          </p>
+        </div>
+        <div class="fade-in-up">
+          <p class="text-ink-200 text-lg sm:text-xl leading-relaxed mb-6">
+            Customers don't wait. If you're not responding fast, you're losing deals to competitors who are. But hiring more staff doesn't scale.
+          </p>
+          <p class="text-ink-200 text-lg sm:text-xl leading-relaxed">
+            Replaid gives you instant, AI-powered responses across every channel — so your team can focus on closing, not typing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-16 sm:py-24 border-t border-white/5 relative overflow-hidden">
+    <div class="bg-text text-[30vw] -right-20 top-1/2 -translate-y-1/2">FEATURES</div>
+
+    <div class="relative mx-auto max-w-7xl px-6">
+      <div class="mb-12 fade-in-up pl-8 sm:pl-10">
+        <div class="mono-label mb-4">What You Get</div>
+        <h2 class="text-display-md font-bold max-w-4xl">
+          Everything to<br/>
+          <span class="text-accent">automate</span> your inbox
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-px bg-white/5">
+        {features.map((f, i) => (
+          <div class="bg-ink-950 p-8 sm:p-10 fade-in-up group hover:bg-ink-900 transition-colors" style={`transition-delay: ${i * 100}ms`}>
+            <span class="font-mono text-2xl sm:text-3xl font-medium tracking-[0.15em] text-accent">{f.num}</span>
+            <h3 class="font-display text-xl sm:text-2xl font-bold mt-4 mb-4 tracking-tight">{f.title}</h3>
+            <p class="text-ink-200 leading-relaxed">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="py-16 sm:py-24 border-t border-white/5 relative overflow-hidden">
+    <div class="bg-text text-[20vw] right-0 top-20">"</div>
+
+    <div class="relative mx-auto max-w-4xl px-6 text-center">
+      <div class="mono-label mb-8 fade-in-up">Social Proof</div>
+
+      <h2 class="text-display-sm sm:text-display-md font-bold mb-16 fade-in-up">
+        Loved by founders<br/>building the <span class="text-accent">future</span>
+      </h2>
+
+      <div class="fade-in-up">
+        <blockquote class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-snug mb-10">
+          "We went from drowning in repetitive chats to deflecting 60% of them automatically. The AI is smart enough to hand off complex chats, so our agents can focus on what really matters."
+        </blockquote>
+        <div>
+          <div class="font-semibold text-lg">Maria G.</div>
+          <div class="mono-label mt-1">Real Estate Manager</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 sm:py-24 border-t border-white/5">
+    <div class="mx-auto max-w-4xl px-6">
+      <div class="mb-20 fade-in-up text-center">
+        <div class="mono-label mb-4">Questions</div>
+        <h2 class="text-display-md font-bold">Frequently Asked</h2>
+      </div>
+
+      <div class="divide-y divide-white/10">
+        {faqs.map((f, i) => (
+          <details class="group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
+            <summary class="py-8 font-display text-xl sm:text-2xl font-bold cursor-pointer flex justify-between items-center list-none hover:text-accent transition-colors">
+              {f.q}
+              <span class="font-mono text-2xl text-ink-400 group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div class="pb-8 text-ink-200 text-lg leading-relaxed -mt-2">
+              {f.a}
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <div class="text-center mt-12 fade-in-up">
+        <a href="/#faq" class="text-ink-200 hover:text-accent transition-colors font-medium">
+          Still have a question? →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 sm:py-24 relative overflow-hidden border-t border-white/5">
+    <div class="bg-text text-[40vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">GO</div>
+
+    <div class="relative mx-auto max-w-5xl px-6 text-center">
+      <div class="mono-label mb-8 fade-in-up">No Credit Card Required</div>
+
+      <h2 class="text-display-lg font-bold mb-8 fade-in-up">
+        Start for <span class="text-accent">Free</span><span class="text-ink-400">.</span>
+      </h2>
+
+      <p class="text-xl sm:text-2xl text-ink-200 mb-12 fade-in-up max-w-2xl mx-auto font-light">
+        Instant setup, cancel anytime. Start turning conversations into customers today.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
+        <a href="#" class="btn-type">
+          Get Started FREE
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
