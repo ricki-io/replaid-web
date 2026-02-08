@@ -1,0 +1,8 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#000000"/>
+  <text x="100" y="280" font-family="system-ui, sans-serif" font-weight="700" font-size="96" fill="#ffffff" letter-spacing="-3">Money is in</text>
+  <text x="100" y="390" font-family="system-ui, sans-serif" font-weight="700" font-size="96" fill="#ffffff" letter-spacing="-3">your <tspan fill="#ff6b35">inbox</tspan><tspan fill="#404040">.</tspan></text>
+  <text x="100" y="460" font-family="system-ui, sans-serif" font-weight="400" font-size="32" fill="#999999">AI-powered inbox that qualifies leads 24/7</text>
+  <text x="100" y="560" font-family="system-ui, sans-serif" font-weight="700" font-size="40" fill="#ffffff" letter-spacing="-1">Replaid<tspan fill="#ff6b35">.</tspan></text>
+  <text x="287" y="560" font-family="monospace" font-weight="400" font-size="20" fill="#666666" letter-spacing="2">REPLAID.PRO</text>
+</svg>

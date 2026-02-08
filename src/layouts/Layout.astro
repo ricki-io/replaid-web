@@ -2,9 +2,19 @@
 export interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
+  type?: string;
+  jsonLd?: Record<string, any> | Record<string, any>[];
 }
 
-const { title, description = "The AI inbox that turns messages into leads." } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, 'https://replaid.pro');
+const {
+  title,
+  description = "The AI inbox that turns messages into leads.",
+  ogImage = "/og-image.svg",
+  type = "website",
+  jsonLd,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -15,11 +25,26 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#000000" />
-    <meta name="robots" content="noindex, nofollow" />
-    
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:image" content={new URL(ogImage, 'https://replaid.pro').href} />
+    <meta property="og:site_name" content="Replaid" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, 'https://replaid.pro').href} />
+
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(Array.isArray(jsonLd) ? jsonLd : [jsonLd])} />
+    )}
+
     <title>{title}</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -114,7 +139,7 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
         font-weight: 500;
         letter-spacing: 0.15em;
         text-transform: uppercase;
-        color: #666;
+        color: #999;
       }
       
       /* Fade in */

@@ -12,11 +12,78 @@ import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Replaid",
+    "url": "https://replaid.pro",
+    "logo": "https://replaid.pro/favicon.svg",
+    "description": "AI-powered inbox assistant that qualifies leads and triggers automations 24/7.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "hi@replaid.pro",
+      "contactType": "customer support"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Replaid",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "AI-powered inbox assistant that qualifies leads and triggers automations 24/7.",
+    "offers": [
+      { "@type": "Offer", "name": "Starter", "price": "29", "priceCurrency": "USD", "url": "https://replaid.pro/#pricing" },
+      { "@type": "Offer", "name": "Pro", "price": "79", "priceCurrency": "USD", "url": "https://replaid.pro/#pricing" },
+      { "@type": "Offer", "name": "Scale", "price": "199", "priceCurrency": "USD", "url": "https://replaid.pro/#pricing" }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "bestRating": "5",
+      "ratingCount": "120"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What channels can I connect to Replaid?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You can connect Facebook Messenger, Instagram (DMs and comments), WhatsApp, Email, Telegram, and more. We're continuously adding new platforms based on user demand." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Replaid respond automatically to DMs and comments?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Replaid uses AI to send automatic replies, filter out spam, answer common questions, and help you move real leads through your funnel." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use Replaid without automatic replies?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can disable auto-replies and still use Replaid to filter leads, send notifications, and automate workflows. Great if you want to reply manually but still streamline your process." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Replaid qualify leads?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It analyzes message intent using natural language processing to detect interest, assign categories, and trigger notifications or automations so you can focus on the most valuable conversations." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it hard to set up? Do I need to code anything?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Not at all. Replaid is fully no-code. Just connect your channels, configure your preferences, and you're ready to go." }
+      }
+    ]
+  }
+];
 ---
 
-<Layout 
-  title="Replaid — Your Inbox Is Full Of Money" 
+<Layout
+  title="Replaid — Your Inbox Is Full Of Money"
   description="Stop missing leads. Replaid qualifies conversations, auto-replies instantly, and keeps your pipeline moving 24/7."
+  jsonLd={jsonLd}
 >
   <Header />
   <main>

@@ -13,9 +13,9 @@ export default {
           600: '#1a1a1a',
           500: '#2a2a2a',
           400: '#404040',
-          300: '#666666',
-          200: '#888888',
-          100: '#aaaaaa',
+          300: '#999999',
+          200: '#aaaaaa',
+          100: '#bbbbbb',
           50: '#cccccc',
         },
         // Single accent color
