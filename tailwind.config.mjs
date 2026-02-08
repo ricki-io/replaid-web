@@ -32,8 +32,8 @@ export default {
       },
       fontSize: {
         // Massive display sizes
-        'display-xl': ['clamp(4rem, 15vw, 12rem)', { lineHeight: '0.9', letterSpacing: '-0.04em' }],
-        'display-lg': ['clamp(3rem, 10vw, 8rem)', { lineHeight: '0.95', letterSpacing: '-0.03em' }],
+        'display-xl': ['clamp(2.25rem, 10vw, 12rem)', { lineHeight: '0.9', letterSpacing: '-0.04em' }],
+        'display-lg': ['clamp(2rem, 8vw, 8rem)', { lineHeight: '0.95', letterSpacing: '-0.03em' }],
         'display-md': ['clamp(2rem, 6vw, 5rem)', { lineHeight: '1', letterSpacing: '-0.02em' }],
         'display-sm': ['clamp(1.5rem, 4vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
       },

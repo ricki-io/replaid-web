@@ -26,8 +26,10 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
-  <body class="min-h-screen bg-ink-950 text-white antialiased overflow-x-hidden">
-    <slot />
+  <body class="min-h-screen bg-ink-950 text-white antialiased">
+    <div class="overflow-x-hidden w-full">
+      <slot />
+    </div>
     
     <style is:global>
       body {
@@ -47,6 +49,7 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
       
       html {
         scroll-behavior: smooth;
+        overflow-x: hidden;
       }
       
       /* Typography First button - text-driven */
@@ -54,15 +57,22 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 1rem 2.5rem;
+        padding: 0.875rem 2rem;
         font-family: 'Space Grotesk', system-ui, sans-serif;
         font-weight: 600;
-        font-size: 1.125rem;
+        font-size: 1rem;
         letter-spacing: -0.02em;
         background: #fff;
         color: #000;
         border: none;
         transition: all 0.15s ease;
+      }
+
+      @media (min-width: 640px) {
+        .btn-type {
+          padding: 1rem 2.5rem;
+          font-size: 1.125rem;
+        }
       }
       
       .btn-type:hover {
@@ -74,15 +84,22 @@ const { title, description = "The AI inbox that turns messages into leads." } = 
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 1rem 2.5rem;
+        padding: 0.875rem 2rem;
         font-family: 'Space Grotesk', system-ui, sans-serif;
         font-weight: 600;
-        font-size: 1.125rem;
+        font-size: 1rem;
         letter-spacing: -0.02em;
         background: transparent;
         color: #fff;
         border: 2px solid #fff;
         transition: all 0.15s ease;
+      }
+
+      @media (min-width: 640px) {
+        .btn-type-outline {
+          padding: 1rem 2.5rem;
+          font-size: 1.125rem;
+        }
       }
       
       .btn-type-outline:hover {

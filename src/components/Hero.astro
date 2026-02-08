@@ -6,8 +6,8 @@
   <!-- Background text -->
   <div class="bg-text text-[20vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">INBOX</div>
   
-  <div class="relative mx-auto max-w-7xl px-6 py-20 sm:py-32">
-    <div class="max-w-5xl">
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-32 w-full box-border">
+    <div class="max-w-5xl overflow-hidden">
       <!-- Badge -->
       <div class="inline-flex items-center gap-2 mb-8 fade-in-up">
         <span class="mono-label">Voted #1 on Uneed</span>
@@ -15,18 +15,18 @@
       </div>
       
       <!-- Massive headline -->
-      <h1 class="text-display-xl font-bold mb-8 fade-in-up">
+      <h1 class="text-5xl sm:text-7xl lg:text-display-xl font-bold mb-8 fade-in-up" style="line-height: 0.95; letter-spacing: -0.04em;">
         Money is in<br/>
         your <span class="text-accent">inbox</span><span class="text-ink-400">.</span>
       </h1>
       
       <!-- Subheadline -->
-      <p class="text-xl sm:text-2xl text-ink-100 max-w-2xl mb-12 leading-relaxed fade-in-up font-light">
+      <p class="text-lg sm:text-xl md:text-2xl text-ink-100 max-w-2xl mb-12 leading-relaxed fade-in-up font-light">
         Never miss an opportunity again. Qualify leads, send notifications, trigger automations, and keep your pipeline moving 24/7.
       </p>
       
       <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row gap-4 mb-20 fade-in-up">
+      <div class="flex flex-col sm:flex-row gap-4 mb-12 fade-in-up">
         <a href="#cta" class="btn-type">
           Start Free Trial
         </a>
@@ -34,9 +34,22 @@
           How It Works
         </a>
       </div>
-      
+
+      <!-- Connects With -->
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mb-20 fade-in-up">
+        <span class="mono-label shrink-0">Connects With</span>
+        <div class="flex flex-wrap gap-4 sm:gap-8">
+          <span class="font-display text-base sm:text-lg font-medium text-ink-200">Instagram</span>
+          <span class="font-display text-base sm:text-lg font-medium text-ink-200">WhatsApp</span>
+          <span class="font-display text-base sm:text-lg font-medium text-ink-200">Messenger</span>
+          <span class="font-display text-base sm:text-lg font-medium text-ink-200">Email</span>
+          <span class="font-display text-base sm:text-lg font-medium text-ink-200">Telegram</span>
+          <span class="font-display text-base sm:text-lg font-medium text-ink-200">Twitter</span>
+        </div>
+      </div>
+
       <!-- Product screenshot placeholder -->
-      <div class="fade-in-up mb-20 -mx-2 sm:mx-0">
+      <div class="fade-in-up mb-20 sm:mx-0">
         <div class="relative rounded-lg border border-white/10 bg-ink-900 overflow-hidden shadow-2xl shadow-black/50">
           <!-- Window chrome -->
           <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-ink-900">
@@ -70,54 +83,54 @@
             <!-- Message list -->
             <div class="flex-1 flex flex-col">
               <!-- Toolbar -->
-              <div class="flex items-center gap-3 px-4 py-3 border-b border-white/5">
+              <div class="flex items-center gap-3 px-3 sm:px-4 py-3 border-b border-white/5">
                 <span class="text-sm font-semibold text-white">Inbox</span>
                 <span class="text-xs text-ink-400 font-mono">12 unread</span>
               </div>
               <!-- Messages -->
               <div class="flex-1 flex flex-col divide-y divide-white/5">
-                <div class="flex items-start gap-3 px-4 py-3 bg-white/[0.03]">
-                  <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-xs font-bold mt-0.5 shrink-0">S</div>
+                <div class="flex items-start gap-2 sm:gap-3 px-3 sm:px-4 py-3 bg-white/[0.03]">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-xs font-bold mt-0.5 shrink-0">S</div>
                   <div class="min-w-0 flex-1">
-                    <div class="flex items-center gap-2">
-                      <span class="text-sm font-semibold text-white">Sarah from Acme</span>
-                      <span class="text-[10px] font-mono text-accent bg-accent/10 px-1.5 py-0.5 rounded">HOT LEAD</span>
-                      <span class="ml-auto text-xs text-ink-400 shrink-0">2m ago</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                      <span class="text-xs sm:text-sm font-semibold text-white truncate">Sarah from Acme</span>
+                      <span class="hidden sm:inline text-[10px] font-mono text-accent bg-accent/10 px-1.5 py-0.5 rounded shrink-0">HOT LEAD</span>
+                      <span class="ml-auto text-[10px] sm:text-xs text-ink-400 shrink-0">2m ago</span>
                     </div>
-                    <p class="text-sm text-ink-200 truncate">Hey! We'd love to integrate Replaid into our workflow. What's your...</p>
+                    <p class="text-xs sm:text-sm text-ink-200 truncate">Hey! We'd love to integrate Replaid into our workflow. What's your...</p>
                   </div>
                 </div>
-                <div class="flex items-start gap-3 px-4 py-3 bg-white/[0.03]">
-                  <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 text-xs font-bold mt-0.5 shrink-0">M</div>
+                <div class="flex items-start gap-2 sm:gap-3 px-3 sm:px-4 py-3 bg-white/[0.03]">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 text-xs font-bold mt-0.5 shrink-0">M</div>
                   <div class="min-w-0 flex-1">
-                    <div class="flex items-center gap-2">
-                      <span class="text-sm font-semibold text-white">Mike via Instagram</span>
-                      <span class="text-[10px] font-mono text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded">AUTO-REPLIED</span>
-                      <span class="ml-auto text-xs text-ink-400 shrink-0">18m ago</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                      <span class="text-xs sm:text-sm font-semibold text-white truncate">Mike via Instagram</span>
+                      <span class="hidden sm:inline text-[10px] font-mono text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded shrink-0">AUTO-REPLIED</span>
+                      <span class="ml-auto text-[10px] sm:text-xs text-ink-400 shrink-0">18m ago</span>
                     </div>
-                    <p class="text-sm text-ink-200 truncate">Do you offer custom plans for agencies? We have 30+ clients and...</p>
+                    <p class="text-xs sm:text-sm text-ink-200 truncate">Do you offer custom plans for agencies? We have 30+ clients and...</p>
                   </div>
                 </div>
-                <div class="flex items-start gap-3 px-4 py-3">
-                  <div class="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-xs font-bold mt-0.5 shrink-0">L</div>
+                <div class="flex items-start gap-2 sm:gap-3 px-3 sm:px-4 py-3">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-xs font-bold mt-0.5 shrink-0">L</div>
                   <div class="min-w-0 flex-1">
-                    <div class="flex items-center gap-2">
-                      <span class="text-sm font-semibold text-white">Lisa on WhatsApp</span>
-                      <span class="text-[10px] font-mono text-ink-300 bg-white/5 px-1.5 py-0.5 rounded">QUALIFIED</span>
-                      <span class="ml-auto text-xs text-ink-400 shrink-0">1h ago</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                      <span class="text-xs sm:text-sm font-semibold text-white truncate">Lisa on WhatsApp</span>
+                      <span class="hidden sm:inline text-[10px] font-mono text-ink-300 bg-white/5 px-1.5 py-0.5 rounded shrink-0">QUALIFIED</span>
+                      <span class="ml-auto text-[10px] sm:text-xs text-ink-400 shrink-0">1h ago</span>
                     </div>
-                    <p class="text-sm text-ink-200 truncate">I saw your pricing page — is the Pro plan right for a team of 5?</p>
+                    <p class="text-xs sm:text-sm text-ink-200 truncate">I saw your pricing page — is the Pro plan right for a team of 5?</p>
                   </div>
                 </div>
-                <div class="flex items-start gap-3 px-4 py-3">
-                  <div class="w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 text-xs font-bold mt-0.5 shrink-0">J</div>
+                <div class="flex items-start gap-2 sm:gap-3 px-3 sm:px-4 py-3">
+                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 text-xs font-bold mt-0.5 shrink-0">J</div>
                   <div class="min-w-0 flex-1">
-                    <div class="flex items-center gap-2">
-                      <span class="text-sm font-semibold text-white">James via Email</span>
-                      <span class="text-[10px] font-mono text-accent bg-accent/10 px-1.5 py-0.5 rounded">HOT LEAD</span>
-                      <span class="ml-auto text-xs text-ink-400 shrink-0">3h ago</span>
+                    <div class="flex items-center gap-2 min-w-0">
+                      <span class="text-xs sm:text-sm font-semibold text-white truncate">James via Email</span>
+                      <span class="hidden sm:inline text-[10px] font-mono text-accent bg-accent/10 px-1.5 py-0.5 rounded shrink-0">HOT LEAD</span>
+                      <span class="ml-auto text-[10px] sm:text-xs text-ink-400 shrink-0">3h ago</span>
                     </div>
-                    <p class="text-sm text-ink-200 truncate">We're evaluating tools for our sales team. Can we schedule a call...</p>
+                    <p class="text-xs sm:text-sm text-ink-200 truncate">We're evaluating tools for our sales team. Can we schedule a call...</p>
                   </div>
                 </div>
               </div>
@@ -126,20 +139,25 @@
         </div>
       </div>
 
-      <!-- Stats in mono -->
-      <div class="flex flex-wrap gap-12 sm:gap-20 fade-in-up">
-        <div>
-          <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">5M+</div>
-          <div class="mono-label mt-2">Messages Processed</div>
-        </div>
-        <div>
-          <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">10×</div>
-          <div class="mono-label mt-2">Faster Response</div>
-        </div>
-        <div>
-          <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">4.9</div>
-          <div class="mono-label mt-2">Average Rating</div>
-        </div>
+    </div>
+
+    <!-- Stats in mono -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 fade-in-up text-center max-w-4xl lg:mx-auto">
+      <div>
+        <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">5M+</div>
+        <div class="mono-label mt-2">Messages Processed</div>
+      </div>
+      <div>
+        <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">10×</div>
+        <div class="mono-label mt-2">Faster Response</div>
+      </div>
+      <div>
+        <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">4.9</div>
+        <div class="mono-label mt-2">Average Rating</div>
+      </div>
+      <div>
+        <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">24/7</div>
+        <div class="mono-label mt-2">Always On</div>
       </div>
     </div>
   </div>

@@ -10,10 +10,10 @@ const stats = [
 
 <section class="py-24 sm:py-32 border-y border-white/5 bg-ink-900/30">
   <div class="mx-auto max-w-7xl px-6">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-8">
       {stats.map((s, i) => (
         <div class="text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <div class="font-display text-5xl sm:text-7xl font-bold tracking-tighter text-accent">{s.value}</div>
+          <div class="font-display text-4xl sm:text-7xl font-bold tracking-tighter text-accent">{s.value}</div>
           <div class="mono-label mt-4">{s.label}</div>
         </div>
       ))}
