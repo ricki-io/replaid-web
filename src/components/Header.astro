@@ -8,17 +8,67 @@
       <a href="/" class="font-display text-2xl font-bold tracking-tight">
         Replaid<span class="text-accent">.</span>
       </a>
-      
+
       <div class="hidden md:flex items-center gap-10">
         <a href="/#features" class="text-ink-100 hover:text-white transition-colors text-sm font-medium">Features</a>
         <a href="/#pricing" class="text-ink-100 hover:text-white transition-colors text-sm font-medium">Pricing</a>
         <a href="/#faq" class="text-ink-100 hover:text-white transition-colors text-sm font-medium">FAQ</a>
         <a href="/blog" class="text-ink-100 hover:text-white transition-colors text-sm font-medium">Blog</a>
       </div>
-      
-      <a href="/#cta" class="font-display font-semibold text-sm bg-white text-black px-6 py-3 hover:bg-accent hover:text-white transition-colors">
-        Start Free →
-      </a>
+
+      <div class="flex items-center gap-4">
+        <a href="/#cta" class="hidden sm:inline-flex font-display font-semibold text-sm bg-white text-black px-6 py-3 hover:bg-accent hover:text-white transition-colors">
+          Start Free →
+        </a>
+
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center gap-[5px] w-8 h-8" aria-label="Toggle menu" aria-expanded="false">
+          <span class="block h-[2px] w-full bg-white transition-all duration-300 origin-center" id="bar-1"></span>
+          <span class="block h-[2px] w-full bg-white transition-all duration-300" id="bar-2"></span>
+          <span class="block h-[2px] w-full bg-white transition-all duration-300 origin-center" id="bar-3"></span>
+        </button>
+      </div>
     </nav>
   </div>
+
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu" class="md:hidden hidden border-t border-white/5 bg-ink-950/95 backdrop-blur-sm">
+    <div class="px-6 py-6 flex flex-col gap-4">
+      <a href="/#features" class="text-ink-100 hover:text-white transition-colors text-lg font-medium py-2">Features</a>
+      <a href="/#pricing" class="text-ink-100 hover:text-white transition-colors text-lg font-medium py-2">Pricing</a>
+      <a href="/#faq" class="text-ink-100 hover:text-white transition-colors text-lg font-medium py-2">FAQ</a>
+      <a href="/blog" class="text-ink-100 hover:text-white transition-colors text-lg font-medium py-2">Blog</a>
+      <a href="/#cta" class="sm:hidden font-display font-semibold text-sm bg-white text-black px-6 py-3 hover:bg-accent hover:text-white transition-colors text-center mt-2">
+        Start Free →
+      </a>
+    </div>
+  </div>
 </header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn')!;
+  const menu = document.getElementById('mobile-menu')!;
+  const bar1 = document.getElementById('bar-1')!;
+  const bar2 = document.getElementById('bar-2')!;
+  const bar3 = document.getElementById('bar-3')!;
+
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('hidden');
+    const isOpen = !open;
+    btn.setAttribute('aria-expanded', String(isOpen));
+    bar1.style.transform = isOpen ? 'translateY(7px) rotate(45deg)' : '';
+    bar2.style.opacity = isOpen ? '0' : '1';
+    bar3.style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
+  });
+
+  // Close menu when a link is clicked
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      bar1.style.transform = 'none';
+      bar2.style.opacity = '1';
+      bar3.style.transform = 'none';
+    });
+  });
+</script>
