@@ -7,7 +7,7 @@ const steps = [
 ];
 ---
 
-<section id="how-it-works" class="py-24 sm:py-32 relative overflow-hidden">
+<section id="how-it-works" class="py-16 sm:py-24 relative overflow-hidden">
   <!-- Background text -->
   <div class="bg-text text-[25vw] -left-20 top-1/2 -translate-y-1/2">HOW</div>
   
@@ -15,15 +15,15 @@ const steps = [
     <div class="mb-20 fade-in-up text-center">
       <div class="mono-label mb-4">Getting Started</div>
       <h2 class="text-display-md font-bold">
-        Up and running in<br/>
-        <span class="text-accent">minutes</span>
+        Setup in minutes,<br/>
+        <span class="text-accent">runs forever</span>
       </h2>
     </div>
     
     <div class="space-y-0">
       {steps.map((s, i) => (
-        <div class="border-t border-white/10 py-12 sm:py-16 flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-20 fade-in-up group" style={`transition-delay: ${i * 100}ms`}>
-          <div class="font-display text-5xl sm:text-9xl font-bold text-ink-500 group-hover:text-accent transition-colors">
+        <div class="border-t border-white/10 py-12 sm:py-16 flex flex-col items-center text-center gap-6 fade-in-up group" style={`transition-delay: ${i * 100}ms`}>
+          <div class="font-display text-5xl sm:text-9xl font-bold text-accent sm:text-ink-500 sm:group-hover:text-accent transition-colors">
             {String(i + 1).padStart(2, '0')}
           </div>
           <div>

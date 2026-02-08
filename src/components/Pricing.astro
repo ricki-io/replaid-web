@@ -7,7 +7,7 @@ const plans = [
 ];
 ---
 
-<section id="pricing" class="py-24 sm:py-32">
+<section id="pricing" class="py-16 sm:py-24">
   <div class="mx-auto max-w-7xl px-6">
     <div class="mb-20 fade-in-up text-center">
       <div class="mono-label mb-4">Pricing</div>
@@ -18,8 +18,8 @@ const plans = [
     
     <div class="grid md:grid-cols-3 gap-px bg-white/10 max-w-5xl mx-auto">
       {plans.map((p, i) => (
-        <div class={`bg-ink-950 p-8 sm:p-10 fade-in-up flex flex-col ${p.highlight ? 'md:order-2 order-first' : i === 0 ? 'md:order-1' : 'md:order-3'}`} style={`transition-delay: ${i * 100}ms`}>
-          {p.highlight && <div class="mono-label text-accent mb-6">Most Popular</div>}
+        <div class={`p-8 sm:p-10 fade-in-up flex flex-col relative ${p.highlight ? 'md:order-2 order-first bg-ink-900 border-2 border-white/20' : i === 0 ? 'md:order-1 bg-ink-950' : 'md:order-3 bg-ink-950'}`} style={`transition-delay: ${i * 100}ms`}>
+          {p.highlight && <div class="mono-label text-accent absolute top-4 right-4 sm:top-6 sm:right-6">Most Popular</div>}
           <h3 class="font-display text-2xl font-bold mb-2">{p.name}</h3>
           <div class="mb-8">
             <span class="font-display text-5xl sm:text-7xl font-bold tracking-tighter">${p.price}</span>
