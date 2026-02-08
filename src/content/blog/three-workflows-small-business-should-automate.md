@@ -102,4 +102,4 @@ Setting up these three workflows today means more time, more sales, and fewer mi
 
 Start simple. Automate your lead replies, support messages, and follow-ups, then scale from there.
 
-👉 [Start your free trial](#cta) and build your first three workflows today. Your future self and your inbox will thank you.
+👉 [Start your free trial](/get-started) and build your first three workflows today. Your future self and your inbox will thank you.
