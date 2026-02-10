@@ -210,27 +210,6 @@ function createParticles() {
   rimLight.position.set(-5, 3, -3);
   scene.add(rimLight);
 
-  // Central glowing core
-  const coreGeo = new THREE.SphereGeometry(0.15, 16, 16);
-  const coreMat = new THREE.MeshBasicMaterial({
-    color: ACCENT,
-    transparent: true,
-    opacity: 0.6,
-  });
-  const core = new THREE.Mesh(coreGeo, coreMat);
-  core.name = 'core';
-  scene.add(core);
-
-  // Outer glow sphere
-  const glowGeo = new THREE.SphereGeometry(0.4, 16, 16);
-  const glowMat = new THREE.MeshBasicMaterial({
-    color: ACCENT,
-    transparent: true,
-    opacity: 0.12,
-  });
-  const glow = new THREE.Mesh(glowGeo, glowMat);
-  glow.name = 'glow';
-  scene.add(glow);
 }
 
 // ---------------------------------------------------------------------------
@@ -317,17 +296,6 @@ function animate() {
     instancedMesh.instanceColor.needsUpdate = true;
   }
 
-  // Pulse the central core
-  const core = scene.getObjectByName('core') as THREE.Mesh | undefined;
-  const glow = scene.getObjectByName('glow') as THREE.Mesh | undefined;
-  if (core) {
-    const pulse = 1 + 0.15 * Math.sin(elapsed * 1.5);
-    core.scale.setScalar(pulse * easedEntrance);
-  }
-  if (glow) {
-    const pulse = 1 + 0.25 * Math.sin(elapsed * 1.2 + 0.5);
-    glow.scale.setScalar(pulse * easedEntrance);
-  }
 
   // Gentle camera sway
   camera.position.x = Math.sin(elapsed * 0.15) * 0.3;
