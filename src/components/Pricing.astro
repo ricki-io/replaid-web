@@ -1,10 +1,10 @@
 ---
 // Typography First Pricing - type-driven, minimal cards
 const plans = [
-  { name: 'Starter', price: '29', features: ['1 channel', '100 credits/mo', '1 user', '7-day email support'], highlight: false },
-  { name: 'Pro', price: '79', features: ['3 channels', '500 credits/mo', '3 users', 'Connectors & MCP', 'Priority support'], highlight: true },
-  { name: 'Business', price: '149', features: ['All channels', '5,000 credits/mo', '5 users', 'Connectors & MCP', 'Priority support'], highlight: false },
-  { name: 'Agency', price: '299', features: ['All channels', '15,000 credits/mo', 'Unlimited users', 'Connectors & MCP', 'Priority support', 'Dedicated success manager'], highlight: false },
+  { name: 'Starter', priceMonthly: '29', priceYearly: '290', features: ['1 channel', '100 credits/mo', '1 user', '7-day email support'], highlight: false },
+  { name: 'Pro', priceMonthly: '79', priceYearly: '790', features: ['3 channels', '500 credits/mo', '3 users', 'Connectors & MCP', 'Priority support'], highlight: true },
+  { name: 'Business', priceMonthly: '149', priceYearly: '1490', features: ['All channels', '5,000 credits/mo', '5 users', 'Connectors & MCP', 'Priority support'], highlight: false },
+  { name: 'Agency', priceMonthly: '299', priceYearly: '2990', features: ['All channels', '15,000 credits/mo', 'Unlimited users', 'Connectors & MCP', 'Priority support', 'Dedicated success manager'], highlight: false },
 ];
 ---
 
@@ -15,16 +15,32 @@ const plans = [
       <h2 class="text-display-md font-bold">
         Simple<span class="text-accent">,</span> transparent
       </h2>
+
+      <!-- Toggle -->
+      <div class="flex items-center justify-center gap-4 mt-8">
+        <span class="font-display font-semibold text-lg pricing-label-monthly text-white">Monthly</span>
+        <button
+          id="pricing-toggle"
+          class="relative w-14 h-8 bg-ink-700 rounded-full cursor-pointer transition-colors"
+          aria-label="Toggle yearly pricing"
+        >
+          <span class="pricing-toggle-dot absolute top-1 left-1 w-6 h-6 bg-white rounded-full transition-transform"></span>
+        </button>
+        <span class="font-display font-semibold text-lg pricing-label-yearly text-ink-400">Yearly</span>
+      </div>
+
     </div>
-    
+
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 max-w-6xl mx-auto">
       {plans.map((p, i) => (
         <div class={`p-8 sm:p-10 fade-in-up flex flex-col relative ${p.highlight ? 'bg-ink-900 border-2 border-white/20' : 'bg-ink-950'}`} style={`transition-delay: ${i * 100}ms`}>
           {p.highlight && <div class="mono-label text-accent absolute top-4 right-4 sm:top-6 sm:right-6">Most Popular</div>}
           <h3 class="font-display text-2xl font-bold mb-2">{p.name}</h3>
           <div class="mb-8">
-            <span class="font-display text-5xl sm:text-6xl font-bold tracking-tighter">€{p.price}</span>
-            <span class="text-ink-300 text-lg">/mo</span>
+            <span class="font-display text-5xl sm:text-6xl font-bold tracking-tighter">
+              €<span class="price-value" data-monthly={p.priceMonthly} data-yearly={p.priceYearly}>{p.priceMonthly}</span>
+            </span>
+            <span class="text-ink-300 text-lg price-period">/mo</span>
           </div>
           <ul class="space-y-4 mb-10 flex-1">
             {p.features.map(f => (
@@ -46,3 +62,38 @@ const plans = [
     </p>
   </div>
 </section>
+
+<script>
+  const toggle = document.getElementById('pricing-toggle');
+  if (toggle) {
+    let yearly = false;
+    toggle.addEventListener('click', () => {
+      yearly = !yearly;
+      const dot = toggle.querySelector('.pricing-toggle-dot') as HTMLElement;
+      const prices = document.querySelectorAll('.price-value');
+      const periods = document.querySelectorAll('.price-period');
+      const labelMonthly = document.querySelector('.pricing-label-monthly') as HTMLElement;
+      const labelYearly = document.querySelector('.pricing-label-yearly') as HTMLElement;
+
+      if (yearly) {
+        dot.style.transform = 'translateX(1.5rem)';
+        toggle.classList.add('bg-accent');
+        toggle.classList.remove('bg-ink-700');
+        labelMonthly.classList.replace('text-white', 'text-ink-400');
+        labelYearly.classList.replace('text-ink-400', 'text-white');
+        prices.forEach(el => { el.textContent = (el as HTMLElement).dataset.yearly!; });
+        periods.forEach(el => { el.textContent = '/yr'; });
+
+      } else {
+        dot.style.transform = 'translateX(0)';
+        toggle.classList.remove('bg-accent');
+        toggle.classList.add('bg-ink-700');
+        labelMonthly.classList.replace('text-ink-400', 'text-white');
+        labelYearly.classList.replace('text-white', 'text-ink-400');
+        prices.forEach(el => { el.textContent = (el as HTMLElement).dataset.monthly!; });
+        periods.forEach(el => { el.textContent = '/mo'; });
+
+      }
+    });
+  }
+</script>
