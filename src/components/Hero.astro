@@ -126,6 +126,7 @@
 
   const container = document.getElementById('hero-canvas-container');
   if (container) {
-    initHeroScene(container);
+    // Defer to next frame so the container has its layout dimensions (fixes mobile first load)
+    requestAnimationFrame(() => initHeroScene(container));
   }
 </script>

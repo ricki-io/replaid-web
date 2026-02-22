@@ -30,6 +30,7 @@ let clock: THREE.Clock | null = null;
 let container: HTMLElement | null = null;
 let isVisible = true;
 let observer: IntersectionObserver | null = null;
+let resizeObserver: ResizeObserver | null = null;
 let accentColorDirty = false;
 let lastFrameTime = 0;
 
@@ -76,8 +77,9 @@ function rand(min: number, max: number): number {
 
 function createScene(el: HTMLElement) {
   container = el;
-  const w = el.clientWidth;
-  const h = el.clientHeight;
+  // Fallback to window dimensions if container hasn't been laid out yet (mobile first load)
+  const w = el.clientWidth || window.innerWidth;
+  const h = el.clientHeight || window.innerHeight;
 
   // Renderer — pixel ratio capped at 1; this is a background element behind text
   renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
@@ -296,6 +298,10 @@ export function initHeroScene(el: HTMLElement) {
 
   window.addEventListener('resize', onResize);
 
+  // ResizeObserver corrects canvas size once container has real dimensions (mobile first load)
+  resizeObserver = new ResizeObserver(() => onResize());
+  resizeObserver.observe(el);
+
   // Pause rendering when the hero is scrolled out of view
   observer = new IntersectionObserver(
     ([entry]) => { isVisible = entry.isIntersecting; },
@@ -317,6 +323,11 @@ export function destroyHeroScene() {
   if (observer) {
     observer.disconnect();
     observer = null;
+  }
+
+  if (resizeObserver) {
+    resizeObserver.disconnect();
+    resizeObserver = null;
   }
 
   if (renderer && container) {
