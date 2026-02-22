@@ -20,9 +20,9 @@ export default {
         },
         // Single accent color
         accent: {
-          DEFAULT: '#ff6b35',
-          light: '#ff8c5a',
-          dark: '#e55a2b',
+          DEFAULT: '#93e85f',
+          light: '#aeed83',
+          dark: '#7bd44a',
         },
       },
       fontFamily: {

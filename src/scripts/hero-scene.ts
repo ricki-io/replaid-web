@@ -4,7 +4,7 @@ import * as THREE from 'three';
 // Constants
 // ---------------------------------------------------------------------------
 
-const ACCENT = new THREE.Color(0xff6b35);
+const ACCENT = new THREE.Color(0x93e85f);
 const WHITE = new THREE.Color(0xffffff);
 const GRAY_LIGHT = new THREE.Color(0xbbbbbb);
 const GRAY_MID = new THREE.Color(0x777777);
@@ -182,7 +182,7 @@ function createParticles() {
   const ambient = new THREE.AmbientLight(0xffffff, 0.5);
   scene.add(ambient);
 
-  const pointLight = new THREE.PointLight(0xff6b35, 4, 20);
+  const pointLight = new THREE.PointLight(0x93e85f, 4, 20);
   pointLight.position.set(0, 0, 2);
   scene.add(pointLight);
 

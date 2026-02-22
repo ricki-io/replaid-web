@@ -39,7 +39,7 @@ Blog posts are Markdown files in `src/content/blog/`. Schema defined in `src/con
 ### Design System
 
 Defined in `tailwind.config.mjs`:
-- **Colors**: `ink-*` scale (grayscale from black), `accent` (#ff6b35 orange)
+- **Colors**: `ink-*` scale (grayscale from black), `accent` (#93e85f green)
 - **Fonts**: `font-display` (Space Grotesk for headings), `font-sans` (Inter for body), `font-mono` (JetBrains Mono for labels)
 - **Display sizes**: `text-display-xl` through `text-display-sm` using `clamp()` for responsive scaling
 
