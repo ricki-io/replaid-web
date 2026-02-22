@@ -37,7 +37,7 @@ const blogJsonLd = {
 };
 ---
 
-<Layout title={`${post.data.title} — Replaid Blog`} description={post.data.description} type="article" jsonLd={blogJsonLd}>
+<Layout title={`${post.data.title} — Replaid Blog`} description={post.data.description} ogImage={post.data.image || "/og-image.png"} type="article" jsonLd={blogJsonLd}>
   <Header />
 
   <main class="pt-32 pb-20">
