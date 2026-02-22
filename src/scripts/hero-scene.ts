@@ -31,7 +31,8 @@ let container: HTMLElement | null = null;
 let isVisible = true;
 let observer: IntersectionObserver | null = null;
 let resizeObserver: ResizeObserver | null = null;
-let accentColorDirty = false;
+let material: THREE.MeshLambertMaterial | null = null;
+let entranceDone = false;
 let lastFrameTime = 0;
 
 // Per-particle data
@@ -47,8 +48,12 @@ let wobbleAmp: Float32Array;
 let spawnPositions: Float32Array; // x,y,z for entrance scatter
 let isAccent: Uint8Array;
 
-// Reusable objects
-const dummy = new THREE.Object3D();
+// Reusable objects (avoid per-frame allocations)
+const tempMatrix = new THREE.Matrix4();
+const tempQuat = new THREE.Quaternion();
+const tempEuler = new THREE.Euler();
+const tempPos = new THREE.Vector3();
+const tempScale = new THREE.Vector3();
 const tempColor = new THREE.Color();
 
 // ---------------------------------------------------------------------------
@@ -85,8 +90,7 @@ function createScene(el: HTMLElement) {
   renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
   renderer.setPixelRatio(1);
   renderer.setSize(w, h);
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.2;
+  renderer.toneMapping = THREE.NoToneMapping;
   el.appendChild(renderer.domElement);
 
   // Scene & fog
@@ -126,16 +130,16 @@ function createParticles() {
   // Message card geometry — thin rounded rectangle
   const geo = new THREE.BoxGeometry(0.18, 0.12, 0.015);
 
-  // Material — slightly emissive for glow pickup
-  const mat = new THREE.MeshStandardMaterial({
-    roughness: 0.35,
-    metalness: 0.15,
+  // Material — lightweight Lambert; PBR is overkill for blurred background cards
+  const mat = new THREE.MeshLambertMaterial({
+    color: 0xffffff,
     emissive: ACCENT,
     emissiveIntensity: 0.15,
     transparent: true,
     opacity: 0.92,
   });
 
+  material = mat;
   instancedMesh = new THREE.InstancedMesh(geo, mat, particleCount);
   instancedMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
 
@@ -207,17 +211,22 @@ function animate(now: DOMHighResTimeStamp) {
   if (delta < FRAME_INTERVAL) return;
   lastFrameTime = now - (delta % FRAME_INTERVAL) * 1000;
 
-  if (!clock || !instancedMesh || !camera || !renderer || !scene) return;
+  if (!clock || !instancedMesh || !camera || !renderer || !scene || !material) return;
 
   const elapsed = clock.getElapsedTime();
-  const entranceT = Math.min(elapsed / ENTRANCE_DURATION, 1);
-  const easedEntrance = easeOutCubic(entranceT);
+  const duringEntrance = !entranceDone;
+  let easedEntrance = 1;
 
-  // Update particles
+  if (duringEntrance) {
+    const entranceT = Math.min(elapsed / ENTRANCE_DURATION, 1);
+    easedEntrance = easeOutCubic(entranceT);
+    if (entranceT >= 1) entranceDone = true;
+  }
+
+  // Update particles — write matrix directly, avoiding Object3D overhead
   for (let i = 0; i < particleCount; i++) {
     const angle = orbitPhase[i] + elapsed * orbitSpeed[i];
     const r = orbitRadius[i];
-    const s = particleScale[i];
 
     // Target orbit position
     const tx = Math.cos(angle) * r;
@@ -226,46 +235,37 @@ function animate(now: DOMHighResTimeStamp) {
       verticalOffset[i] +
       Math.sin(elapsed * verticalSpeed[i] + wobblePhase[i]) * wobbleAmp[i];
 
-    // Entrance interpolation: spawn → orbit
-    const sx = spawnPositions[i * 3 + 0];
-    const sy = spawnPositions[i * 3 + 1];
-    const sz = spawnPositions[i * 3 + 2];
+    let px: number, py: number, pz: number;
 
-    const px = lerp(sx, tx, easedEntrance);
-    const py = lerp(sy, ty, easedEntrance);
-    const pz = lerp(sz, tz, easedEntrance);
+    if (duringEntrance) {
+      px = lerp(spawnPositions[i * 3 + 0], tx, easedEntrance);
+      py = lerp(spawnPositions[i * 3 + 1], ty, easedEntrance);
+      pz = lerp(spawnPositions[i * 3 + 2], tz, easedEntrance);
+    } else {
+      px = tx;
+      py = ty;
+      pz = tz;
+    }
 
-    dummy.position.set(px, py, pz);
-
-    // Rotation — tumble gently
-    dummy.rotation.set(
+    // Build matrix directly: compose(position, quaternion, scale)
+    tempEuler.set(
       elapsed * 0.3 + i * 0.1,
       elapsed * 0.2 + i * 0.15,
       elapsed * 0.1 + i * 0.05
     );
+    tempQuat.setFromEuler(tempEuler);
 
-    // Scale — entrance grows from 0
-    const currentScale = s * easedEntrance;
-    dummy.scale.setScalar(currentScale);
-
-    dummy.updateMatrix();
-    instancedMesh.setMatrixAt(i, dummy.matrix);
-
-    // Dynamic emissive for accent particles — pulse
-    if (isAccent[i]) {
-      const pulse = 0.3 + 0.7 * (0.5 + 0.5 * Math.sin(elapsed * 2 + i));
-      tempColor.copy(ACCENT).multiplyScalar(pulse);
-      instancedMesh.setColorAt(i, tempColor);
-      accentColorDirty = true;
-    }
+    const s = particleScale[i] * easedEntrance;
+    tempPos.set(px, py, pz);
+    tempScale.setScalar(s);
+    tempMatrix.compose(tempPos, tempQuat, tempScale);
+    instancedMesh.setMatrixAt(i, tempMatrix);
   }
 
   instancedMesh.instanceMatrix.needsUpdate = true;
-  if (accentColorDirty && instancedMesh.instanceColor) {
-    instancedMesh.instanceColor.needsUpdate = true;
-    accentColorDirty = false;
-  }
 
+  // Pulse accent via emissive intensity (single uniform, no buffer upload)
+  material.emissiveIntensity = 0.1 + 0.15 * (0.5 + 0.5 * Math.sin(elapsed * 2));
 
   // Gentle camera sway
   camera.position.x = Math.sin(elapsed * 0.15) * 0.3;
@@ -337,8 +337,12 @@ export function destroyHeroScene() {
   // Dispose Three.js resources
   if (instancedMesh) {
     instancedMesh.geometry.dispose();
-    (instancedMesh.material as THREE.Material).dispose();
     instancedMesh = null;
+  }
+
+  if (material) {
+    material.dispose();
+    material = null;
   }
 
   if (renderer) {
@@ -350,4 +354,5 @@ export function destroyHeroScene() {
   camera = null;
   clock = null;
   container = null;
+  entranceDone = false;
 }
