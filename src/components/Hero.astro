@@ -122,11 +122,13 @@
 </style>
 
 <script>
-  import { initHeroScene, destroyHeroScene } from '../scripts/hero-scene';
-
+  // Dynamic import keeps Three.js (~122KB gzip) out of the critical rendering path
   const container = document.getElementById('hero-canvas-container');
   if (container) {
-    // Defer to next frame so the container has its layout dimensions (fixes mobile first load)
-    requestAnimationFrame(() => initHeroScene(container));
+    requestAnimationFrame(() => {
+      import('../scripts/hero-scene').then(({ initHeroScene }) => {
+        initHeroScene(container);
+      });
+    });
   }
 </script>
