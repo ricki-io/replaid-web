@@ -1,5 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#000"/>
-  <text x="6" y="24" font-family="system-ui, sans-serif" font-weight="700" font-size="22" fill="#fff">R</text>
-  <text x="17" y="24" font-family="system-ui, sans-serif" font-weight="700" font-size="22" fill="#93e85f">.</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="518" height="553"><svg width="518" height="553" viewBox="0 0 518 553" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M172.601 173.277V0H517.786V173.277L172.601 173.277Z" fill="#84D969"></path>
+<path d="M172.6 379.013C267.921 379.013 345.193 456.592 345.193 552.29L517.758 552.297V547.825C515.386 359.228 362.957 206.933 174.821 205.743L0.000183105 205.751V552.305H172.593L172.6 379.013Z" fill="#84D969"></path>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>
