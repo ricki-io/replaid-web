@@ -83,7 +83,8 @@
     position: absolute;
     inset: 0;
     z-index: 1;
-    pointer-events: auto;
+    pointer-events: none;
+    will-change: transform;
   }
 
   .hero-canvas :global(canvas) {
@@ -111,16 +112,10 @@
     line-height: 0.95;
     letter-spacing: -0.04em;
     margin-bottom: 2rem;
-    text-shadow: 0 0 60px rgba(0, 0, 0, 0.8), 0 0 120px rgba(0, 0, 0, 0.5);
-  }
-
-  .hero-sub {
-    text-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
   }
 
   .hero-stats {
-    backdrop-filter: blur(8px);
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 12px;
     padding: 2rem 1.5rem;
@@ -133,27 +128,5 @@
   const container = document.getElementById('hero-canvas-container');
   if (container) {
     initHeroScene(container);
-  }
-
-  // Scroll-based parallax: fade & scale the 3D scene on scroll
-  const heroSection = document.getElementById('hero');
-  if (heroSection) {
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const scrollY = window.scrollY;
-          const heroHeight = heroSection.offsetHeight;
-          const progress = Math.min(scrollY / heroHeight, 1);
-
-          if (container) {
-            container.style.opacity = String(1 - progress * 0.7);
-            container.style.transform = `scale(${1 + progress * 0.05})`;
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
   }
 </script>

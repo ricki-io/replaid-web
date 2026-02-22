@@ -1,8 +1,4 @@
 import * as THREE from 'three';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -19,8 +15,7 @@ const PARTICLE_COLORS = [WHITE, GRAY_LIGHT, GRAY_MID, GRAY_DARK];
 const DESKTOP_COUNT = 280;
 const MOBILE_COUNT = 140;
 const ENTRANCE_DURATION = 2.8; // seconds
-const REPULSION_RADIUS = 2.5;
-const REPULSION_STRENGTH = 3.0;
+const FRAME_INTERVAL = 1 / 30; // target 30 fps
 
 // ---------------------------------------------------------------------------
 // State
@@ -29,15 +24,14 @@ const REPULSION_STRENGTH = 3.0;
 let renderer: THREE.WebGLRenderer | null = null;
 let scene: THREE.Scene | null = null;
 let camera: THREE.PerspectiveCamera | null = null;
-let composer: EffectComposer | null = null;
 let animFrameId: number | null = null;
 let instancedMesh: THREE.InstancedMesh | null = null;
 let clock: THREE.Clock | null = null;
 let container: HTMLElement | null = null;
-
-// Mouse in normalised device coords (-1…1)
-const mouse = new THREE.Vector2(9999, 9999); // start offscreen
-const mouseWorld = new THREE.Vector3();
+let isVisible = true;
+let observer: IntersectionObserver | null = null;
+let accentColorDirty = false;
+let lastFrameTime = 0;
 
 // Per-particle data
 let particleCount = 0;
@@ -55,7 +49,6 @@ let isAccent: Uint8Array;
 // Reusable objects
 const dummy = new THREE.Object3D();
 const tempColor = new THREE.Color();
-const tempVec = new THREE.Vector3();
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -86,9 +79,9 @@ function createScene(el: HTMLElement) {
   const w = el.clientWidth;
   const h = el.clientHeight;
 
-  // Renderer
-  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  // Renderer — pixel ratio capped at 1; this is a background element behind text
+  renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+  renderer.setPixelRatio(1);
   renderer.setSize(w, h);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.2;
@@ -102,19 +95,6 @@ function createScene(el: HTMLElement) {
   camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 100);
   camera.position.set(0, 0, 8);
   camera.lookAt(0, 0, 0);
-
-  // Post-processing
-  composer = new EffectComposer(renderer);
-  composer.addPass(new RenderPass(scene, camera));
-
-  const bloomPass = new UnrealBloomPass(
-    new THREE.Vector2(w, h),
-    1.2,   // strength
-    0.6,   // radius
-    0.25   // threshold
-  );
-  composer.addPass(bloomPass);
-  composer.addPass(new OutputPass());
 
   // Clock
   clock = new THREE.Clock();
@@ -148,8 +128,8 @@ function createParticles() {
   const mat = new THREE.MeshStandardMaterial({
     roughness: 0.35,
     metalness: 0.15,
-    emissive: new THREE.Color(0x000000),
-    emissiveIntensity: 0,
+    emissive: ACCENT,
+    emissiveIntensity: 0.15,
     transparent: true,
     opacity: 0.92,
   });
@@ -216,21 +196,20 @@ function createParticles() {
 // Animation loop
 // ---------------------------------------------------------------------------
 
-function animate() {
+function animate(now: DOMHighResTimeStamp) {
   animFrameId = requestAnimationFrame(animate);
 
-  if (!clock || !instancedMesh || !camera || !composer || !scene) return;
+  if (!isVisible) return;
+
+  const delta = (now - lastFrameTime) / 1000;
+  if (delta < FRAME_INTERVAL) return;
+  lastFrameTime = now - (delta % FRAME_INTERVAL) * 1000;
+
+  if (!clock || !instancedMesh || !camera || !renderer || !scene) return;
 
   const elapsed = clock.getElapsedTime();
   const entranceT = Math.min(elapsed / ENTRANCE_DURATION, 1);
   const easedEntrance = easeOutCubic(entranceT);
-
-  // Map mouse to world space on z=0 plane
-  tempVec.set(mouse.x, mouse.y, 0.5);
-  tempVec.unproject(camera);
-  tempVec.sub(camera.position).normalize();
-  const dist = -camera.position.z / tempVec.z;
-  mouseWorld.copy(camera.position).add(tempVec.multiplyScalar(dist));
 
   // Update particles
   for (let i = 0; i < particleCount; i++) {
@@ -250,22 +229,9 @@ function animate() {
     const sy = spawnPositions[i * 3 + 1];
     const sz = spawnPositions[i * 3 + 2];
 
-    let px = lerp(sx, tx, easedEntrance);
-    let py = lerp(sy, ty, easedEntrance);
-    let pz = lerp(sz, tz, easedEntrance);
-
-    // Mouse repulsion (only after entrance is mostly done)
-    if (entranceT > 0.5) {
-      const dx = px - mouseWorld.x;
-      const dy = py - mouseWorld.y;
-      const d = Math.sqrt(dx * dx + dy * dy);
-      if (d < REPULSION_RADIUS && d > 0.01) {
-        const force =
-          (1 - d / REPULSION_RADIUS) * REPULSION_STRENGTH * (entranceT - 0.5) * 2;
-        px += (dx / d) * force;
-        py += (dy / d) * force;
-      }
-    }
+    const px = lerp(sx, tx, easedEntrance);
+    const py = lerp(sy, ty, easedEntrance);
+    const pz = lerp(sz, tz, easedEntrance);
 
     dummy.position.set(px, py, pz);
 
@@ -288,12 +254,14 @@ function animate() {
       const pulse = 0.3 + 0.7 * (0.5 + 0.5 * Math.sin(elapsed * 2 + i));
       tempColor.copy(ACCENT).multiplyScalar(pulse);
       instancedMesh.setColorAt(i, tempColor);
+      accentColorDirty = true;
     }
   }
 
   instancedMesh.instanceMatrix.needsUpdate = true;
-  if (instancedMesh.instanceColor) {
+  if (accentColorDirty && instancedMesh.instanceColor) {
     instancedMesh.instanceColor.needsUpdate = true;
+    accentColorDirty = false;
   }
 
 
@@ -302,35 +270,20 @@ function animate() {
   camera.position.y = Math.cos(elapsed * 0.12) * 0.2;
   camera.lookAt(0, 0, 0);
 
-  composer.render();
+  renderer.render(scene, camera);
 }
 
 // ---------------------------------------------------------------------------
 // Event handlers
 // ---------------------------------------------------------------------------
 
-function onMouseMove(e: MouseEvent) {
-  if (!container) return;
-  const rect = container.getBoundingClientRect();
-  mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-  mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-}
-
-function onTouchMove(e: TouchEvent) {
-  if (!container || e.touches.length === 0) return;
-  const rect = container.getBoundingClientRect();
-  mouse.x = ((e.touches[0].clientX - rect.left) / rect.width) * 2 - 1;
-  mouse.y = -((e.touches[0].clientY - rect.top) / rect.height) * 2 + 1;
-}
-
 function onResize() {
-  if (!container || !camera || !renderer || !composer) return;
+  if (!container || !camera || !renderer) return;
   const w = container.clientWidth;
   const h = container.clientHeight;
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
   renderer.setSize(w, h);
-  composer.setSize(w, h);
 }
 
 // ---------------------------------------------------------------------------
@@ -341,11 +294,16 @@ export function initHeroScene(el: HTMLElement) {
   createScene(el);
   createParticles();
 
-  window.addEventListener('mousemove', onMouseMove, { passive: true });
-  window.addEventListener('touchmove', onTouchMove, { passive: true });
   window.addEventListener('resize', onResize);
 
-  animate();
+  // Pause rendering when the hero is scrolled out of view
+  observer = new IntersectionObserver(
+    ([entry]) => { isVisible = entry.isIntersecting; },
+    { threshold: 0 }
+  );
+  observer.observe(el);
+
+  animate(performance.now());
 }
 
 export function destroyHeroScene() {
@@ -354,9 +312,12 @@ export function destroyHeroScene() {
     animFrameId = null;
   }
 
-  window.removeEventListener('mousemove', onMouseMove);
-  window.removeEventListener('touchmove', onTouchMove);
   window.removeEventListener('resize', onResize);
+
+  if (observer) {
+    observer.disconnect();
+    observer = null;
+  }
 
   if (renderer && container) {
     container.removeChild(renderer.domElement);
@@ -367,11 +328,6 @@ export function destroyHeroScene() {
     instancedMesh.geometry.dispose();
     (instancedMesh.material as THREE.Material).dispose();
     instancedMesh = null;
-  }
-
-  if (composer) {
-    composer.dispose();
-    composer = null;
   }
 
   if (renderer) {
