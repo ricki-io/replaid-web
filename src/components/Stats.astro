@@ -1,10 +1,10 @@
 ---
 // Typography First Stats - massive numbers
 const stats = [
-  { value: '24/7', label: 'Always Available' },
-  { value: 'Zero', label: 'Leads Missed' },
-  { value: 'Every', label: 'Channel Connected' },
-  { value: 'Smart', label: 'Agentic Workflow' },
+  { value: 'Qualify', label: 'Leads' },
+  { value: 'Reply', label: 'Instantly' },
+  { value: 'Automate', label: 'Workflows' },
+  { value: 'Notify', label: 'Your Team' },
 ];
 ---
 
@@ -13,7 +13,7 @@ const stats = [
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-8">
       {stats.map((s, i) => (
         <div class="text-center fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <div class="font-display text-4xl sm:text-7xl font-bold tracking-tighter text-accent">{s.value}</div>
+          <div class="font-display text-3xl sm:text-5xl font-bold tracking-tighter text-accent">{s.value}</div>
           <div class="mono-label mt-4">{s.label}</div>
         </div>
       ))}
