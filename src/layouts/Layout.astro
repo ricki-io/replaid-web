@@ -1,4 +1,8 @@
 ---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/jetbrains-mono';
+
 export interface Props {
   title: string;
   description?: string;
@@ -65,10 +69,6 @@ const isProd = import.meta.env.PROD;
 
     <title>{title}</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   </head>
   <body class="min-h-screen bg-ink-950 text-white antialiased">
     <div class="overflow-x-hidden w-full">
@@ -77,12 +77,12 @@ const isProd = import.meta.env.PROD;
     
     <style is:global>
       body {
-        font-family: 'Inter', system-ui, sans-serif;
+        font-family: 'Inter Variable', system-ui, sans-serif;
         background: #000;
       }
-      
+
       h1, h2, h3, h4, h5, h6 {
-        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-family: 'Space Grotesk Variable', system-ui, sans-serif;
         font-weight: 700;
       }
       
@@ -102,7 +102,7 @@ const isProd = import.meta.env.PROD;
         align-items: center;
         justify-content: center;
         padding: 0.875rem 2rem;
-        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-family: 'Space Grotesk Variable', system-ui, sans-serif;
         font-weight: 600;
         font-size: 1rem;
         letter-spacing: -0.02em;
@@ -130,7 +130,7 @@ const isProd = import.meta.env.PROD;
         align-items: center;
         justify-content: center;
         padding: 0.875rem 2rem;
-        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-family: 'Space Grotesk Variable', system-ui, sans-serif;
         font-weight: 600;
         font-size: 1rem;
         letter-spacing: -0.02em;
@@ -155,7 +155,7 @@ const isProd = import.meta.env.PROD;
       
       /* Monospace label */
       .mono-label {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'JetBrains Mono Variable', monospace;
         font-size: 0.75rem;
         font-weight: 500;
         letter-spacing: 0.15em;
@@ -178,7 +178,7 @@ const isProd = import.meta.env.PROD;
       /* Background text */
       .bg-text {
         position: absolute;
-        font-family: 'Space Grotesk', system-ui, sans-serif;
+        font-family: 'Space Grotesk Variable', system-ui, sans-serif;
         font-weight: 700;
         color: rgba(255,255,255,0.03);
         pointer-events: none;
