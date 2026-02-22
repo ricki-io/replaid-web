@@ -5,10 +5,10 @@ import * as THREE from 'three';
 // ---------------------------------------------------------------------------
 
 const ACCENT = new THREE.Color(0x93e85f);
-const WHITE = new THREE.Color(0xffffff);
-const GRAY_LIGHT = new THREE.Color(0xbbbbbb);
-const GRAY_MID = new THREE.Color(0x777777);
-const GRAY_DARK = new THREE.Color(0x444444);
+const WHITE = new THREE.Color(0xcccccc);
+const GRAY_LIGHT = new THREE.Color(0x999999);
+const GRAY_MID = new THREE.Color(0x555555);
+const GRAY_DARK = new THREE.Color(0x333333);
 
 const PARTICLE_COLORS = [WHITE, GRAY_LIGHT, GRAY_MID, GRAY_DARK];
 
