@@ -29,7 +29,7 @@ const posts = (await getCollection('blog'))
       <div class="space-y-12">
         {posts.map((post) => (
           <article class="group">
-            <a href={`/blog/${post.slug}`} class="block">
+            <a href={`/${post.slug}`} class="block">
               <div class="mono-label mb-3 text-accent">{post.data.category}</div>
               <h2 class="font-display text-2xl sm:text-3xl font-bold mb-3 group-hover:text-accent transition-colors">
                 {post.data.title}
