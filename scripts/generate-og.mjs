@@ -11,5 +11,5 @@ const svg = `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
   <text x="260" y="556" font-family="monospace" font-weight="400" font-size="18" fill="#666666" letter-spacing="3">REPLAID.PRO</text>
 </svg>`;
 
-await sharp(Buffer.from(svg)).png().toFile('public/og-image.png');
+await sharp(Buffer.from(svg)).png({ compressionLevel: 9, palette: true }).toFile('public/og-image.png');
 console.log('Generated public/og-image.png');
