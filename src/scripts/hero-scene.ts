@@ -12,8 +12,8 @@ const GRAY_DARK = new THREE.Color(0x444444);
 
 const PARTICLE_COLORS = [WHITE, GRAY_LIGHT, GRAY_MID, GRAY_DARK];
 
-const DESKTOP_COUNT = 280;
-const MOBILE_COUNT = 140;
+const DESKTOP_COUNT = 224;
+const MOBILE_COUNT = 112;
 const ENTRANCE_DURATION = 2.8; // seconds
 const FRAME_INTERVAL = 1 / 30; // target 30 fps
 
