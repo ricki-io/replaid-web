@@ -15,11 +15,25 @@ const {
   type = "website",
   jsonLd,
 } = Astro.props;
+
+const isProd = import.meta.env.PROD;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    {isProd && (
+      <Fragment>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2C7LJY6CL"></script>
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-T2C7LJY6CL');
+        </script>
+      </Fragment>
+    )}
+
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
