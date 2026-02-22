@@ -1,9 +1,10 @@
 ---
 // Typography First Pricing - type-driven, minimal cards
 const plans = [
-  { name: 'Starter', price: '29', features: ['1 channel', '500 msgs/mo', 'Basic AI', 'Lead scoring'], highlight: false },
-  { name: 'Pro', price: '79', features: ['5 channels', '5K msgs/mo', 'Advanced AI', 'Team collab', 'Integrations'], highlight: true },
-  { name: 'Scale', price: '199', features: ['Unlimited', '25K msgs/mo', 'Custom AI', 'API access', 'Dedicated support'], highlight: false },
+  { name: 'Starter', price: '29', features: ['1 channel', '100 credits/mo', '1 user', '7-day email support'], highlight: false },
+  { name: 'Pro', price: '79', features: ['3 channels', '500 credits/mo', '3 users', 'Connectors & MCP', 'Priority support'], highlight: true },
+  { name: 'Business', price: '149', features: ['All channels', '5,000 credits/mo', '5 users', 'Connectors & MCP', 'Priority support'], highlight: false },
+  { name: 'Agency', price: '299', features: ['All channels', '15,000 credits/mo', 'Unlimited users', 'Connectors & MCP', 'Priority support', 'Dedicated success manager'], highlight: false },
 ];
 ---
 
@@ -16,13 +17,13 @@ const plans = [
       </h2>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-px bg-white/10 max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 max-w-6xl mx-auto">
       {plans.map((p, i) => (
-        <div class={`p-8 sm:p-10 fade-in-up flex flex-col relative ${p.highlight ? 'md:order-2 order-first bg-ink-900 border-2 border-white/20' : i === 0 ? 'md:order-1 bg-ink-950' : 'md:order-3 bg-ink-950'}`} style={`transition-delay: ${i * 100}ms`}>
+        <div class={`p-8 sm:p-10 fade-in-up flex flex-col relative ${p.highlight ? 'bg-ink-900 border-2 border-white/20' : 'bg-ink-950'}`} style={`transition-delay: ${i * 100}ms`}>
           {p.highlight && <div class="mono-label text-accent absolute top-4 right-4 sm:top-6 sm:right-6">Most Popular</div>}
           <h3 class="font-display text-2xl font-bold mb-2">{p.name}</h3>
           <div class="mb-8">
-            <span class="font-display text-5xl sm:text-7xl font-bold tracking-tighter">${p.price}</span>
+            <span class="font-display text-5xl sm:text-6xl font-bold tracking-tighter">€{p.price}</span>
             <span class="text-ink-300 text-lg">/mo</span>
           </div>
           <ul class="space-y-4 mb-10 flex-1">
@@ -39,5 +40,9 @@ const plans = [
         </div>
       ))}
     </div>
+
+    <p class="text-center text-ink-200 mt-10 fade-in-up">
+      Need higher limits or custom integrations? <a href="/contact" class="text-accent hover:underline">Contact us</a>
+    </p>
   </div>
 </section>
