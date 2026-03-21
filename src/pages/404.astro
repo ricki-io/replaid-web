@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="404 — Page Not Found | Replaid" description="The page you were looking for does not exist.">
+  <Header />
+
+  <main class="relative overflow-hidden pt-28 sm:pt-36 pb-20 sm:pb-28 min-h-[calc(100vh-10rem)] flex items-center">
+    <div class="bg-text text-[28vw] sm:text-[18vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">404</div>
+
+    <section class="relative mx-auto max-w-5xl px-6 w-full">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="mono-label mb-6 fade-in-up">Page Not Found</div>
+
+        <h1 class="text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] mb-6 fade-in-up">
+          This page is off the
+          <span class="text-accent"> map</span><span class="text-white">.</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-ink-200 leading-relaxed max-w-2xl mx-auto mb-10 fade-in-up">
+          The link may be outdated, the URL may be wrong, or the page may have moved. Head back to the main site and keep your pipeline moving.
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4 fade-in-up">
+          <a href="/" class="btn-type">Back Home</a>
+          <a href="/get-started" class="btn-type-outline">Get Started</a>
+        </div>
+
+        <div class="mt-12 text-sm sm:text-base text-ink-300 fade-in-up">
+          Looking for something specific? Try the <a href="/blog" class="text-accent hover:underline">blog</a> or <a href="/contact" class="text-accent hover:underline">contact us</a>.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
