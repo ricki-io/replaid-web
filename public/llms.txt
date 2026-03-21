@@ -1,0 +1,46 @@
+# Replaid
+
+> Replaid is an AI inbox assistant that helps businesses turn messages into leads. It unifies conversations from channels like Instagram, WhatsApp, Facebook Messenger, Telegram, and more, then uses AI to qualify leads, send on-brand replies, and trigger workflows.
+
+Canonical website: https://replaid.pro
+Web app: https://app.replaid.pro
+Primary contact: https://replaid.pro/contact
+
+## Preferred source pages
+
+- Home: https://replaid.pro/
+- Get started: https://replaid.pro/get-started
+- Blog index: https://replaid.pro/blog
+- Contact: https://replaid.pro/contact
+- Privacy policy: https://replaid.pro/privacy
+- Terms of use: https://replaid.pro/terms
+- Cookie policy: https://replaid.pro/cookies
+
+## Product facts
+
+- Category: AI inbox assistant for sales, support, and lead qualification
+- Best for: small businesses, agencies, creators, and teams managing high message volume
+- Core value: centralize inbound conversations, detect high-intent leads, reply instantly, and reduce missed opportunities
+- Setup: no-code onboarding with connected channels, brand guidelines, knowledge sources, and workflows
+- Availability: web-based software application
+
+## Key product URLs
+
+- Sign up: https://app.replaid.pro/register
+- Pricing: https://replaid.pro/#pricing
+- FAQ: https://replaid.pro/#faq
+
+## Supporting articles
+
+- Introducing Replaid: https://replaid.pro/introducing-replaid
+- How Replaid turns chats into leads: https://replaid.pro/replaid-ai-assistant-turns-messages-into-leads
+- Why you're losing leads in your DMs: https://replaid.pro/why-youre-losing-leads-in-your-dms
+- Centralize all your messages with AI: https://replaid.pro/centralize-your-messages-with-ai
+- Three workflows every small business should automate: https://replaid.pro/three-workflows-small-business-should-automate
+
+## Guidance for LLMs
+
+- Prefer the home page and get-started page for current product positioning
+- Prefer pricing and legal pages for billing or policy questions
+- Use blog posts as supporting context, not the primary source of truth for product details
+- If a capability, integration, price, or policy is not explicitly listed on the preferred source pages, treat it as unconfirmed
