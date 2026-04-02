@@ -31,9 +31,9 @@ const plans = [
 
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 max-w-6xl mx-auto">
       {plans.map((p, i) => (
-        <div class={`p-8 sm:p-10 fade-in-up flex flex-col relative ${p.highlight ? 'bg-ink-900 border-2 border-white/20' : 'bg-ink-950'}`} style={`transition-delay: ${i * 100}ms`}>
+        <div class:list={['pricing-card p-8 sm:p-10 fade-in-up flex flex-col relative', { highlight: p.highlight }]} style={`transition-delay: ${i * 100}ms`}>
           {p.highlight && <div class="mono-label text-accent absolute top-4 right-4 sm:top-6 sm:right-6">Most Popular</div>}
           <h3 class="font-display text-2xl font-bold mb-2">{p.name}</h3>
           <div class="mb-8">
@@ -50,7 +50,7 @@ const plans = [
               </li>
             ))}
           </ul>
-          <a href="https://app.replaid.pro/register" class={`block text-center py-4 font-display font-semibold transition-colors ${p.highlight ? 'bg-white text-black hover:bg-accent hover:text-white' : 'border-2 border-white/20 text-white hover:border-white'}`}>
+          <a href="https://app.replaid.pro/register" class:list={['block text-center py-4 font-display font-semibold transition-colors rounded-lg', p.highlight ? 'bg-white text-black hover:bg-accent hover:text-white' : 'border border-white/15 text-white hover:border-white/40']}>
             Get Started
           </a>
         </div>
@@ -62,6 +62,20 @@ const plans = [
     </p>
   </div>
 </section>
+
+<style>
+  .pricing-card {
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(12px);
+  }
+
+  .pricing-card.highlight {
+    border-color: rgba(var(--accent-rgb),0.3);
+    background: rgba(var(--accent-rgb),0.04);
+  }
+</style>
 
 <script>
   const toggle = document.getElementById('pricing-toggle');
