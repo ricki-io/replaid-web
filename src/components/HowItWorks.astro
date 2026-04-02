@@ -1,16 +1,19 @@
 ---
-// Typography First How It Works - numbered steps with big type
-const steps = [
-  { title: 'Connect', desc: 'Connect your channels with a single click. No API tokens or complex setups.' },
-  { title: 'Configure', desc: 'Add brand guidelines, knowledge, APIs, and databases to power AI-driven answers.' },
-  { title: 'Launch', desc: 'Everything\'s ready — Replaid runs on autopilot, managing replies and leads seamlessly.' },
+// How It Works — visual steps with inline illustrations
+import ChannelIcon from './ChannelIcon.astro';
+
+const channels = [
+  { platform: 'instagram' as const, name: 'Instagram' },
+  { platform: 'whatsapp' as const, name: 'WhatsApp' },
+  { platform: 'messenger' as const, name: 'Messenger' },
+  { platform: 'telegram' as const, name: 'Telegram' },
 ];
 ---
 
 <section id="how-it-works" class="py-16 sm:py-24 relative overflow-hidden">
   <!-- Background text -->
   <div class="bg-text text-[25vw] -left-20 top-1/2 -translate-y-1/2">HOW</div>
-  
+
   <div class="relative mx-auto max-w-7xl px-6">
     <div class="mb-20 fade-in-up text-center">
       <div class="mono-label mb-4">Getting Started</div>
@@ -19,19 +22,501 @@ const steps = [
         <span class="text-accent">runs forever</span>
       </h2>
     </div>
-    
-    <div class="space-y-0">
-      {steps.map((s, i) => (
-        <div class="border-t border-white/10 py-12 sm:py-16 flex flex-col items-center text-center gap-6 fade-in-up group" style={`transition-delay: ${i * 100}ms`}>
-          <div class="font-display text-5xl sm:text-9xl font-bold text-accent sm:text-ink-500 sm:group-hover:text-accent transition-colors">
-            {String(i + 1).padStart(2, '0')}
-          </div>
-          <div>
-            <h3 class="font-display text-2xl sm:text-4xl font-bold mb-3">{s.title}</h3>
-            <p class="text-ink-200 text-lg sm:text-xl max-w-lg">{s.desc}</p>
+
+    <div class="relative py-4">
+      <!-- Timeline vertical line (desktop) -->
+      <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+
+      <!-- Step 1: Connect — text left, visual right -->
+      <div class="timeline-step fade-in-up group">
+        <div class="timeline-text text-center lg:text-right">
+          <div class="font-display text-5xl sm:text-8xl font-bold text-accent sm:text-ink-500 sm:group-hover:text-accent transition-colors">01</div>
+          <h3 class="font-display text-2xl sm:text-4xl font-bold mb-3 mt-2">Connect</h3>
+          <p class="text-ink-200 text-lg sm:text-xl max-w-lg lg:ml-auto">Connect your channels with a single click. No API tokens or complex setups.</p>
+        </div>
+        <div class="timeline-node">
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-visual-cell">
+          <div class="hiw-visual">
+            <div class="connect-panel">
+              <div class="connect-header">
+                <span class="text-[10px] font-mono text-ink-300 tracking-wider uppercase">Channels</span>
+                <span class="connect-count">4 active</span>
+              </div>
+              <div class="connect-list">
+                {channels.map((ch, i) => (
+                  <div class:list={['connect-row', { last: i === channels.length - 1 }]}>
+                    <div class="connect-icon">
+                      <ChannelIcon platform={ch.platform} size={14} />
+                    </div>
+                    <span class="connect-name">{ch.name}</span>
+                    <span class="connect-status"><span class="connect-status-dot"></span>Connected</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-      ))}
+      </div>
+
+      <!-- Step 2: Configure — visual left, text right -->
+      <div class="timeline-step reverse fade-in-up group" style="transition-delay:100ms">
+        <div class="timeline-text text-center lg:text-left">
+          <div class="font-display text-5xl sm:text-8xl font-bold text-accent sm:text-ink-500 sm:group-hover:text-accent transition-colors">02</div>
+          <h3 class="font-display text-2xl sm:text-4xl font-bold mb-3 mt-2">Configure</h3>
+          <p class="text-ink-200 text-lg sm:text-xl max-w-lg">Add brand guidelines, knowledge, APIs, and databases to power AI-driven answers.</p>
+        </div>
+        <div class="timeline-node">
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-visual-cell">
+          <div class="hiw-visual">
+            <div class="config-panel">
+              <div class="config-row">
+                <div class="config-label">Brand Voice</div>
+                <div class="config-value">
+                  <span class="config-tag">Friendly</span>
+                  <span class="config-tag">Professional</span>
+                  <span class="config-tag tag-add">+</span>
+                </div>
+              </div>
+              <div class="config-row">
+                <div class="config-label">Knowledge Base</div>
+                <div class="config-value">
+                  <div class="config-file">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <span>products.pdf</span>
+                  </div>
+                  <div class="config-file">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <span>faq.md</span>
+                  </div>
+                </div>
+              </div>
+              <div class="config-row">
+                <div class="config-label">Auto-Reply</div>
+                <div class="config-value">
+                  <div class="config-toggle active">
+                    <span class="config-toggle-dot"></span>
+                  </div>
+                  <span class="text-accent text-[11px] font-medium">Enabled</span>
+                </div>
+              </div>
+              <div class="config-row last">
+                <div class="config-label">Notify on Lead</div>
+                <div class="config-value">
+                  <div class="config-toggle active">
+                    <span class="config-toggle-dot"></span>
+                  </div>
+                  <span class="text-accent text-[11px] font-medium">Slack + Email</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Launch — text left, visual right -->
+      <div class="timeline-step fade-in-up group" style="transition-delay:200ms">
+        <div class="timeline-text text-center lg:text-right">
+          <div class="font-display text-5xl sm:text-8xl font-bold text-accent sm:text-ink-500 sm:group-hover:text-accent transition-colors">03</div>
+          <h3 class="font-display text-2xl sm:text-4xl font-bold mb-3 mt-2">Launch</h3>
+          <p class="text-ink-200 text-lg sm:text-xl max-w-lg lg:ml-auto">Everything's ready — Replaid runs on autopilot, managing replies and leads seamlessly.</p>
+        </div>
+        <div class="timeline-node">
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-visual-cell">
+          <div class="hiw-visual">
+            <div class="dashboard-panel">
+              <div class="dash-header">
+                <span class="text-[10px] font-mono text-ink-300 tracking-wider uppercase">Live Dashboard</span>
+                <span class="dash-live-dot"></span>
+              </div>
+              <div class="dash-stats">
+                <div class="dash-stat">
+                  <div class="dash-stat-value">142</div>
+                  <div class="dash-stat-label">Messages Today</div>
+                </div>
+                <div class="dash-stat">
+                  <div class="dash-stat-value text-accent">37</div>
+                  <div class="dash-stat-label">Leads Qualified</div>
+                </div>
+                <div class="dash-stat">
+                  <div class="dash-stat-value">1.2s</div>
+                  <div class="dash-stat-label">Avg. Reply</div>
+                </div>
+              </div>
+              <div class="dash-feed">
+                <div class="dash-feed-item">
+                  <span class="dash-feed-dot bg-accent"></span>
+                  <span class="text-[11px] text-ink-100">New lead from <strong class="text-white">Instagram</strong></span>
+                  <span class="text-[10px] text-ink-400 ml-auto shrink-0">2s ago</span>
+                </div>
+                <div class="dash-feed-item">
+                  <span class="dash-feed-dot bg-accent"></span>
+                  <span class="text-[11px] text-ink-100">AI replied on <strong class="text-white">WhatsApp</strong></span>
+                  <span class="text-[10px] text-ink-400 ml-auto shrink-0">15s ago</span>
+                </div>
+                <div class="dash-feed-item">
+                  <span class="dash-feed-dot bg-blue-400"></span>
+                  <span class="text-[11px] text-ink-100">Lead tagged <strong class="text-white">Hot</strong></span>
+                  <span class="text-[10px] text-ink-400 ml-auto shrink-0">32s ago</span>
+                </div>
+                <div class="dash-feed-item">
+                  <span class="dash-feed-dot bg-accent"></span>
+                  <span class="text-[11px] text-ink-100">AI replied on <strong class="text-white">Messenger</strong></span>
+                  <span class="text-[10px] text-ink-400 ml-auto shrink-0">1m ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* ── Timeline layout ── */
+  .timeline-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2.5rem 0;
+  }
+
+  @media (min-width: 1024px) {
+    .timeline-step {
+      display: grid;
+      grid-template-columns: 1fr 3rem 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 3.5rem 0;
+    }
+  }
+
+  .timeline-node {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .timeline-node {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgb(var(--accent-rgb));
+    border: 3px solid #0a0a0a;
+    box-shadow: 0 0 0 1px rgba(var(--accent-rgb),0.3), 0 0 12px rgba(var(--accent-rgb),0.15);
+  }
+
+  .timeline-visual-cell {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 1024px) {
+    .timeline-visual-cell {
+      justify-content: flex-start;
+    }
+
+    /* Reverse step: visual goes to column 1, text to column 3 */
+    .timeline-step.reverse .timeline-text {
+      grid-column: 3;
+      grid-row: 1;
+    }
+    .timeline-step.reverse .timeline-node {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .timeline-step.reverse .timeline-visual-cell {
+      grid-column: 1;
+      grid-row: 1;
+      justify-content: flex-end;
+    }
+  }
+
+  /* Shared visual container */
+  .hiw-visual {
+    width: 100%;
+    max-width: 22rem;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .hiw-visual {
+      max-width: 24rem;
+    }
+  }
+
+  /* ── Step 1: Connect ── */
+  .connect-panel {
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+  }
+
+  .connect-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.625rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .connect-count {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgb(var(--accent-rgb));
+    background: rgba(var(--accent-rgb),0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .connect-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .connect-row {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.625rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .connect-row.last {
+    border-bottom: none;
+  }
+
+  .connect-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    flex-shrink: 0;
+  }
+
+  .connect-name {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .connect-status {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(var(--accent-rgb),0.8);
+    white-space: nowrap;
+  }
+
+  .connect-status-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgb(var(--accent-rgb));
+  }
+
+  /* ── Step 2: Configure ── */
+  .config-panel {
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+  }
+
+  .config-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    gap: 1rem;
+  }
+
+  .config-row.last {
+    border-bottom: none;
+  }
+
+  .config-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    white-space: nowrap;
+    font-family: 'JetBrains Mono Variable', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .config-value {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .config-tag {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(var(--accent-rgb),0.1);
+    color: rgb(var(--accent-rgb));
+    white-space: nowrap;
+  }
+
+  .config-tag.tag-add {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.4);
+    cursor: default;
+  }
+
+  .config-file {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.04);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .config-toggle {
+    width: 1.75rem;
+    height: 1rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.15);
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .config-toggle.active {
+    background: rgba(var(--accent-rgb),0.3);
+  }
+
+  .config-toggle-dot {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    transition: transform 0.2s;
+  }
+
+  .config-toggle.active .config-toggle-dot {
+    transform: translateX(0.75rem);
+    background: rgb(var(--accent-rgb));
+  }
+
+  /* ── Step 3: Dashboard ── */
+  .dashboard-panel {
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+  }
+
+  .dash-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.625rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .dash-live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgb(var(--accent-rgb));
+    animation: pulse-live 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-live {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(var(--accent-rgb),0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(var(--accent-rgb),0); }
+  }
+
+  .dash-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .dash-stat {
+    padding: 0.75rem;
+    text-align: center;
+    background: rgba(0,0,0,0.3);
+  }
+
+  .dash-stat-value {
+    font-family: 'Space Grotesk Variable', system-ui, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.02em;
+  }
+
+  .dash-stat-label {
+    font-size: 9px;
+    font-family: 'JetBrains Mono Variable', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.35);
+    margin-top: 2px;
+  }
+
+  .dash-feed {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .dash-feed-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.5rem;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .dash-feed-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+</style>
