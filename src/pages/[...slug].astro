@@ -2,18 +2,18 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: post,
   }));
 }
 
 const post = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 const blogJsonLd = [
   {
@@ -35,7 +35,7 @@ const blogJsonLd = [
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://replaid.pro/${post.slug}`
+      "@id": `https://replaid.pro/${post.id}`
     }
   },
   {
@@ -44,7 +44,7 @@ const blogJsonLd = [
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://replaid.pro/" },
       { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://replaid.pro/blog" },
-      { "@type": "ListItem", "position": 3, "name": post.data.title, "item": `https://replaid.pro/${post.slug}` }
+      { "@type": "ListItem", "position": 3, "name": post.data.title, "item": `https://replaid.pro/${post.id}` }
     ]
   }
 ];
@@ -100,11 +100,13 @@ const blogJsonLd = [
   }
 
   .prose h2 {
-    @apply font-display text-2xl sm:text-3xl font-bold text-white mt-12 mb-4;
+    @apply font-display text-2xl sm:text-3xl font-bold mt-12 mb-4;
+    color: rgb(var(--fg));
   }
 
   .prose h3 {
-    @apply font-display text-xl sm:text-2xl font-bold text-white mt-8 mb-3;
+    @apply font-display text-xl sm:text-2xl font-bold mt-8 mb-3;
+    color: rgb(var(--fg));
   }
 
   .prose p {
@@ -128,7 +130,8 @@ const blogJsonLd = [
   }
 
   .prose strong {
-    @apply text-white font-semibold;
+    @apply font-semibold;
+    color: rgb(var(--fg));
   }
 
   .prose a {

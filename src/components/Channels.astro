@@ -3,13 +3,13 @@
 const channels = ['Instagram', 'WhatsApp', 'Messenger', 'Telegram', 'Web Widget'];
 ---
 
-<section class="py-16 border-y border-white/5">
+<section class="py-16 border-y border-overlay/5">
   <div class="mx-auto max-w-7xl px-6">
     <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
       <span class="mono-label">Connects With</span>
       <div class="flex flex-wrap justify-center gap-6 sm:gap-10">
         {channels.map(ch => (
-          <span class="font-display text-lg sm:text-xl font-medium text-ink-200 hover:text-white transition-colors cursor-default">{ch}</span>
+          <span class="font-display text-lg sm:text-xl font-medium text-ink-200 hover:text-fg transition-colors cursor-default">{ch}</span>
         ))}
       </div>
     </div>

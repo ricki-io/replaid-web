@@ -32,7 +32,7 @@ const faqs = [
 
         <h1 class="text-7xl sm:text-8xl lg:text-[7rem] xl:text-display-xl font-bold mb-8 fade-in-up" style="line-height: 0.95; letter-spacing: -0.04em;">
           Turn messages<br/>
-          into <span class="text-accent">leads</span><span class="text-white">.</span>
+          into <span class="text-accent">leads</span><span class="text-fg">.</span>
         </h1>
 
         <p class="text-lg sm:text-xl md:text-2xl text-ink-100 max-w-2xl mx-auto mb-12 leading-relaxed fade-in-up font-light">
@@ -49,7 +49,7 @@ const faqs = [
   </section>
 
   <!-- Section 01: Who Uses Replaid -->
-  <section class="py-16 sm:py-24 border-t border-white/5 relative overflow-hidden">
+  <section class="py-16 sm:py-24 border-t border-overlay/5 relative overflow-hidden">
     <div class="bg-text text-[25vw] -right-20 top-1/2 -translate-y-1/2">WHO</div>
 
     <div class="relative mx-auto max-w-7xl px-6">
@@ -73,7 +73,7 @@ const faqs = [
   </section>
 
   <!-- Section 02: How It Works -->
-  <section class="py-16 sm:py-24 border-t border-white/5 relative overflow-hidden">
+  <section class="py-16 sm:py-24 border-t border-overlay/5 relative overflow-hidden">
     <div class="bg-text text-[25vw] -left-20 top-1/2 -translate-y-1/2">HOW</div>
 
     <div class="relative mx-auto max-w-7xl px-6">
@@ -91,7 +91,7 @@ const faqs = [
           { step: '02', title: 'AI analyzes intent', desc: 'Every message is analyzed for intent, urgency, and buying signals. Real leads are flagged instantly.' },
           { step: '03', title: 'Auto-reply & route', desc: 'Common questions get instant AI responses. High-value leads are routed to the right team member with full context.' },
         ].map((s, i) => (
-          <div class="border-t border-white/10 py-10 sm:py-14 flex flex-col sm:flex-row items-start gap-6 sm:gap-12 fade-in-up group" style={`transition-delay: ${i * 100}ms`}>
+          <div class="border-t border-overlay/10 py-10 sm:py-14 flex flex-col sm:flex-row items-start gap-6 sm:gap-12 fade-in-up group" style={`transition-delay: ${i * 100}ms`}>
             <div class="font-display text-5xl sm:text-7xl font-bold text-accent sm:text-ink-500 sm:group-hover:text-accent transition-colors shrink-0">
               {s.step}
             </div>
@@ -106,7 +106,7 @@ const faqs = [
   </section>
 
   <!-- Section 03: Why — with stat -->
-  <section class="py-16 sm:py-24 border-t border-white/5 bg-ink-900/30 relative overflow-hidden">
+  <section class="py-16 sm:py-24 border-t border-overlay/5 bg-ink-900/30 relative overflow-hidden">
     <div class="bg-text text-[30vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">WHY</div>
 
     <div class="relative mx-auto max-w-7xl px-6">
@@ -138,7 +138,7 @@ const faqs = [
   </section>
 
   <!-- Features -->
-  <section class="py-16 sm:py-24 border-t border-white/5 relative overflow-hidden">
+  <section class="py-16 sm:py-24 border-t border-overlay/5 relative overflow-hidden">
     <div class="bg-text text-[30vw] -right-20 top-1/2 -translate-y-1/2">FEATURES</div>
 
     <div class="relative mx-auto max-w-7xl px-6">
@@ -150,7 +150,7 @@ const faqs = [
         </h2>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-px bg-white/5">
+      <div class="grid md:grid-cols-2 gap-px bg-overlay/5">
         {features.map((f, i) => (
           <div class="bg-ink-950 p-8 sm:p-10 fade-in-up group hover:bg-ink-900 transition-colors" style={`transition-delay: ${i * 100}ms`}>
             <span class="font-mono text-2xl sm:text-3xl font-medium tracking-[0.15em] text-accent">{f.num}</span>
@@ -163,7 +163,7 @@ const faqs = [
   </section>
 
   <!-- Testimonial -->
-  <section class="py-16 sm:py-24 border-t border-white/5 relative overflow-hidden">
+  <section class="py-16 sm:py-24 border-t border-overlay/5 relative overflow-hidden">
     <div class="bg-text text-[20vw] right-0 top-20">"</div>
 
     <div class="relative mx-auto max-w-4xl px-6 text-center">
@@ -185,14 +185,14 @@ const faqs = [
   </section>
 
   <!-- FAQ -->
-  <section class="py-16 sm:py-24 border-t border-white/5">
+  <section class="py-16 sm:py-24 border-t border-overlay/5">
     <div class="mx-auto max-w-4xl px-6">
       <div class="mb-20 fade-in-up text-center">
         <div class="mono-label mb-4">Questions</div>
         <h2 class="text-display-md font-bold">Frequently Asked</h2>
       </div>
 
-      <div class="divide-y divide-white/10">
+      <div class="divide-y divide-overlay/10">
         {faqs.map((f, i) => (
           <details class="group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
             <summary class="py-8 font-display text-xl sm:text-2xl font-bold cursor-pointer flex justify-between items-center list-none hover:text-accent transition-colors">
@@ -215,14 +215,14 @@ const faqs = [
   </section>
 
   <!-- CTA -->
-  <section class="py-16 sm:py-24 relative overflow-hidden border-t border-white/5">
+  <section class="py-16 sm:py-24 relative overflow-hidden border-t border-overlay/5">
     <div class="bg-text text-[40vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">GO</div>
 
     <div class="relative mx-auto max-w-5xl px-6 text-center">
       <div class="mono-label mb-8 fade-in-up">No Credit Card Required</div>
 
       <h2 class="text-display-lg font-bold mb-8 fade-in-up">
-        Start for <span class="text-accent">Free</span><span class="text-white">.</span>
+        Start for <span class="text-accent">Free</span><span class="text-fg">.</span>
       </h2>
 
       <p class="text-xl sm:text-2xl text-ink-200 mb-12 fade-in-up max-w-2xl mx-auto font-light">

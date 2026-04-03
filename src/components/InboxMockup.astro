@@ -19,9 +19,9 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
   <!-- Window chrome -->
   <div class="inbox-chrome">
     <div class="flex items-center gap-1.5">
-      <span class="w-2.5 h-2.5 rounded-full bg-white/10"></span>
-      <span class="w-2.5 h-2.5 rounded-full bg-white/10"></span>
-      <span class="w-2.5 h-2.5 rounded-full bg-white/10"></span>
+      <span class="w-2.5 h-2.5 rounded-full bg-overlay/10"></span>
+      <span class="w-2.5 h-2.5 rounded-full bg-overlay/10"></span>
+      <span class="w-2.5 h-2.5 rounded-full bg-overlay/10"></span>
     </div>
     <span class="font-mono text-[10px] text-ink-300 tracking-wider uppercase">Replaid Inbox</span>
     <div class="w-16"></div>
@@ -42,8 +42,8 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
 
     <!-- Conversation list -->
     <div class="inbox-list">
-      <div class="p-3 border-b border-white/5">
-        <div class="flex items-center gap-2 px-2 py-1.5 rounded bg-white/5">
+      <div class="p-3 border-b border-overlay/5">
+        <div class="flex items-center gap-2 px-2 py-1.5 rounded bg-overlay/5">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-ink-300" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
           </svg>
@@ -58,7 +58,7 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
             </div>
             <div class="min-w-0 flex-1">
               <div class="flex items-center justify-between gap-2">
-                <span class:list={['text-xs font-medium truncate', c.unread ? 'text-white' : 'text-ink-200']}>{c.name}</span>
+                <span class:list={['text-xs font-medium truncate', c.unread ? 'text-fg' : 'text-ink-200']}>{c.name}</span>
                 <span class="text-[10px] text-ink-300 shrink-0">{c.time}</span>
               </div>
               <p class:list={['text-[11px] truncate mt-0.5', c.unread ? 'text-ink-100' : 'text-ink-300']}>{c.message}</p>
@@ -84,7 +84,7 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
             <ChannelIcon platform="instagram" size={10} />
           </div>
           <div>
-            <div class="text-xs font-medium text-white">Sarah M.</div>
+            <div class="text-xs font-medium text-fg">Sarah M.</div>
             <div class="text-[10px] text-ink-300">Instagram · Direct Message</div>
           </div>
         </div>
@@ -142,30 +142,30 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
   }
 
   .inbox-mockup *::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.1);
+    background: rgba(var(--overlay),0.1);
     border-radius: 4px;
   }
 
   .inbox-mockup *::-webkit-scrollbar-thumb:hover {
-    background: rgba(255,255,255,0.2);
+    background: rgba(var(--overlay),0.2);
   }
 
   .inbox-mockup * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(255,255,255,0.1) transparent;
+    scrollbar-color: rgba(var(--overlay),0.1) transparent;
   }
 
   .inbox-mockup {
     max-width: 56rem;
     margin: 0 auto;
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.08);
-    background: rgba(0,0,0,0.6);
+    border: 1px solid rgba(var(--overlay),0.08);
+    background: rgba(var(--surface),0.6);
     backdrop-filter: blur(20px);
     overflow: hidden;
     box-shadow:
-      0 0 0 1px rgba(255,255,255,0.03),
-      0 20px 60px rgba(0,0,0,0.5),
+      0 0 0 1px rgba(var(--overlay),0.03),
+      0 20px 60px rgba(var(--surface),0.5),
       0 0 80px rgba(var(--accent-rgb),0.03);
   }
 
@@ -174,8 +174,8 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
     align-items: center;
     justify-content: space-between;
     padding: 0.625rem 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(var(--overlay),0.06);
+    background: rgba(var(--overlay),0.02);
   }
 
   .inbox-body {
@@ -186,8 +186,8 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
   /* Sidebar */
   .inbox-sidebar {
     width: 3.5rem;
-    border-right: 1px solid rgba(255,255,255,0.06);
-    background: rgba(255,255,255,0.01);
+    border-right: 1px solid rgba(var(--overlay),0.06);
+    background: rgba(var(--overlay),0.01);
     flex-shrink: 0;
   }
 
@@ -199,14 +199,14 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
     width: 2.25rem;
     height: 2.25rem;
     border-radius: 8px;
-    color: rgba(255,255,255,0.35);
+    color: rgba(var(--overlay),0.35);
     transition: all 0.15s;
   }
 
   .sidebar-icon:hover,
   .sidebar-icon.active {
-    background: rgba(255,255,255,0.06);
-    color: rgba(255,255,255,0.85);
+    background: rgba(var(--overlay),0.06);
+    color: rgba(var(--overlay),0.85);
   }
 
   .sidebar-badge {
@@ -217,7 +217,7 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
     height: 14px;
     border-radius: 50%;
     background: rgb(var(--accent-rgb));
-    color: #000;
+    color: rgb(var(--ink-950));
     font-size: 9px;
     font-weight: 700;
     display: flex;
@@ -229,7 +229,7 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
   /* Conversation list */
   .inbox-list {
     width: 14rem;
-    border-right: 1px solid rgba(255,255,255,0.06);
+    border-right: 1px solid rgba(var(--overlay),0.06);
     overflow-y: auto;
     flex-shrink: 0;
     display: none;
@@ -246,26 +246,26 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
     flex-direction: column;
     gap: 4px;
     padding: 0.625rem 0.75rem;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(var(--overlay),0.04);
     cursor: default;
     transition: background 0.15s;
   }
 
   .conv-item:hover,
   .conv-item.active {
-    background: rgba(255,255,255,0.04);
+    background: rgba(var(--overlay),0.04);
   }
 
   .conv-avatar {
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
-    background: rgba(255,255,255,0.08);
+    background: rgba(var(--overlay),0.08);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: rgba(255,255,255,0.5);
+    color: rgba(var(--overlay),0.5);
   }
 
   .conv-unread-dot {
@@ -302,8 +302,8 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
     align-items: center;
     justify-content: space-between;
     padding: 0.625rem 0.75rem;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    background: rgba(255,255,255,0.01);
+    border-bottom: 1px solid rgba(var(--overlay),0.06);
+    background: rgba(var(--overlay),0.01);
   }
 
   .chat-tag {
@@ -343,8 +343,8 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
   }
 
   .chat-bubble.incoming {
-    background: rgba(255,255,255,0.06);
-    color: rgba(255,255,255,0.85);
+    background: rgba(var(--overlay),0.06);
+    color: rgba(var(--overlay),0.85);
     align-self: flex-start;
     border-bottom-left-radius: 4px;
   }
@@ -352,7 +352,7 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
   .chat-bubble.outgoing {
     background: rgba(var(--accent-rgb),0.1);
     border: 1px solid rgba(var(--accent-rgb),0.15);
-    color: rgba(255,255,255,0.9);
+    color: rgba(var(--overlay),0.9);
     align-self: flex-end;
     border-bottom-right-radius: 4px;
   }
@@ -360,7 +360,7 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
   .chat-time {
     display: block;
     font-size: 9px;
-    color: rgba(255,255,255,0.3);
+    color: rgba(var(--overlay),0.3);
     margin-top: 4px;
   }
 
@@ -380,7 +380,7 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
     align-items: center;
     gap: 8px;
     padding: 0.5rem 0.75rem;
-    border-top: 1px solid rgba(255,255,255,0.04);
+    border-top: 1px solid rgba(var(--overlay),0.04);
   }
 
   .typing-dots {
