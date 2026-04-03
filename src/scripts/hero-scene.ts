@@ -32,8 +32,13 @@ function getParticleColors(): THREE.Color[] {
 
 const DESKTOP_COUNT = 190;
 const MOBILE_COUNT = 95;
-const ENTRANCE_DURATION = 2.8; // seconds
 const FRAME_INTERVAL = 1 / 30; // target 30 fps
+
+const prefersReducedMotion =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const ENTRANCE_DURATION = prefersReducedMotion ? 0 : 2.8; // seconds
 
 // ---------------------------------------------------------------------------
 // State
@@ -293,10 +298,12 @@ function animate(now: DOMHighResTimeStamp) {
   const pulseRange = darkNow ? 0.2 : 0.06;
   material.emissiveIntensity = baseEmissive + pulseRange * (0.5 + 0.5 * Math.sin(elapsed * 2));
 
-  // Gentle camera sway
-  camera.position.x = Math.sin(elapsed * 0.15) * 0.3;
-  camera.position.y = Math.cos(elapsed * 0.12) * 0.2;
-  camera.lookAt(0, 0, 0);
+  // Gentle camera sway (disabled for reduced motion)
+  if (!prefersReducedMotion) {
+    camera.position.x = Math.sin(elapsed * 0.15) * 0.3;
+    camera.position.y = Math.cos(elapsed * 0.12) * 0.2;
+    camera.lookAt(0, 0, 0);
+  }
 
   renderer.render(scene, camera);
 }

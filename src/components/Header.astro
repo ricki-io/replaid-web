@@ -5,7 +5,7 @@ import ThemeToggle from './ThemeToggle.astro';
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-ink-950/90 backdrop-blur-sm border-b border-overlay/5">
   <div class="mx-auto max-w-7xl px-6">
-    <nav class="flex items-center justify-between h-20">
+    <nav class="flex items-center justify-between h-20" aria-label="Main navigation">
       <div class="flex items-center gap-10">
         <a href="/" class="font-display text-2xl font-bold tracking-tight">
           Replaid<span class="text-accent">.</span>
@@ -72,6 +72,7 @@ import ThemeToggle from './ThemeToggle.astro';
       bar1.style.transform = 'none';
       bar2.style.opacity = '1';
       bar3.style.transform = 'none';
+      btn.focus();
     });
   });
 </script>

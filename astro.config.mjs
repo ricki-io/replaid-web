@@ -31,7 +31,7 @@ function heroPreload() {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://replaid.pro',
-  integrations: [tailwind(), sitemap(), heroPreload()],
+  integrations: [tailwind(), sitemap({ filter: (page) => !page.includes('/404') }), heroPreload()],
   output: 'static',
   vite: {
     build: {

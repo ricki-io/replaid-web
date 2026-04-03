@@ -23,6 +23,7 @@ const plans = [
           id="pricing-toggle"
           class="relative w-14 h-8 bg-ink-700 rounded-full cursor-pointer transition-colors"
           aria-label="Toggle yearly pricing"
+          aria-pressed="false"
         >
           <span class="pricing-toggle-dot absolute top-1 left-1 w-6 h-6 bg-fg rounded-full transition-transform"></span>
         </button>
@@ -88,6 +89,8 @@ const plans = [
       const periods = document.querySelectorAll('.price-period');
       const labelMonthly = document.querySelector('.pricing-label-monthly') as HTMLElement;
       const labelYearly = document.querySelector('.pricing-label-yearly') as HTMLElement;
+
+      toggle.setAttribute('aria-pressed', String(yearly));
 
       if (yearly) {
         dot.style.transform = 'translateX(1.5rem)';

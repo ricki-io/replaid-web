@@ -82,6 +82,9 @@ const isProd = import.meta.env.PROD;
     </script>
   </head>
   <body class="min-h-screen bg-ink-950 text-fg antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-fg focus:text-ink-950 font-display font-semibold">
+      Skip to main content
+    </a>
     <div class="overflow-x-hidden w-full">
       <slot />
     </div>
@@ -179,7 +182,7 @@ const isProd = import.meta.env.PROD;
 
       .btn-type:hover {
         background: rgb(var(--accent-rgb));
-        color: #fff;
+        color: #000;
       }
 
       .btn-type-outline {
@@ -229,6 +232,28 @@ const isProd = import.meta.env.PROD;
       .fade-in-up.visible {
         opacity: 1;
         transform: translateY(0);
+      }
+
+      /* Focus-visible for keyboard navigation */
+      a:focus-visible, button:focus-visible, [tabindex]:focus-visible,
+      input:focus-visible, textarea:focus-visible, select:focus-visible,
+      details:focus-visible > summary {
+        outline: 2px solid rgb(var(--accent-rgb));
+        outline-offset: 2px;
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+        .fade-in-up {
+          opacity: 1;
+          transform: none;
+        }
       }
 
       /* Background text */
