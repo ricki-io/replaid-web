@@ -5,12 +5,30 @@ import * as THREE from 'three';
 // ---------------------------------------------------------------------------
 
 const ACCENT = new THREE.Color(0x93e85f);
-const WHITE = new THREE.Color(0xcccccc);
-const GRAY_LIGHT = new THREE.Color(0x999999);
-const GRAY_MID = new THREE.Color(0x555555);
-const GRAY_DARK = new THREE.Color(0x333333);
 
-const PARTICLE_COLORS = [WHITE, GRAY_LIGHT, GRAY_MID, GRAY_DARK];
+// Dark-mode palette — brighter so particles are visible against black
+const DARK_COLORS = [
+  new THREE.Color(0xeeeeee),
+  new THREE.Color(0xcccccc),
+  new THREE.Color(0x999999),
+  new THREE.Color(0x777777),
+];
+
+// Light-mode palette — very light grays that stay subtle on white
+const LIGHT_COLORS = [
+  new THREE.Color(0xdddddd),
+  new THREE.Color(0xd0d0d0),
+  new THREE.Color(0xc8c8c8),
+  new THREE.Color(0xd8d8d8),
+];
+
+function isDarkMode(): boolean {
+  return document.documentElement.classList.contains('dark');
+}
+
+function getParticleColors(): THREE.Color[] {
+  return isDarkMode() ? DARK_COLORS : LIGHT_COLORS;
+}
 
 const DESKTOP_COUNT = 190;
 const MOBILE_COUNT = 95;
@@ -86,16 +104,17 @@ function createScene(el: HTMLElement) {
   const w = el.clientWidth || window.innerWidth;
   const h = el.clientHeight || window.innerHeight;
 
-  // Renderer — pixel ratio capped at 1; this is a background element behind text
-  renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
-  renderer.setPixelRatio(1);
+  // Renderer — cap at 2x for retina sharpness without GPU overhead
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(w, h);
   renderer.toneMapping = THREE.NoToneMapping;
   el.appendChild(renderer.domElement);
 
-  // Scene & fog
+  // Scene & fog — color matches current theme
   scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x000000, 0.06);
+  const isDark = document.documentElement.classList.contains('dark');
+  scene.fog = new THREE.FogExp2(isDark ? 0x000000 : 0xfafafa, 0.06);
 
   // Camera
   camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 100);
@@ -130,13 +149,16 @@ function createParticles() {
   // Message card geometry — thin rounded rectangle
   const geo = new THREE.BoxGeometry(0.18, 0.12, 0.015);
 
-  // Material — lightweight Lambert; PBR is overkill for blurred background cards
-  const mat = new THREE.MeshLambertMaterial({
-    color: 0xffffff,
+  // Material — glassy, translucent with green specular highlights
+  const dark = isDarkMode();
+  const mat = new THREE.MeshPhongMaterial({
+    color: 0x55aa40,
     emissive: ACCENT,
-    emissiveIntensity: 0.15,
+    emissiveIntensity: dark ? 0.35 : 0.1,
+    specular: new THREE.Color(0xbbffaa),
+    shininess: 120,
     transparent: true,
-    opacity: 0.92,
+    opacity: dark ? 0.55 : 0.18,
   });
 
   material = mat;
@@ -170,10 +192,11 @@ function createParticles() {
     spawnPositions[i * 3 + 2] = rand(-12, 6);
 
     // Set colour
+    const palette = getParticleColors();
     if (isAccent[i]) {
       tempColor.copy(ACCENT);
     } else {
-      tempColor.copy(PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)]);
+      tempColor.copy(palette[Math.floor(Math.random() * palette.length)]);
     }
     instancedMesh.setColorAt(i, tempColor);
   }
@@ -264,8 +287,11 @@ function animate(now: DOMHighResTimeStamp) {
 
   instancedMesh.instanceMatrix.needsUpdate = true;
 
-  // Pulse accent via emissive intensity (single uniform, no buffer upload)
-  material.emissiveIntensity = 0.1 + 0.15 * (0.5 + 0.5 * Math.sin(elapsed * 2));
+  // Pulse accent via emissive intensity — stronger in dark for visibility, subtle in light
+  const darkNow = isDarkMode();
+  const baseEmissive = darkNow ? 0.25 : 0.06;
+  const pulseRange = darkNow ? 0.2 : 0.06;
+  material.emissiveIntensity = baseEmissive + pulseRange * (0.5 + 0.5 * Math.sin(elapsed * 2));
 
   // Gentle camera sway
   camera.position.x = Math.sin(elapsed * 0.15) * 0.3;
@@ -308,6 +334,29 @@ export function initHeroScene(el: HTMLElement) {
     { threshold: 0 }
   );
   observer.observe(el);
+
+  // Respond to theme toggles — update fog, particle colors, and material
+  window.addEventListener('theme-change', ((e: CustomEvent) => {
+    const dark = e.detail.dark as boolean;
+    if (scene?.fog) {
+      (scene.fog as THREE.FogExp2).color.set(dark ? 0x000000 : 0xfafafa);
+    }
+    if (material) {
+      material.opacity = dark ? 0.55 : 0.18;
+    }
+    if (instancedMesh && isAccent) {
+      const palette = getParticleColors();
+      for (let i = 0; i < instancedMesh.count; i++) {
+        if (isAccent[i]) {
+          tempColor.copy(ACCENT);
+        } else {
+          tempColor.copy(palette[Math.floor(Math.random() * palette.length)]);
+        }
+        instancedMesh.setColorAt(i, tempColor);
+      }
+      if (instancedMesh.instanceColor) instancedMesh.instanceColor.needsUpdate = true;
+    }
+  }) as EventListener);
 
   animate(performance.now());
 }
