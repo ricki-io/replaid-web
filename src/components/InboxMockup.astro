@@ -180,7 +180,13 @@ const sidebarBadges: Record<string, number | undefined> = { instagram: 2, whatsa
 
   .inbox-body {
     display: flex;
-    min-height: 22rem;
+    min-height: 16rem;
+  }
+
+  @media (min-width: 640px) {
+    .inbox-body {
+      min-height: 22rem;
+    }
   }
 
   /* Sidebar */

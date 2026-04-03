@@ -15,7 +15,7 @@ const features = [
   <div class="bg-text text-[30vw] -right-20 top-1/2 -translate-y-1/2">FEATURES</div>
   
   <div class="relative mx-auto max-w-7xl px-6">
-    <div class="mb-20 fade-in-up pl-8 sm:pl-10">
+    <div class="mb-20 fade-in-up pl-4 sm:pl-8">
       <div class="mono-label mb-4">What We Do</div>
       <h2 class="text-display-md font-bold max-w-4xl">
         All the tools to<br/>
@@ -44,5 +44,14 @@ const features = [
     border: 1px solid rgba(var(--overlay),0.06);
     background: rgba(var(--surface),0.4);
     backdrop-filter: blur(12px);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  @media (hover: hover) {
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(var(--accent-rgb),0.25);
+      box-shadow: 0 8px 30px rgba(var(--accent-rgb),0.06), 0 2px 8px rgba(var(--surface),0.3);
+    }
   }
 </style>
