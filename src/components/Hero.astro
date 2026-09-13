@@ -1,39 +1,15 @@
 ---
-import ChannelIcon from './ChannelIcon.astro';
+import SkyHeader from './SkyHeader.astro';
+import ConnectorGraphic from './ConnectorGraphic.astro';
 ---
-
-<section id="hero" class="px-6 pt-36 pb-16 sm:pt-44 sm:pb-20">
-  <div class="mx-auto max-w-7xl grid lg:grid-cols-[1.65fr_1fr] gap-10 lg:gap-20 items-end">
-    <h1 class="hero-headline">Give your AI agent a customer inbox.</h1>
-    <div class="pb-2">
-      <p class="text-lg sm:text-xl text-ink-100 leading-relaxed max-w-xl">
-        Connect Instagram, Messenger, and Telegram to your agent through MCP or API.
-        Let it read conversations, draft replies, and take permitted actions.
-      </p>
-      <div class="hero-actions flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3 mt-8">
-        <a href="https://app.replaid.pro/register" class="btn-type">Connect your agent</a>
-        <a href="#demo" class="btn-type-outline">Explore the demo</a>
-      </div>
-      <p class="text-sm text-ink-200 mt-5">Current supported operations are free. No subscription.</p>
-    </div>
+<section class="sky-hero" aria-labelledby="hero-heading">
+  <img class="sky-background" src="/connector-sky.webp" width="1536" height="1024" alt="" fetchpriority="high" />
+  <SkyHeader />
+  <div class="sky-hero-copy">
+    <h1 id="hero-heading">Connect your AI agent<br class="desktop-break" /> to your customers.</h1>
+    <p>Bring your agent. Connect your channels. Control what happens next.</p>
+    <a class="sky-button" href="https://app.replaid.pro/register">Connect your agent</a>
+    <span class="hero-supporting">Built for MCP and API</span>
   </div>
-  <div class="mx-auto max-w-7xl mt-12 sm:mt-16 pt-6 border-t border-overlay/15 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
-    <p class="text-sm text-ink-200">Your agent. Your instructions. Your customer conversations.</p>
-    <div class="flex flex-wrap gap-5 text-ink-100 text-sm" aria-label="Supported channels">
-      <span class="flex items-center gap-2"><ChannelIcon platform="instagram" size={18} />Instagram</span>
-      <span class="flex items-center gap-2"><ChannelIcon platform="messenger" size={18} />Messenger</span>
-      <span class="flex items-center gap-2"><ChannelIcon platform="telegram" size={18} />Telegram</span>
-    </div>
-  </div>
+  <ConnectorGraphic />
 </section>
-
-<style>
-  .hero-actions :global(a) { font-size: 1rem; padding: 1rem 1.25rem; white-space: nowrap; }
-  .hero-headline {
-    font-size: clamp(3.25rem, 6.8vw, 6.25rem);
-    line-height: 1.02;
-    letter-spacing: -0.055em;
-    max-width: 12ch;
-    text-wrap: balance;
-  }
-</style>

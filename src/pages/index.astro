@@ -1,20 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import InboxMockup from '../components/InboxMockup.astro';
-import Features from '../components/Features.astro';
-import HowItWorks from '../components/HowItWorks.astro';
-import Integrations from '../components/Integrations.astro';
-import Channels from '../components/Channels.astro';
-import Pricing from '../components/Pricing.astro';
-import FAQ from '../components/FAQ.astro';
-import CTA from '../components/CTA.astro';
-import Footer from '../components/Footer.astro';
 import { faqs } from '../components/faq-content';
 import '../styles/global.css';
+import '../styles/landing.css';
 
-const description = 'Connect your AI agent to Instagram, Messenger, and Telegram. Read conversations, draft replies, and take permitted actions with MCP or API.';
+const description = 'Connect your AI agent to your customers. Replaid brings channel context, action permissions, and MCP or API access to the agent you already use.';
 const jsonLd = [
   {
     '@context': 'https://schema.org',
@@ -48,19 +39,73 @@ const jsonLd = [
   },
 ];
 ---
-
-<Layout title="Replaid — A customer inbox for your AI agent" description={description} jsonLd={jsonLd}>
-  <Header />
-  <main id="main">
+<Layout title="Replaid — Connect your AI agent to your customers" description={description} jsonLd={jsonLd} forceLight>
+  <main id="main" class="sky-landing">
     <Hero />
-    <InboxMockup />
-    <HowItWorks />
-    <Features />
-    <Integrations />
-    <Channels />
-    <Pricing />
-    <FAQ />
-    <CTA />
+    <section id="how-it-works" class="sky-section agent-explanation" aria-labelledby="agent-heading">
+      <div id="features">
+        <h2 id="agent-heading">Your agent brings the intelligence.<br />Replaid makes the connection.</h2>
+      </div>
+      <p>Keep your knowledge and instructions in your agent.</p>
+      <ol class="agent-flow">
+        <li><span class="flow-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2h8l4 4v16H6zM14 2v5h4M9 11h6M9 15h6M9 18h4" /></svg></span><span>Receive context</span></li>
+        <li><span class="flow-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m14 2-10 12h7l-1 8 10-12h-7z" /></svg></span><span>Request an action</span></li>
+        <li><span class="flow-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h4m6 0h8M3 12h10m6 0h2M3 19h2m6 0h10" /><circle cx="10" cy="5" r="3" /><circle cx="16" cy="12" r="3" /><circle cx="8" cy="19" r="3" /></svg></span><span>Apply your rules</span></li>
+      </ol>
+    </section>
+    <section id="connections" class="sky-section growth-section" aria-labelledby="growth-heading">
+      <h2 id="growth-heading">One connection.<br />Room to grow.</h2>
+      <div class="growth-copy">
+        <p>Connect the channels you use today. Keep the same agent workflow as your setup grows.</p>
+        <details class="connection-details">
+          <summary>Explore available connections</summary>
+          <ul class="connection-list">
+            <li>Instagram <span>Business or Creator account</span></li>
+            <li>Messenger <span>Facebook Page</span></li>
+            <li>Telegram <span>Private messages to your bot</span></li>
+            <li>WhatsApp <span>Planned</span></li>
+            <li>TikTok <span>Planned</span></li>
+          </ul>
+          <p class="connection-note">Current connections support text messages and replies. Instagram also supports text comments. One active account per channel, per team. Previous messages are not imported.</p>
+          <p class="connection-note">MCP and REST connect your agent. Automatic processing needs an external schedule or a webhook receiver that starts it. <a href="/get-started">Read the connection guide.</a></p>
+        </details>
+      </div>
+    </section>
+    <section class="sky-section sky-final-cta">
+      <h2>Your agent. Connected.</h2>
+      <a class="sky-button" href="https://app.replaid.pro/register">Connect your agent</a>
+    </section>
+    <div class="sky-utility">
+      <details id="pricing">
+        <summary>Pricing</summary>
+        <p>No subscription. Current supported operations are free. Future paid operations use prepaid USD credits at provider cost plus a 20% markup. Applicable tax and your external agent provider's fees are separate.</p>
+      </details>
+      <details id="faq">
+        <summary>Questions before you connect?</summary>
+        {faqs.map(faq => <div><h3>{faq.q}</h3><p>{faq.a}</p></div>)}
+      </details>
+    </div>
+    <footer class="sky-footer">
+      <a class="sky-wordmark" href="/">Replaid.</a>
+      <nav aria-label="Footer navigation">
+        <a href="/get-started">Docs</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+      </nav>
+    </footer>
   </main>
-  <Footer />
 </Layout>
+<script>
+  function revealDestination(hash: string) {
+    if (hash !== '#pricing' && hash !== '#faq' && hash !== '#connections') return;
+    const target = document.getElementById(hash.slice(1));
+    const details = target instanceof HTMLDetailsElement ? target : target?.querySelector('details');
+    if (details) details.open = true;
+  }
+  document.querySelectorAll<HTMLAnchorElement>('a[href*="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const url = new URL(link.href);
+      if (url.pathname === location.pathname) revealDestination(url.hash);
+    });
+  });
+  window.addEventListener('hashchange', () => revealDestination(location.hash));
+  revealDestination(location.hash);
+</script>

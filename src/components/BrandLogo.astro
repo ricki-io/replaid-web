@@ -1,0 +1,17 @@
+---
+import ChannelIcon from './ChannelIcon.astro';
+interface Props { platform: 'instagram' | 'messenger' | 'telegram' | 'whatsapp' | 'tiktok'; }
+const { platform } = Astro.props;
+---
+<span class:list={['brand-logo', platform]} aria-hidden="true">
+  {platform === 'instagram' ? <ChannelIcon platform="instagram" size={30} /> :
+    platform === 'messenger' || platform === 'tiktok' ? <img src={`/${platform}.svg`} width="38" height="38" alt="" /> :
+    <ChannelIcon platform={platform} size={40} />}
+</span>
+<style>
+  .brand-logo { display: grid; place-items: center; width: 42px; height: 42px; flex: none; }
+  .instagram { color: #fff; border-radius: 12px; background: radial-gradient(circle at 30% 105%, #ffd776 0%, #ff9a35 25%, #ef3369 50%, #b134c8 75%, #535de3 100%); }
+  .telegram { color: #229ed9; }
+  .whatsapp { color: #20bd5a; }
+  img { display: block; max-width: 100%; }
+</style>

@@ -1,0 +1,50 @@
+---
+import BrandLogo from './BrandLogo.astro';
+const channels = [
+  { platform: 'instagram', label: 'Instagram' },
+  { platform: 'messenger', label: 'Messenger' },
+  { platform: 'telegram', label: 'Telegram' },
+  { platform: 'whatsapp', label: 'WhatsApp · planned' },
+  { platform: 'tiktok', label: 'TikTok · planned' },
+] as const;
+---
+<figure class="connector-figure" aria-label="Customer channels connect through Replaid to your external AI agent. Replaid provides context, permissions, and actions.">
+  <div class="connector-graphic">
+    <svg class="connector-lines" viewBox="0 0 1000 360" preserveAspectRatio="none" fill="none" aria-hidden="true">
+      <defs><filter id="line-glow"><feGaussianBlur stdDeviation="3" /></filter></defs>
+      <g stroke="white" stroke-width="6" opacity=".3" filter="url(#line-glow)">
+        <path d="M190 45C285 45 290 167 420 167M110 100C265 100 280 175 420 175M190 150C300 150 295 183 420 183M110 205C270 205 290 191 420 191M190 260C300 260 300 199 420 199M610 171C670 147 685 171 754 171M610 205C680 229 690 205 754 205" />
+      </g>
+      <g stroke="white" stroke-width="2" opacity=".95">
+        <path d="M190 45C285 45 290 167 420 167M110 100C265 100 280 175 420 175M190 150C300 150 295 183 420 183M110 205C270 205 290 191 420 191M190 260C300 260 300 199 420 199" />
+        <path d="M610 171C670 147 685 171 754 171l-9-5m9 5-9 5M754 205C690 205 680 229 610 205l9-4m-9 4 7 7" />
+      </g>
+    </svg>
+    <div class="channel-cluster">
+      {channels.map((channel, index) => (
+        <a class:list={['connector-tile', 'channel-node', `channel-node-${index}`]} href="#connections" aria-label={`${channel.label}. Explore connections.`}>
+          <BrandLogo platform={channel.platform} />
+          <span class="node-tooltip">{channel.label}</span>
+        </a>
+      ))}
+      <a class="connector-tile channel-node channel-node-more" href="#connections" aria-label="Explore more connections"><span aria-hidden="true">•••</span></a>
+      <span class="cluster-label">Your channels</span>
+    </div>
+    <div class="replaid-node">
+      <div class="connector-tile replaid-tile">
+        <span class="replaid-tile-wordmark">Replaid.</span>
+        <svg width="48" height="48" viewBox="0 0 32 32" fill="none" stroke="#389dde" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="m13 19 6-6m-7-4 2-2a7 7 0 0 1 10 10l-2 2m-2 4-2 2A7 7 0 0 1 8 15l2-2" /></svg>
+      </div>
+      <p>Context · Permissions · Actions</p>
+    </div>
+    <div class="agent-node">
+      <div class="connector-tile agent-ghost ghost-top" aria-hidden="true">✦</div>
+      <div class="connector-tile agent-ghost ghost-bottom" aria-hidden="true">⬡</div>
+      <div class="connector-tile agent-tile">
+        <svg width="112" height="112" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="agent-blue" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#0478ff" /><stop offset="1" stop-color="#85b6ff" /></linearGradient></defs><path d="M50 3C57 30 70 43 97 50 70 57 57 70 50 97 43 70 30 57 3 50 30 43 43 30 50 3Z" fill="url(#agent-blue)" /></svg>
+      </div>
+      <p><strong>Your AI agent</strong><span>MCP / API</span></p>
+    </div>
+  </div>
+  <figcaption>WhatsApp and TikTok are planned connections.</figcaption>
+</figure>

@@ -1,0 +1,33 @@
+---
+const links = [
+  { href: '/#how-it-works', label: 'How it works' },
+  { href: '/#connections', label: 'Connections' },
+  { href: '/get-started', label: 'Docs' },
+  { href: '/#pricing', label: 'Pricing' },
+];
+---
+<header class="sky-header">
+  <a class="sky-wordmark" href="/" aria-label="Replaid home">Replaid.</a>
+  <nav class="sky-desktop-nav" aria-label="Main navigation">
+    {links.map(link => <a href={link.href}>{link.label}</a>)}
+  </nav>
+  <a class="sky-button sky-header-cta" href="https://app.replaid.pro/register">Get started</a>
+  <details class="sky-mobile-nav">
+    <summary aria-label="Open navigation"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></summary>
+    <nav aria-label="Mobile navigation">
+      {links.map(link => <a href={link.href}>{link.label}</a>)}
+      <a href="https://app.replaid.pro/login">Log in</a>
+      <a href="https://app.replaid.pro/register">Get started</a>
+    </nav>
+  </details>
+</header>
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>('.sky-mobile-nav');
+  menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.open = false; }));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu?.open) {
+      menu.open = false;
+      menu.querySelector('summary')?.focus();
+    }
+  });
+</script>
