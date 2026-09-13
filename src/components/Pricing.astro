@@ -1,116 +1,23 @@
----
-// Typography First Pricing - type-driven, minimal cards
-const plans = [
-  { name: 'Starter', priceMonthly: '29', priceYearly: '290', features: ['1 channel', '100 credits/mo', '1 user', '7-day email support'], highlight: false },
-  { name: 'Pro', priceMonthly: '79', priceYearly: '790', features: ['3 channels', '500 credits/mo', '3 users', 'Connectors & MCP', 'Priority support'], highlight: true },
-  { name: 'Business', priceMonthly: '149', priceYearly: '1490', features: ['All channels', '5,000 credits/mo', '5 users', 'Connectors & MCP', 'Priority support'], highlight: false },
-  { name: 'Agency', priceMonthly: '299', priceYearly: '2990', features: ['All channels', '15,000 credits/mo', 'Unlimited users', 'Connectors & MCP', 'Priority support', 'Dedicated success manager'], highlight: false },
-];
----
-
-<section id="pricing" class="py-16 sm:py-24">
-  <div class="mx-auto max-w-7xl px-6">
-    <div class="mb-20 fade-in-up text-center">
-      <div class="mono-label mb-4">Pricing</div>
-      <h2 class="text-display-md font-bold">
-        Simple<span class="text-accent">,</span> transparent
-      </h2>
-
-      <!-- Toggle -->
-      <div class="flex items-center justify-center gap-4 mt-8">
-        <span class="font-display font-semibold text-lg pricing-label-monthly text-fg">Monthly</span>
-        <button
-          id="pricing-toggle"
-          class="relative w-14 h-8 bg-ink-700 rounded-full cursor-pointer transition-colors"
-          aria-label="Toggle yearly pricing"
-          aria-pressed="false"
-        >
-          <span class="pricing-toggle-dot absolute top-1 left-1 w-6 h-6 bg-fg rounded-full transition-transform"></span>
-        </button>
-        <span class="font-display font-semibold text-lg pricing-label-yearly text-ink-400">Yearly</span>
+<section id="pricing" class="py-16 sm:py-24 px-6 border-y border-overlay/10">
+  <div class="mx-auto max-w-7xl grid lg:grid-cols-2 gap-10 lg:gap-20">
+    <div>
+      <h2 class="text-display-sm">Start free.<br />No subscription.</h2>
+      <p class="mt-6 text-ink-200 text-lg leading-relaxed max-w-lg">Current supported operations are free. Connect your channels and test your agent without a monthly plan.</p>
+      <a href="https://app.replaid.pro/register" class="btn-type mt-8">Connect your agent</a>
+    </div>
+    <div class="space-y-6">
+      <div class="border-b border-overlay/15 pb-6">
+        <h3 class="text-xl mb-2">Free operations stay clear</h3>
+        <p class="text-ink-200 leading-relaxed">Current supported operations on Instagram, Messenger, and Telegram do not spend Replaid credits.</p>
       </div>
-
+      <div class="border-b border-overlay/15 pb-6">
+        <h3 class="text-xl mb-2">Prepaid credits for future paid operations</h3>
+        <p class="text-ink-200 leading-relaxed">When paid operations become available, they will use prepaid USD credits. Rates include the provider cost plus a 20% markup. Applicable tax is separate.</p>
+      </div>
+      <div>
+        <h3 class="text-xl mb-2">Bring your own agent</h3>
+        <p class="text-ink-200 leading-relaxed">Your AI provider or agent platform may charge separately. Those costs are not included in Replaid.</p>
+      </div>
     </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 max-w-6xl mx-auto">
-      {plans.map((p, i) => (
-        <div class:list={['pricing-card p-6 sm:p-8 md:p-10 fade-in-up flex flex-col relative', { highlight: p.highlight }]} style={`transition-delay: ${i * 100}ms`}>
-          {p.highlight && <div class="mono-label text-accent absolute top-4 right-4 sm:top-6 sm:right-6">Most Popular</div>}
-          <h3 class="font-display text-2xl font-bold mb-2">{p.name}</h3>
-          <div class="mb-8">
-            <span class="font-display text-5xl sm:text-6xl font-bold tracking-tighter">
-              €<span class="price-value" data-monthly={p.priceMonthly} data-yearly={p.priceYearly}>{p.priceMonthly}</span>
-            </span>
-            <span class="text-ink-300 text-lg price-period">/mo</span>
-          </div>
-          <ul class="space-y-4 mb-10 flex-1">
-            {p.features.map(f => (
-              <li class="flex items-center gap-3 text-ink-100">
-                <span class="text-accent font-mono">→</span>
-                {f}
-              </li>
-            ))}
-          </ul>
-          <a href="https://app.replaid.pro/register" class:list={['block text-center py-4 font-display font-semibold transition-colors rounded-lg', p.highlight ? 'bg-fg text-ink-950 hover:bg-accent hover:text-fg' : 'border border-overlay/15 text-fg hover:border-overlay/40']}>
-            Get Started
-          </a>
-        </div>
-      ))}
-    </div>
-
-    <p class="text-center text-ink-200 mt-10 fade-in-up">
-      Need higher limits or custom integrations? <a href="/contact" class="text-accent hover:underline">Contact us</a>
-    </p>
   </div>
 </section>
-
-<style>
-  .pricing-card {
-    border-radius: 12px;
-    border: 1px solid rgba(var(--overlay),0.06);
-    background: rgba(var(--surface),0.4);
-    backdrop-filter: blur(12px);
-  }
-
-  .pricing-card.highlight {
-    border-color: rgba(var(--accent-rgb),0.3);
-    background: rgba(var(--accent-rgb),0.04);
-  }
-</style>
-
-<script>
-  const toggle = document.getElementById('pricing-toggle');
-  if (toggle) {
-    let yearly = false;
-    toggle.addEventListener('click', () => {
-      yearly = !yearly;
-      const dot = toggle.querySelector('.pricing-toggle-dot') as HTMLElement;
-      const prices = document.querySelectorAll('.price-value');
-      const periods = document.querySelectorAll('.price-period');
-      const labelMonthly = document.querySelector('.pricing-label-monthly') as HTMLElement;
-      const labelYearly = document.querySelector('.pricing-label-yearly') as HTMLElement;
-
-      toggle.setAttribute('aria-pressed', String(yearly));
-
-      if (yearly) {
-        dot.style.transform = 'translateX(1.5rem)';
-        toggle.classList.add('bg-accent');
-        toggle.classList.remove('bg-ink-700');
-        labelMonthly.classList.replace('text-fg', 'text-ink-400');
-        labelYearly.classList.replace('text-ink-400', 'text-fg');
-        prices.forEach(el => { el.textContent = (el as HTMLElement).dataset.yearly!; });
-        periods.forEach(el => { el.textContent = '/yr'; });
-
-      } else {
-        dot.style.transform = 'translateX(0)';
-        toggle.classList.remove('bg-accent');
-        toggle.classList.add('bg-ink-700');
-        labelMonthly.classList.replace('text-ink-400', 'text-fg');
-        labelYearly.classList.replace('text-fg', 'text-ink-400');
-        prices.forEach(el => { el.textContent = (el as HTMLElement).dataset.monthly!; });
-        periods.forEach(el => { el.textContent = '/mo'; });
-
-      }
-    });
-  }
-</script>

@@ -1,57 +1,12 @@
----
-// Typography First CTA - massive headline
----
-
-<section id="cta" class="py-16 sm:py-24 relative overflow-hidden">
-  <div class="relative mx-auto max-w-7xl px-6">
-    <div class="cta-panel relative overflow-hidden px-6 py-16 sm:px-12 sm:py-20 text-center">
-      <!-- Background text -->
-      <div class="bg-text text-[40vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">GO</div>
-
-      <!-- Accent glow -->
-      <div class="cta-glow"></div>
-
-      <div class="relative">
-        <div class="mono-label mb-8 fade-in-up">Get Started</div>
-
-        <h2 class="text-display-lg font-bold mb-8 fade-in-up">
-          Inbox smarter,<br/>
-          <span class="text-accent">close faster</span>
-        </h2>
-
-        <p class="text-xl sm:text-2xl text-ink-200 mb-12 fade-in-up max-w-2xl mx-auto font-light">
-          Turn everyday conversations into customers — qualify messages and comments automatically from one inbox.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
-          <a href="https://app.replaid.pro/register" class="btn-type">
-            Start Free Trial
-          </a>
-          <a href="/contact" class="btn-type-outline">
-            Book a Demo
-          </a>
-        </div>
-      </div>
+<section class="py-16 sm:py-24 px-6 border-y border-overlay/10">
+  <div class="mx-auto max-w-7xl flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+    <div>
+      <h2 class="text-display-sm max-w-2xl">Put your agent to work on a real conversation.</h2>
+      <p class="text-ink-200 text-lg mt-5">Connect one channel. Create one draft. See what happened.</p>
+    </div>
+    <div class="flex flex-col gap-4 shrink-0">
+      <a href="https://app.replaid.pro/register" class="btn-type">Connect your agent</a>
+      <a href="/contact" class="text-center text-ink-100 underline underline-offset-4">Need help connecting?</a>
     </div>
   </div>
 </section>
-
-<style>
-  .cta-panel {
-    border-radius: 16px;
-    border: 1px solid rgba(var(--overlay),0.08);
-    background: rgba(var(--surface),0.5);
-    backdrop-filter: blur(16px);
-  }
-
-  .cta-glow {
-    position: absolute;
-    top: -40%;
-    left: 50%;
-    translate: -50% 0;
-    width: 60%;
-    height: 50%;
-    background: radial-gradient(ellipse at center, rgba(var(--accent-rgb),0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-</style>

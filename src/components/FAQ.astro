@@ -1,31 +1,18 @@
 ---
-// Typography First FAQ - clean, type-focused
-const faqs = [
-  { q: "What channels can I connect to Replaid?", a: "You can connect Facebook Messenger, Instagram (DMs and comments), WhatsApp, Telegram, Twitter (Beta), and more. We're continuously adding new platforms based on user demand." },
-  { q: "Can Replaid respond automatically to DMs and comments?", a: "Yes. Replaid uses AI to send automatic replies, filter out spam, answer common questions, and help you move real leads through your funnel." },
-  { q: "Can I use Replaid without automatic replies?", a: "Yes. You can disable auto-replies and still use Replaid to filter leads, send notifications, and automate workflows. Great if you want to reply manually but still streamline your process." },
-  { q: "How does Replaid qualify leads?", a: "It analyzes message intent using natural language processing to detect interest, assign categories, and trigger notifications or automations so you can focus on the most valuable conversations." },
-  { q: "Is it hard to set up? Do I need to code anything?", a: "Not at all. Replaid is fully no-code. Just connect your channels, configure your preferences, and you're ready to go." },
-];
+import { faqs } from './faq-content';
 ---
 
-<section id="faq" class="py-16 sm:py-24">
-  <div class="mx-auto max-w-4xl px-6">
-    <div class="mb-20 fade-in-up text-center">
-      <div class="mono-label mb-4">Questions</div>
-      <h2 class="text-display-md font-bold">Frequently Asked</h2>
-    </div>
-    
-    <div class="divide-y divide-overlay/10">
-      {faqs.map((f, i) => (
-        <details class="group fade-in-up" style={`transition-delay: ${i * 50}ms`}>
-          <summary class="py-8 font-display text-xl sm:text-2xl font-bold cursor-pointer flex justify-between items-center list-none hover:text-accent transition-colors">
-            {f.q}
-            <span class="font-mono text-2xl text-ink-400 group-open:rotate-45 transition-transform">+</span>
+<section id="faq" class="py-16 sm:py-24 px-6">
+  <div class="mx-auto max-w-4xl">
+    <h2 class="text-display-sm mb-10">Before you connect.</h2>
+    <div class="divide-y divide-overlay/15">
+      {faqs.map((faq) => (
+        <details class="group">
+          <summary class="py-6 font-display text-lg sm:text-xl font-semibold cursor-pointer flex justify-between items-center gap-6 list-none">
+            {faq.q}
+            <span class="text-ink-200 group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
           </summary>
-          <div class="pb-8 text-ink-200 text-lg leading-relaxed -mt-2">
-            {f.a}
-          </div>
+          <p class="pb-6 text-ink-200 leading-relaxed max-w-3xl">{faq.a}</p>
         </details>
       ))}
     </div>

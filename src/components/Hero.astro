@@ -1,186 +1,39 @@
 ---
-// 3D Interactive Hero — Three.js particle vortex with overlaid typography
-import InboxMockup from './InboxMockup.astro';
 import ChannelIcon from './ChannelIcon.astro';
 ---
 
-<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-  <!-- Three.js canvas container — fills the entire hero behind content -->
-  <div id="hero-canvas-container" class="hero-canvas"></div>
-
-  <!-- Gradient overlay for text readability -->
-  <div class="hero-overlay"></div>
-
-  <!-- Hero content — layered above the 3D scene -->
-  <div class="relative z-10 mx-auto max-w-7xl px-6 py-24 sm:py-32 w-full box-border">
-    <div class="max-w-5xl mx-auto text-center">
-      <!-- Badge -->
-      <a href="https://www.uneed.best/tool/replaid" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mb-8 fade-in-up hover:opacity-80 transition-opacity">
-        <span class="mono-label text-ink-100">Voted #1 on Uneed</span>
-        <span class="text-accent">★</span>
-      </a>
-
-      <!-- Massive headline -->
-      <h1 class="hero-headline fade-in-up">
-        Money is in<br/>
-        your <span class="text-accent">inbox</span><span class="text-fg">.</span>
-      </h1>
-
-      <!-- Subheadline -->
-      <p class="text-lg sm:text-xl md:text-2xl text-ink-100 max-w-2xl mx-auto mb-12 leading-relaxed fade-in-up font-light hero-sub">
-        AI-powered inbox assistant that qualifies leads and triggers automations to keep your pipeline moving 24/7.
+<section id="hero" class="px-6 pt-36 pb-16 sm:pt-44 sm:pb-20">
+  <div class="mx-auto max-w-7xl grid lg:grid-cols-[1.65fr_1fr] gap-10 lg:gap-20 items-end">
+    <h1 class="hero-headline">Give your AI agent a customer inbox.</h1>
+    <div class="pb-2">
+      <p class="text-lg sm:text-xl text-ink-100 leading-relaxed max-w-xl">
+        Connect Instagram, Messenger, and Telegram to your agent through MCP or API.
+        Let it read conversations, draft replies, and take permitted actions.
       </p>
-
-      <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12 fade-in-up">
-        <a href="https://app.replaid.pro/register" class="btn-type">
-          Start Free Trial
-        </a>
-        <a href="#how-it-works" class="btn-type-outline">
-          How It Works
-        </a>
+      <div class="hero-actions flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3 mt-8">
+        <a href="https://app.replaid.pro/register" class="btn-type">Connect your agent</a>
+        <a href="#demo" class="btn-type-outline">Explore the demo</a>
       </div>
-
-      <!-- Connects With -->
-      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-16 fade-in-up">
-        <span class="mono-label shrink-0">Connects With</span>
-        <div class="flex flex-wrap justify-center items-center gap-5 sm:gap-8">
-          <span class="channel-icon">
-            <ChannelIcon platform="instagram" size={22} />
-            <span class="channel-label">Instagram</span>
-          </span>
-          <span class="channel-icon">
-            <ChannelIcon platform="whatsapp" size={22} />
-            <span class="channel-label">WhatsApp</span>
-          </span>
-          <span class="channel-icon">
-            <ChannelIcon platform="messenger" size={22} />
-            <span class="channel-label">Messenger</span>
-          </span>
-          <span class="channel-icon">
-            <ChannelIcon platform="telegram" size={22} />
-            <span class="channel-label">Telegram</span>
-          </span>
-          <span class="channel-icon">
-            <ChannelIcon platform="web" size={22} />
-            <span class="channel-label">Web</span>
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Product mockup -->
-    <InboxMockup />
-
-    <div class="h-12 sm:h-16"></div>
-
-    <!-- Stats bar -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 fade-in-up text-center max-w-4xl lg:mx-auto hero-stats">
-      <div>
-        <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">24/7</div>
-        <div class="mono-label mt-2">Always On</div>
-      </div>
-      <div>
-        <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Zero</div>
-        <div class="mono-label mt-2">Leads Missed</div>
-      </div>
-      <div>
-        <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Every</div>
-        <div class="mono-label mt-2">Channel Connected</div>
-      </div>
-      <div>
-        <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Smart</div>
-        <div class="mono-label mt-2">Agentic Workflow</div>
-      </div>
+      <p class="text-sm text-ink-200 mt-5">Current supported operations are free. No subscription.</p>
     </div>
   </div>
-
-  <!-- Bottom gradient fade into next section -->
-  <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-ink-950 to-transparent z-10 pointer-events-none"></div>
+  <div class="mx-auto max-w-7xl mt-12 sm:mt-16 pt-6 border-t border-overlay/15 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+    <p class="text-sm text-ink-200">Your agent. Your instructions. Your customer conversations.</p>
+    <div class="flex flex-wrap gap-5 text-ink-100 text-sm" aria-label="Supported channels">
+      <span class="flex items-center gap-2"><ChannelIcon platform="instagram" size={18} />Instagram</span>
+      <span class="flex items-center gap-2"><ChannelIcon platform="messenger" size={18} />Messenger</span>
+      <span class="flex items-center gap-2"><ChannelIcon platform="telegram" size={18} />Telegram</span>
+    </div>
+  </div>
 </section>
 
 <style>
-  .hero-canvas {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    will-change: transform;
-  }
-
-  .hero-canvas :global(canvas) {
-    display: block;
-    width: 100% !important;
-    height: 100% !important;
-  }
-
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    /* Light mode: stronger overlay to keep particles subtle */
-    background: radial-gradient(
-      ellipse 80% 70% at 50% 50%,
-      rgba(var(--surface), 0.55) 0%,
-      rgba(var(--surface), 0.3) 50%,
-      rgba(var(--surface), 0.65) 100%
-    );
-    pointer-events: none;
-  }
-
-  :global(html.dark) .hero-overlay {
-    /* Dark mode: thinner overlay so particles show through */
-    background: radial-gradient(
-      ellipse 80% 70% at 50% 50%,
-      rgba(var(--surface), 0.25) 0%,
-      rgba(var(--surface), 0.08) 50%,
-      rgba(var(--surface), 0.35) 100%
-    );
-  }
-
+  .hero-actions :global(a) { font-size: 1rem; padding: 1rem 1.25rem; white-space: nowrap; }
   .hero-headline {
-    font-size: clamp(3rem, 10vw, 8rem);
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-    margin-bottom: 2rem;
-  }
-
-  .hero-stats {
-    background: rgba(var(--surface), 0.5);
-    border: 1px solid rgba(var(--overlay), 0.06);
-    border-radius: 12px;
-    padding: 2rem 1.5rem;
-  }
-
-  .channel-icon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.375rem;
-    color: rgba(var(--fg), 0.5);
-    transition: color 0.2s;
-  }
-
-  .channel-icon:hover {
-    color: rgba(var(--fg), 0.9);
-  }
-
-  .channel-label {
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
+    font-size: clamp(3.25rem, 6.8vw, 6.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.055em;
+    max-width: 12ch;
+    text-wrap: balance;
   }
 </style>
-
-<script>
-  // Dynamic import keeps Three.js (~122KB gzip) out of the critical rendering path
-  const container = document.getElementById('hero-canvas-container');
-  if (container) {
-    requestAnimationFrame(() => {
-      import('../scripts/hero-scene').then(({ initHeroScene }) => {
-        initHeroScene(container);
-      });
-    });
-  }
-</script>

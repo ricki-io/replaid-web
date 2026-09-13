@@ -1,17 +1,25 @@
 ---
-// Typography First channels - type-driven list
-const channels = ['Instagram', 'WhatsApp', 'Messenger', 'Telegram', 'Web Widget'];
+import ChannelIcon from './ChannelIcon.astro';
+const channels = [
+  { platform: 'instagram', name: 'Instagram', account: 'Business or Creator account', scope: 'Text DMs and comments, with text replies.' },
+  { platform: 'messenger', name: 'Messenger', account: 'Facebook Page', scope: 'Text messages and replies within the supported reply window.' },
+  { platform: 'telegram', name: 'Telegram', account: 'Telegram bot', scope: 'New private messages and text replies. Personal accounts and groups are not supported.' },
+] as const;
 ---
 
-<section class="py-16 border-y border-overlay/5">
-  <div class="mx-auto max-w-7xl px-6">
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
-      <span class="mono-label">Connects With</span>
-      <div class="flex flex-wrap justify-center gap-6 sm:gap-10">
-        {channels.map(ch => (
-          <span class="font-display text-lg sm:text-xl font-medium text-ink-200 hover:text-fg transition-colors cursor-default">{ch}</span>
-        ))}
-      </div>
+<section id="channels" class="py-16 sm:py-24 px-6">
+  <div class="mx-auto max-w-7xl">
+    <h2 class="text-display-sm">Start where your customers write.</h2>
+    <p class="text-ink-200 text-lg mt-5 max-w-2xl">Connect one active account per channel, per team. Replaid receives new messages; it does not import conversation history.</p>
+    <div class="grid md:grid-cols-3 gap-8 mt-10">
+      {channels.map((channel) => (
+        <div class="border-t border-overlay/20 pt-6">
+          <div class="flex items-center gap-3"><ChannelIcon platform={channel.platform} size={24} /><h3 class="text-xl">{channel.name}</h3></div>
+          <p class="text-sm font-semibold mt-5 mb-2">{channel.account}</p>
+          <p class="text-ink-200 leading-relaxed">{channel.scope}</p>
+        </div>
+      ))}
     </div>
+    <p class="text-sm text-ink-200 mt-8">WhatsApp is planned and is not currently available.</p>
   </div>
 </section>

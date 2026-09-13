@@ -1,57 +1,25 @@
 ---
-// Typography First Features - big type, minimal decoration
 const features = [
-  { num: '01', title: 'Omnichannel Inbox', desc: 'Bring all your messages into one shared inbox. Manage every conversation without switching tabs or tools.' },
-  { num: '02', title: 'Smart Filtering', desc: 'Let AI filter spam, detect intent, and trigger workflows. Focus only on real leads and conversations that matter.' },
-  { num: '03', title: 'Sentiment Analysis', desc: 'Replaid analyzes tone, urgency, and custom metrics you define, helping you prioritize messages intelligently.' },
-  { num: '04', title: 'Human Handoff', desc: 'AI handles the routine — you handle the rest. Jump into any conversation with full context when needed.' },
-  { num: '05', title: 'Brand Knowledge', desc: 'Train your AI with your tone and internal docs. Every reply stays on-brand and consistent across all channels.' },
-  { num: '06', title: 'Real-time Sync', desc: 'Connect live data sources so the AI can access the latest information in real time.' },
+  { title: 'Conversation context', desc: 'Give your agent the messages, contact details, and conversation state it needs before it acts.' },
+  { title: 'Controlled actions', desc: 'Choose which actions are allowed. Start with drafts, check a proposed action, and enable replies when you are ready.' },
+  { title: 'Human handoff', desc: 'Let the agent flag a conversation for a person and pause its automation. Resume when it is ready for the agent again.' },
+  { title: 'Action history', desc: 'See what the agent requested and whether it succeeded, failed, or was blocked by a policy.' },
 ];
 ---
 
-<section id="features" class="pt-16 sm:pt-24 pb-16 sm:pb-24 relative overflow-hidden">
-  <!-- Background text -->
-  <div class="bg-text text-[30vw] -right-20 top-1/2 -translate-y-1/2">FEATURES</div>
-  
-  <div class="relative mx-auto max-w-7xl px-6">
-    <div class="mb-20 fade-in-up pl-4 sm:pl-8">
-      <div class="mono-label mb-4">What We Do</div>
-      <h2 class="text-display-md font-bold max-w-4xl">
-        All the tools to<br/>
-        <span class="text-accent">automate</span> your inbox
-      </h2>
-      <p class="text-ink-200 text-lg mt-6 max-w-2xl">
-        Connect every channel, filter the noise, and let AI handle replies, leads, and workflows — while your team stays in control.
-      </p>
+<section id="features" class="py-16 sm:py-24 px-6 border-t border-overlay/10">
+  <div class="mx-auto max-w-7xl grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
+    <div>
+      <h2 class="text-display-sm max-w-md">Give your agent access. Keep control of its actions.</h2>
+      <p class="mt-6 text-ink-200 text-lg leading-relaxed max-w-md">Your agent provides the knowledge and instructions. Replaid provides the conversation context, checks permissions, and records the result.</p>
     </div>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-      {features.map((f, i) => (
-        <div class="feature-card p-8 sm:p-10 fade-in-up" style={`transition-delay: ${i * 100}ms`}>
-          <span class="font-mono text-2xl sm:text-3xl font-medium tracking-[0.15em] text-accent">{f.num}</span>
-          <h3 class="font-display text-xl sm:text-2xl font-bold mt-4 mb-4 tracking-tight">{f.title}</h3>
-          <p class="text-ink-200 leading-relaxed">{f.desc}</p>
+    <div class="grid sm:grid-cols-2 gap-x-10 gap-y-10">
+      {features.map((feature) => (
+        <div class="border-t-2 border-accent pt-5">
+          <h3 class="text-xl mb-3">{feature.title}</h3>
+          <p class="text-ink-200 leading-relaxed">{feature.desc}</p>
         </div>
       ))}
     </div>
   </div>
 </section>
-
-<style>
-  .feature-card {
-    border-radius: 12px;
-    border: 1px solid rgba(var(--overlay),0.06);
-    background: rgba(var(--surface),0.4);
-    backdrop-filter: blur(12px);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  }
-
-  @media (hover: hover) {
-    .feature-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(var(--accent-rgb),0.25);
-      box-shadow: 0 8px 30px rgba(var(--accent-rgb),0.06), 0 2px 8px rgba(var(--surface),0.3);
-    }
-  }
-</style>
