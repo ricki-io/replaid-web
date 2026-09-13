@@ -1,25 +1,39 @@
 ---
 import BrandLogo from './BrandLogo.astro';
 const channels = [
+  { platform: 'whatsapp', label: 'WhatsApp' },
   { platform: 'instagram', label: 'Instagram' },
   { platform: 'messenger', label: 'Messenger' },
   { platform: 'telegram', label: 'Telegram' },
-  { platform: 'whatsapp', label: 'WhatsApp' },
-  { platform: 'tiktok', label: 'TikTok' },
+  { platform: 'widget', label: 'Replaid widget' },
 ] as const;
+const connectionPaths = [
+  'M190 45C285 45 290 167 420 167',
+  'M110 100C265 100 280 175 420 175',
+  'M190 150C300 150 295 183 420 183',
+  'M110 205C270 205 290 191 420 191',
+  'M190 260C300 260 300 199 420 199',
+  'M610 171C670 147 685 171 754 171',
+  'M754 205C690 205 680 229 610 205',
+];
 ---
-<figure class="connector-figure" aria-label="Customer channels connect through Replaid to your external AI agent. Replaid provides context, permissions, and actions.">
+<figure class="connector-figure" aria-label="Customer messages reach your AI agent through Replaid. Replies return to the same channels, with permissions you control.">
   <div class="connector-graphic">
-    <img class="connector-atmosphere" src="/connector-sky.webp" width="1536" height="1024" alt="" aria-hidden="true" fetchpriority="high" />
+    <img class="connector-atmosphere" src="/connector-sky-wisps.webp" width="1536" height="1024" alt="" aria-hidden="true" fetchpriority="high" />
     <svg class="connector-lines" viewBox="0 0 1000 360" preserveAspectRatio="none" fill="none" aria-hidden="true">
       <defs><filter id="line-glow"><feGaussianBlur stdDeviation="3" /></filter></defs>
       <g stroke="white" stroke-width="6" opacity=".3" filter="url(#line-glow)">
-        <path d="M190 45C285 45 290 167 420 167M110 100C265 100 280 175 420 175M190 150C300 150 295 183 420 183M110 205C270 205 290 191 420 191M190 260C300 260 300 199 420 199M610 171C670 147 685 171 754 171M610 205C680 229 690 205 754 205" />
+        {connectionPaths.map(path => <path d={path} />)}
       </g>
-      <g stroke="white" stroke-width="2" opacity=".95">
-        <path d="M190 45C285 45 290 167 420 167M110 100C265 100 280 175 420 175M190 150C300 150 295 183 420 183M110 205C270 205 290 191 420 191M190 260C300 260 300 199 420 199" />
-        <path d="M610 171C670 147 685 171 754 171l-9-5m9 5-9 5M754 205C690 205 680 229 610 205l9-4m-9 4 7 7" />
+      <g stroke="white" stroke-width="2" opacity=".9">
+        {connectionPaths.map(path => <path d={path} />)}
       </g>
+      {connectionPaths.map((path, index) => (
+        <g class:list={['connector-energy', { 'connector-channel-energy': index < channels.length }]} style={`--energy-delay: ${index * (index < channels.length ? -1.6 : -.67)}s`}>
+          <path class="energy-halo" d={path} pathLength="100" />
+          <path class="energy-core" d={path} pathLength="100" />
+        </g>
+      ))}
     </svg>
     <div class="channel-cluster">
       {channels.map((channel, index) => (
@@ -32,8 +46,12 @@ const channels = [
     </div>
     <div class="replaid-node">
       <svg class="mobile-connector-arrow" width="40" height="52" viewBox="0 0 40 52" fill="none" aria-hidden="true">
-        <path class="mobile-arrow-glow" d="M20 5v40m-10-10 10 10 10-10" />
-        <path d="M20 5v40m-10-10 10 10 10-10" />
+        <path class="mobile-arrow-glow" d="M20 5v40m-10-10 10 10 10-10M10 15 20 5l10 10" />
+        <path d="M20 5v40m-10-10 10 10 10-10M10 15 20 5l10 10" />
+        <g class="connector-energy connector-channel-energy" style="--energy-delay: -.8s">
+          <path class="energy-halo" d="M20 5v40" pathLength="100" />
+          <path class="energy-core" d="M20 5v40" pathLength="100" />
+        </g>
       </svg>
       <div class="connector-tile liquid-glass replaid-tile">
         <img class="replaid-tile-logo" src="/favicon.svg" width="518" height="553" alt="" aria-hidden="true" />
@@ -44,6 +62,10 @@ const channels = [
       <svg class="mobile-connector-arrow" width="40" height="52" viewBox="0 0 40 52" fill="none" aria-hidden="true">
         <path class="mobile-arrow-glow" d="M20 5v40m-10-10 10 10 10-10" />
         <path d="M20 5v40m-10-10 10 10 10-10" />
+        <g class="connector-energy" style="--energy-delay: -2.3s">
+          <path class="energy-halo" d="M20 5v40" pathLength="100" />
+          <path class="energy-core" d="M20 5v40" pathLength="100" />
+        </g>
       </svg>
       <div class="connector-tile liquid-glass agent-ghost ghost-top" title="Claude">
         <img class="agent-brand-logo" src="/claude.svg" width="64" height="64" alt="Claude" />

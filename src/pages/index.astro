@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import ConversationExample from '../components/ConversationExample.astro';
 import { faqs } from '../components/faq-content';
 import '../styles/global.css';
 import '../styles/landing.css';
 
-const description = 'Connect your AI agent to your customers. Replaid brings channel context, action permissions, and MCP or API access to the agent you already use.';
+const description = 'Let your AI agent read and reply to customer messages. Replaid connects your website, social and messaging channels to the agent you already use, with permissions you control.';
 const jsonLd = [
   {
     '@context': 'https://schema.org',
@@ -39,7 +40,7 @@ const jsonLd = [
   },
 ];
 ---
-<Layout title="Replaid — Connect your AI agent to your customers" description={description} jsonLd={jsonLd} forceLight>
+<Layout title="Replaid — Let your AI agent reply to customer messages" description={description} jsonLd={jsonLd} forceLight>
   <main id="main" class="sky-landing">
     <Hero />
     <section id="how-it-works" class="sky-section agent-explanation" aria-labelledby="agent-heading">
@@ -77,24 +78,7 @@ const jsonLd = [
         </li>
       </ol>
     </section>
-    <section id="connections" class="sky-section growth-section" aria-labelledby="growth-heading">
-      <h2 id="growth-heading">One connection.<br />Room to grow.</h2>
-      <div class="growth-copy">
-        <p>Connect the channels you use today. Keep the same agent workflow as your setup grows.</p>
-        <details class="connection-details">
-          <summary>Explore available connections</summary>
-          <ul class="connection-list">
-            <li>Instagram <span>Business or Creator account</span></li>
-            <li>Messenger <span>Facebook Page</span></li>
-            <li>Telegram <span>Private messages to your bot</span></li>
-            <li>WhatsApp <span>Planned</span></li>
-            <li>TikTok <span>Planned</span></li>
-          </ul>
-          <p class="connection-note">Current connections support text messages and replies. Instagram also supports text comments. One active account per channel, per team. Previous messages are not imported.</p>
-          <p class="connection-note">MCP and REST connect your agent. Automatic processing needs an external schedule or a webhook receiver that starts it. <a href="/get-started">Read the connection guide.</a></p>
-        </details>
-      </div>
-    </section>
+    <ConversationExample />
     <section class="sky-section sky-final-cta">
       <h2>Your agent. Connected.</h2>
       <a class="sky-button" href="https://app.replaid.pro/register">Connect your agent</a>
@@ -148,7 +132,7 @@ const jsonLd = [
 </Layout>
 <script>
   function revealDestination(hash: string) {
-    if (hash !== '#pricing' && hash !== '#connections') return;
+    if (hash !== '#pricing') return;
     const target = document.getElementById(hash.slice(1));
     const details = target instanceof HTMLDetailsElement ? target : target?.querySelector('details');
     if (details) details.open = true;

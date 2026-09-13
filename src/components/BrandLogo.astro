@@ -1,16 +1,39 @@
 ---
 import ChannelIcon from './ChannelIcon.astro';
-interface Props { platform: 'instagram' | 'messenger' | 'telegram' | 'whatsapp' | 'tiktok'; }
+interface Props { platform: 'instagram' | 'messenger' | 'telegram' | 'whatsapp' | 'tiktok' | 'widget'; }
 const { platform } = Astro.props;
+const glassId = platform === 'widget' ? `widget-glass-${crypto.randomUUID()}` : '';
 ---
 <span class:list={['brand-logo', platform]} aria-hidden="true">
-  {platform === 'instagram' ? <ChannelIcon platform="instagram" size={30} /> :
+  {platform === 'widget' ? (
+    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id={glassId} x1="5" y1="4" x2="19" y2="20" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#e1f8ff" stop-opacity=".9" />
+          <stop offset=".45" stop-color="#8bd6ff" stop-opacity=".8" />
+          <stop offset="1" stop-color="#3e9feb" stop-opacity=".95" />
+        </linearGradient>
+        <linearGradient id={`${glassId}-rim`} x1="5" y1="4" x2="18" y2="20" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#a4dcff" />
+          <stop offset=".45" stop-color="#73bdf2" />
+          <stop offset="1" stop-color="#2a86d0" />
+        </linearGradient>
+      </defs>
+      <path d="M7 4h10a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H9l-6 3V8a4 4 0 0 1 4-4Z" fill={`url(#${glassId})`} stroke={`url(#${glassId}-rim)`} stroke-width=".7" stroke-linejoin="round" />
+      <path d="M4.1 11V8a2.9 2.9 0 0 1 2.9-2.9h10" stroke="white" stroke-opacity=".9" stroke-width=".85" stroke-linecap="round" />
+      <path d="M17 16.9a2.9 2.9 0 0 0 2.9-2.9v-2" stroke="white" stroke-opacity=".45" stroke-width=".7" stroke-linecap="round" />
+      <path d="M8 9h8m-8 4h5" stroke="#236b9e" stroke-width="1.6" stroke-linecap="round" />
+    </svg>
+  ) :
+    platform === 'instagram' ? <ChannelIcon platform="instagram" size={30} /> :
     platform === 'messenger' || platform === 'tiktok' ? <img src={`/${platform}.svg`} width="38" height="38" alt="" /> :
     <ChannelIcon platform={platform} size={40} />}
 </span>
 <style>
   .brand-logo { display: grid; place-items: center; width: 42px; height: 42px; flex: none; }
   .instagram { color: #fff; border-radius: 12px; background: radial-gradient(circle at 30% 105%, #ffd776 0%, #ff9a35 25%, #ef3369 50%, #b134c8 75%, #535de3 100%); }
+  .widget { width: 44px; height: 44px; }
+  .widget svg { display: block; filter: drop-shadow(0 2px 2px rgb(42 134 208 / 16%)); }
   .telegram { color: #229ed9; }
   .whatsapp { color: #20bd5a; }
   img { display: block; max-width: 100%; }
