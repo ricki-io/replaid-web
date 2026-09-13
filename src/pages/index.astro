@@ -48,9 +48,33 @@ const jsonLd = [
       </div>
       <p>Keep your knowledge and instructions in your agent.</p>
       <ol class="agent-flow">
-        <li><span class="flow-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2h8l4 4v16H6zM14 2v5h4M9 11h6M9 15h6M9 18h4" /></svg></span><span>Receive context</span></li>
-        <li><span class="flow-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m14 2-10 12h7l-1 8 10-12h-7z" /></svg></span><span>Request an action</span></li>
-        <li><span class="flow-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h4m6 0h8M3 12h10m6 0h2M3 19h2m6 0h10" /><circle cx="10" cy="5" r="3" /><circle cx="16" cy="12" r="3" /><circle cx="8" cy="19" r="3" /></svg></span><span>Apply your rules</span></li>
+        <li>
+          <div class="flow-preview flow-context" aria-hidden="true">
+            <div class="flow-message flow-message-back"><i></i><i></i></div>
+            <div class="flow-message"><span class="flow-message-dot"></span><strong>New message</strong><i></i><i></i></div>
+          </div>
+          <h3><span class="flow-step">01</span>Receive context</h3>
+          <p>Your agent gets the conversation, so it knows what the customer needs.</p>
+        </li>
+        <li>
+          <div class="flow-preview flow-action" aria-hidden="true">
+            <div class="flow-agent-mark"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1c1.5 6.5 4.5 9.5 11 11-6.5 1.5-9.5 4.5-11 11C10.5 16.5 7.5 13.5 1 12 7.5 10.5 10.5 7.5 12 1Z" /></svg></div>
+            <div class="flow-request"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5-7 7 7 7M2 12h12a7 7 0 0 1 7 7" /></svg>Draft a reply</div>
+          </div>
+          <h3><span class="flow-step">02</span>Request an action</h3>
+          <p>Your agent uses its knowledge and instructions to choose the next step.</p>
+        </li>
+        <li>
+          <div class="flow-preview flow-rules" aria-hidden="true">
+            <div class="flow-permissions">
+              <div><span>Read messages</span><span class="flow-check">✓</span></div>
+              <div><span>Create drafts</span><span class="flow-check">✓</span></div>
+              <div><span>Send replies</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+            </div>
+          </div>
+          <h3><span class="flow-step">03</span>Apply your rules</h3>
+          <p>Replaid checks permissions before it carries out the action. You stay in control.</p>
+        </li>
       </ol>
     </section>
     <section id="connections" class="sky-section growth-section" aria-labelledby="growth-heading">
@@ -75,27 +99,56 @@ const jsonLd = [
       <h2>Your agent. Connected.</h2>
       <a class="sky-button" href="https://app.replaid.pro/register">Connect your agent</a>
     </section>
-    <div class="sky-utility">
-      <details id="pricing">
-        <summary>Pricing</summary>
-        <p>No subscription. Current supported operations are free. Future paid operations use prepaid USD credits at provider cost plus a 20% markup. Applicable tax and your external agent provider's fees are separate.</p>
-      </details>
-      <details id="faq">
-        <summary>Questions before you connect?</summary>
-        {faqs.map(faq => <div><h3>{faq.q}</h3><p>{faq.a}</p></div>)}
-      </details>
-    </div>
+    <section id="faq" class="sky-faq" aria-labelledby="faq-heading">
+      <header class="sky-faq-heading">
+        <span>FAQ</span>
+        <h2 id="faq-heading">Questions before you connect?</h2>
+      </header>
+      <div class="sky-faq-list">
+        {faqs.map(faq => (
+          <details class="sky-faq-item" id={faq.q === 'What does Replaid cost?' ? 'pricing' : undefined}>
+            <summary>
+              <span>{faq.q}</span>
+              <svg class="sky-faq-toggle" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12" /><path class="sky-faq-toggle-vertical" d="M10 4v12" /></svg>
+            </summary>
+            <p>{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
     <footer class="sky-footer">
-      <a class="sky-wordmark" href="/">Replaid.</a>
-      <nav aria-label="Footer navigation">
-        <a href="/get-started">Docs</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
-      </nav>
+      <div class="sky-footer-main">
+        <div class="sky-footer-brand">
+          <a class="sky-wordmark sky-nav-brand" href="/" aria-label="Replaid home"><img src="/favicon.svg" width="28" height="30" alt="" aria-hidden="true" /><span>Replaid</span></a>
+          <p>A customer inbox for your AI agent.</p>
+        </div>
+        <nav aria-label="Product">
+          <h3>Product</h3>
+          <a href="/#features">Features</a>
+          <a href="/#pricing">Pricing</a>
+          <a href="/#faq">FAQ</a>
+          <a href="/get-started">Docs</a>
+        </nav>
+        <nav aria-label="Company">
+          <h3>Company</h3>
+          <a href="/blog">Blog</a>
+          <a href="/contact">Contact</a>
+          <a href="https://replaid.instatus.com/" target="_blank" rel="noopener noreferrer">Status</a>
+        </nav>
+        <nav aria-label="Legal">
+          <h3>Legal</h3>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/cookies">Cookies</a>
+        </nav>
+      </div>
+      <div class="sky-footer-bottom">© {new Date().getFullYear()} Replaid</div>
     </footer>
   </main>
 </Layout>
 <script>
   function revealDestination(hash: string) {
-    if (hash !== '#pricing' && hash !== '#faq' && hash !== '#connections') return;
+    if (hash !== '#pricing' && hash !== '#connections') return;
     const target = document.getElementById(hash.slice(1));
     const details = target instanceof HTMLDetailsElement ? target : target?.querySelector('details');
     if (details) details.open = true;

@@ -4,8 +4,8 @@ const channels = [
   { platform: 'instagram', label: 'Instagram' },
   { platform: 'messenger', label: 'Messenger' },
   { platform: 'telegram', label: 'Telegram' },
-  { platform: 'whatsapp', label: 'WhatsApp · planned' },
-  { platform: 'tiktok', label: 'TikTok · planned' },
+  { platform: 'whatsapp', label: 'WhatsApp' },
+  { platform: 'tiktok', label: 'TikTok' },
 ] as const;
 ---
 <figure class="connector-figure" aria-label="Customer channels connect through Replaid to your external AI agent. Replaid provides context, permissions, and actions.">
@@ -31,12 +31,20 @@ const channels = [
       <a class="connector-tile liquid-glass channel-node channel-node-more" href="#connections" aria-label="Explore more connections"><span aria-hidden="true">•••</span></a>
     </div>
     <div class="replaid-node">
+      <svg class="mobile-connector-arrow" width="40" height="52" viewBox="0 0 40 52" fill="none" aria-hidden="true">
+        <path class="mobile-arrow-glow" d="M20 5v40m-10-10 10 10 10-10" />
+        <path d="M20 5v40m-10-10 10 10 10-10" />
+      </svg>
       <div class="connector-tile liquid-glass replaid-tile">
         <img class="replaid-tile-logo" src="/favicon.svg" width="518" height="553" alt="" aria-hidden="true" />
         <span class="replaid-tile-wordmark">Replaid</span>
       </div>
     </div>
     <div class="agent-node">
+      <svg class="mobile-connector-arrow" width="40" height="52" viewBox="0 0 40 52" fill="none" aria-hidden="true">
+        <path class="mobile-arrow-glow" d="M20 5v40m-10-10 10 10 10-10" />
+        <path d="M20 5v40m-10-10 10 10 10-10" />
+      </svg>
       <div class="connector-tile liquid-glass agent-ghost ghost-top" title="Claude">
         <img class="agent-brand-logo" src="/claude.svg" width="64" height="64" alt="Claude" />
       </div>
