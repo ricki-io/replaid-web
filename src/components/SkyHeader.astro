@@ -7,7 +7,7 @@ const links = [
 ];
 ---
 <header class="sky-header">
-  <a class="sky-wordmark" href="/" aria-label="Replaid home">Replaid.</a>
+  <a class="sky-wordmark sky-nav-brand" href="/" aria-label="Replaid home"><img src="/favicon.svg" width="28" height="30" alt="" aria-hidden="true" /><span>Replaid</span></a>
   <nav class="sky-desktop-nav" aria-label="Main navigation">
     {links.map(link => <a href={link.href}>{link.label}</a>)}
   </nav>
