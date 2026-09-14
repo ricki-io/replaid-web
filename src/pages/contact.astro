@@ -1,91 +1,88 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SkyHeader from '../components/SkyHeader.astro';
+import SkyFooter from '../components/SkyFooter.astro';
+import '../styles/global.css';
+import '../styles/landing.css';
+import '../styles/contact.css';
 ---
 
-<Layout title="Contact - Replaid" description="Get in touch with the Replaid team.">
-  <Header />
-  <main id="main" class="py-24 sm:py-32">
-    <div class="mx-auto max-w-2xl px-6">
-      <div class="mb-12 text-center">
-        <div class="mono-label mb-4">Get in Touch</div>
-        <h1 class="text-display-sm font-bold mb-4">Contact Us</h1>
-        <p class="text-ink-200 text-lg">Have a question or feedback? We'd love to hear from you.</p>
+<Layout title="Contact | Replaid" description="Need help connecting your agent, or have an idea for Replaid? Get in touch." forceLight>
+  <div class="sky-landing contact-page">
+    <SkyHeader />
+    <main id="main" class="contact-main">
+      <div class="contact-intro">
+        <p class="contact-label">Contact</p>
+        <h1>Let’s start a<br /><span class="hero-highlight">conversation.</span></h1>
+        <p class="contact-description">Need help connecting your agent, or have an idea for Replaid? We’d love to hear it.</p>
+        <a class="contact-email" href="mailto:hi@replaid.pro">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" /><path d="m4 7 8 6 8-6" /></svg>
+          hi@replaid.pro
+          <svg class="contact-email-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg>
+        </a>
       </div>
 
-      <form 
-        action="https://api.web3forms.com/submit" 
-        method="POST"
-        class="space-y-6"
-      >
-        <input type="hidden" name="access_key" value="a9640491-09a2-43e9-8125-7c2ea847b64a" />
-        <input type="hidden" name="subject" value="New Contact from Replaid.pro" />
-        <input type="hidden" name="redirect" value="https://replaid-web.pages.dev/contact?success=true" />
-        
-        <!-- Honeypot spam protection -->
-        <input type="checkbox" name="botcheck" class="hidden" />
+      <section class="contact-panel" aria-label="Send a message">
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <div class="contact-form-heading">
+            <h2>Send a message</h2>
+            <p>We’ll reply to the email address below.</p>
+          </div>
+          <input type="hidden" name="access_key" value="a9640491-09a2-43e9-8125-7c2ea847b64a" />
+          <input type="hidden" name="subject" value="New Contact from Replaid.pro" />
+          <input type="hidden" name="redirect" value="https://replaid.pro/contact?success=true" />
+          <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" aria-hidden="true" />
 
-        <div>
-          <label for="name" class="block text-sm font-medium text-ink-100 mb-2">Name</label>
-          <input 
-            type="text" 
-            name="name" 
-            id="name"
-            required
-            class="w-full px-4 py-3 bg-ink-800 border border-ink-600 text-fg placeholder-ink-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
-            placeholder="Your name"
-          />
+          <div class="contact-field">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" autocomplete="name" required placeholder="Your name" />
+          </div>
+          <div class="contact-field">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" autocomplete="email" required placeholder="you@example.com" />
+          </div>
+          <div class="contact-field">
+            <label for="message">Message</label>
+            <textarea name="message" id="message" rows="5" required placeholder="How can we help?"></textarea>
+          </div>
+          <div class="contact-submit">
+            <div class="h-captcha" data-captcha="true" data-theme="light" data-size="compact"></div>
+            <div class="contact-submit-copy">
+              <p><a href="/privacy">How we use your details</a></p>
+              <button class="sky-button" type="submit">Send message<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></button>
+            </div>
+          </div>
+          <p class="contact-form-fallback">Prefer email? <a href="mailto:hi@replaid.pro">hi@replaid.pro</a></p>
+        </form>
+
+        <div id="success-message" class="contact-success" role="status" aria-live="polite" hidden>
+          <span class="contact-success-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6" /></svg></span>
+          <h2>Message sent.</h2>
+          <p>Thanks for getting in touch. We’ll reply to the email address you provided.</p>
+          <a class="sky-button" href="/">Back to homepage</a>
+          <a class="contact-another" href="/contact">Send another message</a>
         </div>
+      </section>
 
-        <div>
-          <label for="email" class="block text-sm font-medium text-ink-100 mb-2">Email</label>
-          <input 
-            type="email" 
-            name="email" 
-            id="email"
-            required
-            class="w-full px-4 py-3 bg-ink-800 border border-ink-600 text-fg placeholder-ink-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
-            placeholder="you@example.com"
-          />
-        </div>
-
-        <div>
-          <label for="message" class="block text-sm font-medium text-ink-100 mb-2">Message</label>
-          <textarea 
-            name="message" 
-            id="message"
-            rows="5"
-            required
-            class="w-full px-4 py-3 bg-ink-800 border border-ink-600 text-fg placeholder-ink-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"
-            placeholder="How can we help?"
-          ></textarea>
-        </div>
-
-        <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
-
-        <button 
-          type="submit"
-          class="w-full py-4 bg-accent hover:bg-accent-light text-white font-bold text-lg transition-colors"
-        >
-          Send Message
-        </button>
-      </form>
-
-      <!-- Success message -->
-      <div id="success-message" class="hidden mt-8 p-6 bg-green-900/30 border border-green-500/30 text-center" role="status" aria-live="polite">
-        <p class="text-green-400 font-medium">Thanks! Your message has been sent. We'll get back to you soon.</p>
-      </div>
-    </div>
-  </main>
-  <Footer />
+      <nav class="contact-resources" aria-label="Contact resources">
+        <a href="/docs/connect-your-agent">
+          <span><strong>Setting things up?</strong><span>Follow the connection guide</span></span>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg>
+        </a>
+        <a href="https://replaid.instatus.com/" target="_blank" rel="noopener noreferrer">
+          <span><strong>Something not working?</strong><span>Check service status<span class="sr-only"> (opens in a new tab)</span></span></span>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg>
+        </a>
+      </nav>
+    </main>
+    <SkyFooter />
+  </div>
 
   <script src="https://web3forms.com/client/script.js" async defer></script>
   <script>
-    // Show success message if redirected after form submission
-    if (window.location.search.includes('success=true')) {
-      document.getElementById('success-message')?.classList.remove('hidden');
-      document.querySelector('form')?.classList.add('hidden');
+    if (new URLSearchParams(window.location.search).get('success') === 'true') {
+      document.getElementById('contact-form')?.setAttribute('hidden', '');
+      document.getElementById('success-message')?.removeAttribute('hidden');
     }
   </script>
 </Layout>

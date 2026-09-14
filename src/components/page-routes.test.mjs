@@ -68,3 +68,26 @@ test('the 404 provides recovery links and stays out of the sitemap', async () =>
   assert.ok(recovery.some(link => link.text === 'Contact us' && link.href === '/contact'));
   assert.ok(!(await readPage('sitemap-0.xml')).includes('replaid.pro/404'));
 });
+
+
+test('contact keeps form delivery, spam protection, and the production return address', async () => {
+  const contact = await readPage('contact/index.html');
+  const form = contact.match(/<form\b([^>]*)>([\s\S]*?)<\/form>/);
+  assert.ok(form, 'The contact page must include its native form');
+  assert.match(form[1], /action="https:\/\/api.web3forms.com\/submit"/);
+  assert.match(form[1], /method="POST"/);
+  for (const name of ['name', 'email', 'message']) {
+    assert.match(form[2], new RegExp(`<label[^>]*for="${name}"`));
+    const field = form[2].match(new RegExp(`<(?:input|textarea)\\b[^>]*name="${name}"[^>]*>`))?.[0];
+    assert.ok(field && /\brequired(?:[\s=>])/.test(field), `${name} must remain required`);
+  }
+  assert.match(form[2], /type="email"[^>]*autocomplete="email"/);
+  assert.match(form[2], /name="access_key" value="[^"\s]+"/);
+  assert.match(form[2], /name="redirect" value="https:\/\/replaid.pro\/contact\?success=true"/);
+  assert.match(form[2], /name="botcheck"/);
+  assert.match(form[2], /class="h-captcha" data-captcha="true"/);
+  assert.ok(contact.includes('https://web3forms.com/client/script.js'));
+  assert.match(contact, /id="success-message"[^>]*role="status"[^>]*hidden/);
+  assert.ok(links(contact).some(link => link.href === 'mailto:hi@replaid.pro'));
+  assert.ok(!contact.includes('replaid-web.pages.dev'));
+});
