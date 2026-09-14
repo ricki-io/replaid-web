@@ -37,14 +37,15 @@ The same approach can support other tasks: tagging a conversation, recording a l
 
 The current channels are:
 
+- **WhatsApp:** customer messages and text replies through your WhatsApp Business number.
 - **Replaid widget:** customer conversations from your website.
 - **Instagram:** a Business or Creator account, with text DMs and text comments.
 - **Messenger:** messages to a Facebook Page.
 - **Telegram:** private messages to your bot.
 
-Each team can connect one of each. Current channels support text messages and replies; attachments are not supported. WhatsApp and TikTok are not available yet.
+Each team can connect one Instagram account, one Facebook Page, one Telegram bot, and one Replaid widget. These four channels support text messages and replies; attachments are not supported on them. TikTok is not available yet.
 
-Your agent connects through MCP or the REST API. The [connection guide](/docs/connect-your-agent) has setup instructions for supported clients and the current connection limits.
+Your agent connects through MCP or the REST API. The [connection guide](/docs/connect-your-agent/) has setup instructions for supported clients and the current connection limits.
 
 ## You decide when the agent runs
 
@@ -61,10 +62,10 @@ Begin with a narrow task and draft review. Broader permissions can come later, a
 3. Ask it to read a conversation and save a draft without sending it.
 4. Review the draft, adjust its instructions, and test a permitted send when you are ready.
 
-[Get started with Replaid](/get-started), or follow the [step-by-step connection guide](/docs/connect-your-agent).
+[Get started with Replaid](/get-started/), or follow the [step-by-step connection guide](/docs/connect-your-agent/).
 
 ## What happens to the older articles
 
-The [original launch announcement](/introducing-replaid) remains available as product history. It has a notice explaining that it describes the earlier version.
+The [original launch announcement](/introducing-replaid/) remains available as product history. It has a notice explaining that it describes the earlier version.
 
-The practical guides now reflect the current product. Their original publication dates remain visible, alongside the date of the update. For a concrete next step, read [three customer message workflows for your agent](/three-workflows-small-business-should-automate).
+The practical guides now reflect the current product. Their original publication dates remain visible, alongside the date of the update. For a concrete next step, read [three customer message workflows for your agent](/three-workflows-small-business-should-automate/).

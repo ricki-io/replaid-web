@@ -145,7 +145,7 @@
 .sky-faq-item[open] .sky-faq-toggle-vertical { display: none; }
 .sky-faq-item p { max-width: 680px; margin: 0; padding: 0 36px 24px 0; color: #64707f; font-size: 15px; line-height: 1.8; }
 .sky-footer { max-width: 1040px; margin: 32px auto 0; padding: 0 24px 28px; }
-.sky-footer-main { display: grid; grid-template-columns: 1.8fr repeat(3, 1fr); gap: 36px; border-top: 1px solid #e2e7ed; padding: 48px 0; }
+.sky-footer-main { display: grid; grid-template-columns: 1.8fr repeat(3, 1fr); gap: 36px; padding: 48px 0; }
 .sky-footer-brand p { max-width: 220px; margin-top: 16px; color: #64707f; font-size: 14px; line-height: 1.7; }
 .sky-footer nav { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; font-size: 14px; color: #64707f; }
 .sky-footer nav h3 { margin-bottom: 12px; color: #10151b; font-size: 14px; font-weight: 600; }

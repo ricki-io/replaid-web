@@ -31,7 +31,7 @@ const firstPrompt = 'Find my latest unanswered conversation in Replaid. Read its
 <div class="guide-layout" data-connection-guide>
   <aside class="guide-sidebar">
     <nav aria-label="Setup steps"><ol>{steps.map((step, index) => <li><a href={`#${step.id}`} data-step-link={step.id} aria-current={index === 0 ? 'step' : undefined}><span>{index + 1}</span>{step.label}</a></li>)}</ol></nav>
-    <div class="guide-sidebar-help"><p>Need a hand?</p><a href="/contact">Get help connecting</a></div>
+    <div class="guide-sidebar-help"><p>Need a hand?</p><a href="/contact/">Get help connecting</a></div>
   </aside>
   <div class="guide-content">
     <section id="account" class="guide-step" aria-labelledby="account-heading" data-guide-step>
@@ -42,7 +42,7 @@ const firstPrompt = 'Find my latest unanswered conversation in Replaid. Read its
     </section>
     <section id="channel" class="guide-step" aria-labelledby="channel-heading" data-guide-step>
       <header class="guide-step-heading"><span>2</span><h2 id="channel-heading">Choose where to start.</h2></header>
-      <p>Connect one channel for your first test. You can add the others later.</p>
+      <p>Connect one channel for your first test. You can add the others later. WhatsApp is also available; the setup steps below cover the Replaid widget, Instagram, Messenger, and Telegram.</p>
       <div class="guide-switcher" data-guide-switcher>
         <fieldset class="guide-choices"><legend>Choose your channel</legend><div>{channels.map((channel, index) => <label><input type="radio" name="guide-channel" value={channel.id} checked={index === 0} aria-controls={`channel-${channel.id}`} /><span><BrandLogo platform={channel.id} />{channel.name}</span></label>)}</div></fieldset>
         {channels.map(channel => <div class="guide-choice-panel" id={`channel-${channel.id}`} data-choice-panel={channel.id}><h3>{channel.title}</h3><ol class="guide-instructions">{channel.steps.map(step => <li>{step}</li>)}</ol></div>)}

@@ -6,14 +6,14 @@ import '../styles/landing.css';
 import '../styles/legal.css';
 interface Props { title: string; description: string; sections: { id: string; title: string }[]; }
 const { title, description, sections } = Astro.props;
-const pages = [{ href: '/privacy', label: 'Privacy' }, { href: '/terms', label: 'Terms' }, { href: '/cookies', label: 'Cookies' }];
+const pages = [{ href: '/privacy/', label: 'Privacy' }, { href: '/terms/', label: 'Terms' }, { href: '/cookies/', label: 'Cookies' }];
 ---
 <Layout title={`${title} — Replaid`} description={description}>
   <div class="sky-landing legal-page">
     <SkyHeader />
     <main id="main" class="legal-main">
       <header class="legal-header">
-        <nav class="legal-tabs" aria-label="Legal pages">{pages.map(page => <a href={page.href} aria-current={Astro.url.pathname.replace(/\/$/, '') === page.href ? 'page' : undefined}>{page.label}</a>)}</nav>
+        <nav class="legal-tabs" aria-label="Legal pages">{pages.map(page => <a href={page.href} aria-current={Astro.url.pathname.replace(/\/$/, '') === page.href.replace(/\/$/, '') ? 'page' : undefined}>{page.label}</a>)}</nav>
         <h1>{title}</h1>
         <p>{description}</p>
         <span class="legal-date">Last updated <time datetime="2026-09-14">September 14, 2026</time></span>
@@ -29,7 +29,7 @@ const pages = [{ href: '/privacy', label: 'Privacy' }, { href: '/terms', label: 
         </aside>
         <article class="legal-prose"><slot /></article>
       </div>
-      <div class="legal-contact"><h2>Questions about this policy?</h2><p>Contact us at <a href="mailto:hi@replaid.pro">hi@replaid.pro</a> or use the <a href="/contact">contact page</a>.</p></div>
+      <div class="legal-contact"><h2>Questions about this policy?</h2><p>Contact us at <a href="mailto:hi@replaid.pro">hi@replaid.pro</a> or use the <a href="/contact/">contact page</a>.</p></div>
     </main>
     <SkyFooter />
   </div>

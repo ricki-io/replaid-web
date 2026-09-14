@@ -12,7 +12,8 @@ export interface Props {
   jsonLd?: Record<string, any> | Record<string, any>[];
 }
 
-const canonicalURL = new URL(Astro.url.pathname, 'https://replaid.pro');
+const canonicalPath = /(?:\/|\.html)$/.test(Astro.url.pathname) ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonicalURL = new URL(canonicalPath, 'https://replaid.pro/');
 const {
   title,
   description = "A customer inbox for your AI agent. Connect channels, control actions, and inspect results.",

@@ -3,12 +3,13 @@ import BrandLogo from './BrandLogo.astro';
 interface Props { questions: { q: string; a: string }[]; }
 const { questions } = Astro.props;
 const channels = [
+  { id: 'whatsapp', name: 'WhatsApp' },
   { id: 'widget', name: 'Replaid widget' },
   { id: 'instagram', name: 'Instagram' },
   { id: 'messenger', name: 'Messenger' },
   { id: 'telegram', name: 'Telegram' },
 ] as const;
-const guideUrl = '/docs/connect-your-agent';
+const guideUrl = '/docs/connect-your-agent/';
 const registerUrl = 'https://app.replaid.pro/register';
 ---
 <section class="start-hero" aria-labelledby="start-heading">
@@ -44,11 +45,11 @@ const registerUrl = 'https://app.replaid.pro/register';
   <ol class="start-steps">
     <li>
       <div class="start-step-art start-channel-art" aria-hidden="true"><span><BrandLogo platform="widget" /></span><i></i><span><img src="/favicon.svg" width="32" height="35" alt="" /></span></div>
-      <h3><span>1</span>Connect your channel</h3><p>Add the Replaid widget to your site, or connect an Instagram, Messenger, or Telegram inbox.</p>
+      <h3><span>1</span>Connect your channel</h3><p>Add the Replaid widget to your site, or connect a WhatsApp, Instagram, Messenger, or Telegram inbox.</p>
     </li>
     <li>
       <div class="start-step-art start-client-art" aria-hidden="true"><span><img src="/chatgpt.svg" width="38" height="38" alt="" /></span><span><img src="/claude.svg" width="38" height="38" alt="" /></span><span><img class="hermes-nous-logo" src="/hermes-agent-nous.png" width="43" height="43" alt="" loading="lazy" /></span></div>
-      <h3><span>2</span>Bring your AI agent</h3><p>Connect through MCP or the API. Keep your business knowledge and instructions in your agent.</p>
+      <h3><span>2</span>Bring your AI agent</h3><p>Use ChatGPT, Claude, or Hermes Agent. Keep your business knowledge and instructions in your agent.</p>
     </li>
     <li>
       <div class="start-step-art" aria-hidden="true"><div class="start-rule-preview"><span>Create drafts<b>✓</b></span><span>Send replies<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span></div></div>
@@ -58,7 +59,7 @@ const registerUrl = 'https://app.replaid.pro/register';
   <div class="start-setup-note"><p>You decide what your agent can read, draft, and send.</p><a class="start-guide-link" href={guideUrl}>Follow the connection guide<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></a></div>
 </section>
 <section class="start-questions" aria-labelledby="start-questions-heading">
-  <header><h2 id="start-questions-heading">A few things<br />before you start.</h2><p>A clear first step.<br />No surprises about what connects.</p><a class="start-guide-link" href="/contact">Have another question?</a></header>
+  <header><h2 id="start-questions-heading">A few things<br />before you start.</h2><p>A clear first step.<br />No surprises about what connects.</p><a class="start-guide-link" href="/contact/">Have another question?</a></header>
   <div class="sky-faq-list">{questions.map(faq => <details class="sky-faq-item"><summary><span>{faq.q}</span><svg class="sky-faq-toggle" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12" /><path class="sky-faq-toggle-vertical" d="M10 4v12" /></svg></summary><p>{faq.a}</p></details>)}</div>
 </section>
 <section class="start-final" aria-labelledby="start-final-heading">

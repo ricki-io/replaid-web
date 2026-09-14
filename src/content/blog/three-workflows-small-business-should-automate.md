@@ -11,7 +11,7 @@ A useful first workflow has a clear input, a small set of permitted actions, and
 
 With Replaid, your own agent reads conversations from connected channels and requests actions through MCP or REST. You provide the business knowledge and instructions. Replaid checks the requested actions against your policies.
 
-This guide has been updated for [the current Replaid product](/replaid-connects-your-ai-agent-to-your-customers). The examples below are suggested workflows, not results from customer deployments.
+This guide has been updated for [the current Replaid product](/replaid-connects-your-ai-agent-to-your-customers/). The examples below are suggested workflows, not results from customer deployments.
 
 ## 1. Check whether an enquiry fits your business
 
@@ -65,4 +65,4 @@ You can start them with a prompt. For unattended processing, use an external sch
 
 Begin with one workflow and one channel. Review drafts and action outcomes before expanding the scope. Count the drafts you edit, incorrect decisions, and cases that need a person. Those checks are more useful than assuming that automation will improve sales.
 
-[Explore Replaid](/get-started), then follow the [connection guide](/docs/connect-your-agent) to connect your agent and test its first draft.
+[Explore Replaid](/get-started/), then follow the [connection guide](/docs/connect-your-agent/) to connect your agent and test its first draft.

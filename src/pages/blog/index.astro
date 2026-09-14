@@ -12,14 +12,14 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 const categories = [...new Set(posts.map(post => post.data.category))].sort();
 ---
 
-<Layout title="Blog — Replaid" description="Guides, ideas, and updates on customer conversations and AI.">
+<Layout title="AI Customer Messaging Guides — Replaid" description="Practical guides to connecting customer messages to your AI agent, reviewing replies, and managing conversations with Replaid.">
   <div class="sky-landing blog-page">
     <SkyHeader />
     <main id="main" class="blog-main">
       <header class="blog-intro">
         <p class="blog-label">The Replaid blog</p>
         <h1>Ideas for a<br /><span class="hero-highlight">better inbox.</span></h1>
-        <p class="blog-description">Guides, ideas, and updates on customer conversations and AI.</p>
+        <p class="blog-description">Practical guides to connecting customer messages to your AI agent, reviewing replies, and managing conversations with Replaid.</p>
       </header>
 
       <section aria-label="Blog articles">
@@ -33,12 +33,12 @@ const categories = [...new Set(posts.map(post => post.data.category))].sort();
         <div id="blog-list" class="blog-list" data-filtered="false">
           {posts.map((post, index) => <BlogPostCard post={post} featured={index === 0} />)}
         </div>
-        {posts.length === 0 && <div class="blog-empty"><h2>No articles yet.</h2><p>Explore the connection guide while we get the first one ready.</p><a href="/docs/connect-your-agent">Open the guide</a></div>}
+        {posts.length === 0 && <div class="blog-empty"><h2>No articles yet.</h2><p>Explore the connection guide while we get the first one ready.</p><a href="/docs/connect-your-agent/">Open the guide</a></div>}
       </section>
 
       <aside class="blog-cta" aria-labelledby="blog-cta-heading">
         <div><h2 id="blog-cta-heading">Put your agent <span class="hero-highlight">to work.</span></h2><p>Connect your channels. Let your agent help with the replies.</p></div>
-        <a class="sky-button" href="/get-started">Explore Replaid</a>
+        <a class="sky-button" href="/get-started/">Explore Replaid</a>
       </aside>
     </main>
     <SkyFooter />

@@ -22,7 +22,7 @@ const channels = [
         </div>
       </fieldset>
       <p class="permission-explanation" data-permission-explanation>Your agent can prepare a reply. You review it before anything is sent.</p>
-      <a class="conversation-guide" href="/docs/connect-your-agent">See how to connect your agent<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
+      <a class="conversation-guide" href="/docs/connect-your-agent/">See how to connect your agent<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
     </div>
     <div class="conversation-demo" aria-label="Example: a customer asks about opening hours">
       <header class="conversation-demo-header"><span><BrandLogo platform="instagram" />An Instagram conversation</span><span class="example-label">Example</span></header>
@@ -56,8 +56,8 @@ const channels = [
   <details class="connection-details">
     <summary>Connection and automation details<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary>
     <div class="connection-details-content">
-      <div><h3>Connecting your channels</h3><p>{productCopy.channels} {productCopy.channelLimits} {productCopy.futureChannels}</p><h3>Importing recent messages</h3><p>{productCopy.history}</p></div>
-      <div><h3>Running your agent</h3><p>{productCopy.agent} {productCopy.automation} <a href="/docs/connect-your-agent">Read the connection guide.</a></p></div>
+      <div><h3>Connecting your channels</h3><p>{productCopy.availableChannels} {productCopy.futureChannels}</p><p>{productCopy.channelRequirements}</p><h3>Account and message limits</h3><p>{productCopy.channelLimits}</p><h3>Importing recent messages</h3><p>{productCopy.history}</p></div>
+      <div><h3>Running your agent</h3><p>{productCopy.agent} {productCopy.automation} <a href="/docs/connect-your-agent/">Read the connection guide.</a></p></div>
     </div>
   </details>
 </section>

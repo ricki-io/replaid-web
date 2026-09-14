@@ -11,7 +11,7 @@ Not every DM is a lead. But when a relevant enquiry sits unanswered, gets an inc
 
 The useful question is where that happens in your own inbox. Start there before deciding what to automate.
 
-This guide has been updated for [the current Replaid product](/replaid-connects-your-ai-agent-to-your-customers): a connection between your customer channels and the AI agent you bring.
+This guide has been updated for [the current Replaid product](/replaid-connects-your-ai-agent-to-your-customers/): a connection between your customer channels and the AI agent you bring.
 
 ## Look at the conversations you already have
 
@@ -57,4 +57,4 @@ Compare the same types of conversations before and after your change. If you mea
 
 You can start the agent manually while you learn. If you later want it to process messages unattended, you need an external schedule or webhook receiver to start it. An MCP connection alone does not turn on automatic replies.
 
-[Explore Replaid](/get-started) or follow the [connection guide](/docs/connect-your-agent) to test a draft on one channel. For more ideas, see [three customer message workflows for your agent](/three-workflows-small-business-should-automate).
+[Explore Replaid](/get-started/) or follow the [connection guide](/docs/connect-your-agent/) to test a draft on one channel. For more ideas, see [three customer message workflows for your agent](/three-workflows-small-business-should-automate/).

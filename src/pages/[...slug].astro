@@ -47,7 +47,7 @@ const blogJsonLd = [
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://replaid.pro/${post.id}`
+      "@id": `https://replaid.pro/${post.id}/`
     }
   },
   {
@@ -55,20 +55,20 @@ const blogJsonLd = [
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://replaid.pro/" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://replaid.pro/blog" },
-      { "@type": "ListItem", "position": 3, "name": post.data.title, "item": `https://replaid.pro/${post.id}` }
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://replaid.pro/blog/" },
+      { "@type": "ListItem", "position": 3, "name": post.data.title, "item": `https://replaid.pro/${post.id}/` }
     ]
   }
 ];
 ---
 
-<Layout title={`${post.data.title} — Replaid Blog`} description={post.data.description} ogImage={post.data.image || "/og-image.png"} type="article" jsonLd={blogJsonLd}>
+<Layout title={`${post.data.seoTitle ?? post.data.title} — Replaid Blog`} description={post.data.description} ogImage={post.data.image || "/og-image.png"} type="article" jsonLd={blogJsonLd}>
   <div class="sky-landing blog-page article-page">
     <SkyHeader />
     <main id="main" class="article-main">
       <article>
         <header class="article-header">
-          <a class="article-back" href="/blog"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m5-5-5 5 5 5" /></svg>All articles</a>
+          <a class="article-back" href="/blog/"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m5-5-5 5 5 5" /></svg>All articles</a>
           <p class="blog-category">{post.data.category}</p>
           <h1>{post.data.title}</h1>
           <p class="article-description">{post.data.description}</p>
@@ -79,7 +79,7 @@ const blogJsonLd = [
           <span class="blog-history-label">Historical article · {post.data.date.getUTCFullYear()} launch</span>
           <h2 id="article-history-heading">Replaid has changed since this was published.</h2>
           <p>This is the original launch announcement. Its features, channel availability, and promises describe the earlier product, not Replaid today. Replaid now connects customer messages to the AI agent you bring.</p>
-          <a href={`/${currentArticle.id}`}>Read what changed<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></a>
+          <a href={`/${currentArticle.id}/`}>Read what changed<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></a>
         </aside>}
 
         {contents.length > 0 && <details class="article-mobile-contents">
@@ -94,7 +94,7 @@ const blogJsonLd = [
       </article>
 
       {related.length > 0 && <section class="article-related" aria-labelledby="related-heading">
-        <div class="article-related-heading"><h2 id="related-heading">Keep reading</h2><a href="/blog">All articles<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></a></div>
+        <div class="article-related-heading"><h2 id="related-heading">Keep reading</h2><a href="/blog/">All articles<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></a></div>
         <div class="blog-list">{related.map(relatedPost => <BlogPostCard post={relatedPost} />)}</div>
       </section>}
     </main>

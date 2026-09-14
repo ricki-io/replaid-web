@@ -11,7 +11,7 @@ A message such as “Can you help with my website?” is a starting point. To mo
 
 Replaid lets your AI agent help with those steps. It connects supported customer channels to your agent and applies your action policies. Your agent supplies the reasoning, business knowledge, and reply instructions.
 
-This guide reflects [Replaid's move to connecting your own agent](/replaid-connects-your-ai-agent-to-your-customers). It does not assume that Replaid runs an AI assistant for you.
+This guide reflects [Replaid's move to connecting your own agent](/replaid-connects-your-ai-agent-to-your-customers/). It does not assume that Replaid runs an AI assistant for you.
 
 ## Give the agent a clear definition of a lead
 
@@ -55,4 +55,4 @@ You can later compare response time and useful next steps with your previous pro
 
 Connecting through MCP does not start automatic follow-up. If you want the agent to run when messages arrive, an external schedule or webhook receiver must start it. That setup is separate from the permissions you give it in Replaid.
 
-[Get started with Replaid](/get-started) and use the [connection guide](/docs/connect-your-agent) to test your first draft.
+[Get started with Replaid](/get-started/) and use the [connection guide](/docs/connect-your-agent/) to test your first draft.

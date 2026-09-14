@@ -7,7 +7,7 @@ const { post, featured = false } = Astro.props;
 const titleId = `post-${post.id}`;
 ---
 <article class:list={['blog-post', { 'blog-post-featured': featured }]} data-blog-post data-category={post.data.category}>
-  <a class="blog-post-link" href={`/${post.id}`} aria-labelledby={post.data.historical ? `${titleId} ${titleId}-status` : titleId}>
+  <a class="blog-post-link" href={`/${post.id}/`} aria-labelledby={post.data.historical ? `${titleId} ${titleId}-status` : titleId}>
     <div class="blog-post-cover">
       {post.data.image ? <img src={post.data.image} width="880" height="640" alt="" loading={featured ? 'eager' : 'lazy'} decoding="async" /> : <BlogArtwork id={post.id} />}
     </div>

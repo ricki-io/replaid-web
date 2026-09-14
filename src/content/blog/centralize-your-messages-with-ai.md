@@ -1,6 +1,6 @@
 ---
 title: "Connect Your Customer Messages to Your AI Agent"
-description: "Connect the Replaid widget, Instagram, Messenger, or Telegram so your agent can read customer context and help with replies through one interface."
+description: "Connect WhatsApp, the Replaid widget, Instagram, Messenger, or Telegram so your agent can read customer messages and help with replies."
 date: 2025-10-20
 updatedDate: 2026-09-14
 category: "Automation"
@@ -11,7 +11,7 @@ A question can arrive through your website while another customer is waiting in 
 
 Replaid connects supported channels and makes their conversations available to your agent through MCP or REST. Your agent can read context, prepare replies, and request permitted actions. The customer continues to use the channel where they contacted you.
 
-This article reflects [Replaid's current role as the connection for your agent](/replaid-connects-your-ai-agent-to-your-customers).
+This article reflects [Replaid's current role as the connection for your agent](/replaid-connects-your-ai-agent-to-your-customers/).
 
 ## Choose the channel you need first
 
@@ -19,12 +19,13 @@ These are the current connections:
 
 | Channel | What you connect | Supported conversations |
 | --- | --- | --- |
+| WhatsApp | Your WhatsApp Business number | Customer messages and text replies |
 | Replaid widget | Your website widget | Text messages and replies |
 | Instagram | A Business or Creator account | Text DMs and text comments |
 | Messenger | A Facebook Page | Text messages and replies |
 | Telegram | A Telegram bot | Private text messages to the bot and replies |
 
-Each team can connect one Instagram account, one Facebook Page, one Telegram bot, and one Replaid widget. Telegram personal accounts and groups are not supported. Attachments are not supported on the current channels. WhatsApp and TikTok are not available yet.
+Each team can connect one Instagram account, one Facebook Page, one Telegram bot, and one Replaid widget. Telegram personal accounts and groups are not supported. Instagram, Messenger, Telegram, and the Replaid widget support text only; attachments are not supported on these four channels. TikTok is not available yet.
 
 Start with the channel where you can review a few real conversations. You can add the others when the first workflow is useful.
 
@@ -56,4 +57,4 @@ If you later add another channel, review its requirements and test the same read
 
 ## Connect one channel today
 
-[Get started with Replaid](/get-started) and follow the [connection guide](/docs/connect-your-agent) for the current setup steps. Keep the first task narrow: read one conversation, save one draft, and review it before sending.
+[Get started with Replaid](/get-started/) and follow the [connection guide](/docs/connect-your-agent/) for the current setup steps. Keep the first task narrow: read one conversation, save one draft, and review it before sending.
