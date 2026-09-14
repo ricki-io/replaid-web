@@ -30,6 +30,15 @@ test('the conversion route offers registration and a separate setup guide', () =
   assert.ok(pageLinks.some(link => link.text.startsWith('See the setup guide') && link.href === guidePath));
   assert.ok(!sales.includes('id="guide-mcp-url"'));
   assert.match(sales, /rel="canonical" href="https:\/\/replaid.pro\/get-started\/?"/);
+  for (const section of ['channel', 'agent', 'draft']) {
+    assert.ok(pageLinks.some(link => link.href === `${guidePath}#${section}`), `Missing focused setup link: ${section}`);
+    assert.ok(guide.includes(`id="${section}"`), `Missing guide destination: ${section}`);
+  }
+  assert.ok(sales.indexOf('id="before-you-start"') < sales.indexOf('id="first-reply"'), 'Requirements must come before setup');
+  assert.match(sales, /<details class="start-channel-requirements"/);
+  assert.match(sales, /allow sending for direct replies, or allow drafts for review/);
+  assert.match(sales, /The reply appears in Conversations/);
+  assert.ok(pageLinks.some(link => link.text.startsWith('Optional draft setup') && link.href === `${guidePath}#draft`));
 });
 
 test('the guide route preserves the setup controls and has its own canonical URL', () => {
@@ -410,7 +419,10 @@ test('FAQ search answers match the visible answers on both landing pages', async
     assert.ok(faq, 'Missing FAQ search data');
     const visible = Array.from(html.matchAll(/<details\b[^>]*class="sky-faq-item"[^>]*>\s*<summary>([\s\S]*?)<\/summary>\s*<p>([\s\S]*?)<\/p>\s*<\/details>/g), match => ({ question: normalize(match[1]), answer: normalize(match[2]) }));
     assert.deepEqual(faq.mainEntity.map(item => ({ question: item.name, answer: item.acceptedAnswer.text })), visible);
-    for (const question of ['Which channels can I connect?', 'What do I need to connect a channel?', 'Are there account or message limits?']) {
+    const requiredQuestions = html === sales
+      ? ['Are there account or message limits?', 'Can I import past conversations?', 'Does connecting MCP turn on automatic replies?', 'What does Replaid cost?']
+      : ['Which channels can I connect?', 'What do I need to connect a channel?', 'Are there account or message limits?'];
+    for (const question of requiredQuestions) {
       assert.ok(visible.some(item => item.question === question), `Missing separate FAQ answer: ${question}`);
     }
   }

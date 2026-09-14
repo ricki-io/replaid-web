@@ -7,13 +7,10 @@ import { faqs } from '../components/faq-content';
 import '../styles/landing.css';
 import '../styles/get-started.css';
 
-const description = 'Connect your website and messaging channels to your AI agent. Read customer messages, create drafts, and send replies with permissions you control.';
+const description = 'Create your Replaid account and connect a customer channel to your AI agent. Send replies directly or save drafts for review, with permissions you control.';
 const questionTitles = new Set([
-  'Does Replaid include an AI agent?',
-  'Which channels can I connect?',
-  'What do I need to connect a channel?',
   'Are there account or message limits?',
-  'Can I try it without sending replies?',
+  'Can I import past conversations?',
   'Does connecting MCP turn on automatic replies?',
   'What does Replaid cost?',
 ]);
@@ -27,7 +24,7 @@ const jsonLd = {
   })),
 };
 ---
-<Layout title="Get started with Replaid — Connect your AI agent to your inbox" description={description} jsonLd={jsonLd}>
+<Layout title="Get Started with Replaid — Connect Your AI Agent" description={description} jsonLd={jsonLd}>
   <div class="sky-landing start-page">
     <SkyHeader />
     <main id="main"><GetStartedLanding questions={questions} /></main>
