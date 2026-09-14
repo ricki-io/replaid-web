@@ -1,0 +1,26 @@
+.error-content { max-width: 860px; margin: 0 auto; padding: 48px 24px 74px; text-align: center; }
+.error-scene { position: relative; isolation: isolate; display: grid; place-items: center; width: 100%; height: 180px; margin-bottom: 22px; }
+.error-scene::before { content: ''; position: absolute; z-index: -1; inset: -65px -70px -75px; background: url('/connector-sky-wisps.webp') center 58% / cover; mask-image: radial-gradient(ellipse 48% 46% at 50% 50%, #000 0%, transparent 100%); opacity: .45; }
+.error-code { color: #10151b; font-size: 156px; font-weight: 550; line-height: 1; letter-spacing: -.07em; padding-right: .07em; font-variant-numeric: lining-nums; }
+.error-label { color: #64707f; font-size: 12px; }
+.error-content h1 { margin-top: 18px; font-size: clamp(38px, 4.6vw, 54px); font-weight: 600; letter-spacing: -.05em; line-height: 1.08; }
+.error-description { max-width: 415px; margin: 22px auto 0; color: #64707f; font-size: 16px; line-height: 1.7; }
+.error-actions { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 29px; }
+.error-guide { display: inline-flex; align-items: center; gap: 8px; color: #385267; font-size: 14px; font-weight: 550; }
+.error-guide svg { flex: none; }
+.error-guide:hover, .error-help a:hover { color: #0875d5; }
+.error-help { margin-top: 30px; color: #64707f; font-size: 12px; }
+.error-help a { color: #385267; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 700px) {
+  .error-content { padding: 28px 20px 44px; }
+  .error-scene { height: 150px; margin-bottom: 20px; }
+  .error-scene::before { inset: -40px -55px -65px; }
+  .error-code { font-size: 120px; }
+  .error-content h1 { font-size: 40px; }
+  .error-description { font-size: 15px; max-width: 350px; }
+  .error-actions { flex-direction: column; gap: 22px; margin-top: 26px; }
+}
+@media (max-width: 380px) {
+  .error-code { font-size: 108px; }
+  .error-content h1 { font-size: 36px; }
+}
