@@ -1,0 +1,8 @@
+---
+interface Props { id: string; title: string; text: string; generated?: 'codex' | 'hermes'; }
+const { id, title, text, generated } = Astro.props;
+---
+<div class:list={['guide-copy-block', { 'guide-code-block': generated }]}>
+  <div class="guide-copy-heading"><span>{title}</span><button type="button" class="guide-copy" data-copy-target={id} data-copy-label={title} disabled={!!generated} aria-label={`Copy ${title.toLowerCase()}`}><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="3"/><path d="M16 8V6a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h2"/></svg><span data-copy-label>Copy</span></button></div>
+  <pre><code id={id} data-guide-config={generated}>{text}</code></pre>
+</div>

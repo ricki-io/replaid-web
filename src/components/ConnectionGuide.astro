@@ -1,0 +1,143 @@
+---
+import BrandLogo from './BrandLogo.astro';
+import GuideCopyBlock from './GuideCopyBlock.astro';
+import { productCopy } from './product-copy';
+const steps = [
+  { id: 'account', label: 'Create your account' },
+  { id: 'channel', label: 'Connect a channel' },
+  { id: 'agent', label: 'Connect your agent' },
+  { id: 'draft', label: 'Create a draft' },
+];
+const channels = [
+  { id: 'widget', name: 'Replaid widget', title: 'Start on your own website.', steps: ['In Channels, open Website widget. Set your chat title, welcome message, and allowed websites.', 'Enable the widget and copy the install script.', 'Add the script to your website and open the page. You should see the chat button.'] },
+  { id: 'instagram', name: 'Instagram', title: 'Connect your Instagram inbox.', steps: ['Use an Instagram Business or Creator account.', 'In Channels, connect Instagram and approve access to the account you want to use.', 'Choose whether to import recent text DMs. Return to Replaid and check that the account is connected.'] },
+  { id: 'messenger', name: 'Messenger', title: 'Connect a Facebook Page.', steps: ['Use a Facebook account that can manage your Page.', 'In Channels, connect Messenger, approve access, and select the Page.', 'Choose whether to import recent text messages. Check that the Page is connected in Replaid.'] },
+  { id: 'telegram', name: 'Telegram', title: 'Connect your Telegram bot.', steps: ['Create a bot with BotFather in Telegram and copy its bot token.', 'In Channels, connect Telegram and paste the token into Replaid.', 'Open the bot in Telegram and start a private conversation. Use a bot that is not connected to another webhook service.'] },
+] as const;
+const clients = [
+  { id: 'codex', name: 'Codex', icon: '/chatgpt.svg' },
+  { id: 'chatgpt', name: 'ChatGPT', icon: '/chatgpt.svg' },
+  { id: 'claude', name: 'Claude', icon: '/claude.svg' },
+  { id: 'hermes', name: 'Hermes', icon: '/hermes-agent-nous.png' },
+];
+const firstPrompt = 'Find my latest unanswered conversation in Replaid. Read its context and save a draft reply. Use the business knowledge I have given you; ask me if information is missing. Do not send the reply.';
+---
+<header class="guide-hero">
+  <a class="guide-back" href="/">Replaid / Connection guide</a>
+  <h1>Connect your agent.<br /><span class="hero-highlight">Start with a draft.</span></h1>
+  <p>One channel. Your own agent. A first reply you can review.</p>
+  <div class="guide-route" aria-hidden="true"><span><BrandLogo platform="widget" /></span><i></i><span><img src="/favicon.svg" width="27" height="30" alt="" /></span><i></i><span><img src="/claude.svg" width="30" height="30" alt="" /></span><i></i><span class="guide-route-draft"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 3h10l4 4v14H5zM14 3v5h5M8 12h8M8 16h5"/></svg></span></div>
+</header>
+<div class="guide-layout" data-connection-guide>
+  <aside class="guide-sidebar">
+    <nav aria-label="Setup steps"><ol>{steps.map((step, index) => <li><a href={`#${step.id}`} data-step-link={step.id} aria-current={index === 0 ? 'step' : undefined}><span>{index + 1}</span>{step.label}</a></li>)}</ol></nav>
+    <div class="guide-sidebar-help"><p>Need a hand?</p><a href="/contact">Get help connecting</a></div>
+  </aside>
+  <div class="guide-content">
+    <section id="account" class="guide-step" aria-labelledby="account-heading" data-guide-step>
+      <header class="guide-step-heading"><span>1</span><h2 id="account-heading">Make room for your conversations.</h2></header>
+      <p>Create your Replaid account, or sign in and select your team. You need an owner or administrator to connect channels.</p>
+      <div class="guide-account-actions"><a class="sky-button" href="https://app.replaid.pro/register" target="_blank" rel="noopener noreferrer">Create your account</a><a class="guide-text-link" href="https://app.replaid.pro/login" target="_blank" rel="noopener noreferrer">Already have an account? Log in</a></div>
+      <p class="guide-success-cue"><span aria-hidden="true">✓</span> You’re ready when you can open Channels in Replaid.</p>
+    </section>
+    <section id="channel" class="guide-step" aria-labelledby="channel-heading" data-guide-step>
+      <header class="guide-step-heading"><span>2</span><h2 id="channel-heading">Choose where to start.</h2></header>
+      <p>Connect one channel for your first test. You can add the others later.</p>
+      <div class="guide-switcher" data-guide-switcher>
+        <fieldset class="guide-choices"><legend>Choose your channel</legend><div>{channels.map((channel, index) => <label><input type="radio" name="guide-channel" value={channel.id} checked={index === 0} aria-controls={`channel-${channel.id}`} /><span><BrandLogo platform={channel.id} />{channel.name}</span></label>)}</div></fieldset>
+        {channels.map(channel => <div class="guide-choice-panel" id={`channel-${channel.id}`} data-choice-panel={channel.id}><h3>{channel.title}</h3><ol class="guide-instructions">{channel.steps.map(step => <li>{step}</li>)}</ol></div>)}
+      </div>
+      <details class="guide-details"><summary>Channel limits and history import<span aria-hidden="true">+</span></summary><div><p>{productCopy.channelLimits}</p><p>{productCopy.history}</p><p>{productCopy.futureChannels}</p><p>Messenger replies must be within its supported reply window. Start your test with a new incoming message.</p></div></details>
+    </section>
+    <section id="agent" class="guide-step" aria-labelledby="agent-heading" data-guide-step>
+      <header class="guide-step-heading"><span>3</span><h2 id="agent-heading">Bring the agent you already use.</h2></header>
+      <p>In Replaid, open <strong>Agents → Connections</strong> and copy the MCP server URL. Use the complete URL as shown, without adding <code>/mcp</code>.</p>
+      <div class="guide-endpoint">
+        <label for="guide-mcp-url">Your MCP server URL</label>
+        <div><input id="guide-mcp-url" type="url" inputmode="url" placeholder="Paste the URL from Replaid" autocomplete="off" spellcheck="false" aria-describedby="guide-url-help" /><button class="guide-copy" type="button" data-copy-target="guide-mcp-url" data-copy-label="MCP server URL" disabled>Copy URL</button></div>
+        <p id="guide-url-help" role="status">Paste your URL to prepare the setup below. This page does not connect to the server.</p>
+      </div>
+      <div class="guide-switcher" data-guide-switcher>
+        <fieldset class="guide-choices guide-client-choices"><legend>Choose your agent</legend><div>{clients.map((client, index) => <label><input type="radio" name="guide-client" value={client.id} checked={index === 0} aria-controls={`client-${client.id}`} /><span><img src={client.icon} width="21" height="21" alt="" />{client.name}</span></label>)}</div></fieldset>
+        <div class="guide-choice-panel" id="client-codex" data-choice-panel="codex"><h3>Connect with the Codex CLI.</h3><p>With the Codex CLI installed, run these commands in your terminal. Sign in to Replaid in the browser and select your team.</p><GuideCopyBlock id="codex-config" title="Terminal commands" generated="codex" text="Paste your MCP URL above to prepare these commands." /><p class="guide-client-note">Then open a new Codex task and try the connection prompt below. <a href="https://developers.openai.com/codex/mcp/" target="_blank" rel="noopener noreferrer">Codex MCP guide</a></p></div>
+        <div class="guide-choice-panel" id="client-chatgpt" data-choice-panel="chatgpt"><h3>Add Replaid to ChatGPT.</h3><ol class="guide-instructions"><li>Open <strong>Settings → Security and login</strong> and turn on <strong>Developer mode</strong>, if your account and workspace allow it.</li><li>Open <strong>ChatGPT Plugins</strong>, select the plus button, and name the connection <strong>Replaid</strong>.</li><li>Choose a public endpoint, paste your MCP URL, and create the connection. Complete Replaid sign-in and select your team.</li><li>Start a new chat and add Replaid from the tools menu.</li></ol><p class="guide-client-note">This uses a custom MCP connection. <a href="https://developers.openai.com/plugins/deploy/connect-chatgpt" target="_blank" rel="noopener noreferrer">ChatGPT connection guide</a></p></div>
+        <div class="guide-choice-panel" id="client-claude" data-choice-panel="claude"><h3>Add Replaid as a connector.</h3><ol class="guide-instructions"><li>For Pro or Max, open <strong>Customize → Connectors → Add custom connector</strong>.</li><li>Add your MCP URL, select <strong>Connect</strong>, and complete Replaid sign-in for your team.</li><li>In a new chat, use <strong>+ → Connectors</strong> to enable Replaid.</li></ol><p class="guide-client-note">On Team or Enterprise, an owner first adds it through <strong>Organization settings → Connectors → Add → Custom → Web</strong>. <a href="https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp" target="_blank" rel="noopener noreferrer">Claude connector guide</a></p></div>
+        <div class="guide-choice-panel" id="client-hermes" data-choice-panel="hermes"><h3>Add a server in Hermes Desktop.</h3><ol class="guide-instructions"><li>Open the MCP servers panel and add a server named <strong>replaid</strong>.</li><li>Paste this configuration into <strong>Server JSON</strong>, then save.</li><li>Complete Replaid sign-in, select your team, and enable the server.</li></ol><GuideCopyBlock id="hermes-config" title="Hermes configuration" generated="hermes" text="Paste your MCP URL above to prepare this configuration." /><p class="guide-client-note">You can also copy this configuration from Agents → Connections in Replaid. <a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp" target="_blank" rel="noopener noreferrer">Hermes MCP guide</a></p></div>
+      </div>
+      <div class="guide-connection-test"><h3>Check that your agent can read the inbox.</h3><GuideCopyBlock id="connection-prompt" title="Connection prompt" text="List my open conversations in Replaid." /><p class="guide-success-cue"><span aria-hidden="true">✓</span> Look for your conversations, or an empty list if no messages have arrived.</p></div>
+      <details class="guide-details"><summary>Using another client or the REST API?<span aria-hidden="true">+</span></summary><div><p>Use the same URL with a compatible remote MCP client. Sign in with OAuth where supported. For token-based MCP or REST, a team owner creates an agent token in <strong>Agents → Tokens</strong>. Keep the token in your client’s secret settings.</p><p>REST uses the application host and <code>/api/v1</code>, with <code>Authorization: Bearer &lt;agent-token&gt;</code>. MCP and REST use the same action policies.</p></div></details>
+    </section>
+    <section id="draft" class="guide-step guide-draft-step" aria-labelledby="draft-heading" data-guide-step>
+      <header class="guide-step-heading"><span>4</span><h2 id="draft-heading">Your first reply. Ready for review.</h2></header>
+      <p>In <strong>Agents → Policies</strong>, allow draft replies and keep sending disabled. Send a new message through your widget or from another account, then find it in <strong>Conversations</strong>.</p>
+      <div class="guide-draft-preview" aria-hidden="true"><span>Customer message</span><p>Hi! Are you open on Saturday?</p><div><span class="guide-draft-dot"></span> Your agent prepares a private draft</div></div>
+      <p>Give your agent your business information, such as opening hours, then paste this prompt:</p>
+      <GuideCopyBlock id="draft-prompt" title="First draft prompt" text={firstPrompt} />
+      <div class="guide-review-checks"><h3>Check the result in Replaid.</h3><ul><li><span aria-hidden="true">✓</span>The reply appears as a draft in Conversations.</li><li><span aria-hidden="true">✓</span>The action appears in Agents → Action Log.</li><li><span aria-hidden="true">✓</span>The customer has not received the draft.</li></ul></div>
+      <details class="guide-details"><summary>No draft yet?<span aria-hidden="true">+</span></summary><div><p><strong>No conversation:</strong> check the channel connection and send a new message. History imports do not trigger notifications.</p><p><strong>Access error:</strong> reconnect your agent and select the correct Replaid team.</p><p><strong>Action blocked:</strong> inspect Agents → Policies and the Action Log. Enable draft replies and supply any required confidence value.</p><p><strong>Missing business information:</strong> give the agent the facts it needs, then ask for the draft again.</p></div></details>
+    </section>
+    <section class="guide-next" aria-labelledby="guide-next-heading"><div><span class="guide-next-symbol" aria-hidden="true">↗</span><h2 id="guide-next-heading">From a draft to a real reply.</h2><p>Review the draft first. When you are ready, enable sending and ask your agent to send one specific reply. Check that it reaches the customer.</p><a class="sky-button" href="https://app.replaid.pro/login" target="_blank" rel="noopener noreferrer">Open Replaid</a></div><details class="guide-details"><summary>What about automatic replies?<span aria-hidden="true">+</span></summary><div><p>{productCopy.automation}</p></div></details></section>
+    <details class="guide-details guide-pricing"><summary>What does Replaid cost?<span aria-hidden="true">+</span></summary><div><p>{productCopy.pricing}</p></div></details>
+    <p class="guide-copy-status" aria-live="polite" role="status" data-guide-copy-status></p>
+    <noscript><p class="guide-no-script">All setup instructions are shown below their selectors. Enable JavaScript for client selection, configuration generation, and copy buttons. You can also copy your configuration from Agents → Connections in Replaid.</p></noscript>
+  </div>
+</div>
+<script>
+  import { createGuideConfig } from './guide-config';
+  const guide = document.querySelector<HTMLElement>('[data-connection-guide]');
+  if (guide) {
+    guide.classList.add('guide-enhanced');
+    guide.querySelectorAll<HTMLElement>('[data-guide-switcher]').forEach(switcher => {
+      const update = () => {
+        const selected = switcher.querySelector<HTMLInputElement>('input:checked')?.value;
+        switcher.querySelectorAll<HTMLElement>('[data-choice-panel]').forEach(panel => { panel.hidden = panel.dataset.choicePanel !== selected; });
+      };
+      switcher.addEventListener('change', update);
+      update();
+    });
+    const input = guide.querySelector<HTMLInputElement>('#guide-mcp-url')!;
+    const help = guide.querySelector<HTMLElement>('#guide-url-help')!;
+    const updateConfig = () => {
+      const config = createGuideConfig(input.value);
+      input.setAttribute('aria-invalid', String(!!input.value && !config));
+      help.textContent = config ? 'Setup is ready to copy. This page does not connect to the server.' : input.value ? 'Use an HTTPS server URL without credentials, query parameters, or fragments.' : 'Paste your URL to prepare the setup below. This page does not connect to the server.';
+      guide.querySelectorAll<HTMLElement>('[data-guide-config]').forEach(block => {
+        block.textContent = config ? config[block.dataset.guideConfig as 'codex' | 'hermes'] : 'Paste your MCP URL above to prepare this setup.';
+        guide.querySelector<HTMLButtonElement>(`[data-copy-target="${block.id}"]`)!.disabled = !config;
+      });
+      guide.querySelector<HTMLButtonElement>('[data-copy-target="guide-mcp-url"]')!.disabled = !config;
+    };
+    input.addEventListener('input', updateConfig);
+    updateConfig();
+    const status = guide.querySelector<HTMLElement>('[data-guide-copy-status]')!;
+    let copyStatusTimer: number | undefined;
+    guide.querySelectorAll<HTMLButtonElement>('[data-copy-target]').forEach(button => {
+      button.addEventListener('click', async () => {
+        const target = document.getElementById(button.dataset.copyTarget!);
+        const text = target instanceof HTMLInputElement ? createGuideConfig(target.value)?.url : target?.textContent;
+        if (!text) return;
+        window.clearTimeout(copyStatusTimer);
+        status.textContent = '';
+        try {
+          await navigator.clipboard.writeText(text);
+          status.textContent = `${button.dataset.copyLabel} copied.`;
+          copyStatusTimer = window.setTimeout(() => { status.textContent = ''; }, 4000);
+          const label = button.querySelector<HTMLElement>('[data-copy-label]');
+          if (label) { label.textContent = 'Copied'; window.setTimeout(() => { label.textContent = 'Copy'; }, 2000); }
+        } catch {
+          status.textContent = 'Copy is unavailable. Select the text and copy it manually.';
+        }
+      });
+    });
+    const sections = Array.from(guide.querySelectorAll<HTMLElement>('[data-guide-step]'));
+    const updateStep = () => {
+      const current = sections.filter(section => section.getBoundingClientRect().top <= 180).at(-1) ?? sections[0];
+      guide.querySelectorAll<HTMLAnchorElement>('[data-step-link]').forEach(link => {
+        if (link.dataset.stepLink === current?.id) link.setAttribute('aria-current', 'step');
+        else link.removeAttribute('aria-current');
+      });
+    };
+    window.addEventListener('scroll', updateStep, { passive: true });
+    updateStep();
+  }
+</script>

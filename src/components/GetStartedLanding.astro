@@ -1,0 +1,70 @@
+---
+import BrandLogo from './BrandLogo.astro';
+interface Props { questions: { q: string; a: string }[]; }
+const { questions } = Astro.props;
+const channels = [
+  { id: 'widget', name: 'Replaid widget' },
+  { id: 'instagram', name: 'Instagram' },
+  { id: 'messenger', name: 'Messenger' },
+  { id: 'telegram', name: 'Telegram' },
+] as const;
+const guideUrl = '/docs/connect-your-agent';
+const registerUrl = 'https://app.replaid.pro/register';
+---
+<section class="start-hero" aria-labelledby="start-heading">
+  <div class="start-hero-copy">
+    <a class="hero-uneed start-award" href="https://www.uneed.best/tool/replaid" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">★</span><strong>Voted #1 on Uneed</strong></a>
+    <h1 id="start-heading">Let your AI agent<br /><span class="hero-highlight">reply to customers.</span></h1>
+    <p>Connect your website and messaging channels to the agent you already use. It reads the conversation, prepares the answer, and sends only when you allow it.</p>
+    <div class="start-actions"><a class="sky-button" href={registerUrl}>Create your free account</a><a class="start-guide-link" href={guideUrl}>See the setup guide<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></a></div>
+    <p class="start-price-note">No subscription. Your AI provider’s charges are separate.</p>
+    <a class="start-login" href="https://app.replaid.pro/login">Already have an account? Log in</a>
+  </div>
+  <figure class="start-preview" aria-labelledby="start-example-label">
+    <figcaption id="start-example-label">An example, from message to draft</figcaption>
+    <div class="start-message-card">
+      <div class="start-message-source"><BrandLogo platform="instagram" /><span>Instagram<strong>A new customer message</strong></span><span class="start-unread" aria-hidden="true"></span></div>
+      <p>Hi! Are you open on Saturday?</p>
+    </div>
+    <div class="start-connection" aria-hidden="true"><span></span><div><img src="/favicon.svg" width="20" height="22" alt="" />Connected by Replaid</div><span></span></div>
+    <div class="start-draft-card">
+      <div class="start-draft-header"><span class="start-agent-avatar"><img src="/claude.svg" width="26" height="26" alt="" /></span><span>Your AI agent<strong>A reply, with your context</strong></span><span class="start-draft-label">Draft</span></div>
+      <div class="start-knowledge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 3h10l4 4v14H5zM14 3v5h5M8 12h8M8 16h5" /></svg>From the opening hours you gave your agent</div>
+      <p>Yes! We’re open on Saturday from 9am to 6pm.</p>
+      <div class="start-draft-footer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="3" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg>Ready for your review. Nothing sent.</div>
+    </div>
+  </figure>
+</section>
+<section class="start-channels" aria-label="Available channels">
+  <p>Start where your customers already are.</p>
+  <ul>{channels.map(channel => <li><BrandLogo platform={channel.id} /><span>{channel.name}</span></li>)}</ul>
+</section>
+<section class="start-setup" aria-labelledby="start-setup-heading">
+  <header class="start-section-heading"><h2 id="start-setup-heading">One channel to start.<br />More room to grow.</h2><p>Your agent brings the knowledge.<br />Replaid connects it to the conversation.</p></header>
+  <ol class="start-steps">
+    <li>
+      <div class="start-step-art start-channel-art" aria-hidden="true"><span><BrandLogo platform="widget" /></span><i></i><span><img src="/favicon.svg" width="32" height="35" alt="" /></span></div>
+      <h3><span>1</span>Connect your channel</h3><p>Add the Replaid widget to your site, or connect an Instagram, Messenger, or Telegram inbox.</p>
+    </li>
+    <li>
+      <div class="start-step-art start-client-art" aria-hidden="true"><span><img src="/chatgpt.svg" width="38" height="38" alt="" /></span><span><img src="/claude.svg" width="38" height="38" alt="" /></span><span><img class="hermes-nous-logo" src="/hermes-agent-nous.png" width="43" height="43" alt="" loading="lazy" /></span></div>
+      <h3><span>2</span>Bring your AI agent</h3><p>Connect through MCP or the API. Keep your business knowledge and instructions in your agent.</p>
+    </li>
+    <li>
+      <div class="start-step-art" aria-hidden="true"><div class="start-rule-preview"><span>Create drafts<b>✓</b></span><span>Send replies<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span></div></div>
+      <h3><span>3</span>Review your first reply</h3><p>Start with a draft. Check the answer and the action record. Allow sending when you are ready.</p>
+    </li>
+  </ol>
+  <div class="start-setup-note"><p>You decide what your agent can read, draft, and send.</p><a class="start-guide-link" href={guideUrl}>Follow the connection guide<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></a></div>
+</section>
+<section class="start-questions" aria-labelledby="start-questions-heading">
+  <header><h2 id="start-questions-heading">A few things<br />before you start.</h2><p>A clear first step.<br />No surprises about what connects.</p><a class="start-guide-link" href="/contact">Have another question?</a></header>
+  <div class="sky-faq-list">{questions.map(faq => <details class="sky-faq-item"><summary><span>{faq.q}</span><svg class="sky-faq-toggle" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12" /><path class="sky-faq-toggle-vertical" d="M10 4v12" /></svg></summary><p>{faq.a}</p></details>)}</div>
+</section>
+<section class="start-final" aria-labelledby="start-final-heading">
+  <img src="/favicon.svg" width="36" height="39" alt="" aria-hidden="true" />
+  <h2 id="start-final-heading">Your next message.<br /><span class="hero-highlight">A better way to reply.</span></h2>
+  <p>Create your account. Connect one channel. Try your first draft.</p>
+  <a class="sky-button" href={registerUrl}>Create your free account</a>
+  <a class="start-guide-link" href={guideUrl}>Want to see the steps first?</a>
+</section>

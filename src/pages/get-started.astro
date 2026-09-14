@@ -1,42 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import HowItWorks from '../components/HowItWorks.astro';
-import Integrations from '../components/Integrations.astro';
-import Channels from '../components/Channels.astro';
-import CTA from '../components/CTA.astro';
+import SkyHeader from '../components/SkyHeader.astro';
+import SkyFooter from '../components/SkyFooter.astro';
+import GetStartedLanding from '../components/GetStartedLanding.astro';
+import { faqs } from '../components/faq-content';
 import '../styles/global.css';
----
+import '../styles/landing.css';
+import '../styles/get-started.css';
 
-<Layout title="Connect your agent — Replaid" description="Connect a channel, authorize your MCP client or REST agent, set action permissions, and create your first draft in Replaid.">
-  <Header />
-  <main id="main">
-    <section class="px-6 pt-36 pb-12 sm:pt-44 sm:pb-16">
-      <div class="mx-auto max-w-7xl">
-        <h1 class="text-display-md max-w-3xl">Connect your agent.<br />Start with a draft.</h1>
-        <p class="text-lg sm:text-xl text-ink-200 mt-8 max-w-2xl leading-relaxed">You need a Replaid account, a supported channel, and an external agent. Keep your business knowledge and reply instructions in that agent.</p>
-        <a href="https://app.replaid.pro/register" class="btn-type mt-8">Create your Replaid account</a>
-      </div>
-    </section>
-    <HowItWorks />
-    <Integrations />
-    <section class="px-6 py-16 border-t border-overlay/10" aria-labelledby="first-draft-heading">
-      <div class="mx-auto max-w-7xl grid lg:grid-cols-2 gap-10">
-        <div>
-          <h2 id="first-draft-heading" class="text-display-sm">Try your first conversation.</h2>
-          <p class="text-lg text-ink-200 mt-6 leading-relaxed">Send a new message to your connected channel from another account. Check that it appears in Conversations, then ask your agent:</p>
-        </div>
-        <div>
-          <blockquote class="border-l-2 border-accent pl-6 text-lg leading-relaxed">“Find my latest unanswered conversation. Read its context and save a draft reply. Do not send it.”</blockquote>
-          <p class="text-ink-200 mt-6 leading-relaxed">Review the draft in Conversations and its result in Agents → Action Log. If an action is blocked, check Agents → Policies.</p>
-          <p class="text-ink-200 mt-4 leading-relaxed">For custom integrations, discover the available tools or actions first. Use a stable idempotency key for each logical action so retries do not repeat it.</p>
-          <p class="text-ink-200 mt-4 leading-relaxed">Only enable sending after you have checked the team policy. Test one intentional reply on your real channel before setting up automatic processing.</p>
-        </div>
-      </div>
-    </section>
-    <Channels />
-    <CTA />
-  </main>
-  <Footer />
+const description = 'Connect your website and messaging channels to your AI agent. Read customer messages, create drafts, and send replies with permissions you control.';
+const questionTitles = new Set([
+  'Does Replaid include an AI agent?',
+  'Which channels can I connect?',
+  'Can I try it without sending replies?',
+  'Does connecting MCP turn on automatic replies?',
+  'What does Replaid cost?',
+]);
+const questions = faqs.filter(faq => questionTitles.has(faq.q));
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: questions.map(faq => ({
+    '@type': 'Question', name: faq.q,
+    acceptedAnswer: { '@type': 'Answer', text: faq.a },
+  })),
+};
+---
+<Layout title="Get started with Replaid — Connect your AI agent to your inbox" description={description} jsonLd={jsonLd} forceLight>
+  <div class="sky-landing start-page">
+    <SkyHeader />
+    <main id="main"><GetStartedLanding questions={questions} /></main>
+    <SkyFooter />
+  </div>
 </Layout>

@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import SkyFooter from '../components/SkyFooter.astro';
 import ConversationExample from '../components/ConversationExample.astro';
 import { faqs } from '../components/faq-content';
+import { productCopy } from '../components/product-copy';
 import '../styles/global.css';
 import '../styles/landing.css';
 
@@ -26,7 +28,7 @@ const jsonLd = [
     description,
     offers: {
       '@type': 'Offer', name: 'Current supported operations', price: '0', priceCurrency: 'USD',
-      description: 'Current supported operations are free. Future paid operations use prepaid credits. Agent provider costs are separate.',
+      description: productCopy.pricing,
       url: 'https://replaid.pro/#pricing',
     },
   },
@@ -100,34 +102,7 @@ const jsonLd = [
         ))}
       </div>
     </section>
-    <footer class="sky-footer">
-      <div class="sky-footer-main">
-        <div class="sky-footer-brand">
-          <a class="sky-wordmark sky-nav-brand" href="/" aria-label="Replaid home"><img src="/favicon.svg" width="28" height="30" alt="" aria-hidden="true" /><span>Replaid</span></a>
-          <p>A customer inbox for your AI agent.</p>
-        </div>
-        <nav aria-label="Product">
-          <h3>Product</h3>
-          <a href="/#features">Features</a>
-          <a href="/#pricing">Pricing</a>
-          <a href="/#faq">FAQ</a>
-          <a href="/get-started">Docs</a>
-        </nav>
-        <nav aria-label="Company">
-          <h3>Company</h3>
-          <a href="/blog">Blog</a>
-          <a href="/contact">Contact</a>
-          <a href="https://replaid.instatus.com/" target="_blank" rel="noopener noreferrer">Status</a>
-        </nav>
-        <nav aria-label="Legal">
-          <h3>Legal</h3>
-          <a href="/privacy">Privacy</a>
-          <a href="/terms">Terms</a>
-          <a href="/cookies">Cookies</a>
-        </nav>
-      </div>
-      <div class="sky-footer-bottom">© {new Date().getFullYear()} Replaid</div>
-    </footer>
+    <SkyFooter />
   </main>
 </Layout>
 <script>

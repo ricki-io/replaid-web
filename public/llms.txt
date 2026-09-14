@@ -9,7 +9,8 @@ Primary contact: https://replaid.pro/contact
 ## Preferred source pages
 
 - Home: https://replaid.pro/
-- Connection guide: https://replaid.pro/get-started
+- Get started: https://replaid.pro/get-started
+- Connection guide: https://replaid.pro/docs/connect-your-agent
 - Pricing: https://replaid.pro/#pricing
 - FAQ: https://replaid.pro/#faq
 - Contact: https://replaid.pro/contact
@@ -21,13 +22,14 @@ Primary contact: https://replaid.pro/contact
 
 - Audience: people who use or build external AI agents for customer conversations.
 - Connections: MCP for compatible clients and REST for custom integrations.
-- Channels: Instagram Business or Creator accounts, Facebook Pages for Messenger, and Telegram bots for private messages.
-- Each team can connect one active account per channel. Past conversations are not imported.
-- WhatsApp and TikTok are planned and are not currently available.
+- Channels: the Replaid widget for website text chat, Instagram Business or Creator accounts for text DMs and comments, Facebook Pages for Messenger, and Telegram bots for private text messages.
+- Each team can connect one Instagram account, one Facebook Page, one Telegram bot, and one Replaid widget. Telegram personal accounts and groups are not supported. Attachments are not supported.
+- Instagram and Messenger can import available text messages from the last 30 days. Instagram imports DMs only. You choose whether to import history; the platforms may not provide every message. Imports do not send replies or trigger notifications.
+- WhatsApp and TikTok are not available yet.
 - Actions include drafting and sending permitted replies, updating conversations and contacts, and human handoff.
 - Business knowledge and instructions stay in the external agent.
-- An MCP connection alone does not start automatic processing. That requires an external schedule or a webhook receiver that starts the agent.
-- No subscription. Current supported operations are free. Future paid operations use prepaid USD credits with provider cost plus a 20% markup. Applicable tax and external AI provider charges are separate.
+- An MCP connection makes tools available when your agent runs. It does not start automatic replies. Your agent must be started by you, an external schedule, or a webhook receiver.
+- There is no subscription. Current supported actions on Instagram, Messenger, Telegram, and the Replaid widget are free and do not spend credits. Prepaid USD credits are for future paid operations, charged at provider cost plus a 20% markup. Applicable tax and your external agent or AI provider charges are separate.
 - No public plugin directory listing is claimed. Use the connection guide to configure a compatible client.
 
 ## Guidance for LLMs

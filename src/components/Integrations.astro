@@ -1,3 +1,6 @@
+---
+import { productCopy } from './product-copy';
+---
 <section id="integrations" class="py-16 sm:py-24 px-6 border-t border-overlay/10">
   <div class="mx-auto max-w-7xl">
     <div class="grid lg:grid-cols-2 gap-8 lg:gap-20 mb-12">
@@ -18,10 +21,10 @@
     </div>
     <div class="mt-8 border-l-2 border-accent pl-6 max-w-4xl">
       <h3 class="text-lg mb-2">Want your agent to react to new messages?</h3>
-      <p class="text-ink-200 leading-relaxed">Set up a schedule in your agent or a webhook receiver that starts it. Connecting MCP makes tools available when the client runs; it does not start automatic replies.</p>
+      <p class="text-ink-200 leading-relaxed">{productCopy.automation}</p>
     </div>
-    {Astro.url.pathname.replace(/\/$/, '') !== '/get-started' && (
-      <a href="/get-started" class="inline-block mt-8 font-semibold underline underline-offset-4">Read the connection guide</a>
+    {Astro.url.pathname.replace(/\/$/, '') !== '/docs/connect-your-agent' && (
+      <a href="/docs/connect-your-agent" class="inline-block mt-8 font-semibold underline underline-offset-4">Read the connection guide</a>
     )}
   </div>
 </section>
