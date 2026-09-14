@@ -1,0 +1,57 @@
+---
+interface Props { id: string; }
+const { id } = Astro.props;
+const variant = id === 'replaid-connects-your-ai-agent-to-your-customers' ? 'agent' : id.includes('three-workflows') ? 'workflows' : id.includes('centralize') ? 'channels' : id.includes('losing-leads') ? 'messages' : id.includes('introducing') ? 'replaid' : 'leads';
+const shadow = `blog-shadow-${id}`;
+---
+<div class:list={['blog-artwork', `blog-artwork-${variant}`]} aria-hidden="true">
+  <svg viewBox="0 0 440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><filter id={shadow} x="-40%" y="-40%" width="180%" height="200%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#315b7c" flood-opacity=".13" /></filter></defs>
+    {variant === 'agent' ? <>
+      <path d="M94 160h78m96 0h78" stroke="#84bde7" stroke-width="2.5" stroke-linecap="round" />
+      <path d="m126 153 7 7-7 7m187-14-7 7 7 7" stroke="#84bde7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <g filter={`url(#${shadow})`}><rect x="22" y="120" width="80" height="80" rx="24" fill="white" /><rect x="150" y="91" width="140" height="138" rx="36" fill="white" /><rect x="338" y="120" width="80" height="80" rx="24" fill="white" /></g>
+      <path d="M45 144h34v23H62l-17 10v-33Z" fill="#e2f2ff" stroke="#459ad9" stroke-width="2.5" stroke-linejoin="round" />
+      <path d="M54 153h16m-16 7h10" stroke="#459ad9" stroke-width="2.5" stroke-linecap="round" />
+      <image href="/favicon.svg" x="196" y="118" width="48" height="52" />
+      <text x="220" y="201" text-anchor="middle" fill="#10151b" font-size="20" font-weight="700" letter-spacing="-1">Replaid</text>
+      <path d="M378 138c4 12 10 18 22 22-12 4-18 10-22 22-4-12-10-18-22-22 12-4 18-10 22-22Z" fill="#408bd1" />
+      <text x="62" y="254" text-anchor="middle" fill="#526d80" font-size="12">Your channels</text>
+      <text x="378" y="254" text-anchor="middle" fill="#526d80" font-size="12">Your agent</text>
+    </> : variant === 'workflows' ? <>
+      <path d="M106 78v171m0-90h26m182 0h28v-42" stroke="#80b9e3" stroke-width="2" stroke-linecap="round" />
+      <g filter={`url(#${shadow})`}>
+        <rect x="48" y="37" width="290" height="70" rx="20" fill="white" />
+        <rect x="102" y="126" width="290" height="70" rx="20" fill="white" />
+        <rect x="48" y="215" width="290" height="70" rx="20" fill="white" />
+      </g>
+      <rect x="64" y="51" width="42" height="42" rx="13" fill="#edf6ff" />
+      <circle cx="85" cy="66" r="6" stroke="#2683cd" stroke-width="2" /><path d="M74 83c0-10 22-10 22 0" stroke="#2683cd" stroke-width="2" stroke-linecap="round" />
+      <text x="122" y="70" fill="#18232c" font-size="15" font-weight="600">Qualify leads</text><text x="122" y="89" fill="#6b7d8c" font-size="11">Find the right conversations</text>
+      <rect x="118" y="140" width="42" height="42" rx="13" fill="#f0f7ed" /><path d="M129 151h20v14h-12l-8 6v-20Z" stroke="#5b9450" stroke-width="2" stroke-linejoin="round" />
+      <text x="176" y="159" fill="#18232c" font-size="15" font-weight="600">Route support</text><text x="176" y="178" fill="#6b7d8c" font-size="11">Give each question a next step</text>
+      <rect x="64" y="229" width="42" height="42" rx="13" fill="#edf6ff" /><path d="M75 240h20m-20 9h14m-14 9h7" stroke="#2683cd" stroke-width="2" stroke-linecap="round" />
+      <text x="122" y="248" fill="#18232c" font-size="15" font-weight="600">Set priorities</text><text x="122" y="267" fill="#6b7d8c" font-size="11">Focus on what needs you</text>
+    </> : variant === 'channels' ? <>
+      <path d="M132 74c92 0 64 86 132 86M106 160h158M132 246c92 0 64-86 132-86" stroke="#84bde7" stroke-width="2.5" />
+      <g filter={`url(#${shadow})`}><rect x="54" y="38" width="80" height="74" rx="22" fill="white" /><rect x="27" y="123" width="80" height="74" rx="22" fill="white" /><rect x="54" y="208" width="80" height="74" rx="22" fill="white" /><rect x="248" y="91" width="146" height="138" rx="38" fill="white" /></g>
+      <path d="M78 61h32v21H93l-15 9V61Z" stroke="#2184d3" stroke-width="3" stroke-linejoin="round" /><path d="M51 146h32v21H67l-16 9v-30Z" stroke="#6da854" stroke-width="3" stroke-linejoin="round" /><path d="M78 232h32v21H93l-15 9v-30Z" stroke="#9b8ad0" stroke-width="3" stroke-linejoin="round" />
+      <image href="/favicon.svg" x="293" y="127" width="56" height="60" />
+    </> : variant === 'messages' ? <>
+      <g filter={`url(#${shadow})`}><rect x="66" y="43" width="263" height="66" rx="20" fill="white" fill-opacity=".65" /><rect x="92" y="121" width="282" height="68" rx="20" fill="white" /><path d="M80 202h206a20 20 0 0 1 20 20v46a20 20 0 0 1-20 20H90l-30 17v-83a20 20 0 0 1 20-20Z" fill="white" /></g>
+      <circle cx="96" cy="76" r="13" fill="#d9e7f0" /><path d="M124 69h123m-123 15h79" stroke="#d3e0ea" stroke-width="6" stroke-linecap="round" />
+      <circle cx="122" cy="155" r="13" fill="#b8d9f2" /><path d="M151 148h131m-131 15h95" stroke="#b4cfe2" stroke-width="6" stroke-linecap="round" />
+      <circle cx="90" cy="240" r="13" fill="#acdbe9" /><path d="M119 233h116m-116 15h76" stroke="#9dbfd5" stroke-width="6" stroke-linecap="round" />
+      <circle cx="332" cy="250" r="33" fill="#0875d5" stroke="#fff" stroke-width="5" /><path d="m319 250 9 9 18-19" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+    </> : variant === 'replaid' ? <>
+      <g filter={`url(#${shadow})`}><rect x="130" y="62" width="180" height="195" rx="48" fill="white" /></g>
+      <image href="/favicon.svg" x="186" y="103" width="68" height="72" />
+      <text x="220" y="218" text-anchor="middle" fill="#10151b" font-size="27" font-weight="700" letter-spacing="-1.5">Replaid</text>
+    </> : <>
+      <path d="M175 160h99" stroke="#82b6dd" stroke-width="2.5" /><circle cx="217" cy="160" r="5" fill="white" />
+      <g filter={`url(#${shadow})`}><rect x="41" y="96" width="136" height="132" rx="36" fill="white" /><rect x="266" y="96" width="136" height="132" rx="36" fill="white" /></g>
+      <path d="M82 136h54v35h-29l-25 16v-51Z" fill="#dbf0ff" stroke="#459ad9" stroke-width="2.5" stroke-linejoin="round" /><path d="M94 148h29m-29 10h18" stroke="#459ad9" stroke-width="3" stroke-linecap="round" />
+      <path d="M334 126c6 19 17 30 36 36-19 6-30 17-36 36-6-19-17-30-36-36 19-6 30-17 36-36Z" fill="#82d664" />
+    </>}
+  </svg>
+</div>

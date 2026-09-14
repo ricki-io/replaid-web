@@ -1,13 +1,13 @@
 ---
 import '@fontsource-variable/inter';
-import '@fontsource-variable/space-grotesk';
-import '@fontsource-variable/jetbrains-mono';
+import CookieConsent from '../components/CookieConsent.astro';
+import '../styles/global.css';
 
 export interface Props {
   title: string;
-  forceLight?: boolean;
   description?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   type?: string;
   jsonLd?: Record<string, any> | Record<string, any>[];
 }
@@ -15,38 +15,29 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, 'https://replaid.pro');
 const {
   title,
-  forceLight = false,
   description = "A customer inbox for your AI agent. Connect channels, control actions, and inspect results.",
   ogImage = "/og-image.png",
+  ogImageAlt,
   type = "website",
   jsonLd,
 } = Astro.props;
+const isDefaultSocialImage = ogImage === "/og-image.png";
+const socialImageAlt = ogImageAlt ?? (isDefaultSocialImage
+  ? "Replaid connects customer channels to your AI agent. Let your AI agent read and reply to customer messages."
+  : title);
 
-const isProd = import.meta.env.PROD;
 ---
 
 <!doctype html>
-<html lang="en" data-appearance={forceLight ? "light" : undefined}>
+<html lang="en" data-appearance="light">
   <head>
-    {isProd && (
-      <Fragment>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2C7LJY6CL"></script>
-        <script is:inline>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-T2C7LJY6CL');
-        </script>
-      </Fragment>
-    )}
-
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-    <meta name="theme-color" content="#000000" id="meta-theme-color" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="canonical" href={canonicalURL.href} />
 
     <!-- Open Graph -->
@@ -55,6 +46,12 @@ const isProd = import.meta.env.PROD;
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:image" content={new URL(ogImage, 'https://replaid.pro').href} />
+    <meta property="og:image:alt" content={socialImageAlt} />
+    {isDefaultSocialImage && <>
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+    </>}
     <meta property="og:site_name" content="Replaid" />
 
     <!-- Twitter Card -->
@@ -65,222 +62,23 @@ const isProd = import.meta.env.PROD;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, 'https://replaid.pro').href} />
 
+    <meta name="twitter:image:alt" content={socialImageAlt} />
+
     {jsonLd && (
       <script type="application/ld+json" set:html={JSON.stringify(Array.isArray(jsonLd) ? jsonLd : [jsonLd])} />
     )}
 
     <title>{title}</title>
 
-    <!-- Theme detection — runs before first paint to prevent FOUC -->
-    <script is:inline>
-      (function(){
-        var stored = localStorage.getItem('theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var dark = document.documentElement.dataset.appearance !== 'light' && (stored === 'dark' || (!stored && prefersDark));
-        if (dark) document.documentElement.classList.add('dark');
-        document.getElementById('meta-theme-color')
-          .setAttribute('content', dark ? '#000000' : '#fafafa');
-      })();
-    </script>
   </head>
-  <body class="min-h-screen bg-ink-950 text-fg antialiased">
-    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-fg focus:text-ink-950 font-display font-semibold">
+  <body>
+    <a href="#main" class="skip-link">
       Skip to main content
     </a>
-    <div class="overflow-x-hidden w-full">
+    <div class="site-content">
       <slot />
     </div>
+    <CookieConsent />
 
-    <style is:global>
-      /* ── Theme variables ── */
-      :root {
-        --ink-950: 250, 250, 250;
-        --ink-900: 245, 245, 245;
-        --ink-800: 238, 238, 238;
-        --ink-700: 229, 229, 229;
-        --ink-600: 212, 212, 212;
-        --ink-500: 189, 189, 189;
-        --ink-400: 156, 156, 156;
-        --ink-300: 115, 115, 115;
-        --ink-200: 82, 82, 82;
-        --ink-100: 60, 60, 60;
-        --ink-50:  40, 40, 40;
-
-        --fg:      10, 10, 10;
-        --overlay:  0, 0, 0;
-        --surface: 255, 255, 255;
-
-        --accent-rgb:   101, 180, 50;
-        --accent-light: 130, 200, 80;
-        --accent-dark:  80, 155, 35;
-      }
-
-      .dark {
-        --ink-950: 0, 0, 0;
-        --ink-900: 5, 5, 5;
-        --ink-800: 10, 10, 10;
-        --ink-700: 17, 17, 17;
-        --ink-600: 26, 26, 26;
-        --ink-500: 42, 42, 42;
-        --ink-400: 64, 64, 64;
-        --ink-300: 153, 153, 153;
-        --ink-200: 170, 170, 170;
-        --ink-100: 187, 187, 187;
-        --ink-50:  204, 204, 204;
-
-        --fg:      255, 255, 255;
-        --overlay: 255, 255, 255;
-        --surface:   0, 0, 0;
-
-        --accent-rgb:   147, 232, 95;
-        --accent-light: 174, 237, 131;
-        --accent-dark:  123, 212, 74;
-      }
-
-      body {
-        font-family: 'Inter Variable', system-ui, sans-serif;
-        background: rgb(var(--ink-950));
-        color: rgb(var(--fg));
-        transition: background 0.3s, color 0.3s;
-      }
-
-      h1, h2, h3, h4, h5, h6 {
-        font-family: 'Space Grotesk Variable', system-ui, sans-serif;
-        font-weight: 700;
-      }
-
-      ::selection {
-        background-color: rgb(var(--accent-rgb));
-        color: rgb(var(--ink-950));
-      }
-
-      html {
-        scroll-behavior: smooth;
-        overflow-x: hidden;
-      }
-
-      /* Typography First button - text-driven */
-      .btn-type {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.875rem 2rem;
-        font-family: 'Space Grotesk Variable', system-ui, sans-serif;
-        font-weight: 600;
-        font-size: 1rem;
-        letter-spacing: -0.02em;
-        background: rgb(var(--fg));
-        color: rgb(var(--ink-950));
-        border: none;
-        transition: all 0.15s ease;
-      }
-
-      @media (min-width: 640px) {
-        .btn-type {
-          padding: 1rem 2.5rem;
-          font-size: 1.125rem;
-        }
-      }
-
-      .btn-type:hover {
-        background: rgb(var(--accent-rgb));
-        color: #000;
-      }
-
-      .btn-type-outline {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.875rem 2rem;
-        font-family: 'Space Grotesk Variable', system-ui, sans-serif;
-        font-weight: 600;
-        font-size: 1rem;
-        letter-spacing: -0.02em;
-        background: transparent;
-        color: rgb(var(--fg));
-        border: 2px solid rgb(var(--fg));
-        transition: all 0.15s ease;
-      }
-
-      @media (min-width: 640px) {
-        .btn-type-outline {
-          padding: 1rem 2.5rem;
-          font-size: 1.125rem;
-        }
-      }
-
-      .btn-type-outline:hover {
-        background: rgb(var(--fg));
-        color: rgb(var(--ink-950));
-      }
-
-      /* Monospace label */
-      .mono-label {
-        font-family: 'JetBrains Mono Variable', monospace;
-        font-size: 0.75rem;
-        font-weight: 500;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: rgb(var(--ink-300));
-      }
-
-      /* Fade in */
-      .fade-in-up {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
-      }
-
-      .fade-in-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      [hidden] { display: none !important; }
-      section[id] { scroll-margin-top: 6.5rem; }
-      summary:focus-visible { outline: 2px solid rgb(var(--accent-rgb)); outline-offset: 4px; }
-
-      /* Focus-visible for keyboard navigation */
-      a:focus-visible, button:focus-visible, [tabindex]:focus-visible,
-      input:focus-visible, textarea:focus-visible, select:focus-visible,
-      details:focus-visible > summary {
-        outline: 2px solid rgb(var(--accent-rgb));
-        outline-offset: 2px;
-      }
-
-      /* Reduced motion */
-      @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-          scroll-behavior: auto !important;
-        }
-        .fade-in-up {
-          opacity: 1;
-          transform: none;
-        }
-      }
-
-      /* Background text */
-      .bg-text {
-        position: absolute;
-        font-family: 'Space Grotesk Variable', system-ui, sans-serif;
-        font-weight: 700;
-        color: rgba(var(--overlay), 0.03);
-        pointer-events: none;
-        user-select: none;
-        white-space: nowrap;
-      }
-    </style>
-
-    <script>
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
-    </script>
   </body>
 </html>

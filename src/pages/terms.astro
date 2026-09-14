@@ -1,65 +1,24 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { legalOperator } from '../components/legal-operator';
+import { productCopy } from '../components/product-copy';
+const sections = [
+  { id: 'service', title: 'The service' }, { id: 'account', title: 'Your account' },
+  { id: 'agent-use', title: 'Agent access and replies' }, { id: 'acceptable-use', title: 'Acceptable use' },
+  { id: 'billing', title: 'Credits and payments' }, { id: 'content', title: 'Your content and data' },
+  { id: 'availability', title: 'Availability and changes' }, { id: 'ending-use', title: 'Ending your use' },
+  { id: 'responsibility', title: 'Responsibility and rights' },
+];
 ---
-
-<Layout title="Terms of Use - Replaid" description="Read the terms and conditions for using the Replaid service.">
-  <Header />
-  <main id="main" class="py-24 sm:py-32">
-    <article class="mx-auto max-w-3xl px-6">
-      <div class="mb-12">
-        <div class="mono-label mb-4">Legal</div>
-        <h1 class="text-display-sm font-bold mb-4">Terms of Use</h1>
-        <p class="text-ink-300">Last updated on March 19, 2025</p>
-      </div>
-
-      <div class="space-y-8 text-ink-200 text-lg leading-relaxed">
-        <p>Please read these Terms and Conditions ("Terms", "Terms and Conditions", "Terms of Use") carefully before using the REPLAID.pro website (the "Service") operated by Replaid ("us", "we", or "our").</p>
-
-        <p>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Code of Conduct</h3>
-        <ul class="list-disc list-inside space-y-2 text-ink-200">
-          <li>No illegal activities</li>
-          <li>No fraud</li>
-          <li>No spam and data mining</li>
-          <li>No exploitation</li>
-          <li>No impersonation</li>
-          <li>No activities related to bots</li>
-          <li>No use other than the intended</li>
-        </ul>
-        <p>Any violation to these rules means the deletion of your account and associated data. Whether conduct violates our Code of Conduct will be determined in Replaid's sole discretion.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Age Restriction</h3>
-        <p>The platform is available for any 18 years old user or older. If you are between 13 and 18 years old, you can still use the Platform but you must have your parents or guardian's permission.</p>
-        <p>If you are under 13 years old, you may not use our Platform in any manner.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Intellectual Property</h3>
-        <p>The content on the Platform, including all information, software, technology, data, logos, marks, designs, text, graphics, pictures, audio and video files, and their selection and arrangement, is referred to as "Replaid Content", and is and remains the sole property of Replaid. Replaid Content may not be modified by you in any way.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Account Ownership</h3>
-        <p>Replaid has the right to request additional information from You to determine account ownership. The information that We may request includes a copy of Your photo ID, billing information, and certified copies of tax forms.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Refund Policy</h3>
-        <p>We are confident in the value that Replaid provides. However, if you believe the product did not meet your expectations, you may request a refund for your last billing cycle.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Cancellation and Deletion</h3>
-        <p>If You cancel a paid plan, the cancellation will become effective at the end of the then-current billing cycle. You may delete Your account at any time.</p>
-        <p>Any account on the free plan may be deleted if it remains inactive for a continuous period of at least six (6) months.</p>
-        <p>If Your account is deleted, Your Content may no longer be available and all licenses granted will terminate. Replaid is not responsible for the loss of such content upon deletion.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Errors</h3>
-        <p>Replaid does not guarantee that unexpected errors won't appear and system will be accessible 100% of the time although the maximum effort is put into preventing this.</p>
-        <p>We reserve the right to amend the Platform, and any service or material we provide on the Platform, in our sole discretion without notice.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Changes to this Policy</h3>
-        <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is made we will try to provide at least 30 days notice prior to any new terms taking effect.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Contact</h3>
-        <p>If you have any questions regarding this policy, please <a href="mailto:hi@replaid.pro" class="text-accent hover:underline">contact us</a>.</p>
-      </div>
-    </article>
-  </main>
-  <Footer />
-</Layout>
+<LegalLayout title="Terms of Use" description="The terms for connecting your customer channels and giving your agent access through Replaid." sections={sections}>
+  <div class="legal-summary"><h2>Connect with clear responsibilities.</h2><p>You choose your agent, supply its instructions, and control its access. Replaid connects supported channels and applies controls to requested actions. Read these terms before creating an account or using the service.</p></div>
+  <section id="service"><h2>The service</h2><p>Replaid is provided by {legalOperator.name}, registry code <a href={legalOperator.registryUrl}>{legalOperator.registration}</a>, at {legalOperator.address}. In these terms, “Replaid,” “we,” and “us” refer to that company. “You” means the person or organization using the service.</p><p>By using Replaid, you agree to these terms. If you act for an organization, you must have authority to do so. Replaid gives an external agent access to connected customer conversations through MCP or the API and allows it to request actions under configured permissions.</p><p>{productCopy.channels} {productCopy.futureChannels} The <a href="/docs/connect-your-agent">connection guide</a> describes the current setup and limits. A roadmap item or illustration is not a commitment to provide a future feature.</p></section>
+  <section id="account"><h2>Your account</h2><p>Provide accurate account information and protect your sign-in details, connection credentials, and agent tokens. Only connect channels that you own or are authorized to manage. Tell us promptly if you suspect unauthorized access.</p><p>You are responsible for the access you give team members, agents, and connected applications. Account holders must be at least 18, or aged 13–17 with a parent or guardian's permission. The service is not intended for children under 13.</p></section>
+  <section id="agent-use"><h2>Agent access and replies</h2><p>You select and operate your agent and provide its knowledge, instructions, and any external schedule or receiver that starts it. An MCP connection makes tools available; it does not start automatic replies.</p><p>Review an agent's access before authorizing it. Start with drafts and check the results before permitting sends. A permitted action can change data or send a message to a real customer. Some completed actions cannot be recalled through Replaid.</p><p>You are responsible for the instructions and permissions you configure and for the communications your authorized agents request. Replaid checks supported action requests against its policies and availability rules, but these checks do not establish that a reply is accurate, lawful, or suitable. Agent outputs need appropriate human oversight.</p><p>Your agent provider and connected channels have their own terms, limits, and charges. A channel may reject an action even when Replaid permits it. Check execution results instead of assuming that a requested message was delivered.</p></section>
+  <section id="acceptable-use"><h2>Acceptable use</h2><p>Authorized AI agents, bots, and automated workflows are permitted. You must not use Replaid to:</p><ul><li>Send unlawful, deceptive, abusive, or unsolicited messages, or impersonate another person or business.</li><li>Access accounts, conversations, or personal data without authority.</li><li>Bypass permissions, channel restrictions, rate limits, or security controls.</li><li>Distribute malicious software, interfere with the service, or exploit it to harm others.</li><li>Infringe privacy, intellectual property, or other rights, or violate applicable platform rules.</li></ul><p>We may restrict access to address abuse, security risks, legal requirements, or a breach of these terms. Where practical and appropriate, we will explain the issue and how to contact us about it.</p></section>
+  <section id="billing"><h2>Credits and payments</h2><p>{productCopy.pricing}</p><p>Where credit purchases are enabled, payment is processed through Stripe. Review the amount, currency, and any tax shown at checkout before paying. Credits cover eligible Replaid operations; purchasing them does not pay for your external agent or AI provider.</p><p>If you enable auto-refill, you authorize credit purchases under the threshold, amount, and monthly limit you choose. You can disable it in billing settings. Auto-refill purchases are separate from a subscription.</p><p>Contact <a href={`mailto:${legalOperator.email}`}>{legalOperator.email}</a> about an incorrect charge, failed purchase, or refund request. Include the payment reference and a description of the issue. Refund requests are reviewed against the payment and credit records and applicable law. Nothing in these terms removes a refund or cancellation right that the law gives you.</p></section>
+  <section id="content"><h2>Your content and data</h2><p>You retain your rights in the content you provide. You authorize Replaid to store, process, and transmit it as needed to provide the service and carry out your permitted instructions. Replaid's software, branding, and website materials remain the property of their respective owners.</p><p>You must have a lawful basis to process customer data and share it with the channels, team members, agent providers, and receivers you select. Provide the notices and obtain the permissions your use requires. Do not send data to an agent provider unless you have checked its data handling terms.</p><p>The <a href="/privacy">Privacy Policy</a> explains Replaid's processing. A business that needs a data processing agreement should contact us before submitting personal data under that arrangement. These website terms do not replace a required data processing agreement.</p></section>
+  <section id="availability"><h2>Availability and changes</h2><p>Replaid depends on hosting, payment, social, messaging, and agent services. We do not promise uninterrupted availability, a particular response time, complete history imports, or a business outcome such as more sales.</p><p>We may change the service to improve it, address security issues, or respond to platform requirements. Material changes to these terms will be communicated where required. Where practical, we will give advance notice before a change affects your ongoing use.</p></section>
+  <section id="ending-use"><h2>Ending your use</h2><p>You can stop using Replaid, revoke agent access, and disconnect channels. Disable auto-refill if you do not want further authorized credit purchases.</p><p>Account deletion is available in profile settings. Resolve any remaining credit balance, pending payments, reservations, and disputes first; contact support if you need help. Disconnecting a channel does not automatically delete its stored conversations or copies held by external services.</p><p>Deletion and retention are described in the <a href="/privacy#retention">Privacy Policy</a>. Billing obligations and records that must be retained by law can remain after your account closes.</p></section>
+  <section id="responsibility"><h2>Responsibility and your rights</h2><p>Use appropriate checks for the importance of each communication or action. Replaid does not replace professional judgment, and an AI-generated reply can contain errors.</p><p>Each party remains responsible for obligations that apply to it under law. These terms do not exclude liability or limit consumer or data protection rights where doing so is prohibited. Contact us if a service problem or a charge needs review.</p></section>
+</LegalLayout>

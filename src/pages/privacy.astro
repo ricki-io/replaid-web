@@ -1,70 +1,74 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { legalOperator } from '../components/legal-operator';
+const sections = [
+  { id: 'who-we-are', title: 'Who handles your data' },
+  { id: 'information', title: 'Information we process' },
+  { id: 'purposes', title: 'How we use it' },
+  { id: 'agents', title: 'Your agent and channels' },
+  { id: 'providers', title: 'Service providers' },
+  { id: 'retention', title: 'Retention and deletion' },
+  { id: 'rights', title: 'Your choices and rights' },
+  { id: 'changes', title: 'Changes to this notice' },
+];
 ---
-
-<Layout title="Privacy Policy - Replaid" description="Learn how Replaid collects, uses, and protects your personal information.">
-  <Header />
-  <main id="main" class="py-24 sm:py-32">
-    <article class="mx-auto max-w-3xl px-6">
-      <div class="mb-12">
-        <div class="mono-label mb-4">Legal</div>
-        <h1 class="text-display-sm font-bold mb-4">Privacy Policy</h1>
-        <p class="text-ink-300">Last updated on March 19, 2025</p>
-      </div>
-
-      <div class="space-y-8 text-ink-200 text-lg leading-relaxed">
-        <p>REPLAID.pro operates the Replaid website, which provides the Service.</p>
-
-        <p>This page is used to inform website visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service, the Replaid website.</p>
-
-        <p>If you choose to use our Service, then you agree to the collection and use of information in relation with this policy. The Personal Information that we collect is used for providing and improving the Service. We will not use or share your information with anyone except as described in this Privacy Policy.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Owner of the Website</h3>
-        <ul class="list-disc list-inside space-y-2 text-ink-200">
-          <li>Company name: Tokyo Crew OÜ</li>
-          <li>Registration number: 12345678</li>
-          <li>Address: Sepapaja 6, 15551 Tallinn, Estonia</li>
-          <li>Email: hi@tokyocrew.com</li>
-        </ul>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Information Collection and Use</h3>
-        <p>For a better experience while using our Service, we may require you to provide us with certain personally identifiable information, including but not limited to your name and email. We only ask for the essential information we need to operate.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Log Data</h3>
-        <p>Whenever you visit our Service, we collect information that your browser sends to us that is called Log Data. This Log Data may include information such as your computer's Internet Protocol (IP) address, browser version, pages of our Service that you visit, the time and date of your visit, the time spent on those pages, and other statistics.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Cookies</h3>
-        <p>Cookies are files with small amounts of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the website that you visit and are stored on your computer's hard drive.</p>
-        <p>Our website uses these cookies to collect information and improve our Service. You have the option to either accept or refuse these cookies, and to know when a cookie is being sent to your computer. If you choose to refuse our cookies, you may not be able to use some portions of our Service.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Service Providers</h3>
-        <p>We may employ third-party companies and individuals for the following reasons:</p>
-        <ul class="list-disc list-inside space-y-2 text-ink-200">
-          <li>To facilitate our Service</li>
-          <li>To provide the Service on our behalf</li>
-          <li>To perform Service-related tasks</li>
-          <li>To assist us in analyzing how our Service is used</li>
-        </ul>
-        <p>These third parties may have access to your Personal Information to perform their tasks on our behalf. However, they are obligated not to disclose or use the information for any other purpose.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Security</h3>
-        <p>We value your trust in providing us your Personal Information and strive to use commercially acceptable means to protect it. However, please remember that no method of transmission over the Internet or electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Links to Other Sites</h3>
-        <p>Our Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. These external sites are not operated by us. We strongly advise you to review the Privacy Policy of any website you visit.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Children's Privacy</h3>
-        <p>Our Services do not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13. If we discover that a child under 13 has provided us with personal information, we immediately delete it from our servers.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Changes to this Policy</h3>
-        <p>We may update our Privacy Policy from time to time. We advise you to review this page periodically for any changes. We will notify you of any updates by posting the new Privacy Policy on this page.</p>
-
-        <h3 class="text-xl font-bold text-fg pt-8">Contact</h3>
-        <p>If you have any questions regarding this policy, please <a href="mailto:hi@replaid.pro" class="text-accent hover:underline">contact us</a>.</p>
-      </div>
-    </article>
-  </main>
-  <Footer />
-</Layout>
+<LegalLayout title="Privacy Policy" description="How Replaid handles account information, customer conversations, and the data you share with your agent." sections={sections}>
+  <div class="legal-summary"><h2>Your conversations. Your chosen agent.</h2><p>Replaid connects customer channels to the agent you authorize. That agent can receive conversation data and request permitted actions. This notice explains that data flow, the information needed to operate Replaid, and how to contact us about your data.</p></div>
+  <section id="who-we-are">
+    <h2>Who handles your data</h2>
+    <p>Replaid is operated by {legalOperator.name}, an Estonian company with registry code <a href={legalOperator.registryUrl}>{legalOperator.registration}</a>, at {legalOperator.address}. Contact: <a href={`mailto:${legalOperator.email}`}>{legalOperator.email}</a>.</p>
+    <p>We act as a data controller for account administration, billing, support, website security, and our own website analytics. When a business uses Replaid to manage its customer conversations, that business normally decides why those conversations are processed. Replaid processes them on the business's instructions to provide the service.</p>
+    <p>If you contacted a business through a connected channel or a Replaid widget, that business's privacy notice also applies. Contact that business about its use of your messages. We can help route requests concerning data held in Replaid.</p>
+  </section>
+  <section id="information">
+    <h2>Information we process</h2>
+    <ul>
+      <li><strong>Account and team information:</strong> names, email addresses, authentication information, team membership, and settings.</li>
+      <li><strong>Connected channel information:</strong> account or page identifiers, connection credentials, permissions, and connection status.</li>
+      <li><strong>Conversation data:</strong> message text, available contact identifiers and profile details, timestamps, comments, drafts, tags, assignments, and conversation state.</li>
+      <li><strong>Agent activity:</strong> authorization details, requested actions, policy decisions, execution results, and webhook delivery information.</li>
+      <li><strong>Billing records:</strong> credit purchases, balances, usage, payment references, and tax or invoice information. Stripe handles payment details; Replaid receives payment status and related references.</li>
+      <li><strong>Support and technical data:</strong> the messages you send us, IP addresses, request and error logs, browser information, and security events.</li>
+    </ul>
+    <p>Optional Instagram and Messenger history imports can include available text messages from the last 30 days. The import window is not a promise to delete imported messages after 30 days.</p>
+  </section>
+  <section id="purposes">
+    <h2>How we use it</h2>
+    <p>We use account information to provide the service and respond to requests about it. This processing supports our contract with account holders, or steps requested before a contract. Where an account belongs to an organization, administering its users also supports our legitimate interest in providing that organization with the service.</p>
+    <p>We process connected conversations to carry out the customer's instructions, provide context to an authorized agent, apply action policies, and record results. The customer is responsible for the lawful basis for its own customer communications.</p>
+    <p>Security, abuse prevention, troubleshooting, and service reliability support our legitimate interests in operating and protecting Replaid. Billing and accounting records are also processed to meet legal obligations. Optional website analytics uses consent, as explained in the <a href="/cookies">Cookie Policy</a>.</p>
+  </section>
+  <section id="agents">
+    <h2>Your agent and channels</h2>
+    <p>You choose which channels to connect and which agent or application to authorize. When that agent reads a conversation through MCP or the API, relevant data is sent to it. An agent runtime, AI provider, or webhook receiver that you select may store or process that data under its own terms.</p>
+    <p>Replaid does not supply your agent's business knowledge or reply instructions. Review the privacy, retention, and model-training settings of the agent provider you choose. Replaid's controls do not determine how that provider handles a copy it has already received.</p>
+    <p>Connected social and messaging platforms process data under their own policies. Replies sent through Replaid are transmitted to the relevant platform. You can revoke agent access and disconnect channels to stop further authorized access; this does not recall messages or remove copies already held by other services.</p>
+  </section>
+  <section id="providers">
+    <h2>Service providers and data location</h2>
+    <p>Replaid uses infrastructure and delivery services to host the website and application, store data, deliver messages, and protect the service. Other recipients include:</p>
+    <ul>
+      <li><strong>Stripe</strong> for payments and related fraud prevention. See <a href="https://stripe.com/privacy">Stripe's privacy notice</a>.</li>
+      <li><strong>Web3Forms</strong> to deliver messages sent through our contact form. Your name, email address, message, and submission metadata pass through that service. See <a href="https://web3forms.com/privacy">Web3Forms' privacy notice</a>.</li>
+      <li><strong>hCaptcha</strong> for contact-form spam protection. It can process browser, device, network, and interaction information. See <a href="https://www.hcaptcha.com/privacy">hCaptcha's privacy notice</a>.</li>
+      <li><strong>Google Analytics</strong> for optional website usage measurement, only after you allow analytics. See <a href="https://policies.google.com/privacy">Google's privacy notice</a>.</li>
+      <li><strong>Your selected platforms and agent providers</strong> when you connect or authorize them.</li>
+    </ul>
+    <p>Data may be processed outside the European Economic Area, depending on the provider and the connections you choose. Transfers subject to European data protection law require an applicable transfer mechanism, such as an adequacy decision or appropriate contractual safeguards. Contact us for information about the recipients and transfer arrangements relevant to your use of Replaid.</p>
+    <p>We may also disclose information when required by law or when needed to establish, exercise, or defend legal claims.</p>
+  </section>
+  <section id="retention">
+    <h2>Retention and deletion</h2>
+    <p>Account and conversation data is kept while needed to provide the service and carry out the customer's instructions. Retention depends on the active account, requested deletion, operational needs, and legal obligations. Logs and execution records support troubleshooting, security, and investigation of action outcomes. Billing records may need to be retained after an account closes.</p>
+    <p>Disconnecting a channel does not by itself delete stored conversations. Clearing a browser's widget storage does not delete the conversation held by the business. Contact us or the business responsible for the conversation to request deletion.</p>
+    <p>Account deletion is available in profile settings. Outstanding credit balances, pending payments, reservations, disputes, or enabled auto-refill may need to be resolved first. You can still contact us to exercise your data rights. Deletion from active systems does not necessarily remove copies from backups immediately or data that must be retained by law.</p>
+  </section>
+  <section id="rights">
+    <h2>Your choices and rights</h2>
+    <p>Depending on the applicable law, you can request access, correction, deletion, restriction, or a portable copy of your personal data. You can object to processing based on legitimate interests and withdraw consent for optional processing. Withdrawal does not change the lawfulness of processing carried out before it.</p>
+    <p>Send requests to <a href={`mailto:${legalOperator.email}`}>{legalOperator.email}</a>. We may need information to verify your identity and locate the relevant records. Under the GDPR, requests are normally answered within one month; permitted extensions will be explained. For data processed on a business customer's instructions, we will assist that business with the request.</p>
+    <p>You can complain to a relevant data protection authority, including Estonia's <a href="https://www.aki.ee/en">Andmekaitse Inspektsioon</a>. The <a href="https://www.edpb.europa.eu/sme/be-compliant/respect-individuals-rights_en">European Data Protection Board explains these rights</a>.</p>
+    <p>You can change website analytics preferences on the <a href="/cookies#preferences">Cookie Policy page</a>. Replaid is not intended for children under 13. Contact us if you believe information about a child has been provided inappropriately.</p>
+  </section>
+  <section id="changes"><h2>Changes to this notice</h2><p>This page may change as the service and its providers change. The date above identifies the current version. Where required, we will provide additional notice of a material change.</p></section>
+</LegalLayout>

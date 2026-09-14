@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "og": "node scripts/generate-og.mjs",
+    "astro": "astro",
+    "test": "node --test src/components/*.test.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",

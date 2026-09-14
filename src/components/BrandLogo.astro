@@ -1,6 +1,6 @@
 ---
 import ChannelIcon from './ChannelIcon.astro';
-interface Props { platform: 'instagram' | 'messenger' | 'telegram' | 'whatsapp' | 'tiktok' | 'widget'; }
+interface Props { platform: 'instagram' | 'messenger' | 'telegram' | 'whatsapp' | 'widget'; }
 const { platform } = Astro.props;
 const glassId = platform === 'widget' ? `widget-glass-${crypto.randomUUID()}` : '';
 ---
@@ -26,7 +26,7 @@ const glassId = platform === 'widget' ? `widget-glass-${crypto.randomUUID()}` : 
     </svg>
   ) :
     platform === 'instagram' ? <ChannelIcon platform="instagram" size={30} /> :
-    platform === 'messenger' || platform === 'tiktok' ? <img src={`/${platform}.svg`} width="38" height="38" alt="" /> :
+    platform === 'messenger' ? <img src="/messenger.svg" width="38" height="38" alt="" /> :
     <ChannelIcon platform={platform} size={40} />}
 </span>
 <style>

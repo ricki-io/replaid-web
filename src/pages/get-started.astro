@@ -4,7 +4,6 @@ import SkyHeader from '../components/SkyHeader.astro';
 import SkyFooter from '../components/SkyFooter.astro';
 import GetStartedLanding from '../components/GetStartedLanding.astro';
 import { faqs } from '../components/faq-content';
-import '../styles/global.css';
 import '../styles/landing.css';
 import '../styles/get-started.css';
 
@@ -26,7 +25,7 @@ const jsonLd = {
   })),
 };
 ---
-<Layout title="Get started with Replaid — Connect your AI agent to your inbox" description={description} jsonLd={jsonLd} forceLight>
+<Layout title="Get started with Replaid — Connect your AI agent to your inbox" description={description} jsonLd={jsonLd}>
   <div class="sky-landing start-page">
     <SkyHeader />
     <main id="main"><GetStartedLanding questions={questions} /></main>

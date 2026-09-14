@@ -91,3 +91,185 @@ test('contact keeps form delivery, spam protection, and the production return ad
   assert.ok(links(contact).some(link => link.href === 'mailto:hi@replaid.pro'));
   assert.ok(!contact.includes('replaid-web.pages.dev'));
 });
+
+test('the blog lists every published article once with its original route', async () => {
+  const index = await readPage('blog/index.html');
+  const posts = (await readdir(new URL('../content/blog/', import.meta.url))).filter(path => path.endsWith('.md'));
+  const published = [];
+  for (const filename of posts) {
+    const source = await readFile(new URL(`../content/blog/${filename}`, import.meta.url), 'utf8');
+    if (/^draft: true$/m.test(source)) continue;
+    published.push({ id: filename.slice(0, -3), category: source.match(/^category: "(.+)"$/m)?.[1] });
+  }
+  assert.equal((index.match(/data-blog-post(?:[\s=>])/g) ?? []).length, published.length);
+  for (const post of published) {
+    assert.equal(links(index).filter(link => link.href === `/${post.id}`).length, 1, `Duplicate or missing article: ${post.id}`);
+    assert.ok(index.includes(`data-blog-filter="${post.category}"`), `Missing topic filter: ${post.category}`);
+  }
+  assert.match(index, /data-blog-filter="all" aria-pressed="true" aria-controls="blog-list"/);
+  assert.match(index, /id="blog-count"[^>]*role="status"/);
+  assert.match(index, /rel="canonical" href="https:\/\/replaid.pro\/blog\/?"/);
+});
+
+test('article navigation and search metadata match the published content', async () => {
+  const posts = (await readdir(new URL('../content/blog/', import.meta.url))).filter(path => path.endsWith('.md'));
+  for (const filename of posts) {
+    const source = await readFile(new URL(`../content/blog/${filename}`, import.meta.url), 'utf8');
+    if (/^draft: true$/m.test(source)) continue;
+    const id = filename.slice(0, -3);
+    const html = await readPage(`${id}/index.html`);
+    const data = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1] ?? '[]');
+    const article = data.find(item => item['@type'] === 'BlogPosting');
+    assert.ok(article, `Missing article metadata: ${id}`);
+    assert.equal(article.headline, source.match(/^title: "(.+)"$/m)?.[1]);
+    assert.equal(article.description, source.match(/^description: "(.+)"$/m)?.[1]);
+    assert.equal(article.author.name, source.match(/^author: "(.+)"$/m)?.[1]);
+    const publishedDate = source.match(/^date: (.+)$/m)?.[1];
+    const updatedDate = source.match(/^updatedDate: (.+)$/m)?.[1];
+    assert.equal(article.datePublished, new Date(publishedDate).toISOString());
+    assert.equal(article.dateModified, new Date(updatedDate ?? publishedDate).toISOString());
+    const byline = html.match(/<div class="article-byline">([\s\S]*?)<\/div>/)?.[1];
+    assert.ok(byline?.includes(`datetime="${article.datePublished}"`), `Missing original visible date: ${id}`);
+    if (updatedDate) {
+      assert.ok(byline?.includes(`datetime="${article.dateModified}"`), `Missing visible update date: ${id}`);
+      assert.ok(byline.includes(/^historical: true$/m.test(source) ? 'Notice added ' : 'Updated '));
+    }
+    assert.equal(article.mainEntityOfPage['@id'], `https://replaid.pro/${id}`);
+    const canonical = html.match(/rel="canonical" href="([^"]+)"/)?.[1];
+    assert.equal(canonical?.replace(/\/$/, ''), `https://replaid.pro/${id}`);
+    const sectionLinks = links(html).filter(link => link.href?.startsWith('#') && link.href !== '#main');
+    assert.ok(sectionLinks.length > 0, `Missing article contents: ${id}`);
+    for (const link of sectionLinks) assert.ok(html.includes(`id="${link.href.slice(1)}"`), `Broken section link: ${id}${link.href}`);
+    assert.ok(links(html).some(link => link.href === '/blog' && link.text.startsWith('All articles')));
+    const related = html.match(/<section class="article-related"[\s\S]*?<\/section>/)?.[0];
+    assert.ok(related, `Missing related articles: ${id}`);
+    for (const link of links(related).filter(link => link.href !== '/blog')) {
+      assert.notEqual(link.href, `/${id}`, 'An article must not recommend itself');
+      assert.notEqual(link.href, '/introducing-replaid', 'Historical content must not appear as current guidance');
+      assert.ok(posts.includes(`${link.href.slice(1)}.md`), `Invalid related article: ${link.href}`);
+    }
+  }
+});
+
+
+test('the pivot article is featured and all previous URLs still serve articles', async () => {
+  const index = await readPage('blog/index.html');
+  const pivot = '/replaid-connects-your-ai-agent-to-your-customers';
+  const featured = index.match(/<article class="blog-post blog-post-featured"[\s\S]*?<\/article>/)?.[0];
+  assert.ok(featured, 'The blog must have a featured article');
+  assert.equal(links(featured)[0]?.href, pivot);
+  const sitemap = await readPage('sitemap-0.xml');
+  for (const route of [pivot, '/introducing-replaid', '/replaid-ai-assistant-turns-messages-into-leads', '/three-workflows-small-business-should-automate', '/centralize-your-messages-with-ai', '/why-youre-losing-leads-in-your-dms']) {
+    const html = await readPage(`${route.slice(1)}/index.html`);
+    assert.match(html, /<h1>/);
+    assert.ok(sitemap.includes(`https://replaid.pro${route}<`) || sitemap.includes(`https://replaid.pro${route}/<`), `Missing preserved sitemap route: ${route}`);
+    assert.ok(!html.includes('http-equiv="refresh"'), `Article was replaced by a redirect: ${route}`);
+  }
+});
+
+test('the old launch is clearly historical and updated guides explain the product change', async () => {
+  const pivot = '/replaid-connects-your-ai-agent-to-your-customers';
+  const historical = await readPage('introducing-replaid/index.html');
+  const notice = historical.match(/<aside class="article-history"[\s\S]*?<\/aside>/)?.[0];
+  assert.ok(notice, 'The original launch needs a visible historical notice');
+  assert.ok(historical.indexOf(notice) < historical.indexOf('class="article-prose"'));
+  assert.ok(links(notice).some(link => link.href === pivot));
+  assert.match(historical, /datetime="2025-10-15T00:00:00.000Z"/);
+  const index = await readPage('blog/index.html');
+  const oldCard = index.match(/<article[^>]*data-blog-post[^>]*>[\s\S]*?<\/article>/g)?.find(card => links(card)[0]?.href === '/introducing-replaid');
+  assert.ok(oldCard?.includes('Historical'), 'The archive must be labelled before opening it');
+  assert.match(oldCard, /aria-labelledby="post-introducing-replaid post-introducing-replaid-status"/);
+  assert.match(oldCard, /id="post-introducing-replaid-status"/);
+  for (const id of ['replaid-ai-assistant-turns-messages-into-leads', 'three-workflows-small-business-should-automate', 'centralize-your-messages-with-ai', 'why-youre-losing-leads-in-your-dms']) {
+    const html = await readPage(`${id}/index.html`);
+    const prose = html.match(/<div class="article-prose">([\s\S]*?)<\/div>/)?.[1];
+    assert.ok(prose && links(prose).some(link => link.href === pivot), `Missing product update link: ${id}`);
+    assert.ok(!html.includes('class="article-history"'), `Current guide incorrectly archived: ${id}`);
+  }
+});
+
+test('all legal routes use the new design and preserve legal and contact navigation', async () => {
+  for (const name of ['privacy', 'terms', 'cookies']) {
+    const html = await readPage(`${name}/index.html`);
+    assert.match(html, /class="sky-landing legal-page"/);
+    assert.match(html, /class="sky-header"/);
+    assert.match(html, /class="sky-footer"/);
+    assert.match(html, /data-appearance="light"/);
+    assert.ok(!html.includes('mobile-menu-btn'));
+    assert.ok(!html.includes('12345678'));
+    assert.equal(html.match(/rel="canonical" href="([^"]+)"/)?.[1]?.replace(/\/$/, ''), `https://replaid.pro/${name}`);
+    assert.match(html, new RegExp(`href="/${name}" aria-current="page"`));
+    for (const link of links(html).filter(link => link.href?.startsWith('#'))) {
+      assert.ok(html.includes(`id="${link.href.slice(1)}"`), `Broken legal section link: ${name}${link.href}`);
+    }
+    for (const route of ['/privacy', '/terms', '/cookies', '/contact', 'mailto:hi@replaid.pro']) assert.ok(links(html).some(link => link.href === route));
+  }
+});
+
+test('all built routes defer analytics to the consent control and expose a way to change it', async () => {
+  const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html'));
+  for (const name of pages) {
+    const html = await readPage(name);
+    assert.ok(!/<script[^>]+src="https:\/\/www\.googletagmanager\.com/.test(html), `Analytics loaded before consent: ${name}`);
+    assert.match(html, /data-cookie-banner/);
+    assert.match(html, /data-analytics-enabled="true"/);
+    assert.match(html, /data-analytics-choice="rejected"/);
+    assert.match(html, /data-analytics-choice="accepted"/);
+    assert.match(html, /data-cookie-settings/);
+  }
+});
+
+
+test('sharing cards use a real landscape PNG with matching metadata on every page', async () => {
+  const png = await readFile(new URL('og-image.png', output));
+  assert.deepEqual([...png.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10]);
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+  assert.ok(png.length < 1_000_000, 'The social image should stay below 1 MB');
+  const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html'));
+  for (const path of pages) {
+    const html = await readPage(path);
+    for (const key of ['og:image', 'twitter:image']) {
+      assert.match(html, new RegExp(`(?:property|name)="${key}" content="https://replaid.pro/og-image.png"`), path);
+    }
+    assert.match(html, /property="og:image:width" content="1200"/);
+    assert.match(html, /property="og:image:height" content="630"/);
+    assert.match(html, /property="og:image:type" content="image\/png"/);
+    for (const key of ['og:image:alt', 'twitter:image:alt']) {
+      assert.match(html, new RegExp(`(?:property|name)="${key}" content="[^"<>]+"`), path);
+    }
+    assert.match(html, /name="twitter:card" content="summary_large_image"/);
+  }
+});
+
+test('every local image, script, stylesheet, and CSS asset exists after cleanup', async () => {
+  const files = await readdir(output, { recursive: true });
+  const check = async (reference, source) => {
+    if (!reference || /^(?:https?:|data:|#|\/\/)/.test(reference)) return;
+    const target = new URL(reference, new URL(source, 'https://replaid.pro/'));
+    const relativePath = decodeURIComponent(target.pathname.slice(1));
+    assert.ok(files.includes(relativePath), `Missing asset ${reference} from ${source}`);
+  };
+  for (const file of files.filter(path => /\.(html|css)$/.test(path))) {
+    const text = await readPage(file);
+    if (file.endsWith('.html')) {
+      for (const match of text.matchAll(/<(?:img|script|link)\b[^>]*>/g)) {
+        const tag = match[0];
+        if (tag.startsWith('<link') && !/rel="(?:stylesheet|icon|preload|modulepreload)"/.test(tag)) continue;
+        await check(tag.match(/\b(?:src|href)="([^"]+)"/)?.[1], file);
+      }
+    }
+    for (const match of text.matchAll(/url\(["']?([^\s"')]+)["']?\)/g)) await check(match[1], file);
+  }
+});
+
+test('every page keeps the shared light design and accessible skip navigation', async () => {
+  for (const file of (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html'))) {
+    const html = await readPage(file);
+    assert.match(html, /<html[^>]*data-appearance="light"/);
+    assert.match(html, /name="theme-color" content="#ffffff"/);
+    assert.match(html, /<a href="#main" class="skip-link">/);
+    assert.match(html, /<main[^>]*id="main"/);
+    assert.ok(!html.includes("getItem('theme')"), `Old theme logic remains in ${file}`);
+  }
+});

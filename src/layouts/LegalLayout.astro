@@ -1,0 +1,40 @@
+---
+import Layout from './Layout.astro';
+import SkyHeader from '../components/SkyHeader.astro';
+import SkyFooter from '../components/SkyFooter.astro';
+import '../styles/landing.css';
+import '../styles/legal.css';
+interface Props { title: string; description: string; sections: { id: string; title: string }[]; }
+const { title, description, sections } = Astro.props;
+const pages = [{ href: '/privacy', label: 'Privacy' }, { href: '/terms', label: 'Terms' }, { href: '/cookies', label: 'Cookies' }];
+---
+<Layout title={`${title} — Replaid`} description={description}>
+  <div class="sky-landing legal-page">
+    <SkyHeader />
+    <main id="main" class="legal-main">
+      <header class="legal-header">
+        <nav class="legal-tabs" aria-label="Legal pages">{pages.map(page => <a href={page.href} aria-current={Astro.url.pathname.replace(/\/$/, '') === page.href ? 'page' : undefined}>{page.label}</a>)}</nav>
+        <h1>{title}</h1>
+        <p>{description}</p>
+        <span class="legal-date">Last updated <time datetime="2026-09-14">September 14, 2026</time></span>
+      </header>
+      <details class="legal-mobile-contents">
+        <summary>On this page<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary>
+        <nav aria-label="Page sections"><ul>{sections.map(section => <li><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav>
+      </details>
+      <div class="legal-layout">
+        <aside class="legal-sidebar">
+          <nav aria-label="On this page"><p>On this page</p><ul>{sections.map(section => <li><a href={`#${section.id}`}>{section.title}</a></li>)}</ul></nav>
+          <div class="legal-help"><span>Need a clearer answer?</span><a href="mailto:hi@replaid.pro">hi@replaid.pro</a></div>
+        </aside>
+        <article class="legal-prose"><slot /></article>
+      </div>
+      <div class="legal-contact"><h2>Questions about this policy?</h2><p>Contact us at <a href="mailto:hi@replaid.pro">hi@replaid.pro</a> or use the <a href="/contact">contact page</a>.</p></div>
+    </main>
+    <SkyFooter />
+  </div>
+  <script>
+    const contents = document.querySelector<HTMLDetailsElement>('.legal-mobile-contents');
+    contents?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { contents.open = false; }));
+  </script>
+</Layout>

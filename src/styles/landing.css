@@ -1,4 +1,3 @@
-html[data-appearance="light"], html[data-appearance="light"] body { background: #fff; }
 .sky-landing { color: #10151b; background: #fff; font-family: 'Inter Variable', sans-serif; padding: 16px 16px 0; }
 .sky-landing h1, .sky-landing h2, .sky-landing h3 { font-family: inherit; }
 .sky-landing a, .sky-landing summary { -webkit-tap-highlight-color: transparent; }
@@ -8,7 +7,6 @@ html[data-appearance="light"], html[data-appearance="light"] body { background: 
 .sky-nav-brand { display: inline-flex; align-items: center; gap: 9px; flex: none; }
 .sky-nav-brand img { display: block; width: 28px; height: auto; }
 .sky-hero { position: relative; isolation: isolate; overflow: hidden; border-radius: 36px; background: #fff; }
-.sky-background { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
 .sky-hero::before { content: ''; position: absolute; inset: 0; background: rgb(255 255 255 / 8%); z-index: -1; }
 .sky-header { max-width: 1120px; margin: 0 auto; padding: 24px 24px 12px; display: flex; align-items: center; justify-content: space-between; gap: 24px; position: relative; z-index: 10; }
 .sky-desktop-nav { display: flex; align-items: center; gap: 12px; font-size: 14px; }
@@ -86,8 +84,6 @@ html[data-appearance="light"], html[data-appearance="light"] body { background: 
 }
 .channel-node .brand-logo, .channel-node-more > span { position: relative; z-index: 1; }
 .channel-node .brand-logo { filter: drop-shadow(0 2px 3px rgb(12 7 21 / 20%)); }
-.sky-hero-dark .channel-node-more { color: #faf7fc; }
-.sky-hero-dark .channel-node .tiktok img { filter: invert(1); }
 .channel-node:hover, .channel-node:focus-visible { transform: translateY(-4px); box-shadow: inset 0 1px 2px #fff, inset 0 -2px 4px rgb(255 255 255 / 35%), 0 12px 26px rgb(16 8 25 / 24%); z-index: 3; }
 .channel-node-0 { left: 12%; top: 2.8%; }
 .channel-node-1 { left: 4%; top: 18.1%; }
@@ -97,24 +93,17 @@ html[data-appearance="light"], html[data-appearance="light"] body { background: 
 .channel-node-more { left: 7%; top: 82%; width: 5.5%; min-width: 46px; color: #4c657b; letter-spacing: 3px; font-size: 19px; padding-left: 3px; }
 .node-tooltip { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #0b2234; color: white; font-size: 12px; padding: 5px 8px; border-radius: 5px; white-space: nowrap; opacity: 0; pointer-events: none; }
 .channel-node:is(:hover,:focus-visible) .node-tooltip { opacity: 1; }
-.cluster-label { position: absolute; top: calc(100% + 9px); left: 4%; width: 20%; text-align: center; font-weight: 600; font-size: 15px; }
 .replaid-node { position: absolute; left: 42%; top: 50%; width: 19%; text-align: center; transform: translateY(-50%); }
 .replaid-tile { position: relative; aspect-ratio: 1; border-radius: 27%; flex-direction: column; gap: 16px; background: linear-gradient(145deg, #fff, rgb(255 255 255 / 94%)); }
 .replaid-tile-logo { width: 35%; max-width: 76px; height: auto; flex: none; }
-.replaid-tile-logo, .replaid-tile-wordmark, .agent-tile > svg { position: relative; z-index: 1; }
+.replaid-tile-logo, .replaid-tile-wordmark { position: relative; z-index: 1; }
 .replaid-tile-wordmark { font-size: clamp(24px, 2.5vw, 32px); font-weight: 700; letter-spacing: -.075em; line-height: 1; }
-.replaid-node p { margin-top: 19px; font-size: 13px; white-space: nowrap; position: relative; left: 50%; transform: translateX(-50%); width: max-content; }
 .agent-node { position: absolute; left: 75.4%; top: 50%; width: 18%; text-align: center; transform: translateY(-50%); }
 .agent-tile { position: relative; width: 88%; aspect-ratio: 1; border-radius: 27%; z-index: 1; background: linear-gradient(145deg, #fff, rgb(255 255 255 / 94%)); }
 .agent-brand-logo { position: relative; z-index: 1; display: block; width: 60%; height: 60%; object-fit: contain; }
-.sky-hero-dark .chatgpt-logo { filter: invert(1); }
 .agent-ghost { position: absolute; width: 62%; aspect-ratio: 1; border-radius: 25%; z-index: 2; }
 .ghost-top { right: -24%; top: -32%; }
 .ghost-bottom { right: -32%; bottom: -32%; }
-.agent-node p { margin-top: 18px; font-size: 15px; }
-.agent-node p strong { font-weight: 600; }
-.agent-node p span { display: block; margin-top: 5px; font-size: 13px; color: #385267; }
-.connector-figure figcaption { text-align: center; color: #385267; font-size: 12px; margin-top: 40px; }
 .sky-section { max-width: 1040px; margin: 0 auto; }
 .agent-explanation { text-align: center; padding: 80px 24px 64px; }
 .sky-landing h2 { font-size: clamp(27px, 3vw, 36px); font-weight: 600; line-height: 1.16; letter-spacing: -.045em; text-wrap: balance; }
@@ -195,19 +184,15 @@ html[data-appearance="light"], html[data-appearance="light"] body { background: 
   .channel-node { position: relative; inset: auto; width: 100%; min-width: 0; border-radius: 14px; }
   .channel-node .brand-logo { transform: scale(.8); }
   .channel-node-more { padding: 0; font-size: 15px; letter-spacing: 1px; }
-  .cluster-label { inset: auto 0 -5px; width: auto; font-size: 14px; }
   .replaid-node, .agent-node { position: relative; inset: auto; width: 155px; transform: none; }
   .mobile-connector-arrow { display: block; position: absolute; left: 50%; top: -66px; transform: translateX(-50%); overflow: visible; pointer-events: none; filter: drop-shadow(0 2px 4px rgb(30 106 162 / 16%)); }
   .mobile-connector-arrow path { stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
   .mobile-connector-arrow .mobile-arrow-glow { stroke-width: 9; opacity: .28; filter: blur(3px); }
-  .replaid-node p { font-size: 12px; margin-top: 14px; }
   .replaid-tile-wordmark { font-size: 32px; }
   .agent-node { display: flex; align-items: center; gap: 12px; width: 100%; max-width: 320px; margin-bottom: 32px; }
   .agent-node .agent-ghost { position: relative; inset: auto; flex: 1; min-width: 0; width: auto; }
   .agent-node .agent-tile { order: 1; flex: 1.52; min-width: 0; width: auto; }
   .agent-node .ghost-bottom { order: 2; }
-  .agent-node p { font-size: 14px; margin-top: 14px; }
-  .connector-figure figcaption { margin-top: 20px; font-size: 11px; }
   .node-tooltip { font-size: 11px; white-space: normal; min-width: 68px; text-align: center; }
   .agent-explanation { padding: 56px 20px 40px; }
   .agent-explanation > p { font-size: 15px; line-height: 1.6; }
@@ -231,13 +216,5 @@ html[data-appearance="light"], html[data-appearance="light"] body { background: 
   .connector-energy path { animation: none; }
 }
 
-.sky-hero-dark { color: #faf7fc; background: #102d25; }
-.sky-hero-dark::before { background: transparent; }
-.sky-hero-dark .hero-supporting, .sky-hero-dark .agent-node p span, .sky-hero-dark .connector-figure figcaption { color: #e3d8e9; }
-.sky-hero-dark .replaid-tile-wordmark { color: #faf7fc; }
-.sky-hero-dark .sky-mobile-nav nav { color: #10151b; }
-.sky-hero-dark .sky-button { background: #faf7fc; color: #302739; }
-.sky-hero-dark .sky-button:hover { background: #e6d8ed; }
-.sky-hero-dark :is(a, summary):focus-visible { outline-color: #d5baf2; }
 
 .hermes-nous-logo { width: 72%; height: 72%; object-fit: contain; clip-path: inset(6% round 14%); }

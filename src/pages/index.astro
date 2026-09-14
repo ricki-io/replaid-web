@@ -5,7 +5,6 @@ import SkyFooter from '../components/SkyFooter.astro';
 import ConversationExample from '../components/ConversationExample.astro';
 import { faqs } from '../components/faq-content';
 import { productCopy } from '../components/product-copy';
-import '../styles/global.css';
 import '../styles/landing.css';
 
 const description = 'Let your AI agent read and reply to customer messages. Replaid connects your website, social and messaging channels to the agent you already use, with permissions you control.';
@@ -42,7 +41,7 @@ const jsonLd = [
   },
 ];
 ---
-<Layout title="Replaid — Let your AI agent reply to customer messages" description={description} jsonLd={jsonLd} forceLight>
+<Layout title="Replaid — Let your AI agent reply to customer messages" description={description} jsonLd={jsonLd}>
   <main id="main" class="sky-landing">
     <Hero />
     <section id="how-it-works" class="sky-section agent-explanation" aria-labelledby="agent-heading">

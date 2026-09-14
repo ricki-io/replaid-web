@@ -1,7 +1,10 @@
 ---
 title: "Introducing Replaid: Automate Your Inbox with AI"
-description: "Meet Replaid: the AI inbox assistant that unifies all your channels, prioritizes real leads, and replies instantly on-brand."
+description: "The original Replaid launch announcement from October 2025, preserved as product history. Read the update for how Replaid works today."
 date: 2025-10-15
+updatedDate: 2026-09-14
+historical: true
+supersededBy: replaid-connects-your-ai-agent-to-your-customers
 category: "Announcement"
 author: "Ricard P"
 ---
