@@ -273,3 +273,23 @@ test('every page keeps the shared light design and accessible skip navigation', 
     assert.ok(!html.includes("getItem('theme')"), `Old theme logic remains in ${file}`);
   }
 });
+
+
+test('every page includes the CSS reset and hides contact spam and screen-reader controls', async () => {
+  const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html'));
+  for (const page of pages) {
+    const html = await readPage(page);
+    const styles = Array.from(html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/g), match => match[1]);
+    for (const match of html.matchAll(/<link\b[^>]*>/g)) {
+      if (!/rel="stylesheet"/.test(match[0])) continue;
+      const href = match[0].match(/href="([^"]+)"/)?.[1];
+      if (!href?.startsWith('/')) continue;
+      styles.push(await readPage(href.slice(1)));
+    }
+    const css = styles.join('\n');
+    assert.doesNotMatch(css, /@tailwind\b/, `Uncompiled Tailwind CSS: ${page}`);
+    assert.match(css, /box-sizing:\s*border-box/, `Missing layout reset: ${page}`);
+    assert.match(css, /\.hidden\s*\{\s*display:\s*none\s*;?\s*\}/, `Missing spam control style: ${page}`);
+    assert.match(css, /\.sr-only\s*\{[^}]*clip:\s*rect\(0,\s*0,\s*0,\s*0\)/, `Missing screen-reader style: ${page}`);
+  }
+});
