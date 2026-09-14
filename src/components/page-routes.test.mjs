@@ -57,3 +57,14 @@ test('the sitemap includes both destinations', async () => {
   assert.match(sitemap, /<loc>https:\/\/replaid.pro\/get-started\/?<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/replaid.pro\/docs\/connect-your-agent\/?<\/loc>/);
 });
+
+test('the 404 provides recovery links and stays out of the sitemap', async () => {
+  const error = await readPage('404.html');
+  const main = error.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1];
+  assert.ok(main, 'The error page must have a main landmark');
+  const recovery = links(main);
+  assert.ok(recovery.some(link => link.text === 'Back to homepage' && link.href === '/'));
+  assert.ok(recovery.some(link => link.text.startsWith('Open connection guide') && link.href === guidePath));
+  assert.ok(recovery.some(link => link.text === 'Contact us' && link.href === '/contact'));
+  assert.ok(!(await readPage('sitemap-0.xml')).includes('replaid.pro/404'));
+});
