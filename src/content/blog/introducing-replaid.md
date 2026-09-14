@@ -7,7 +7,11 @@ updatedDate: 2026-09-14
 historical: true
 supersededBy: replaid-connects-your-ai-agent-to-your-customers
 category: "Announcement"
-author: "Ricard P"
+author: "Ricard Pons"
+authorUrl: "https://rickimakes.com/"
+socialImage:
+  src: "/og-introducing-replaid.png"
+  alt: "Introducing Replaid: 2025 Launch Archive. The original Replaid logo on a white card."
 ---
 
 ### Your customers are everywhere.

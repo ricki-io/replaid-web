@@ -4,7 +4,11 @@ description: "Find where customer enquiries lose momentum, then build a reviewab
 date: 2025-10-16
 updatedDate: 2026-09-14
 category: "Automation"
-author: "Ricard P"
+author: "Ricard Pons"
+authorUrl: "https://rickimakes.com/"
+socialImage:
+  src: "/og-why-youre-losing-leads-in-your-dms.png"
+  alt: "Why You're Losing Leads in Your DMs. Customer messages with a completed reply marker."
 ---
 
 Not every DM is a lead. But when a relevant enquiry sits unanswered, gets an incomplete reply, or has no clear next step, the conversation can stop before you learn whether there is a good fit.

@@ -1,10 +1,14 @@
 ---
 title: "3 Customer Message Workflows for Your AI Agent"
 description: "Start with lead qualification, support triage, and inbox priorities. Use clear instructions, limited permissions, and draft review for each workflow."
-author: "Ricard P"
+author: "Ricard Pons"
+authorUrl: "https://rickimakes.com/"
 date: 2025-10-22
 updatedDate: 2026-09-14
 category: "Automation"
+socialImage:
+  src: "/og-three-workflows-small-business-should-automate.png"
+  alt: "3 Customer Message Workflows for Your AI Agent. Qualify leads, route support, and set priorities."
 ---
 
 A useful first workflow has a clear input, a small set of permitted actions, and a result you can check. Customer messages are a good place to start because you can review what the agent read and what it proposed to do.

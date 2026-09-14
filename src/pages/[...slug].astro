@@ -22,6 +22,7 @@ const currentArticle = post.data.supersededBy ? await getEntry(post.data.superse
 if (post.data.historical && (!currentArticle || currentArticle.data.draft || currentArticle.data.historical)) {
   throw new Error(`Historical article ${post.id} must link to a published current article.`);
 }
+const socialImage = post.data.socialImage;
 const contents = headings.filter(heading => heading.depth === 2);
 const related = (await getCollection('blog', ({ id, data }) => !data.draft && !data.historical && id !== post.id))
   .sort((a, b) => Number(b.data.category === post.data.category) - Number(a.data.category === post.data.category) || b.data.date.valueOf() - a.data.date.valueOf() || a.id.localeCompare(b.id))
@@ -36,10 +37,17 @@ const blogJsonLd = [
     "author": {
       "@type": "Person",
       "name": post.data.author,
+      "url": post.data.authorUrl,
     },
     "datePublished": post.data.date.toISOString(),
     "dateModified": (post.data.updatedDate ?? post.data.date).toISOString(),
-    ...(post.data.image && { "image": new URL(post.data.image, 'https://replaid.pro').href }),
+    ...(socialImage ? { "image": {
+      "@type": "ImageObject",
+      "url": new URL(socialImage.src, 'https://replaid.pro').href,
+      "width": 1200,
+      "height": 630,
+      "caption": socialImage.alt,
+    } } : post.data.image ? { "image": new URL(post.data.image, 'https://replaid.pro').href } : {}),
     "publisher": {
       "@type": "Organization",
       "name": "Replaid",
@@ -62,7 +70,7 @@ const blogJsonLd = [
 ];
 ---
 
-<Layout title={`${post.data.seoTitle ?? post.data.title} — Replaid Blog`} description={post.data.description} ogImage={post.data.image || "/og-image.png"} type="article" jsonLd={blogJsonLd}>
+<Layout title={`${post.data.seoTitle ?? post.data.title} — Replaid Blog`} description={post.data.description} ogImage={socialImage?.src ?? post.data.image ?? "/og-image.png"} ogImageAlt={socialImage?.alt} ogImageWidth={socialImage ? 1200 : undefined} ogImageHeight={socialImage ? 630 : undefined} ogImageType={socialImage ? "image/png" : undefined} type="article" jsonLd={blogJsonLd}>
   <div class="sky-landing blog-page article-page">
     <SkyHeader />
     <main id="main" class="article-main">
@@ -72,7 +80,7 @@ const blogJsonLd = [
           <p class="blog-category">{post.data.category}</p>
           <h1>{post.data.title}</h1>
           <p class="article-description">{post.data.description}</p>
-          <div class="article-byline"><span class="article-author">By {post.data.author}</span><BlogMeta post={post} showPublished /></div>
+          <div class="article-byline"><span class="article-author">By{' '}{post.data.authorUrl ? <a href={post.data.authorUrl} rel="author">{post.data.author}</a> : post.data.author}</span><BlogMeta post={post} showPublished /></div>
         </header>
 
         {post.data.historical && currentArticle && <aside class="article-history" aria-labelledby="article-history-heading">

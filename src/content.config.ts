@@ -7,7 +7,8 @@ const blog = defineCollection({
     title: z.string(),
     seoTitle: z.string().optional(),
     description: z.string(),
-    author: z.string().default('Ricard P'),
+    author: z.string().default('Ricard Pons'),
+    authorUrl: z.string().url().startsWith('https://').optional(),
     date: z.date(),
     updatedDate: z.date().optional(),
     featured: z.boolean().default(false),
@@ -15,6 +16,10 @@ const blog = defineCollection({
     supersededBy: reference('blog').optional(),
     category: z.string().default('Automation'),
     image: z.string().optional(),
+    socialImage: z.object({
+      src: z.string().regex(/^\/og-[a-z0-9-]+\.png$/),
+      alt: z.string().min(1),
+    }).optional(),
     draft: z.boolean().default(false),
   }).refine(data => !data.updatedDate || data.updatedDate >= data.date, {
     message: 'The update date must not precede publication.',

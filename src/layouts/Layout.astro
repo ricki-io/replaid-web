@@ -8,6 +8,9 @@ export interface Props {
   description?: string;
   ogImage?: string;
   ogImageAlt?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  ogImageType?: string;
   type?: string;
   jsonLd?: Record<string, any> | Record<string, any>[];
 }
@@ -19,6 +22,9 @@ const {
   description = "A customer inbox for your AI agent. Connect channels, control actions, and inspect results.",
   ogImage = "/og-image.png",
   ogImageAlt,
+  ogImageWidth,
+  ogImageHeight,
+  ogImageType,
   type = "website",
   jsonLd,
 } = Astro.props;
@@ -48,11 +54,9 @@ const socialImageAlt = ogImageAlt ?? (isDefaultSocialImage
     <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:image" content={new URL(ogImage, 'https://replaid.pro').href} />
     <meta property="og:image:alt" content={socialImageAlt} />
-    {isDefaultSocialImage && <>
-      <meta property="og:image:type" content="image/png" />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-    </>}
+    {(ogImageType || isDefaultSocialImage) && <meta property="og:image:type" content={ogImageType ?? 'image/png'} />}
+    {(ogImageWidth || isDefaultSocialImage) && <meta property="og:image:width" content={ogImageWidth ?? 1200} />}
+    {(ogImageHeight || isDefaultSocialImage) && <meta property="og:image:height" content={ogImageHeight ?? 630} />}
     <meta property="og:site_name" content="Replaid" />
 
     <!-- Twitter Card -->

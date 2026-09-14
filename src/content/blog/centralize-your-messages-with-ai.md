@@ -4,7 +4,11 @@ description: "Connect WhatsApp, the Replaid widget, Instagram, Messenger, or Tel
 date: 2025-10-20
 updatedDate: 2026-09-14
 category: "Automation"
-author: "Ricard P"
+author: "Ricard Pons"
+authorUrl: "https://rickimakes.com/"
+socialImage:
+  src: "/og-centralize-your-messages-with-ai.png"
+  alt: "Connect Your Customer Messages to Your AI Agent. Three message channels connect to Replaid."
 ---
 
 A question can arrive through your website while another customer is waiting in Instagram DMs. Giving an agent useful access to those conversations should not require a separate workflow for every channel.

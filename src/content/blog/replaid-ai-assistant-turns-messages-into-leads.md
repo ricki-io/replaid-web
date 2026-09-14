@@ -4,7 +4,11 @@ description: "A practical workflow for reading customer questions, preparing use
 date: 2025-10-15
 updatedDate: 2026-09-14
 category: "Product"
-author: "Ricard P"
+author: "Ricard Pons"
+authorUrl: "https://rickimakes.com/"
+socialImage:
+  src: "/og-replaid-ai-assistant-turns-messages-into-leads.png"
+  alt: "Use Your AI Agent to Follow Up on Customer Messages. A message connects to an agent."
 ---
 
 A message such as “Can you help with my website?” is a starting point. To move the conversation forward, someone needs to understand the request, ask for missing details, and decide what should happen next.

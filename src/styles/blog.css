@@ -64,6 +64,9 @@
 .article-description { max-width: 710px; margin-top: 22px; color: #64707f; font-size: 18px; line-height: 1.65; }
 .article-byline { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 22px; margin-top: 26px; }
 .article-author { color: #2f414f; font-size: 13px; font-weight: 550; }
+.article-author a { text-decoration: underline; text-decoration-color: #aabcca; text-underline-offset: 3px; border-radius: 2px; }
+.article-author a:hover { color: #0875d5; text-decoration-color: currentColor; }
+.article-author a:focus-visible { outline: 3px solid #075caa; outline-offset: 4px; }
 .article-history { max-width: 800px; margin: 0 auto 36px; padding: 26px 28px; background: #f5f8fb; border: 1px solid #dbe5ed; border-radius: 18px; }
 .article-history h2 { margin-top: 13px; color: #182632; font-size: 21px; font-weight: 600; line-height: 1.35; letter-spacing: -.025em; }
 .article-history p { margin-top: 12px; color: #52616f; font-size: 14px; line-height: 1.75; }

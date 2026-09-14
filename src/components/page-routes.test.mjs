@@ -168,6 +168,26 @@ test('article navigation and search metadata match the published content', async
 });
 
 
+test('every article links its author to the same public profile used in search metadata', async () => {
+  const posts = (await readdir(new URL('../content/blog/', import.meta.url))).filter(path => path.endsWith('.md'));
+  for (const filename of posts) {
+    const source = await readFile(new URL(`../content/blog/${filename}`, import.meta.url), 'utf8');
+    if (/^draft: true$/m.test(source)) continue;
+    const id = filename.slice(0, -3);
+    const html = await readPage(`${id}/index.html`);
+    const json = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1] ?? '[]');
+    const author = json.find(item => item['@type'] === 'BlogPosting')?.author;
+    assert.deepEqual(author, { '@type': 'Person', name: 'Ricard Pons', url: 'https://rickimakes.com/' }, id);
+    const byline = html.match(/<div class="article-byline">([\s\S]*?)<\/div>/)?.[1] ?? '';
+    assert.ok(decodeHtml(byline.replace(/<[^>]*>/g, '')).includes(`By ${author.name}`), `Readable author byline: ${id}`);
+    const profileLinks = links(byline);
+    assert.equal(profileLinks.length, 1, `One author profile link: ${id}`);
+    assert.equal(profileLinks[0].href, author.url, id);
+    assert.equal(decodeHtml(profileLinks[0].text), author.name, id);
+    assert.match(byline, /<a\b[^>]*rel="author"/, id);
+  }
+});
+
 test('the pivot article is featured and all previous URLs still serve articles', async () => {
   const index = await readPage('blog/index.html');
   const pivot = '/replaid-connects-your-ai-agent-to-your-customers/';
@@ -237,17 +257,21 @@ test('all built routes defer analytics to the consent control and expose a way t
 });
 
 
-test('sharing cards use a real landscape PNG with matching metadata on every page', async () => {
-  const png = await readFile(new URL('og-image.png', output));
-  assert.deepEqual([...png.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10]);
-  assert.equal(png.readUInt32BE(16), 1200);
-  assert.equal(png.readUInt32BE(20), 630);
-  assert.ok(png.length < 1_000_000, 'The social image should stay below 1 MB');
+test('sharing cards use real landscape PNGs with matching metadata on every page', async () => {
+  const posts = (await readdir(new URL('../content/blog/', import.meta.url))).filter(path => path.endsWith('.md')).map(path => path.slice(0, -3));
   const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html'));
   for (const path of pages) {
     const html = await readPage(path);
+    const id = path.replace(/\/index\.html$/, '');
+    const expectedImage = posts.includes(id) ? `/og-${id}.png` : '/og-image.png';
+    const png = await readFile(new URL(expectedImage.slice(1), output));
+    assert.deepEqual([...png.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10], expectedImage);
+    assert.equal(png.readUInt32BE(16), 1200, expectedImage);
+    assert.equal(png.readUInt32BE(20), 630, expectedImage);
+    assert.ok(png.length < 1_000_000, `The social image should stay below 1 MB: ${expectedImage}`);
     for (const key of ['og:image', 'twitter:image']) {
-      assert.match(html, new RegExp(`(?:property|name)="${key}" content="https://replaid.pro/og-image.png"`), path);
+      const image = html.match(new RegExp(`(?:property|name)="${key}" content="([^"]+)"`))?.[1];
+      assert.equal(image, `https://replaid.pro${expectedImage}`, `${path}: ${key}`);
     }
     assert.match(html, /property="og:image:width" content="1200"/);
     assert.match(html, /property="og:image:height" content="630"/);
@@ -256,6 +280,34 @@ test('sharing cards use a real landscape PNG with matching metadata on every pag
       assert.match(html, new RegExp(`(?:property|name)="${key}" content="[^"<>]+"`), path);
     }
     assert.match(html, /name="twitter:card" content="summary_large_image"/);
+  }
+});
+
+test('each article has a distinct sharing image and consistent Article image metadata', async () => {
+  const posts = (await readdir(new URL('../content/blog/', import.meta.url))).filter(path => path.endsWith('.md'));
+  const imageContents = new Set();
+  for (const filename of posts) {
+    const source = await readFile(new URL(`../content/blog/${filename}`, import.meta.url), 'utf8');
+    if (/^draft: true$/m.test(source)) continue;
+    const id = filename.slice(0, -3);
+    const html = await readPage(`${id}/index.html`);
+    const json = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1] ?? '[]');
+    const image = json.find(item => item['@type'] === 'BlogPosting')?.image;
+    const alt = JSON.parse(source.match(/^  alt: (".+")$/m)?.[1] ?? '""');
+    assert.ok(alt, `Missing image description: ${id}`);
+    assert.deepEqual(image, {
+      '@type': 'ImageObject',
+      url: `https://replaid.pro/og-${id}.png`,
+      width: 1200,
+      height: 630,
+      caption: alt,
+    }, id);
+    for (const key of ['og:image:alt', 'twitter:image:alt']) {
+      assert.equal(decodeHtml(html.match(new RegExp(`(?:property|name)="${key}" content="([^"]+)"`))?.[1] ?? ''), alt, `${id}: ${key}`);
+    }
+    const binary = (await readFile(new URL(`og-${id}.png`, output))).toString('base64');
+    assert.ok(!imageContents.has(binary), `Sharing images must differ: ${id}`);
+    imageContents.add(binary);
   }
 });
 

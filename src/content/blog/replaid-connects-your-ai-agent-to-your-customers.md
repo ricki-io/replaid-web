@@ -1,10 +1,14 @@
 ---
 title: "Replaid Now Connects Your AI Agent to Your Customers"
 description: "Bring the agent you already use to your customer conversations. Replaid connects the channels and lets you control what your agent can do."
-author: "Ricard P"
+author: "Ricard Pons"
+authorUrl: "https://rickimakes.com/"
 date: 2026-09-14
 category: "Announcement"
 featured: true
+socialImage:
+  src: "/og-replaid-connects-your-ai-agent-to-your-customers.png"
+  alt: "Replaid Now Connects Your AI Agent to Your Customers. Replaid connects a customer channel and an AI agent."
 ---
 
 Replaid connects your website, social, and messaging channels to the AI agent you already use. Your agent can read a conversation, prepare a reply, and send it through Replaid when your permissions allow it.
