@@ -73,6 +73,28 @@ test('the sitemap includes both destinations', async () => {
   const sitemap = await readPage('sitemap-0.xml');
   assert.match(sitemap, /<loc>https:\/\/replaid.pro\/get-started\/?<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/replaid.pro\/docs\/connect-your-agent\/?<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/replaid.pro\/pricing\/?<\/loc>/);
+});
+
+test('pricing explains prepaid credits without subscription tiers', async () => {
+  const pricing = await readPage('pricing/index.html');
+  const pageLinks = links(pricing);
+  assert.match(pricing, /rel="canonical" href="https:\/\/replaid.pro\/pricing\/?"/);
+  assert.match(pricing, /There is no subscription/);
+  assert.match(pricing, /provider cost plus a 20% markup/);
+  assert.ok(!/\$79|\$149|\$299|€29|€79|€149|€299/.test(pricing), 'Old subscription prices must stay gone');
+  assert.ok(!/per month|\/mo\b|monthly plan/i.test(pricing), 'Subscription billing language must stay gone');
+  assert.match(pricing, /does not sell Starter, Pro, or Agency subscriptions/);
+  for (const amount of ['$10', '$25', '$50', '$100']) {
+    assert.ok(pricing.includes(amount), `Missing credit package: ${amount}`);
+  }
+  assert.ok(pageLinks.some(link => link.text === 'Create your free account' && link.href === 'https://app.replaid.pro/register'));
+  assert.ok(pageLinks.some(link => link.text.startsWith('See how to get started') && link.href === '/get-started/'));
+  for (const html of [await readPage('index.html'), pricing]) {
+    const pricingNav = links(html).filter(link => link.text === 'Pricing');
+    assert.ok(pricingNav.length > 0, 'Missing Pricing navigation');
+    for (const link of pricingNav) assert.equal(link.href, '/pricing/', `Wrong Pricing link: ${link.href}`);
+  }
 });
 
 test('the 404 provides recovery links and stays out of the sitemap', async () => {

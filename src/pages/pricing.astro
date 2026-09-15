@@ -10,10 +10,10 @@ const description = 'No subscription. Current Instagram, Messenger, Telegram, an
 const registerUrl = 'https://app.replaid.pro/register';
 const getStartedUrl = '/get-started/';
 const packages = [
-  { amount: '$10', detail: '1,000 credit cents', label: 'Starter top-up' },
-  { amount: '$25', detail: '2,500 credit cents', label: 'Most common start' },
-  { amount: '$50', detail: '5,000 credit cents', label: 'Steady usage' },
-  { amount: '$100', detail: '10,000 credit cents', label: 'Higher volume' },
+  { amount: '$10', cents: 1000, detail: 'Prepaid USD balance', label: 'Small top-up' },
+  { amount: '$25', cents: 2500, detail: 'Prepaid USD balance', label: 'Most common start' },
+  { amount: '$50', cents: 5000, detail: 'Prepaid USD balance', label: 'Steady usage' },
+  { amount: '$100', cents: 10000, detail: 'Prepaid USD balance', label: 'Higher volume' },
 ];
 const freeChannels = [
   'Instagram text DMs and text comments',
@@ -49,7 +49,7 @@ const jsonLd = {
         name: `${pack.amount} prepaid credits`,
         price: pack.amount.slice(1),
         priceCurrency: 'USD',
-        description: 'Prepaid USD credits for future paid operations at provider cost plus a 20% markup.',
+        description: `Prepaid USD credits (${pack.cents} cents) for future paid operations at provider cost plus a 20% markup.`,
       })),
     ],
   },

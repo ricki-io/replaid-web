@@ -9,6 +9,8 @@
 .start-guide-link:hover { color: var(--start-blue); }
 .start-guide-link svg { flex: none; }
 .start-hero-copy > .start-price-note { font-size: 12px; margin-top: 24px; line-height: 1.6; }
+.start-price-note a { color: #385267; text-decoration: underline; text-underline-offset: 3px; }
+.start-price-note a:hover { color: var(--start-blue); }
 .start-login { display: inline-block; margin-top: 9px; font-size: 12px; color: #64707f; }
 .start-login:hover { color: var(--start-blue); }
 .start-preview { position: relative; isolation: isolate; padding: 36px 0; }
