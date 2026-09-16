@@ -84,10 +84,10 @@ const jsonLd = {
 
       <section class="pricing-ltd" aria-labelledby="pricing-ltd-heading">
         <div class="pricing-ltd-price" aria-label="Founding Lifetime price">
+          <p class="pricing-cap">For the first {foundingCap} founding teams</p>
           <p class="pricing-amount"><span class="pricing-currency">$</span>{foundingPrice}<span class="pricing-currency-code">USD</span></p>
           <p class="pricing-payment">Per team. Paid once.</p>
           <p class="pricing-credit">Includes <strong>${foundingCredits} usage credit</strong></p>
-          <p class="pricing-cap">For the first {foundingCap} founding teams</p>
           <a class="sky-button" href={registerUrl}>{registerLabel}</a>
           <p class="pricing-next-step">Create an account first. Purchase separately.</p>
           <p class="pricing-exclusions">Paid channel usage, applicable tax, and external AI costs are separate. <a href="#pricing-costs">See all costs</a></p>
@@ -102,8 +102,6 @@ const jsonLd = {
           <div class="pricing-channel-scope">
             <h3>Included channel connections</h3>
             <p>One Instagram account, one Facebook Page for Messenger, one Telegram bot, and one Replaid widget per team.</p>
-            <p class="pricing-channel-limits">Text messages and replies. Instagram also supports text comments. Telegram supports bot private messages.</p>
-            <a class="pricing-text-link" href={`${guideUrl}#channel`}>Check channel requirements</a>
           </div>
         </div>
       </section>

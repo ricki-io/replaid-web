@@ -16,7 +16,7 @@
 .pricing-payment { margin-top: 10px; color: var(--pricing-ink); font-size: 16px; font-weight: 550; }
 .pricing-credit { margin-top: 20px; color: var(--pricing-ink); font-size: 16px; }
 .pricing-credit strong { font-weight: 600; }
-.pricing-cap { margin-top: 8px; color: var(--pricing-muted); font-size: 14px; line-height: 1.5; }
+.pricing-cap { display: block; width: fit-content; max-width: 100%; margin: 0 0 22px; padding: 8px 12px; border-radius: 6px; background: #c7ff38; color: #17250d; font-size: 14px; font-weight: 700; line-height: 1.5; text-wrap: balance; }
 .pricing-ltd-price .sky-button { width: 100%; margin-top: 22px; padding: 14px 18px; }
 .pricing-next-step { color: var(--pricing-muted); font-size: 14px; line-height: 1.5; text-align: center; }
 .pricing-ltd-price .pricing-next-step { margin-top: 10px; }
@@ -32,8 +32,6 @@
 .pricing-channel-scope { margin-top: 24px; padding-top: 20px; border-top: 1px solid #d7e6f3; }
 .pricing-channel-scope h3 { color: var(--pricing-ink); font-size: 16px; font-weight: 600; }
 .pricing-channel-scope p { margin-top: 8px; color: var(--pricing-muted); font-size: 15px; line-height: 1.6; }
-.pricing-channel-scope .pricing-channel-limits { font-size: 14px; }
-.pricing-channel-scope .pricing-text-link { display: inline-block; margin-top: 12px; font-size: 14px; }
 .pricing-page :is(.pricing-text-link, .pricing-cost-table a, .pricing-exclusions a) { color: var(--pricing-blue); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 .pricing-page :is(.pricing-text-link, .pricing-cost-table a, .pricing-exclusions a):hover { color: var(--pricing-ink); }
 .pricing-section-heading { max-width: 650px; margin-bottom: 28px; }
