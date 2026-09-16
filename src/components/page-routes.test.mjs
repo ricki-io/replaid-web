@@ -76,39 +76,87 @@ test('the sitemap includes both destinations', async () => {
   assert.match(sitemap, /<loc>https:\/\/replaid.pro\/pricing\/?<\/loc>/);
 });
 
-test('pricing explains Founding Lifetime and prepaid usage without SaaS tiers', async () => {
+test('pricing puts the offer before features and explains the registration step', async () => {
   const pricing = await readPage('pricing/index.html');
-  const pageLinks = links(pricing);
-  const hero = pricing.match(/<header class="pricing-hero">([\s\S]*?)<\/header>/)?.[1] ?? '';
+  const main = pricing.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? '';
+  const text = decodeHtml(main.replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ');
+  const pageLinks = links(main);
   assert.match(pricing, /rel="canonical" href="https:\/\/replaid.pro\/pricing\/?"/);
-  assert.match(pricing, /Founding Lifetime/);
-  assert.match(hero, /One-time Founding access\. Usage credits only when paid channels cost money\./);
-  assert.ok(!/Applicable tax|No recurring SaaS tiers|first 5 founding teams/.test(hero), 'Hero must stay short — full pricing facts belong below');
-  assert.match(pricing, /\$299/);
-  assert.match(pricing, /first\s+5\s+founding teams/i);
-  assert.match(pricing, /\$50\s+prepaid usage credits|Includes\s+\$50\s+usage credit/i);
-  assert.match(pricing, /funded by Replaid/i);
-  assert.match(pricing, /provider cost \+ ~10%|provider cost plus about 10%/i);
-  assert.ok(!/\$199|first\s+100\s+founding/i.test(pricing), 'Old $199 price and 100-seat cap must stay gone');
-  assert.ok(!/\$79|\$149|€29|€79|€149|€299/.test(pricing), 'Old subscription prices must stay gone');
-  assert.ok(!/per month|\/mo\b|\/month\b/i.test(pricing), 'Subscription billing language must stay gone');
-  assert.ok(!/\b\$\d+\s*(?:per month|\/mo)\b/i.test(pricing), 'Monthly price points must stay gone');
-  assert.match(pricing, /No SaaS tiers|does not sell Starter, Pro, or Agency subscriptions|No Starter, Pro, or Agency/);
-  assert.match(pricing, /WhatsApp is not free/);
-  for (const amount of ['$10', '$25', '$50', '$100']) {
-    assert.ok(pricing.includes(amount), `Missing credit package: ${amount}`);
-  }
-  assert.ok(pageLinks.some(link => link.text === 'Create your free account' && link.href === 'https://app.replaid.pro/register'));
-  assert.ok(pageLinks.some(link => link.text.startsWith('See how to get started') && link.href === '/get-started/'));
-  assert.ok(pageLinks.some(link => link.text === 'Claim Founding Lifetime' && link.href === 'https://app.replaid.pro/register'));
+  assert.match(text, /Founding Lifetime/);
+  assert.match(text, /Pay the platform once/);
+  assert.match(text, /299\s*USD/);
+  assert.match(text, /Per team\. Paid once\./);
+  assert.match(text, /Includes\s+\$50 usage credit/);
+  assert.match(text, /first 5 founding teams/);
+  assert.match(text, /No monthly platform fee/);
+  assert.ok(!/founding seats|Most common start|Claim Founding Lifetime|\$199|\$79|\$149/.test(text));
+  const offerPosition = main.indexOf('class="pricing-ltd-price"');
+  const featurePosition = main.indexOf('class="pricing-ltd-copy"');
+  assert.ok(offerPosition >= 0 && offerPosition < featurePosition, 'The reading order must put price and registration before features');
+  const registrationLinks = pageLinks.filter(link => link.href === 'https://app.replaid.pro/register');
+  assert.equal(registrationLinks.length, 2);
+  for (const link of registrationLinks) assert.equal(link.text, 'Create your free account');
+  assert.match(text, /Create an account first\. Purchase separately\./);
+  assert.ok(pageLinks.some(link => link.href === '#pricing-costs'));
+  assert.ok(main.includes('id="pricing-costs"'));
+  assert.ok(pageLinks.some(link => link.text === 'See the setup guide' && link.href === guidePath));
   assert.match(sales, /Founding Lifetime \$299/);
-  assert.match(sales, /\$50 usage credit included/);
-  assert.ok(!/Founding Lifetime \$199/.test(sales), 'Get-started must not keep the old $199 note');
+  assert.match(sales, /\$50 usage credit for paid ops/);
   for (const html of [await readPage('index.html'), pricing]) {
     const pricingNav = links(html).filter(link => link.text === 'Pricing');
     assert.ok(pricingNav.length > 0, 'Missing Pricing navigation');
-    for (const link of pricingNav) assert.equal(link.href, '/pricing/', `Wrong Pricing link: ${link.href}`);
+    for (const link of pricingNav) assert.equal(link.href, '/pricing/');
   }
+});
+
+test('pricing distinguishes included actions from channel and external AI costs', async () => {
+  const pricing = await readPage('pricing/index.html');
+  const table = pricing.match(/<table class="pricing-cost-table">([\s\S]*?)<\/table>/)?.[1] ?? '';
+  assert.match(table, /<caption/);
+  assert.equal((table.match(/scope="col"/g) ?? []).length, 2);
+  assert.equal((table.match(/scope="row"/g) ?? []).length, 4);
+  assert.match(table, /No usage credit needed/);
+  assert.match(table, /same price the provider charges/);
+  assert.match(table, /funded by Replaid/);
+  assert.match(table, /external provider costs are separate/);
+  assert.ok(!/provider cost \+|20%|10%/.test(table));
+  for (const channel of ['Instagram', 'Messenger', 'Telegram', 'widget', 'WhatsApp', 'X (Twitter)']) assert.ok(table.includes(channel));
+  const rateLinks = links(table).filter(link => link.text.endsWith('rates'));
+  assert.deepEqual(rateLinks.map(link => link.href), ['https://developers.facebook.com/docs/whatsapp/pricing/', 'https://docs.x.com/x-api/getting-started/pricing']);
+  assert.match(pricing, /Optional credit top-ups:/);
+  for (const amount of ['$10', '$25', '$50', '$100']) assert.ok(pricing.includes(amount));
+  assert.match(pricing, /Applicable tax is calculated at checkout/);
+  assert.ok(!pricing.includes('class="pricing-card"'), 'Top-ups should not appear as competing plans');
+});
+
+test('pricing provides native FAQ controls, the one-year expiry, and a single platform offer', async () => {
+  const pricing = await readPage('pricing/index.html');
+  const faq = pricing.match(/<section class="pricing-faq"[\s\S]*?<\/section>/)?.[0] ?? '';
+  const questions = Array.from(faq.matchAll(/<details\b[^>]*>([\s\S]*?)<\/details>/g), match => match[1]);
+  assert.equal(questions.length, 7);
+  for (const question of questions) {
+    assert.match(question, /^\s*<summary>/);
+    assert.match(question, /class="pricing-faq-answer"/);
+  }
+  assert.match(faq, /expires one year after it is added to your account/);
+  assert.match(faq, /included \$50 and to credit top-ups/);
+  assert.ok(!/do not expire|never expire|guaranteed refund/i.test(faq));
+  assert.match(faq, /cannot proceed without enough available balance/);
+  assert.match(faq, /one Instagram account, one Facebook Page, one Telegram bot, and one Replaid widget/);
+  assert.match(faq, /Refund requests are reviewed/);
+  for (const link of links(faq).filter(link => link.href?.startsWith('/') && link.href.includes('#'))) {
+    const [route, id] = link.href.split('#');
+    const destination = await readPage(`${route.slice(1)}index.html`);
+    assert.ok(destination.includes(`id="${id}"`), `Missing FAQ destination: ${link.href}`);
+  }
+  const data = JSON.parse(pricing.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1] ?? '[]');
+  const application = (Array.isArray(data) ? data : [data]).find(item => item['@type'] === 'SoftwareApplication');
+  assert.ok(application, 'The platform needs a structured offer');
+  assert.equal(application.offers['@type'], 'Offer');
+  assert.equal(application.offers.price, '299');
+  assert.equal(application.offers.priceCurrency, 'USD');
+  assert.equal(application.offers.url, 'https://replaid.pro/pricing/');
+  assert.equal(application.offers.lowPrice, undefined, 'Credit amounts are not platform prices');
 });
 
 test('the 404 provides recovery links and stays out of the sitemap', async () => {
