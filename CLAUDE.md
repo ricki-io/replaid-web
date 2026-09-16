@@ -1,50 +1,41 @@
-# CLAUDE.md
+# Project guidance
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## Product and stack
 
-## Project Overview
+This repository contains Replaid's public website. Replaid connects customer channels to an external AI agent, with permissions for reading messages, creating drafts, and sending replies. The Laravel application is in a separate repository.
 
-Marketing website for **Replaid** — an AI inbox that turns messages into leads. Built as a static site.
+Use the installed Astro 6 and Tailwind CSS 3 versions. Do not change dependencies without approval. The site uses static output and Cloudflare Workers assets, configured in `wrangler.jsonc`.
 
 ## Commands
 
-- `npm run dev` — Start dev server
-- `npm run build` — Build for production (output: `dist/`)
-- `npm run preview` — Preview production build locally
+- `npm run dev`: start the development server; reuse an existing server when available.
+- `npm run build`: generate the site in `dist/`.
+- `npm test`: run the Node tests. Build first because route tests inspect `dist/`.
+- `npm run og`: regenerate `public/og-image.png` from the current brand assets.
+- `npm run preview`: inspect the production build locally.
 
-No test runner or linter is configured.
+## Pages and components
 
-## Tech Stack
+`src/pages/index.astro` uses Hero, the agent workflow, ConversationExample, FAQ content, and SkyFooter. Hero contains SkyHeader and ConnectorGraphic.
 
-- **Astro 5** (static output mode) with **Tailwind CSS 3**
-- **Cloudflare Workers** for hosting (configured via `wrangler.jsonc`, serves from `dist/`)
-- **TypeScript** (strict mode, extends `astro/tsconfigs/strict`)
+`/get-started` is the conversion page. `/docs/connect-your-agent` is the setup guide. Keep article conversion links and guide links separate.
 
-## Architecture
+The blog index is `/blog`. `src/pages/[...slug].astro` renders articles at their existing root-level URLs. Markdown content lives in `src/content/blog/`, with the collection schema in `src/content.config.ts`. Preserve publication dates. Historical articles must link to a published current article through `supersededBy`.
 
-### Pages & Routing
+`src/components/product-copy.ts` contains shared product facts. Keep channel availability, action permissions, and billing statements consistent with the application.
 
-All pages are in `src/pages/`. The landing page (`index.astro`) composes section components in order: Header → Hero → Channels → Features → Stats → HowItWorks → Pricing → Testimonials → FAQ → CTA → Footer.
+## Design
 
-Other pages: `contact.astro`, `privacy.astro`, `terms.astro`, `cookies.astro`, and a blog section (`blog/index.astro`, `blog/[...slug].astro`).
+The site uses the light design, Inter, white backgrounds, soft cloud artwork, and rounded controls. The homepage uses a restrained italic serif treatment in its heading. Reuse SkyHeader, SkyFooter, BrandLogo, and the existing page styles.
 
-### Layout
+`src/layouts/Layout.astro` owns document metadata, the global stylesheet, skip navigation, and CookieConsent. `LegalLayout.astro` provides legal page navigation and text layout. All public pages use the same light design; there is no theme toggle.
 
-Single layout in `src/layouts/Layout.astro`. Provides HTML boilerplate, Google Fonts loading (Inter, Space Grotesk, JetBrains Mono), global styles, and an IntersectionObserver for `.fade-in-up` scroll animations.
+Only used files belong in `public/`; every file there is copied into the production build. Keep rejected image drafts outside the repository.
 
-### Blog Content
+## Integrations and verification
 
-Blog posts are Markdown files in `src/content/blog/`. Schema defined in `src/content/config.ts` with fields: `title`, `description`, `author`, `date`, `category`, `image`, `draft`. Draft posts are filtered out on the blog index.
+The contact page posts to Web3Forms with hCaptcha. Preserve the field names, spam controls, and production return address. Do not send test messages without approval.
 
-### Design System
+Google Analytics loads only after consent and only in production builds. Preserve rejection, withdrawal, expiry, and blocked-storage behavior. Every footer has a Cookie settings control.
 
-Defined in `tailwind.config.mjs`:
-- **Colors**: `ink-*` scale (grayscale from black), `accent` (#93e85f green)
-- **Fonts**: `font-display` (Space Grotesk for headings), `font-sans` (Inter for body), `font-mono` (JetBrains Mono for labels)
-- **Display sizes**: `text-display-xl` through `text-display-sm` using `clamp()` for responsive scaling
-
-Global CSS classes in `Layout.astro`: `.btn-type`, `.btn-type-outline` (buttons), `.mono-label` (uppercase monospace labels), `.fade-in-up` (scroll animation), `.bg-text` (decorative background text).
-
-### Contact Form
-
-Uses Web3Forms API for submission with hCaptcha spam protection.
+Run the relevant tests and check desktop and mobile layouts after visual changes. Do not publish, push, or commit unless requested.

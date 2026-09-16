@@ -1,0 +1,13 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { post: CollectionEntry<'blog'>; showPublished?: boolean; }
+const { post, showPublished = false } = Astro.props;
+const words = post.body?.trim().split(/\s+/).length ?? 0;
+const minutes = Math.max(1, Math.ceil(words / 220));
+const formatDate = (date: Date) => date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+---
+<div class="blog-meta">
+  {(showPublished || !post.data.updatedDate || post.data.historical) && <time datetime={post.data.date.toISOString()}>{showPublished ? 'Published ' : ''}{formatDate(post.data.date)}</time>}
+  {post.data.updatedDate && (showPublished || !post.data.historical) && <time datetime={post.data.updatedDate.toISOString()}>{post.data.historical ? 'Notice added ' : 'Updated '}{formatDate(post.data.updatedDate)}</time>}
+  <span>{minutes} min read</span>
+</div>

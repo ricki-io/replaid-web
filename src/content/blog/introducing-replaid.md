@@ -1,9 +1,17 @@
 ---
 title: "Introducing Replaid: Automate Your Inbox with AI"
-description: "Meet Replaid: the AI inbox assistant that unifies all your channels, prioritizes real leads, and replies instantly on-brand."
+seoTitle: "Introducing Replaid: 2025 Launch Archive"
+description: "The original Replaid launch announcement from October 2025, preserved as product history. Read the update for how Replaid works today."
 date: 2025-10-15
+updatedDate: 2026-09-14
+historical: true
+supersededBy: replaid-connects-your-ai-agent-to-your-customers
 category: "Announcement"
-author: "Ricard P"
+author: "Ricard Pons"
+authorUrl: "https://rickimakes.com/"
+socialImage:
+  src: "/og-introducing-replaid.png"
+  alt: "Introducing Replaid: 2025 Launch Archive. The original Replaid logo on a white card."
 ---
 
 ### Your customers are everywhere.
@@ -82,4 +90,4 @@ With Replaid, every DM, comment, and email finally works for you — not against
 
 So, don't wait until another lead vanishes.
 
-👉 [Join our early access](/get-started) today and experience the new standard of smart communication.
+👉 [Join our early access](/get-started/) today and experience the new standard of smart communication.

@@ -1,95 +1,123 @@
 ---
-// Replaid - Dark Mode First Landing Page
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import Features from '../components/Features.astro';
-import Stats from '../components/Stats.astro';
-import HowItWorks from '../components/HowItWorks.astro';
-import Pricing from '../components/Pricing.astro';
-import Testimonials from '../components/Testimonials.astro';
-import FAQ from '../components/FAQ.astro';
-import CTA from '../components/CTA.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import SkyFooter from '../components/SkyFooter.astro';
+import ConversationExample from '../components/ConversationExample.astro';
+import { faqs } from '../components/faq-content';
+import { productCopy, betaAccess } from '../components/product-copy';
+import '../styles/landing.css';
 
+const description = 'Let your AI agent read and reply to customer messages. Replaid connects your website, social and messaging channels to the agent you already use, with permissions you control.';
 const jsonLd = [
   {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Replaid",
-    "url": "https://replaid.pro",
-    "logo": "https://replaid.pro/favicon.svg",
-    "description": "AI-powered inbox assistant that qualifies leads and triggers automations 24/7.",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "email": "hi@replaid.pro",
-      "contactType": "customer support"
-    }
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Replaid',
+    url: 'https://replaid.pro/',
+    logo: 'https://replaid.pro/favicon.svg',
+    description,
+    contactPoint: { '@type': 'ContactPoint', email: 'hi@replaid.pro', contactType: 'customer support' },
   },
   {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Replaid",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "description": "AI-powered inbox assistant that qualifies leads and triggers automations 24/7.",
-    "offers": [
-      { "@type": "Offer", "name": "Starter", "price": "29", "priceCurrency": "EUR", "url": "https://replaid.pro/#pricing" },
-      { "@type": "Offer", "name": "Pro", "price": "79", "priceCurrency": "EUR", "url": "https://replaid.pro/#pricing" },
-      { "@type": "Offer", "name": "Business", "price": "149", "priceCurrency": "EUR", "url": "https://replaid.pro/#pricing" },
-      { "@type": "Offer", "name": "Agency", "price": "299", "priceCurrency": "EUR", "url": "https://replaid.pro/#pricing" }
-    ]
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Replaid',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    description,
+    offers: {
+      '@type': 'Offer', name: 'Founding Lifetime', price: '299', priceCurrency: 'USD',
+      availability: 'https://schema.org/LimitedAvailability',
+      description: productCopy.pricing,
+      url: 'https://replaid.pro/pricing/',
+    },
   },
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What channels can I connect to Replaid?",
-        "acceptedAnswer": { "@type": "Answer", "text": "You can connect Facebook Messenger, Instagram (DMs and comments), WhatsApp, Telegram, Twitter (Beta), and more. We're continuously adding new platforms based on user demand." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can Replaid respond automatically to DMs and comments?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Replaid uses AI to send automatic replies, filter out spam, answer common questions, and help you move real leads through your funnel." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use Replaid without automatic replies?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can disable auto-replies and still use Replaid to filter leads, send notifications, and automate workflows. Great if you want to reply manually but still streamline your process." }
-      },
-      {
-        "@type": "Question",
-        "name": "How does Replaid qualify leads?",
-        "acceptedAnswer": { "@type": "Answer", "text": "It analyzes message intent using natural language processing to detect interest, assign categories, and trigger notifications or automations so you can focus on the most valuable conversations." }
-      },
-      {
-        "@type": "Question",
-        "name": "Is it hard to set up? Do I need to code anything?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Not at all. Replaid is fully no-code. Just connect your channels, configure your preferences, and you're ready to go." }
-      }
-    ]
-  }
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question', name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  },
 ];
 ---
-
-<Layout
-  title="Replaid — Your Inbox Is Full Of Money"
-  description="Stop missing leads. Replaid qualifies conversations, auto-replies instantly, and keeps your pipeline moving 24/7."
-  jsonLd={jsonLd}
->
-  <Header />
-  <main>
+<Layout title="Replaid — Let your AI agent reply to customer messages" description={description} jsonLd={jsonLd}>
+  <main id="main" class="sky-landing">
     <Hero />
-    <Features />
-    <Stats />
-    <HowItWorks />
-    <Pricing />
-    <!-- <Testimonials /> -->
-    <FAQ />
-    <CTA />
+    <section id="how-it-works" class="sky-section agent-explanation" aria-labelledby="agent-heading">
+      <div id="features">
+        <h2 id="agent-heading">Your agent brings the intelligence.<br />Replaid makes the connection.</h2>
+      </div>
+      <p>Keep your knowledge and instructions in your agent.</p>
+      <ol class="agent-flow">
+        <li>
+          <div class="flow-preview flow-context" aria-hidden="true">
+            <div class="flow-message flow-message-back"><i></i><i></i></div>
+            <div class="flow-message"><span class="flow-message-dot"></span><strong>New message</strong><i></i><i></i></div>
+          </div>
+          <h3><span class="flow-step">01</span>Read the conversation</h3>
+          <p>Your agent reads the messages and finds what the customer needs.</p>
+        </li>
+        <li>
+          <div class="flow-preview flow-action" aria-hidden="true">
+            <div class="flow-agent-mark"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1c1.5 6.5 4.5 9.5 11 11-6.5 1.5-9.5 4.5-11 11C10.5 16.5 7.5 13.5 1 12 7.5 10.5 10.5 7.5 12 1Z" /></svg></div>
+            <div class="flow-request"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5-7 7 7 7M2 12h12a7 7 0 0 1 7 7" /></svg>Draft a reply</div>
+          </div>
+          <h3><span class="flow-step">02</span>Prepare a reply</h3>
+          <p>Your agent uses the business knowledge and instructions you give it.</p>
+        </li>
+        <li>
+          <div class="flow-preview flow-rules" aria-hidden="true">
+            <div class="flow-permissions">
+              <div><span>Read messages</span><span class="flow-check">✓</span></div>
+              <div><span>Create drafts</span><span class="flow-check">✓</span></div>
+              <div><span>Send replies</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+            </div>
+          </div>
+          <h3><span class="flow-step">03</span>Reply on your terms</h3>
+          <p>Start with a draft to review. Replaid sends a reply only when your permissions allow it.</p>
+        </li>
+      </ol>
+    </section>
+    <ConversationExample />
+    <section class="sky-section sky-final-cta">
+      <h2>Your agent. Connected.</h2>
+      <a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a>
+    </section>
+    <section id="faq" class="sky-faq" aria-labelledby="faq-heading">
+      <header class="sky-faq-heading">
+        <span>FAQ</span>
+        <h2 id="faq-heading">Questions before you connect?</h2>
+      </header>
+      <div class="sky-faq-list">
+        {faqs.map(faq => (
+          <details class="sky-faq-item" id={faq.q === 'What does Replaid cost?' ? 'pricing' : undefined}>
+            <summary>
+              <span>{faq.q}</span>
+              <svg class="sky-faq-toggle" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12" /><path class="sky-faq-toggle-vertical" d="M10 4v12" /></svg>
+            </summary>
+            <p>{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+    <SkyFooter />
   </main>
-  <Footer />
 </Layout>
+<script>
+  function revealDestination(hash: string) {
+    if (hash !== '#pricing') return;
+    const target = document.getElementById(hash.slice(1));
+    const details = target instanceof HTMLDetailsElement ? target : target?.querySelector('details');
+    if (details) details.open = true;
+  }
+  document.querySelectorAll<HTMLAnchorElement>('a[href*="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const url = new URL(link.href);
+      if (url.pathname === location.pathname) revealDestination(url.hash);
+    });
+  });
+  window.addEventListener('hashchange', () => revealDestination(location.hash));
+  revealDestination(location.hash);
+</script>

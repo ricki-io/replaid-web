@@ -1,0 +1,53 @@
+.beta-page .contact-main { grid-template-rows: auto; padding-top: 62px; }
+.beta-page .contact-panel { grid-row: auto; }
+.beta-page .contact-intro::before { inset: -20px -90px -140px -150px; opacity: .4; }
+.beta-page .contact-description { color: #526171; }
+.beta-access-note { max-width: 340px; margin-top: 22px; color: #315e48; font-size: 14px; font-weight: 550; line-height: 1.6; }
+.beta-login { margin-top: 22px; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+.beta-page .contact-field label span, .beta-choices legend span { color: #526171; font-weight: 400; }
+.beta-page .contact-field textarea { min-height: 108px; }
+.beta-choices { min-width: 0; margin: 0; padding: 0; border: 0; }
+.beta-choices legend { padding: 0; color: #25303b; font-size: 13px; font-weight: 550; }
+.beta-select { position: relative; margin-top: 8px; }
+.beta-select summary { display: flex; align-items: center; gap: 10px; min-height: 50px; padding: 12px; border: 1px solid #dce3ea; border-radius: 11px; background: #fbfcfd; color: #10151b; font-size: 16px; line-height: 1.5; cursor: pointer; list-style: none; }
+.beta-select summary::-webkit-details-marker { display: none; }
+.beta-select summary [data-selected-value] { min-width: 0; flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.beta-select summary svg { flex: none; }
+.beta-select summary:hover { border-color: #b4c2ce; }
+.beta-select summary:focus-visible { outline: 3px solid rgb(8 117 213 / 18%); outline-offset: 2px; border-color: #0875d5; }
+.beta-select[open] summary { border-color: #79a58b; background: #fff; }
+.beta-select[open] summary svg { transform: rotate(180deg); }
+.beta-select-menu { position: absolute; z-index: 10; top: calc(100% + 6px); left: 0; right: 0; max-height: min(320px, 50vh); overflow-y: auto; overscroll-behavior: contain; padding: 6px; border: 1px solid #dce3ea; border-radius: 11px; background: #fff; box-shadow: 0 10px 24px rgb(33 67 96 / 14%); }
+.beta-select:not([open]) .beta-select-menu { display: none; }
+.beta-select-menu > p { margin: 6px 8px 8px; color: #526171; font-size: 12px; }
+.beta-select-options { display: grid; gap: 2px; }
+.beta-page .contact-field .beta-select-option { display: flex; align-items: center; gap: 9px; min-height: 44px; margin: 0; padding: 10px; border: 1px solid transparent; border-radius: 6px; cursor: pointer; }
+.beta-page .contact-field .beta-select-option:hover { background: #f5f8f6; }
+.beta-page .contact-field .beta-select-option:has(:checked:not([value=""])) { border-color: #79a58b; background: #f0f7f2; }
+.beta-page .contact-field .beta-select-option input { flex: none; width: 16px; height: 16px; padding: 0; margin: 0; accent-color: #315e48; }
+.beta-page .contact-field .beta-select-option span { color: #25303b; font-size: 13px; line-height: 1.4; }
+.beta-page .contact-field .beta-select-option:has(input:focus-visible) { outline: 2px solid #315e48; outline-offset: -2px; }
+.beta-page .contact-field .beta-agent-select .beta-select-option { position: relative; padding-inline: 12px; }
+.beta-page .contact-field .beta-agent-select input { position: absolute; width: 1px; height: 1px; opacity: 0; clip-path: inset(50%); }
+.beta-page .contact-field .beta-agent-select .beta-select-option span { flex: 1; font-size: 14px; }
+.beta-agent-select .beta-select-menu { max-height: min(340px, 50vh); }
+.beta-agent-select .beta-select-option svg { opacity: 0; flex: none; color: #315e48; }
+.beta-agent-select .beta-select-option:has(:checked) svg { opacity: 1; }
+.beta-page .contact-field .beta-agent-select .beta-select-option:has(input[value=""]) span { color: #65717b; }
+.beta-page .contact-submit { display: block; }
+.beta-page .contact-submit .h-captcha { margin-bottom: 20px; }
+.beta-page .contact-submit-copy p { font-size: 12px; color: #526171; }
+.beta-page .contact-submit-copy .beta-form-error { padding: 12px; border: 1px solid #e8b4ac; border-radius: 8px; background: #fff4f2; color: #862c21; font-size: 14px; line-height: 1.5; }
+.beta-form-error:focus, .beta-page .contact-success h2:focus { outline: 3px solid #075caa; outline-offset: 4px; }
+.beta-page .sky-button:disabled { opacity: .6; cursor: wait; }
+.beta-page .contact-success { min-height: 480px; }
+@media (max-width: 850px) {
+  .beta-page .contact-main { padding-top: 38px; gap: 30px; }
+  .beta-page .contact-intro::before { inset: -20px -40px -45px; opacity: .3; }
+}
+@media (max-width: 500px) {
+  .beta-page .contact-main { padding-top: 28px; }
+  .beta-access-note { margin-top: 16px; }
+  .beta-login { margin-top: 12px; }
+  .beta-page .contact-success { min-height: 340px; }
+}

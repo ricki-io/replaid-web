@@ -1,92 +1,62 @@
 ---
-title: "How Replaid Turns Chats Into Leads in Minutes"
-description: "Learn how Replaid's AI inbox assistant turns messages into leads automatically with smart workflows and unified inboxing."
+title: "Use Your AI Agent to Follow Up on Customer Messages"
+description: "A practical workflow for reading customer questions, preparing useful replies, and qualifying leads with your agent through Replaid."
 date: 2025-10-15
+updatedDate: 2026-09-14
 category: "Product"
-author: "Ricard P"
+author: "Ricard Pons"
+authorUrl: "https://rickimakes.com/"
+socialImage:
+  src: "/og-replaid-ai-assistant-turns-messages-into-leads.png"
+  alt: "Use Your AI Agent to Follow Up on Customer Messages. A message connects to an agent."
 ---
 
-## Turn Every Message into a Lead with Replaid
+A message such as “Can you help with my website?” is a starting point. To move the conversation forward, someone needs to understand the request, ask for missing details, and decide what should happen next.
 
-In today's world, customers don't wait.
+Replaid lets your AI agent help with those steps. It connects supported customer channels to your agent and applies your action policies. Your agent supplies the reasoning, business knowledge, and reply instructions.
 
-They send DMs on Instagram, comment on Facebook, or ask quick questions on WhatsApp. Every message could be a lead, but only if you reply fast enough.
+This guide reflects [Replaid's move to connecting your own agent](/replaid-connects-your-ai-agent-to-your-customers/). It does not assume that Replaid runs an AI assistant for you.
 
-However, when conversations pile up across multiple channels, staying on top of them becomes almost impossible. Messages get lost, leads grow cold, and your brand misses real opportunities.
+## Give the agent a clear definition of a lead
 
-That's exactly why we built Replaid, your new AI inbox assistant that turns messages into leads automatically.
+Before asking an agent to qualify a conversation, tell it what makes an enquiry relevant to your business. Useful inputs include the services you offer, the area you serve, and the information you need before the next step.
 
-## The Problem
+Keep those criteria separate from assumptions. A short message is not evidence of a low budget. A missing detail is a reason to ask a question, not a reason to invent an answer.
 
-Most businesses still handle messages manually. One person checks Instagram. Another handles Facebook comments. Someone else manages WhatsApp.
+You provide these instructions and reference information to your agent. Replaid gives it access to the conversation.
 
-As a result, teams waste hours switching tabs, typing the same replies, and trying to qualify real leads from noise.
+## Read the context before drafting
 
-Fortunately, Replaid fixes this by combining AI automation, unified inboxing, and smart workflows in one simple dashboard.
+Ask the agent to read the full available conversation before proposing a response. The latest message alone may not show what the customer has already explained or what you have already promised.
 
-## How Replaid Works
+For a first test, use a narrow instruction:
 
-With Replaid, you can turn message chaos into a lead generation system that runs on autopilot. The setup takes just a few simple steps.
+> Read my latest unanswered conversation in Replaid. Summarize what the customer needs and identify any missing information. Use only the business information I have given you. Save a draft reply with one useful next question. Do not send it.
 
-### 1. Create Your Account
+This gives you a reply to review without allowing an outbound message.
 
-Start by signing up for Replaid. No setup headaches, no API tokens, and no code.
+## Make the next question useful
 
-Everything runs in the cloud and is ready within minutes.
+Consider this illustrative example. A customer asks whether you can build a booking website. Your business offers that service, but you still need to know whether the customer wants to accept payments online.
 
-### 2. Connect Your Social Media Channels
+A useful draft confirms that the request fits and asks about payments. It should not promise a price, delivery date, or feature that your agent cannot verify from its instructions.
 
-Link Instagram, Facebook Messenger, WhatsApp, email, or any other supported platform.
+Review both the draft and the agent's reasoning. If the response is vague, improve the information you gave the agent before increasing its permissions.
 
-From that moment on, every message arrives in one place, your Replaid dashboard.
+## Record the decision and choose the next step
 
-### 3. Define Your Brand Guidelines
+Where permitted, an agent can request Replaid actions to tag the contact or conversation and record a lead qualification decision with its reason. That decision comes from your agent and your criteria; it is not a guaranteed prediction of a sale.
 
-Tell Replaid how your brand speaks.
+For a sensitive case, the agent can request an escalation. Escalation marks the conversation for human attention and pauses automated replies in Replaid. Someone still needs to review and handle the case.
 
-Set your tone, language, and brand rules so AI always answers in your style. This way, every response feels natural and consistent.
+If a draft is ready, permit sending only when you are comfortable with the workflow. Channel restrictions and conversation state can still prevent an action, so have the agent check the result instead of assuming that a request succeeded.
 
-### 4. Upload Your Knowledge and Connect Databases
+## Measure the work before expanding it
 
-Add FAQs, product details, or support docs, everything your team already knows.
+Start with a small set of conversations. Check whether the agent found the relevant context, asked the right question, and avoided unsupported promises. Track how often you edit a draft before sending it.
 
-In addition, Replaid lets you connect internal databases or live data sources. This means the AI can pull real-time information like prices, stock, bookings, or any custom data you store.
+You can later compare response time and useful next steps with your previous process. Do not treat a faster draft as proof of a higher conversion rate.
 
-As a result, your replies are not only fast but also accurate and always up to date.
+Connecting through MCP does not start automatic follow-up. If you want the agent to run when messages arrive, an external schedule or webhook receiver must start it. That setup is separate from the permissions you give it in Replaid.
 
-### 5. Create One or More Workflows
-
-Workflows are the brain behind your automation.
-
-You can route messages, qualify leads, trigger notifications, or send instant AI replies.
-
-For example, you can create a rule like this:
-
-*If a message includes price or demo, mark it as a hot lead and notify the sales team.*
-
-Therefore, your team focuses on what matters most, closing deals.
-
-### 6. Done. Replaid Runs on Autopilot
-
-Once setup is complete, Replaid starts working for you 24/7.
-
-It filters spam, detects intent, and replies automatically. Meanwhile, your team spends more time building relationships instead of managing inboxes.
-
-## Why Businesses Love Replaid
-
-With Replaid, you don't just organize messages, you turn them into growth opportunities.
-
-- **Save hours** by automating repetitive replies.
-- **Never miss a lead** thanks to AI-powered detection.
-- **Stay consistent** with answers that match your brand tone.
-- **Deploy instantly** with no coding or training required.
-
-According to [HubSpot](https://blog.hubspot.com/service/ai-customer-service), businesses using AI-powered communication tools respond faster, convert better, and build stronger relationships.
-
-## Ready to Turn Messages into Leads?
-
-Replaid brings intelligence, structure, and automation to your inbox so you can focus on your customers instead of your notifications.
-
-👉 [Start today](/get-started) and let Replaid handle your messages while you handle your growth.
-
-Join our early access program and experience the future of message automation.
+[Get started with Replaid](/get-started/) and use the [connection guide](/docs/connect-your-agent/) to test your first draft.

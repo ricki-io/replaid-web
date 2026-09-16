@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SkyHeader from '../components/SkyHeader.astro';
+import SkyFooter from '../components/SkyFooter.astro';
+import { legalOperator } from '../components/legal-operator';
+import { productCopy, betaAccess } from '../components/product-copy';
+import '../styles/landing.css';
+import '../styles/pricing.css';
+
+const foundingPrice = 299;
+const foundingCap = 5;
+const foundingCredits = 50;
+const description = `Founding Lifetime: $${foundingPrice} USD once per team for the first ${foundingCap} founding teams. Includes $${foundingCredits} usage credit. No monthly platform fee. Paid channel usage, tax, and external AI costs are separate.`;
+const guideUrl = '/docs/connect-your-agent/';
+const includedFeatures = [
+  'Connect your own AI agent through MCP or REST',
+  'Read conversations, save drafts, and send supported replies',
+  'Set agent permissions and review recorded actions',
+];
+const pricingQuestions = [
+  {
+    question: 'What does lifetime access include?',
+    answer: 'One payment covers the listed platform access for one team, with no monthly platform fee. Paid channel usage, tax, and your external AI provider are separate. Future channels and roadmap features are not promised as part of this offer.',
+    link: { href: '/terms/#service', label: 'Read the service terms' },
+  },
+  {
+    question: 'How many accounts can my team connect?',
+    answer: productCopy.channelLimits,
+    link: { href: `${guideUrl}#channel`, label: 'Check channel setup and limits' },
+  },
+  {
+    question: 'What happens when my credit runs out?',
+    answer: 'Operations that need paid credit cannot proceed without enough available balance. Add credit to continue those operations. Supported Instagram, Messenger, Telegram, and widget text actions do not spend credit.',
+  },
+  {
+    question: 'Does prepaid credit expire?',
+    answer: 'Yes. Prepaid credit expires one year after it is added to your account. This applies to the included $50 and to credit top-ups.',
+  },
+  {
+    question: 'Does Replaid include an AI agent?',
+    answer: 'No. Bring ChatGPT, Claude, Hermes Agent, or another compatible client, with your own knowledge and instructions. Your external agent or AI provider charges remain separate. Connecting an agent does not start automatic replies.',
+    link: { href: `${guideUrl}#agent`, label: 'See how to connect your agent' },
+  },
+  {
+    question: 'Can I request a refund?',
+    answer: 'Contact us with your payment reference and a description of the issue. Refund requests are reviewed against payment and credit records and applicable law, as set out in the terms.',
+    link: { href: `mailto:${legalOperator.email}`, label: 'Contact us about a payment' },
+  },
+  {
+    question: 'How do I get beta access?',
+    answer: 'Request beta access with your email and use case. We’ll review your request and email you about access. If invited, create your account using the invitation link. The Founding Lifetime offer requires a separate purchase; review the amount, currency, and tax before paying.',
+    link: { href: '/terms/#billing', label: 'Read the payment terms' },
+  },
+];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Replaid',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description,
+  offers: {
+    '@type': 'Offer',
+    name: 'Founding Lifetime',
+    price: String(foundingPrice),
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/LimitedAvailability',
+    url: 'https://replaid.pro/pricing/',
+    description,
+  },
+};
+---
+<Layout title="Pricing | Replaid" description={description} jsonLd={jsonLd}>
+  <div class="sky-landing pricing-page">
+    <SkyHeader />
+    <main id="main" class="pricing-main">
+      <header class="pricing-hero">
+        <p class="pricing-label">Pricing</p>
+        <h1>Founding Lifetime.<br /><span class="hero-highlight">Pay the platform once.</span></h1>
+        <p class="pricing-intro">Your customer inbox, connected to your AI agent.</p>
+      </header>
+
+      <section class="pricing-ltd" aria-labelledby="pricing-ltd-heading">
+        <div class="pricing-ltd-price" aria-label="Founding Lifetime price">
+          <p class="pricing-cap">For the first {foundingCap} founding teams</p>
+          <p class="pricing-amount"><span class="pricing-currency">$</span>{foundingPrice}<span class="pricing-currency-code">USD</span></p>
+          <p class="pricing-payment">Per team. Paid once.</p>
+          <p class="pricing-credit">Includes <strong>${foundingCredits} usage credit</strong></p>
+          <a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a>
+          <p class="pricing-next-step">Beta access is by invitation. Purchase separately.</p>
+          <p class="pricing-exclusions">Paid channel usage, applicable tax, and external AI costs are separate. <a href="#pricing-costs">See all costs</a></p>
+        </div>
+        <div class="pricing-ltd-copy">
+          <span class="pricing-badge">Founding Lifetime</span>
+          <h2 id="pricing-ltd-heading">One license for your team.</h2>
+          <p>No monthly platform fee. Use the agent you choose, with the controls your team needs.</p>
+          <ul class="pricing-includes">
+            {includedFeatures.map(item => <li>{item}</li>)}
+          </ul>
+          <div class="pricing-channel-scope">
+            <h3>Included channel connections</h3>
+            <p>One Instagram account, one Facebook Page for Messenger, one Telegram bot, and one Replaid widget per team.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pricing-costs" id="pricing-costs" aria-labelledby="pricing-costs-heading">
+        <header class="pricing-section-heading">
+          <h2 id="pricing-costs-heading">Know what you pay for.</h2>
+          <p>Platform access is paid once. Any ongoing costs depend on the channels and agent you use.</p>
+        </header>
+        <table class="pricing-cost-table">
+          <caption class="sr-only">Platform, channel, and AI costs for founding teams</caption>
+          <thead><tr><th scope="col">What you use</th><th scope="col">How it is charged</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row">Replaid platform</th>
+              <td><strong>${foundingPrice} USD, paid once per team</strong><span>No monthly platform fee. Includes ${foundingCredits} prepaid usage credit, funded by Replaid.</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Instagram, Messenger, Telegram &amp; widget</th>
+              <td><strong>Included. No usage credit needed.</strong><span>Supported text messages and replies, plus Instagram text comments. <a href={`${guideUrl}#channel`}>View supported actions and limits</a>.</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Paid channel APIs</th>
+              <td><strong>Provider fees, paid from your credit</strong><span>For founding teams, paid API costs such as WhatsApp and X (Twitter) are charged at the same price the provider charges. Availability and supported actions depend on the channel.</span><span class="pricing-rate-links"><a href="https://developers.facebook.com/docs/whatsapp/pricing/">WhatsApp rates</a><a href="https://docs.x.com/x-api/getting-started/pricing">X API rates</a></span></td>
+            </tr>
+            <tr>
+              <th scope="row">Your external AI agent</th>
+              <td><strong>Paid to your agent or AI provider</strong><span>ChatGPT, Claude, Hermes Agent, and other external provider costs are separate. Replaid does not include an AI agent.</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pricing-cost-notes">
+          <p><strong>Optional credit top-ups:</strong> $10, $25, $50, or $100. Add balance when you need it. Credit expires after one year.</p>
+          <p>All amounts are in USD. Applicable tax is calculated at checkout.</p>
+        </div>
+      </section>
+
+      <section class="pricing-faq" aria-labelledby="pricing-faq-heading">
+        <header class="pricing-section-heading">
+          <h2 id="pricing-faq-heading">Before you get started.</h2>
+          <p>The details behind the price.</p>
+        </header>
+        <div class="sky-faq-list">
+          {pricingQuestions.map(faq => (
+            <details class="sky-faq-item">
+              <summary><span>{faq.question}</span><svg class="sky-faq-toggle" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12" /><path class="sky-faq-toggle-vertical" d="M10 4v12" /></svg></summary>
+              <div class="pricing-faq-answer"><p>{faq.answer}</p>{faq.link && <a class="pricing-text-link" href={faq.link.href}>{faq.link.label}</a>}</div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section class="pricing-final" aria-labelledby="pricing-final-heading">
+        <h2 id="pricing-final-heading">Ready to connect<br /><span class="hero-highlight">your agent?</span></h2>
+        <p>${foundingPrice} USD per team, paid once. Includes ${foundingCredits} usage credit.</p>
+        <div class="pricing-final-actions">
+          <a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a>
+          <a class="pricing-text-link" href={guideUrl}>See the setup guide</a>
+        </div>
+        <p class="pricing-next-step">Beta access is by invitation. Purchase separately.</p>
+      </section>
+    </main>
+    <SkyFooter />
+  </div>
+</Layout>

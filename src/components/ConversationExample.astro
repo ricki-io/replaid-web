@@ -1,0 +1,171 @@
+---
+import BrandLogo from './BrandLogo.astro';
+import { productCopy } from './product-copy';
+const channels = [
+  { id: 'whatsapp', name: 'WhatsApp' },
+  { id: 'instagram', name: 'Instagram' },
+  { id: 'messenger', name: 'Messenger' },
+  { id: 'telegram', name: 'Telegram' },
+  { id: 'widget', name: 'Replaid widget' },
+] as const;
+---
+<section id="connections" class="sky-section conversation-section" aria-labelledby="conversation-heading" data-conversation-example>
+  <div class="conversation-showcase">
+    <div class="conversation-intro">
+      <h2 id="conversation-heading">A customer asks.<br />Your agent can answer.</h2>
+      <p>Replaid gives your agent the conversation and carries out the reply, with your permissions.</p>
+      <fieldset class="example-permissions">
+        <legend>Try the permissions in this example</legend>
+        <div class="permission-options">
+          <label><input type="radio" name="example-permission" value="draft" checked /><span>Draft only</span></label>
+          <label><input type="radio" name="example-permission" value="send" /><span>Allow sending</span></label>
+        </div>
+      </fieldset>
+      <p class="permission-explanation" data-permission-explanation>Your agent can prepare a reply. You review it before anything is sent.</p>
+      <a class="conversation-guide" href="/docs/connect-your-agent/">See how to connect your agent<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a>
+    </div>
+    <div class="conversation-demo" aria-label="Example: a customer asks about opening hours">
+      <header class="conversation-demo-header"><span><BrandLogo platform="instagram" />An Instagram conversation</span><span class="example-label">Example</span></header>
+      <ol class="conversation-story">
+        <li class="story-customer">
+          <span class="story-marker" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-6 3V6a2 2 0 0 1 2-2Z" /></svg></span>
+          <div class="story-content"><h3>A customer messages you</h3><p class="customer-message">Hi! Are you open on Saturday?</p></div>
+        </li>
+        <li class="story-agent">
+          <span class="story-marker" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1c1.5 6.5 4.5 9.5 11 11-6.5 1.5-9.5 4.5-11 11C10.5 16.5 7.5 13.5 1 12 7.5 10.5 10.5 7.5 12 1Z" /></svg></span>
+          <div class="story-content"><h3>Your agent prepares the answer</h3><p>It reads the conversation and uses the business knowledge you gave it.</p><span class="example-knowledge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h5" /></svg>Your opening hours: Saturday, 9am–6pm</span></div>
+        </li>
+        <li class="story-permission">
+          <span class="story-marker" aria-hidden="true"><img src="/favicon.svg" width="16" height="18" alt="" /></span>
+          <div class="story-content"><h3>Replaid checks your permissions</h3><div class="permission-check"><span>Send replies</span><span class="permission-state" data-permission-state>Disabled</span></div></div>
+        </li>
+        <li class="story-result">
+          <span class="story-marker" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10" /></svg></span>
+          <div class="story-content"><div class="reply-result" aria-live="polite" aria-atomic="true"><h3 data-result-title>Saved as a draft</h3><p class="agent-message">Yes! We’re open on Saturday from 9am to 6pm.</p><p class="result-note" data-result-note>Ready for your review. Nothing is sent.</p></div></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="conversation-channels">
+    <p>More channels. The same agent.</p>
+    <ul aria-label="Customer channels">
+      {channels.map(channel => <li><BrandLogo platform={channel.id} /><span>{channel.name}</span></li>)}
+      <li class="conversation-channel-more"><span class="more-channel-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg></span><span>More coming</span></li>
+    </ul>
+  </div>
+  <details class="connection-details">
+    <summary>Connection and automation details<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary>
+    <div class="connection-details-content">
+      <div><h3>Connecting your channels</h3><p>{productCopy.availableChannels} {productCopy.futureChannels}</p><p>{productCopy.channelRequirements}</p><h3>Account and message limits</h3><p>{productCopy.channelLimits}</p><h3>Importing recent messages</h3><p>{productCopy.history}</p></div>
+      <div><h3>Running your agent</h3><p>{productCopy.agent} {productCopy.automation} <a href="/docs/connect-your-agent/">Read the connection guide.</a></p></div>
+    </div>
+  </details>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-conversation-example]').forEach(example => {
+    const state = example.querySelector<HTMLElement>('[data-permission-state]')!;
+    const title = example.querySelector<HTMLElement>('[data-result-title]')!;
+    const note = example.querySelector<HTMLElement>('[data-result-note]')!;
+    const explanation = example.querySelector<HTMLElement>('[data-permission-explanation]')!;
+
+    example.querySelectorAll<HTMLInputElement>('input[name="example-permission"]').forEach(input => {
+      input.addEventListener('change', () => {
+        const canSend = input.value === 'send';
+        example.classList.toggle('example-can-send', canSend);
+        state.textContent = canSend ? 'Allowed' : 'Disabled';
+        title.textContent = canSend ? 'Sent to Instagram' : 'Saved as a draft';
+        note.textContent = canSend ? 'The customer gets the reply in the same conversation.' : 'Ready for your review. Nothing is sent.';
+        explanation.textContent = canSend ? 'Your agent can send the reply through Replaid when it runs, within the permissions you set.' : 'Your agent can prepare a reply. You review it before anything is sent.';
+      });
+    });
+  });
+</script>
+<style>
+  .conversation-section { padding: 24px 24px 42px; }
+  .conversation-showcase { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: center; gap: 42px; padding: 38px 32px; border-radius: 32px; background: #f2f7fc; }
+  .conversation-intro > p { margin-top: 20px; color: #64707f; font-size: 15px; line-height: 1.75; }
+  .example-permissions { margin-top: 30px; border: 0; padding: 0; min-width: 0; }
+  .example-permissions legend { margin-bottom: 12px; color: #385267; font-size: 12px; font-weight: 500; }
+  .permission-options { display: inline-flex; padding: 4px; border-radius: 14px; background: #e3edf5; gap: 4px; }
+  .permission-options label { position: relative; cursor: pointer; }
+  .permission-options input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+  .permission-options span { display: block; padding: 10px 15px; border-radius: 10px; color: #52677a; font-size: 12px; font-weight: 500; transition: background .15s, color .15s, box-shadow .15s; }
+  .permission-options input:checked + span { background: #fff; color: #10151b; box-shadow: 0 2px 5px rgb(42 87 122 / 8%); }
+  .permission-options input:focus-visible + span { outline: 3px solid #075caa; outline-offset: 3px; }
+  .conversation-intro > .permission-explanation { margin-top: 14px; min-height: 66px; font-size: 12px; line-height: 1.7; }
+  .conversation-guide { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; font-size: 12px; font-weight: 600; }
+  .conversation-guide:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .conversation-demo { min-width: 0; padding: 22px; border-radius: 24px; background: #fff; box-shadow: 0 16px 38px rgb(44 87 119 / 7%), 0 2px 5px rgb(44 87 119 / 3%); }
+  .conversation-demo-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 18px; border-bottom: 1px solid #eef2f6; }
+  .conversation-demo-header > span:first-child { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; }
+  .conversation-demo-header :global(.brand-logo) { width: 23px; height: 23px; border-radius: 7px; }
+  .conversation-demo-header :global(.brand-logo svg) { width: 18px; height: 18px; }
+  .example-label { color: #71808d; font-size: 10px; }
+  .conversation-story { margin-top: 22px; }
+  .conversation-story li { position: relative; display: flex; gap: 12px; padding-bottom: 22px; }
+  .conversation-story li:last-child { padding-bottom: 0; }
+  .conversation-story li:not(:last-child)::before { content: ''; position: absolute; left: 14px; top: 31px; bottom: 0; border-left: 1px solid #e1eaf2; }
+  .story-marker { position: relative; flex: none; display: grid; place-items: center; width: 29px; height: 29px; border-radius: 10px; background: #f2f7fc; color: #0875d5; }
+  .story-customer .story-marker { color: #aa3980; background: #fff0f8; }
+  .story-content { flex: 1; min-width: 0; padding-top: 5px; }
+  .story-content h3 { font-size: 12px; font-weight: 600; line-height: 1.6; }
+  .story-content > p { margin-top: 5px; color: #64707f; font-size: 12px; line-height: 1.6; }
+  .story-content > .customer-message { width: fit-content; padding: 11px 13px; margin-top: 10px; border-radius: 12px 12px 12px 3px; background: #fff0f8; color: #973473; font-size: 13px; }
+  .example-knowledge { display: flex; align-items: center; gap: 6px; margin-top: 10px; color: #536d83; font-size: 10px; line-height: 1.6; }
+  .example-knowledge svg { flex: none; }
+  .permission-check { display: flex; align-items: center; justify-content: space-between; gap: 12px; max-width: 255px; margin-top: 9px; padding: 8px 11px; border: 1px solid #e6edf3; border-radius: 9px; color: #64707f; font-size: 11px; }
+  .permission-state { color: #64707f; font-weight: 500; }
+  .reply-result { border-radius: 13px; padding: 14px; background: #f0f6ff; }
+  .reply-result h3 { color: #30638e; }
+  .agent-message { margin-top: 7px; color: #183e60; font-size: 13px; line-height: 1.6; }
+  .result-note { min-height: 32px; margin-top: 9px; font-size: 10px; color: #536d83; line-height: 1.6; }
+  .example-can-send .permission-state { color: #267443; }
+  .example-can-send .reply-result { background: #eff8f1; }
+  .example-can-send .reply-result h3, .example-can-send .story-result .story-marker { color: #267443; }
+  .conversation-channels { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 8px; border-bottom: 1px solid #e6edf3; }
+  .conversation-channels > p { font-size: 13px; font-weight: 500; }
+  .conversation-channels ul { display: flex; gap: 18px; align-items: center; }
+  .conversation-channels li { display: flex; align-items: center; gap: 7px; font-size: 11px; color: #52677a; }
+  .conversation-channels :global(.brand-logo) { width: 24px; height: 24px; border-radius: 7px; }
+  .conversation-channels :global(.brand-logo svg), .conversation-channels :global(.brand-logo img) { width: 20px; height: 20px; }
+  .conversation-channels :global(.brand-logo.widget svg) { width: 26px; height: 26px; }
+  .more-channel-icon { display: grid; place-items: center; width: 24px; height: 24px; flex: none; border-radius: 7px; background: #edf4fa; color: #52677a; }
+  .conversation-channel-more > span:last-child { line-height: 1.4; }
+  .connection-details { margin: 20px 8px 0; }
+  .connection-details > summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; cursor: pointer; list-style: none; color: #64707f; font-size: 12px; }
+  .connection-details > summary::-webkit-details-marker { display: none; }
+  .connection-details[open] > summary svg { transform: rotate(180deg); }
+  .connection-details-content { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; padding-top: 22px; }
+  .connection-details-content h3 { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+  .connection-details-content p + h3 { margin-top: 20px; }
+  .connection-details-content p { color: #64707f; font-size: 12px; line-height: 1.8; }
+  .connection-details-content a { color: #075caa; text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 900px) {
+    .conversation-showcase { padding: 28px 22px; gap: 24px; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+    .conversation-demo { padding: 18px; }
+    .conversation-channels { flex-direction: column; gap: 18px; }
+  }
+  @media (max-width: 700px) {
+    .conversation-section { padding: 24px 12px 30px; }
+    .conversation-showcase { grid-template-columns: 1fr; gap: 24px; padding: 30px 16px 18px; border-radius: 26px; }
+    .conversation-intro { text-align: center; padding: 0 4px; }
+    .conversation-intro > p { max-width: 380px; margin: 16px auto 0; font-size: 14px; }
+    .example-permissions { margin-top: 24px; }
+    .example-permissions legend { width: 100%; }
+    .permission-options span { padding: 10px 13px; }
+    .conversation-intro > .permission-explanation { max-width: 300px; min-height: 62px; margin-top: 12px; font-size: 12px; }
+    .conversation-guide { margin-top: 10px; }
+    .conversation-demo { padding: 17px 13px; border-radius: 18px; }
+    .conversation-demo-header { gap: 7px; }
+    .conversation-demo-header > span:first-child { font-size: 11px; }
+    .conversation-story li { gap: 8px; padding-bottom: 20px; }
+    .story-content > .customer-message, .agent-message { font-size: 12px; }
+    .reply-result { padding: 11px; }
+    .conversation-channels { padding: 24px 0; }
+    .conversation-channels ul { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 8px; }
+    .conversation-channels li { flex-direction: column; text-align: center; font-size: 11px; gap: 7px; }
+    .conversation-channels :global(.brand-logo), .more-channel-icon { width: 28px; height: 28px; }
+    .connection-details-content { grid-template-columns: 1fr; gap: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .permission-options span { transition: none; } }
+</style>

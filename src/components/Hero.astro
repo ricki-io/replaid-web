@@ -1,134 +1,19 @@
 ---
-// 3D Interactive Hero — Three.js particle vortex with overlaid typography
+import SkyHeader from './SkyHeader.astro';
+import { betaAccess } from './product-copy';
+import ConnectorGraphic from './ConnectorGraphic.astro';
 ---
-
-<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-  <!-- Three.js canvas container — fills the entire hero behind content -->
-  <div id="hero-canvas-container" class="hero-canvas"></div>
-
-  <!-- Gradient overlay for text readability -->
-  <div class="hero-overlay"></div>
-
-  <!-- Hero content — layered above the 3D scene -->
-  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-24 sm:py-32 w-full box-border">
-    <div class="max-w-5xl mx-auto text-center">
-      <!-- Badge -->
-      <a href="https://www.uneed.best/tool/replaid" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mb-8 fade-in-up hover:opacity-80 transition-opacity">
-        <span class="mono-label text-ink-100">Voted #1 on Uneed</span>
-        <span class="text-accent">★</span>
+<section class="sky-hero" aria-labelledby="hero-heading">
+  <SkyHeader />
+  <div class="sky-hero-copy">
+    <h1 id="hero-heading">Let <span class="hero-highlight">your AI agent</span> read<br class="desktop-break" /> and reply to customer messages.</h1>
+    <p>Connect your channels to ChatGPT, Claude, or Hermes Agent. You bring the knowledge and instructions, and control what it can read, draft, and send.</p>
+    <span class="hero-supporting">
+      <a class="hero-uneed" href="https://www.uneed.best/tool/replaid" target="_blank" rel="noopener noreferrer">
+        <strong>Voted #1 on Uneed</strong><span aria-hidden="true">★</span>
       </a>
-
-      <!-- Massive headline -->
-      <h1 class="hero-headline fade-in-up">
-        Money is in<br/>
-        your <span class="text-accent">inbox</span><span class="text-white">.</span>
-      </h1>
-
-      <!-- Subheadline -->
-      <p class="text-lg sm:text-xl md:text-2xl text-ink-100 max-w-2xl mx-auto mb-12 leading-relaxed fade-in-up font-light hero-sub">
-        AI-powered inbox assistant that qualifies leads and triggers automations to keep your pipeline moving 24/7.
-      </p>
-
-      <!-- CTAs -->
-      <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12 fade-in-up">
-        <a href="https://app.replaid.pro/register" class="btn-type">
-          Start Free Trial
-        </a>
-        <a href="#how-it-works" class="btn-type-outline">
-          How It Works
-        </a>
-      </div>
-
-      <!-- Connects With -->
-      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-16 fade-in-up">
-        <span class="mono-label shrink-0">Connects With</span>
-        <div class="flex flex-wrap justify-center gap-4 sm:gap-8">
-          <span class="font-display text-base sm:text-lg font-medium text-ink-200">Instagram</span>
-          <span class="font-display text-base sm:text-lg font-medium text-ink-200">WhatsApp</span>
-          <span class="font-display text-base sm:text-lg font-medium text-ink-200">Messenger</span>
-          <span class="font-display text-base sm:text-lg font-medium text-ink-200">Telegram</span>
-          <span class="font-display text-base sm:text-lg font-medium text-ink-200">Web Widget</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Stats bar -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 fade-in-up text-center max-w-4xl lg:mx-auto hero-stats">
-      <div>
-        <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">24/7</div>
-        <div class="mono-label mt-2">Always On</div>
-      </div>
-      <div>
-        <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Zero</div>
-        <div class="mono-label mt-2">Leads Missed</div>
-      </div>
-      <div>
-        <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Every</div>
-        <div class="mono-label mt-2">Channel Connected</div>
-      </div>
-      <div>
-        <div class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Smart</div>
-        <div class="mono-label mt-2">Agentic Workflow</div>
-      </div>
-    </div>
+    </span>
+    <a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a>
   </div>
-
-  <!-- Bottom gradient fade into next section -->
-  <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none"></div>
+  <ConnectorGraphic />
 </section>
-
-<style>
-  .hero-canvas {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    will-change: transform;
-  }
-
-  .hero-canvas :global(canvas) {
-    display: block;
-    width: 100% !important;
-    height: 100% !important;
-  }
-
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    background: radial-gradient(
-      ellipse 80% 70% at 50% 50%,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0.15) 50%,
-      rgba(0, 0, 0, 0.5) 100%
-    );
-    pointer-events: none;
-  }
-
-  .hero-headline {
-    font-size: clamp(3rem, 10vw, 8rem);
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-    margin-bottom: 2rem;
-  }
-
-  .hero-stats {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 12px;
-    padding: 2rem 1.5rem;
-  }
-</style>
-
-<script>
-  // Dynamic import keeps Three.js (~122KB gzip) out of the critical rendering path
-  const container = document.getElementById('hero-canvas-container');
-  if (container) {
-    requestAnimationFrame(() => {
-      import('../scripts/hero-scene').then(({ initHeroScene }) => {
-        initHeroScene(container);
-      });
-    });
-  }
-</script>

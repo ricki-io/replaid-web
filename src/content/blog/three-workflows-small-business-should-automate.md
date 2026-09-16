@@ -1,105 +1,72 @@
 ---
-title: "The 3 Workflows Every Small Business Should Automate Today"
-description: "Learn how to automate lead qualification, support triage, and inbox prioritization to save time and increase conversions."
-author: "Ricard P"
+title: "3 Customer Message Workflows for Your AI Agent"
+description: "Start with lead qualification, support triage, and inbox priorities. Use clear instructions, limited permissions, and draft review for each workflow."
+author: "Ricard Pons"
+authorUrl: "https://rickimakes.com/"
 date: 2025-10-22
+updatedDate: 2026-09-14
 category: "Automation"
+socialImage:
+  src: "/og-three-workflows-small-business-should-automate.png"
+  alt: "3 Customer Message Workflows for Your AI Agent. Qualify leads, route support, and set priorities."
 ---
 
-Running a small business means wearing every hat: sales, support, marketing, and sometimes even IT.
+A useful first workflow has a clear input, a small set of permitted actions, and a result you can check. Customer messages are a good place to start because you can review what the agent read and what it proposed to do.
 
-But here's the truth: most of those daily messages, emails, and DMs do not need your personal touch. They just need to be handled quickly, accurately, and in your tone.
+With Replaid, your own agent reads conversations from connected channels and requests actions through MCP or REST. You provide the business knowledge and instructions. Replaid checks the requested actions against your policies.
 
-That is where automation saves your time and your sanity. With the right workflows, you can respond faster, qualify leads automatically, and keep customers happy, all without lifting a finger.
+This guide has been updated for [the current Replaid product](/replaid-connects-your-ai-agent-to-your-customers/). The examples below are suggested workflows, not results from customer deployments.
 
-Let's walk through the three essential workflows every small business should set up today using AI and Replaid.
+## 1. Check whether an enquiry fits your business
 
-## 1. The Lead Qualification Workflow
+**Input:** a conversation from a potential customer.
 
-Leads often arrive disguised as short messages like "price?", "do you ship to Italy?", or "can I book a demo?". Behind those quick questions are people ready to buy.
+Give your agent the criteria for a relevant enquiry. For example, a service business may need to know the type of work, the location, and the requested timing before deciding on the next step.
 
-The problem is that by the time you find those DMs among the noise, they have already gone cold.
+Ask the agent to read the conversation, list what is known, and identify what is missing. It can save a draft that asks for the next useful detail. With the required permissions, it can also record a lead qualification decision and a reason in Replaid.
 
-With Replaid, you can automate how those messages are detected, tagged, and replied to instantly.
+Start with this instruction:
 
-### How it works:
+> Read this conversation and compare the request with my lead criteria. Explain which criteria are met and which facts are missing. Save a draft asking for one missing detail. Do not send it or make a qualification decision yet.
 
-- **Detect intent** – Replaid's AI scans all incoming messages for buying signals like price, quote, booking, demo, or order.
-- **Tag as "Hot Lead"** – Any message with clear purchase intent gets a lead tag automatically.
-- **Instant reply** – The AI sends a friendly, on-brand message like: "Hey! 👋 Great to hear from you, here's the quick link to book a demo or check pricing 👉 [link]."
-- **Notify your team** – A Slack or email alert lets you or your sales rep jump in when needed.
+**Check:** does the draft ask for useful information without guessing at budget, intent, or personal details? Permit qualification actions only after the agent applies your criteria consistently.
 
-### Why it matters:
+## 2. Prepare a support answer or hand the case to a person
 
-Every second counts. Studies show that replying within 10 minutes can increase conversions by more than 400%. With automation, you can do it in seconds, even while you sleep.
+**Input:** a customer asking for help.
 
-## 2. The Support Triage Workflow
+Give your agent your support instructions and the reference material it may use. It can read the available context, prepare an answer, and flag information it cannot verify.
 
-Customer support messages are part of daily business life, but replying to each one manually can drain your entire day.
+Define the cases that need human attention. A complaint, an exception to your refund policy, or a request that depends on missing account information may need review rather than a confident reply.
 
-Shipping times, order updates, and password resets are predictable questions with answers you already have in your FAQs or templates.
+Try:
 
-Replaid allows AI to use that existing knowledge to reply instantly and only escalate what truly needs a human response.
+> Read this support conversation. Use my support instructions to draft an answer. If the answer needs information I have not provided, explain what is missing. Do not promise a refund or send a reply.
 
-### How it works:
+Where allowed, your agent can request an escalation in Replaid. This marks the conversation for human attention and pauses automated replies. Decide who will handle those cases and how they will know to check them; escalation alone does not resolve the customer's problem.
 
-- **Centralize your inbox** – Connect Instagram, WhatsApp, Facebook, or email into Replaid's unified dashboard.
-- **Upload your knowledge base** – Add FAQs, policies, and docs so AI always gives accurate answers.
-- **Reply instantly** – Example: "When will my order arrive?" → "Your order ships within 24h and usually arrives in 3–5 days 🚚."
-- **Escalate smartly** – If a message shows frustration or complexity, Replaid flags it for human attention.
+**Check:** does the agent use the approved information and hand over uncertain cases with a useful summary?
 
-### Why it matters:
+## 3. Find the conversations that need attention
 
-Customers expect fast and consistent help. Automating repetitive support messages saves hours while keeping your brand tone aligned and professional.
+**Input:** a set of open conversations.
 
-## 3. The Inbox Prioritization Workflow
+Ask your agent to review the available conversations and explain which ones need a response. Your instructions might prioritize a customer waiting for clarification or a support case that needs a person.
 
-When you are managing conversations across Instagram, WhatsApp, Facebook, and email, not every message deserves the same attention.
+Use a read-only request first:
 
-Some are hot leads. Others are support requests. And many are distractions that take time away from real opportunities.
+> Review my open conversations in Replaid. List the ones that need my attention, with a short reason and a suggested next step. Do not reply, archive, assign, or change tags.
 
-Manually sorting through all of that noise costs time, focus, and potential sales.
+Once that list is useful, you can permit specific actions such as tagging or assigning conversations. Keep the criteria explicit. An agent should not archive a difficult question just to make the inbox look clear.
 
-Replaid uses AI to automatically prioritize what matters most so you and your team can focus on real customers, not clutter.
+**Check:** is each priority supported by something in the conversation? Review the items it did not select as well as the ones it did.
 
-### How it works:
+## Decide how each workflow starts
 
-- **Detect intent and tone** – Replaid scans every message to understand its purpose, such as lead, support, pre-sale question, or spam.
-- **Auto-tag and sort** – Each message is labeled and routed into the right category inside your unified inbox.
-- **Flag priorities** – Urgent or high-value leads are highlighted and moved to the top of your queue.
-- **Filter noise** – Spam, irrelevant, or repetitive messages are automatically muted or archived.
+An MCP connection makes Replaid tools available when your agent runs. It does not run these workflows by itself.
 
-### Why it matters:
+You can start them with a prompt. For unattended processing, use an external schedule or a webhook receiver that starts your agent. Configure that runner to check action results and avoid sending the same reply again after a retry.
 
-An organized inbox saves hours every week. By letting AI classify and prioritize conversations, you always know which messages drive sales, which need attention, and which can wait.
+Begin with one workflow and one channel. Review drafts and action outcomes before expanding the scope. Count the drafts you edit, incorrect decisions, and cases that need a person. Those checks are more useful than assuming that automation will improve sales.
 
-## Putting It All Together
-
-These three workflows—Lead Qualification, Support Triage, and Inbox Prioritization—form the foundation of an always-on, fully automated customer experience.
-
-Once set up, Replaid runs 24/7 while you focus on growth.
-
-- **Before:** 6-hour response times, missed DMs, and waiting customers.
-- **After:** Replies in seconds, qualified leads on autopilot, and happier clients.
-
-Automation does not remove your human touch. It enhances it by helping you focus your time where it truly matters.
-
-## How to Build Them in Replaid
-
-1. **Connect your channels** – One click to sync Instagram, WhatsApp, Facebook, or email.
-2. **Add your brand knowledge** – Upload FAQs, product info, and tone guidelines.
-3. **Create workflows** – Define triggers like "price", "order", or "thank you".
-4. **Set actions** – Auto-reply, tag, assign, or notify team members.
-5. **Test and watch** – Replaid starts replying instantly and improves with every interaction.
-
-Within days, your inbox transforms from chaos into organized clarity.
-
-## The Bottom Line
-
-Automation is not just for big companies—it is for smart ones.
-
-Setting up these three workflows today means more time, more sales, and fewer missed opportunities tomorrow.
-
-Start simple. Automate your lead replies, support messages, and follow-ups, then scale from there.
-
-👉 [Start your free trial](/get-started) and build your first three workflows today. Your future self and your inbox will thank you.
+[Explore Replaid](/get-started/), then follow the [connection guide](/docs/connect-your-agent/) to connect your agent and test its first draft.

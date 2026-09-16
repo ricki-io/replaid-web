@@ -1,50 +1,50 @@
 ---
 import '@fontsource-variable/inter';
-import '@fontsource-variable/space-grotesk';
-import '@fontsource-variable/jetbrains-mono';
+import CookieConsent from '../components/CookieConsent.astro';
+import '../styles/global.css';
 
 export interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  ogImageAlt?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  ogImageType?: string;
   type?: string;
   jsonLd?: Record<string, any> | Record<string, any>[];
 }
 
-const canonicalURL = new URL(Astro.url.pathname, 'https://replaid.pro');
+const canonicalPath = /(?:\/|\.html)$/.test(Astro.url.pathname) ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonicalURL = new URL(canonicalPath, 'https://replaid.pro/');
 const {
   title,
-  description = "The AI inbox that turns messages into leads.",
+  description = "A customer inbox for your AI agent. Connect channels, control actions, and inspect results.",
   ogImage = "/og-image.png",
+  ogImageAlt,
+  ogImageWidth,
+  ogImageHeight,
+  ogImageType,
   type = "website",
   jsonLd,
 } = Astro.props;
+const isDefaultSocialImage = ogImage === "/og-image.png";
+const socialImageAlt = ogImageAlt ?? (isDefaultSocialImage
+  ? "Replaid connects customer channels to your AI agent. Let your AI agent read and reply to customer messages."
+  : title);
 
-const isProd = import.meta.env.PROD;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-appearance="light">
   <head>
-    {isProd && (
-      <Fragment>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-T2C7LJY6CL"></script>
-        <script is:inline>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-T2C7LJY6CL');
-        </script>
-      </Fragment>
-    )}
-
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="canonical" href={canonicalURL.href} />
 
     <!-- Open Graph -->
@@ -53,6 +53,10 @@ const isProd = import.meta.env.PROD;
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:image" content={new URL(ogImage, 'https://replaid.pro').href} />
+    <meta property="og:image:alt" content={socialImageAlt} />
+    {(ogImageType || isDefaultSocialImage) && <meta property="og:image:type" content={ogImageType ?? 'image/png'} />}
+    {(ogImageWidth || isDefaultSocialImage) && <meta property="og:image:width" content={ogImageWidth ?? 1200} />}
+    {(ogImageHeight || isDefaultSocialImage) && <meta property="og:image:height" content={ogImageHeight ?? 630} />}
     <meta property="og:site_name" content="Replaid" />
 
     <!-- Twitter Card -->
@@ -63,137 +67,23 @@ const isProd = import.meta.env.PROD;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, 'https://replaid.pro').href} />
 
+    <meta name="twitter:image:alt" content={socialImageAlt} />
+
     {jsonLd && (
       <script type="application/ld+json" set:html={JSON.stringify(Array.isArray(jsonLd) ? jsonLd : [jsonLd])} />
     )}
 
     <title>{title}</title>
-    
+
   </head>
-  <body class="min-h-screen bg-ink-950 text-white antialiased">
-    <div class="overflow-x-hidden w-full">
+  <body>
+    <a href="#main" class="skip-link">
+      Skip to main content
+    </a>
+    <div class="site-content">
       <slot />
     </div>
-    
-    <style is:global>
-      body {
-        font-family: 'Inter Variable', system-ui, sans-serif;
-        background: #000;
-      }
+    <CookieConsent />
 
-      h1, h2, h3, h4, h5, h6 {
-        font-family: 'Space Grotesk Variable', system-ui, sans-serif;
-        font-weight: 700;
-      }
-      
-      ::selection {
-        background-color: #93e85f;
-        color: #000;
-      }
-      
-      html {
-        scroll-behavior: smooth;
-        overflow-x: hidden;
-      }
-      
-      /* Typography First button - text-driven */
-      .btn-type {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.875rem 2rem;
-        font-family: 'Space Grotesk Variable', system-ui, sans-serif;
-        font-weight: 600;
-        font-size: 1rem;
-        letter-spacing: -0.02em;
-        background: #fff;
-        color: #000;
-        border: none;
-
-        transition: all 0.15s ease;
-      }
-
-      @media (min-width: 640px) {
-        .btn-type {
-          padding: 1rem 2.5rem;
-          font-size: 1.125rem;
-        }
-      }
-      
-      .btn-type:hover {
-        background: #93e85f;
-        color: #fff;
-      }
-      
-      .btn-type-outline {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.875rem 2rem;
-        font-family: 'Space Grotesk Variable', system-ui, sans-serif;
-        font-weight: 600;
-        font-size: 1rem;
-        letter-spacing: -0.02em;
-        background: transparent;
-        color: #fff;
-        border: 2px solid #fff;
-
-        transition: all 0.15s ease;
-      }
-
-      @media (min-width: 640px) {
-        .btn-type-outline {
-          padding: 1rem 2.5rem;
-          font-size: 1.125rem;
-        }
-      }
-      
-      .btn-type-outline:hover {
-        background: #fff;
-        color: #000;
-      }
-      
-      /* Monospace label */
-      .mono-label {
-        font-family: 'JetBrains Mono Variable', monospace;
-        font-size: 0.75rem;
-        font-weight: 500;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: #999;
-      }
-      
-      /* Fade in */
-      .fade-in-up {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
-      }
-      
-      .fade-in-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      
-      /* Background text */
-      .bg-text {
-        position: absolute;
-        font-family: 'Space Grotesk Variable', system-ui, sans-serif;
-        font-weight: 700;
-        color: rgba(255,255,255,0.03);
-        pointer-events: none;
-        user-select: none;
-        white-space: nowrap;
-      }
-    </style>
-
-    <script>
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
-    </script>
   </body>
 </html>

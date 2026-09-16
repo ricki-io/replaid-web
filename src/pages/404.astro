@@ -1,39 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SkyHeader from '../components/SkyHeader.astro';
+import SkyFooter from '../components/SkyFooter.astro';
+import '../styles/landing.css';
+import '../styles/not-found.css';
 ---
 
-<Layout title="404 — Page Not Found | Replaid" description="The page you were looking for does not exist.">
-  <Header />
-
-  <main class="relative overflow-hidden pt-28 sm:pt-36 pb-20 sm:pb-28 min-h-[calc(100vh-10rem)] flex items-center">
-    <div class="bg-text text-[28vw] sm:text-[18vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">404</div>
-
-    <section class="relative mx-auto max-w-5xl px-6 w-full">
-      <div class="mx-auto max-w-3xl text-center">
-        <div class="mono-label mb-6 fade-in-up">Page Not Found</div>
-
-        <h1 class="text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] mb-6 fade-in-up">
-          This page is off the
-          <span class="text-accent"> map</span><span class="text-white">.</span>
-        </h1>
-
-        <p class="text-lg sm:text-xl text-ink-200 leading-relaxed max-w-2xl mx-auto mb-10 fade-in-up">
-          The link may be outdated, the URL may be wrong, or the page may have moved. Head back to the main site and keep your pipeline moving.
-        </p>
-
-        <div class="flex flex-col sm:flex-row justify-center gap-4 fade-in-up">
-          <a href="/" class="btn-type">Back Home</a>
-          <a href="/get-started" class="btn-type-outline">Get Started</a>
+<Layout title="404 — Page not found | Replaid" description="We could not find this page. Return to Replaid or open the connection guide.">
+  <div class="sky-landing error-page">
+    <SkyHeader />
+    <main id="main">
+      <section class="error-content" aria-labelledby="error-heading">
+        <div class="error-scene" aria-hidden="true">
+          <span class="error-code">404</span>
         </div>
-
-        <div class="mt-12 text-sm sm:text-base text-ink-300 fade-in-up">
-          Looking for something specific? Try the <a href="/blog" class="text-accent hover:underline">blog</a> or <a href="/contact" class="text-accent hover:underline">contact us</a>.
+        <p class="error-label">404 / Page not found</p>
+        <h1 id="error-heading">We couldn’t find<br /><span class="hero-highlight">this page.</span></h1>
+        <p class="error-description">The link may have changed, or the address may be incorrect. Let’s get you back to the right place.</p>
+        <div class="error-actions">
+          <a class="sky-button" href="/">Back to homepage</a>
+          <a class="error-guide" href="/docs/connect-your-agent/">Open connection guide<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></a>
         </div>
-      </div>
-    </section>
-  </main>
-
-  <Footer />
+        <p class="error-help">Still need a hand? <a href="/contact/">Contact us</a></p>
+      </section>
+    </main>
+    <SkyFooter />
+  </div>
 </Layout>

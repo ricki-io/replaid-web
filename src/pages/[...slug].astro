@@ -1,19 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { getCollection } from 'astro:content';
+import SkyHeader from '../components/SkyHeader.astro';
+import SkyFooter from '../components/SkyFooter.astro';
+import BlogMeta from '../components/BlogMeta.astro';
+import BlogPostCard from '../components/BlogPostCard.astro';
+import '../styles/landing.css';
+import '../styles/blog.css';
+import { getCollection, getEntry, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: post,
   }));
 }
 
 const post = Astro.props;
-const { Content } = await post.render();
+const { Content, headings } = await render(post);
+const currentArticle = post.data.supersededBy ? await getEntry(post.data.supersededBy) : undefined;
+if (post.data.historical && (!currentArticle || currentArticle.data.draft || currentArticle.data.historical)) {
+  throw new Error(`Historical article ${post.id} must link to a published current article.`);
+}
+const socialImage = post.data.socialImage;
+const contents = headings.filter(heading => heading.depth === 2);
+const related = (await getCollection('blog', ({ id, data }) => !data.draft && !data.historical && id !== post.id))
+  .sort((a, b) => Number(b.data.category === post.data.category) - Number(a.data.category === post.data.category) || b.data.date.valueOf() - a.data.date.valueOf() || a.id.localeCompare(b.id))
+  .slice(0, 2);
 
 const blogJsonLd = [
   {
@@ -24,10 +37,17 @@ const blogJsonLd = [
     "author": {
       "@type": "Person",
       "name": post.data.author,
+      "url": post.data.authorUrl,
     },
     "datePublished": post.data.date.toISOString(),
-    "dateModified": post.data.date.toISOString(),
-    ...(post.data.image && { "image": new URL(post.data.image, 'https://replaid.pro').href }),
+    "dateModified": (post.data.updatedDate ?? post.data.date).toISOString(),
+    ...(socialImage ? { "image": {
+      "@type": "ImageObject",
+      "url": new URL(socialImage.src, 'https://replaid.pro').href,
+      "width": 1200,
+      "height": 630,
+      "caption": socialImage.alt,
+    } } : post.data.image ? { "image": new URL(post.data.image, 'https://replaid.pro').href } : {}),
     "publisher": {
       "@type": "Organization",
       "name": "Replaid",
@@ -35,7 +55,7 @@ const blogJsonLd = [
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://replaid.pro/${post.slug}`
+      "@id": `https://replaid.pro/${post.id}/`
     }
   },
   {
@@ -43,111 +63,53 @@ const blogJsonLd = [
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://replaid.pro/" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://replaid.pro/blog" },
-      { "@type": "ListItem", "position": 3, "name": post.data.title, "item": `https://replaid.pro/${post.slug}` }
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://replaid.pro/blog/" },
+      { "@type": "ListItem", "position": 3, "name": post.data.title, "item": `https://replaid.pro/${post.id}/` }
     ]
   }
 ];
 ---
 
-<Layout title={`${post.data.title} — Replaid Blog`} description={post.data.description} ogImage={post.data.image || "/og-image.png"} type="article" jsonLd={blogJsonLd}>
-  <Header />
+<Layout title={`${post.data.seoTitle ?? post.data.title} — Replaid Blog`} description={post.data.description} ogImage={socialImage?.src ?? post.data.image ?? "/og-image.png"} ogImageAlt={socialImage?.alt} ogImageWidth={socialImage ? 1200 : undefined} ogImageHeight={socialImage ? 630 : undefined} ogImageType={socialImage ? "image/png" : undefined} type="article" jsonLd={blogJsonLd}>
+  <div class="sky-landing blog-page article-page">
+    <SkyHeader />
+    <main id="main" class="article-main">
+      <article>
+        <header class="article-header">
+          <a class="article-back" href="/blog/"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m5-5-5 5 5 5" /></svg>All articles</a>
+          <p class="blog-category">{post.data.category}</p>
+          <h1>{post.data.title}</h1>
+          <p class="article-description">{post.data.description}</p>
+          <div class="article-byline"><span class="article-author">By{' '}{post.data.authorUrl ? <a href={post.data.authorUrl} rel="author">{post.data.author}</a> : post.data.author}</span><BlogMeta post={post} showPublished /></div>
+        </header>
 
-  <main class="pt-32 pb-20">
-    <article class="mx-auto max-w-3xl px-6">
-      <!-- Header -->
-      <header class="mb-12">
-        <a href="/blog" class="mono-label text-ink-200 hover:text-accent transition-colors mb-6 inline-block">
-          ← Back to Blog
-        </a>
-        <div class="mono-label mb-4">{post.data.category}</div>
-        <h1 class="font-display text-display-sm font-bold mb-6 leading-tight">
-          {post.data.title}
-        </h1>
-        <div class="flex items-center gap-4 text-ink-200">
-          <span class="font-medium">{post.data.author}</span>
-          <span>•</span>
-          <time datetime={post.data.date.toISOString()}>
-            {post.data.date.toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })}
-          </time>
+        {post.data.historical && currentArticle && <aside class="article-history" aria-labelledby="article-history-heading">
+          <span class="blog-history-label">Historical article · {post.data.date.getUTCFullYear()} launch</span>
+          <h2 id="article-history-heading">Replaid has changed since this was published.</h2>
+          <p>This is the original launch announcement. Its features, channel availability, and promises describe the earlier product, not Replaid today. Replaid now connects customer messages to the AI agent you bring.</p>
+          <a href={`/${currentArticle.id}/`}>Read what changed<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></a>
+        </aside>}
+
+        {contents.length > 0 && <details class="article-mobile-contents">
+          <summary>On this page<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary>
+          <nav aria-label="Article sections"><ul>{contents.map(heading => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ul></nav>
+        </details>}
+
+        <div class="article-layout">
+          {contents.length > 0 && <aside class="article-sidebar"><nav class="article-contents" aria-label="On this page"><p>On this page</p><ul>{contents.map(heading => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ul><a class="article-back-top" href="#main">Back to top ↑</a></nav></aside>}
+          <div class="article-prose"><Content /></div>
         </div>
-      </header>
+      </article>
 
-      <!-- Content -->
-      <div class="prose">
-        <Content />
-      </div>
-
-      <!-- Footer -->
-      <footer class="mt-16 pt-8 border-t border-ink-800">
-        <a href="/blog" class="mono-label text-ink-200 hover:text-accent transition-colors">
-          ← Back to Blog
-        </a>
-      </footer>
-    </article>
-  </main>
-
-  <Footer />
+      {related.length > 0 && <section class="article-related" aria-labelledby="related-heading">
+        <div class="article-related-heading"><h2 id="related-heading">Keep reading</h2><a href="/blog/">All articles<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></a></div>
+        <div class="blog-list">{related.map(relatedPost => <BlogPostCard post={relatedPost} />)}</div>
+      </section>}
+    </main>
+    <SkyFooter />
+  </div>
+  <script>
+    const contents = document.querySelector<HTMLDetailsElement>('.article-mobile-contents');
+    contents?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { contents.open = false; }));
+  </script>
 </Layout>
-
-<style is:global>
-  .prose {
-    @apply text-ink-100 leading-relaxed;
-  }
-
-  .prose h2 {
-    @apply font-display text-2xl sm:text-3xl font-bold text-white mt-12 mb-4;
-  }
-
-  .prose h3 {
-    @apply font-display text-xl sm:text-2xl font-bold text-white mt-8 mb-3;
-  }
-
-  .prose p {
-    @apply mb-6;
-  }
-
-  .prose ul, .prose ol {
-    @apply mb-6 pl-6;
-  }
-
-  .prose ul {
-    @apply list-disc;
-  }
-
-  .prose ol {
-    @apply list-decimal;
-  }
-
-  .prose li {
-    @apply mb-2;
-  }
-
-  .prose strong {
-    @apply text-white font-semibold;
-  }
-
-  .prose a {
-    @apply text-accent hover:underline;
-  }
-
-  .prose blockquote {
-    @apply border-l-4 border-accent pl-6 italic text-ink-200 my-6;
-  }
-
-  .prose code {
-    @apply bg-ink-800 px-2 py-1 rounded text-sm;
-  }
-
-  .prose pre {
-    @apply bg-ink-900 p-4 rounded-lg overflow-x-auto my-6;
-  }
-
-  .prose pre code {
-    @apply bg-transparent p-0;
-  }
-</style>

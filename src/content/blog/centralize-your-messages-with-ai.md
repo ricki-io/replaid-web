@@ -1,139 +1,64 @@
 ---
-title: "Centralize All Your Messages with AI"
-description: "From chaos to clarity: why centralizing your messages across Instagram, WhatsApp, and Facebook changes everything for your business."
+title: "Connect Your Customer Messages to Your AI Agent"
+description: "Connect WhatsApp, the Replaid widget, Instagram, Messenger, or Telegram so your agent can read customer messages and help with replies."
 date: 2025-10-20
+updatedDate: 2026-09-14
 category: "Automation"
-author: "Ricard P"
+author: "Ricard Pons"
+authorUrl: "https://rickimakes.com/"
+socialImage:
+  src: "/og-centralize-your-messages-with-ai.png"
+  alt: "Connect Your Customer Messages to Your AI Agent. Three message channels connect to Replaid."
 ---
 
-## From Chaos to Clarity: Why Centralizing Your Messages Changes Everything
+A question can arrive through your website while another customer is waiting in Instagram DMs. Giving an agent useful access to those conversations should not require a separate workflow for every channel.
 
-Your customers no longer message you in just one place.
+Replaid connects supported channels and makes their conversations available to your agent through MCP or REST. Your agent can read context, prepare replies, and request permitted actions. The customer continues to use the channel where they contacted you.
 
-They send DMs on Instagram, ask questions on WhatsApp, comment on Facebook, email your team, even reply to your stories.
+This article reflects [Replaid's current role as the connection for your agent](/replaid-connects-your-ai-agent-to-your-customers/).
 
-Each new message feels like another tab, another notification, another thing to check.
+## Choose the channel you need first
 
-At first, that attention feels exciting, because you're growing and people are talking to your brand.
+These are the current connections:
 
-Then, however, it starts to become chaos.
+| Channel | What you connect | Supported conversations |
+| --- | --- | --- |
+| WhatsApp | Your WhatsApp Business number | Customer messages and text replies |
+| Replaid widget | Your website widget | Text messages and replies |
+| Instagram | A Business or Creator account | Text DMs and text comments |
+| Messenger | A Facebook Page | Text messages and replies |
+| Telegram | A Telegram bot | Private text messages to the bot and replies |
 
-You begin missing messages. You reply late. And worse, you lose real opportunities.
+Each team can connect one Instagram account, one Facebook Page, one Telegram bot, and one Replaid widget. Telegram personal accounts and groups are not supported. Instagram, Messenger, Telegram, and the Replaid widget support text only; attachments are not supported on these four channels. TikTok is not available yet.
 
-## The Hidden Cost of Scattered Inboxes
+Start with the channel where you can review a few real conversations. You can add the others when the first workflow is useful.
 
-Every message is a potential customer, yet when you're switching between apps, keeping up becomes almost impossible.
+## Bring in the available context
 
-You might believe you're on top of it, but here's what really happens:
+For Instagram and Messenger, you can choose to import available text messages from the last 30 days. Instagram history imports cover DMs only. The platforms may not provide every message, so an import is not a complete archive.
 
-- One person replies on Instagram.
-- Someone else checks Facebook.
-- Another handles WhatsApp once a day.
+Imports do not send replies or trigger notifications. Review the imported context before asking your agent to act on it, and do not assume that an older conversation has a current unanswered request.
 
-As a result, between all those tabs, hot leads quietly go cold.
+After connection, ask your agent to read the available conversation before drafting. Give it the business information it needs through your own agent setup. Connecting a channel does not supply your prices, opening hours, or support policies.
 
-Customers expect fast, consistent, personal replies across every channel.
+## Use the same review process across channels
 
-Meanwhile, small teams can't be everywhere at once.
+A practical first request is:
 
-That's exactly why we built Replaid.
+> Read the latest unanswered conversation in Replaid. Summarize the customer's question and save a draft based on the information I have given you. Ask me if information is missing. Do not send the reply.
 
-## One Inbox. All Channels. Total Clarity.
+Check the draft in Replaid. Confirm that it answers the actual question and fits the conversation. Once you permit sending, test one response and check the outcome on the original channel.
 
-With Replaid, every message—from Instagram, WhatsApp, Facebook, and email—arrives into one clean, shared inbox.
+A common interface does not remove platform rules. The available actions can depend on the channel and the conversation state. Your agent should check action results rather than treating every request as a delivered reply.
 
-No more app-hopping or copy-pasting replies.
+## Keep the agent's role clear
 
-It becomes your command center for conversations.
+Your agent provides the knowledge and decides what to request from the tools. Replaid provides the connected conversation context and applies controls to those action requests.
 
-Moreover, Replaid isn't just another inbox— it's AI-powered.
+You can begin by asking the agent to work on messages yourself. Connecting through MCP does not automatically start replies when messages arrive. Unattended processing needs an external schedule or webhook receiver that starts your agent.
 
-It filters noise, detects intent, and highlights real leads automatically.
+If you later add another channel, review its requirements and test the same read, draft, and send steps. You keep a familiar agent workflow while checking the limits of each new connection.
 
-No more spam. No more empty "hey" messages. No more missed opportunities.
+## Connect one channel today
 
-Replaid shows you exactly which conversations matter, and it lets AI handle the rest.
-
-## Why Centralization Matters
-
-Every platform fights for your attention—each has its own app, layout, and tone.
-
-That might be great for them, but it is not for you.
-
-Each time you switch platforms, you lose time and focus.
-
-Centralizing messages saves hours each week, improves reply time, and ensures nothing slips through the cracks.
-
-For further reading on why a unified channel approach is critical, see this [AMA article on omnichannel marketing](https://www.ama.org/marketing-news/what-is-omnichannel-marketing/).
-
-In other words, it's not just convenience—it's efficiency multiplied.
-
-Imagine starting your day and seeing every conversation, comment, and lead in one place. You can reply, automate, or delegate all without leaving Replaid.
-
-That's what clarity feels like.
-
-## How It Works
-
-**Connect Your Channels**
-In one click you link Instagram, WhatsApp, Facebook, and more. No tokens, no code.
-
-**Set Your Brand Voice**
-Then you tell Replaid how you speak—your tone, vocabulary, and rules—so replies always sound like you.
-
-**Add Your Knowledge**
-Next, you upload FAQs, product info, and support notes. The AI uses them to answer instantly and accurately.
-
-**Create Smart Workflows**
-After that, define rules like "If message includes 'price', tag as lead and notify sales." Replaid runs them automatically.
-
-**Launch and Watch**
-Finally, from that moment Replaid filters, replies, and routes messages 24/7 while you focus on growth.
-
-No complex setup. No learning curve. Just plug, run, and breathe.
-
-## Built for Real Businesses
-
-Replaid isn't for giant corporations. Instead, it's for real teams with real customers.
-
-- **Small businesses:** save hours each week automating repetitive replies.
-- **Agencies:** manage multiple client inboxes without losing context.
-- **Creators:** stay engaged with fans and brand deals faster.
-- **E-commerce stores:** answer pre-sale questions instantly and never miss a sale again.
-
-Across different industries, one truth remains: you can't convert what you don't see.
-
-## The AI Difference
-
-Other inbox tools just organize messages. Replaid understands them.
-
-It reads tone, urgency, and intent. It recognises when a customer is angry, curious, or ready to buy.
-
-"Hey, I'm interested in your Pro plan. Can we book a demo?"
-
-Replaid recognises that as a hot lead, tags it, alerts your team, or replies instantly:
-
-"Hi 👋 Great to hear from you! Here's a link to book a quick demo."
-
-Instant. On-brand. Human-like.
-
-## From Inbox Overload to Growth Engine
-
-Once your messages are centralized and AI takes care of the noise, everything changes.
-
-You respond faster. You lose fewer leads. You free up time to focus on the customers that drive revenue.
-
-Your inbox stops being a stress zone and becomes a growth engine.
-
-In essence, that's the vision behind Replaid: clarity, consistency, and control in every conversation.
-
-Because today, your inbox is your pipeline. The faster you reply, the faster you grow.
-
-## Get Started in Minutes
-
-Centralizing your messages doesn't have to be hard.
-
-Replaid works right out of the box. Connect your channels, set your tone, and let AI do the rest.
-
-Stop chasing notifications. Start owning your conversations.
-
-👉 [Start your free trial](/get-started) and see how fast clarity feels.
+[Get started with Replaid](/get-started/) and follow the [connection guide](/docs/connect-your-agent/) for the current setup steps. Keep the first task narrow: read one conversation, save one draft, and review it before sending.

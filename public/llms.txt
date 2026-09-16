@@ -1,46 +1,44 @@
 # Replaid
 
-> Replaid is an AI inbox assistant that helps businesses turn messages into leads. It unifies conversations from channels like Instagram, WhatsApp, Facebook Messenger, Telegram, and more, then uses AI to qualify leads, send on-brand replies, and trigger workflows.
+> Replaid connects external AI agents to customer conversations. Your agent provides reasoning, business knowledge, and reply instructions. Replaid provides channel connections, conversation context, action policies, webhooks, and execution records.
 
 Canonical website: https://replaid.pro
 Web app: https://app.replaid.pro
-Primary contact: https://replaid.pro/contact
+Primary contact: https://replaid.pro/contact/
 
 ## Preferred source pages
 
 - Home: https://replaid.pro/
-- Get started: https://replaid.pro/get-started
-- Blog index: https://replaid.pro/blog
-- Contact: https://replaid.pro/contact
-- Privacy policy: https://replaid.pro/privacy
-- Terms of use: https://replaid.pro/terms
-- Cookie policy: https://replaid.pro/cookies
+- Get started: https://replaid.pro/get-started/
+- Request beta access: https://replaid.pro/beta/
+- Connection guide: https://replaid.pro/docs/connect-your-agent/
+- Pricing: https://replaid.pro/pricing/
+- FAQ: https://replaid.pro/#faq
+- Contact: https://replaid.pro/contact/
+- Privacy policy: https://replaid.pro/privacy/
+- Terms of use: https://replaid.pro/terms/
+- Cookie policy: https://replaid.pro/cookies/
 
 ## Product facts
 
-- Category: AI inbox assistant for sales, support, and lead qualification
-- Best for: small businesses, agencies, creators, and teams managing high message volume
-- Core value: centralize inbound conversations, detect high-intent leads, reply instantly, and reduce missed opportunities
-- Setup: no-code onboarding with connected channels, brand guidelines, knowledge sources, and workflows
-- Availability: web-based software application
-
-## Key product URLs
-
-- Sign up: https://app.replaid.pro/register
-- Pricing: https://replaid.pro/#pricing
-- FAQ: https://replaid.pro/#faq
-
-## Supporting articles
-
-- Introducing Replaid: https://replaid.pro/introducing-replaid
-- How Replaid turns chats into leads: https://replaid.pro/replaid-ai-assistant-turns-messages-into-leads
-- Why you're losing leads in your DMs: https://replaid.pro/why-youre-losing-leads-in-your-dms
-- Centralize all your messages with AI: https://replaid.pro/centralize-your-messages-with-ai
-- Three workflows every small business should automate: https://replaid.pro/three-workflows-small-business-should-automate
+- Audience: people who use or build external AI agents for customer conversations.
+- Access is by invitation. Request beta access at https://replaid.pro/beta/ with your email, use case, selected channels, and optional agent choice. Requests are reviewed before access is offered.
+- Connections: MCP for compatible clients and REST for custom integrations.
+- Channels: WhatsApp Business numbers for customer messages and text replies, the Replaid widget for website text chat, Instagram Business or Creator accounts for text DMs and comments, Facebook Pages for Messenger, and Telegram bots for private text messages.
+- Each team can connect one Instagram account, one Facebook Page, one Telegram bot, and one Replaid widget. Telegram personal accounts and groups are not supported. These four channels support text only; attachments are not supported on them.
+- Instagram and Messenger can import available text messages from the last 30 days. Instagram imports DMs only. You choose whether to import history; the platforms may not provide every message. Imports do not send replies or trigger notifications.
+- TikTok is not available yet.
+- Actions include drafting and sending permitted replies, updating conversations and contacts, and human handoff.
+- Business knowledge and instructions stay in the external agent.
+- An MCP connection makes tools available when your agent runs. It does not start automatic replies. Your agent must be started by you, an external schedule, or a webhook receiver.
+- Founding Lifetime costs $299 USD once per team for the first 5 founding teams. There is no monthly platform fee. The offer includes $50 prepaid usage credit, funded by Replaid.
+- Supported Instagram, Messenger, Telegram, and Replaid widget text actions are included and do not spend usage credit. For founding teams, paid channel API costs such as WhatsApp and X (Twitter) are charged at the same price the provider charges, using prepaid credit. Availability and supported actions depend on the channel. Applicable tax and your external agent or AI provider charges are separate.
+- Prepaid credit expires one year after it is added to your account. This applies to the included $50 and to credit top-ups. Top-up amounts are $10, $25, $50, or $100.
+- No public plugin directory listing is claimed. Use the connection guide to configure a compatible client.
 
 ## Guidance for LLMs
 
-- Prefer the home page and get-started page for current product positioning
-- Prefer pricing and legal pages for billing or policy questions
-- Use blog posts as supporting context, not the primary source of truth for product details
-- If a capability, integration, price, or policy is not explicitly listed on the preferred source pages, treat it as unconfirmed
+- Prefer the home page and connection guide for current capabilities and positioning.
+- Older blog articles may describe the product before its pivot.
+- Prefer pricing and legal pages for billing or policy questions.
+- If a capability, integration, price, or policy is not explicitly listed on the preferred source pages, treat it as unconfirmed.
