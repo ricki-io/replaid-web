@@ -81,12 +81,12 @@ test('pricing explains Founding Lifetime and prepaid usage without SaaS tiers', 
   const pageLinks = links(pricing);
   assert.match(pricing, /rel="canonical" href="https:\/\/replaid.pro\/pricing\/?"/);
   assert.match(pricing, /Founding Lifetime/);
-  assert.match(pricing, /\$199/);
+  assert.match(pricing, /\$299/);
   assert.match(pricing, /first\s+5\s+founding teams/i);
   assert.match(pricing, /\$50\s+prepaid usage credits|Includes\s+\$50\s+usage credit/i);
   assert.match(pricing, /funded by Replaid/i);
   assert.match(pricing, /provider cost \+ ~10%|provider cost plus about 10%/i);
-  assert.ok(!/\$299|first\s+100\s+founding/i.test(pricing), 'Old $299 / 100-seat Founding offer must stay gone');
+  assert.ok(!/\$199|first\s+100\s+founding/i.test(pricing), 'Old $199 price and 100-seat cap must stay gone');
   assert.ok(!/\$79|\$149|€29|€79|€149|€299/.test(pricing), 'Old subscription prices must stay gone');
   assert.ok(!/per month|\/mo\b|\/month\b/i.test(pricing), 'Subscription billing language must stay gone');
   assert.ok(!/\b\$\d+\s*(?:per month|\/mo)\b/i.test(pricing), 'Monthly price points must stay gone');
@@ -98,9 +98,9 @@ test('pricing explains Founding Lifetime and prepaid usage without SaaS tiers', 
   assert.ok(pageLinks.some(link => link.text === 'Create your free account' && link.href === 'https://app.replaid.pro/register'));
   assert.ok(pageLinks.some(link => link.text.startsWith('See how to get started') && link.href === '/get-started/'));
   assert.ok(pageLinks.some(link => link.text === 'Claim Founding Lifetime' && link.href === 'https://app.replaid.pro/register'));
-  assert.match(sales, /Founding Lifetime \$199/);
+  assert.match(sales, /Founding Lifetime \$299/);
   assert.match(sales, /\$50 usage credit included/);
-  assert.ok(!/Founding Lifetime \$299/.test(sales), 'Get-started must not keep the old $299 note');
+  assert.ok(!/Founding Lifetime \$199/.test(sales), 'Get-started must not keep the old $199 note');
   for (const html of [await readPage('index.html'), pricing]) {
     const pricingNav = links(html).filter(link => link.text === 'Pricing');
     assert.ok(pricingNav.length > 0, 'Missing Pricing navigation');
