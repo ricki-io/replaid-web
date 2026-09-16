@@ -4,7 +4,7 @@ import Hero from '../components/Hero.astro';
 import SkyFooter from '../components/SkyFooter.astro';
 import ConversationExample from '../components/ConversationExample.astro';
 import { faqs } from '../components/faq-content';
-import { productCopy } from '../components/product-copy';
+import { productCopy, betaAccess } from '../components/product-copy';
 import '../styles/landing.css';
 
 const description = 'Let your AI agent read and reply to customer messages. Replaid connects your website, social and messaging channels to the agent you already use, with permissions you control.';
@@ -26,7 +26,8 @@ const jsonLd = [
     operatingSystem: 'Web',
     description,
     offers: {
-      '@type': 'Offer', name: 'Current supported operations', price: '0', priceCurrency: 'USD',
+      '@type': 'Offer', name: 'Founding Lifetime', price: '299', priceCurrency: 'USD',
+      availability: 'https://schema.org/LimitedAvailability',
       description: productCopy.pricing,
       url: 'https://replaid.pro/pricing/',
     },
@@ -82,7 +83,7 @@ const jsonLd = [
     <ConversationExample />
     <section class="sky-section sky-final-cta">
       <h2>Your agent. Connected.</h2>
-      <a class="sky-button" href="https://app.replaid.pro/register">Connect your agent</a>
+      <a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a>
     </section>
     <section id="faq" class="sky-faq" aria-labelledby="faq-heading">
       <header class="sky-faq-heading">

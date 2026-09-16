@@ -1,6 +1,6 @@
 ---
 import BrandLogo from './BrandLogo.astro';
-import { productCopy } from './product-copy';
+import { productCopy, betaAccess } from './product-copy';
 interface Props { questions: { q: string; a: string }[]; }
 const { questions } = Astro.props;
 const channels = [
@@ -11,15 +11,14 @@ const channels = [
   { id: 'telegram', name: 'Telegram' },
 ] as const;
 const guideUrl = '/docs/connect-your-agent/';
-const registerUrl = 'https://app.replaid.pro/register';
 ---
 <section class="start-hero" aria-labelledby="start-heading">
   <div class="start-hero-copy">
     <a class="hero-uneed start-award" href="https://www.uneed.best/tool/replaid" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">★</span><strong>Voted #1 on Uneed</strong></a>
     <h1 id="start-heading">Your agent,<br /><span class="hero-highlight">ready to reply.</span></h1>
     <p>Connect a customer channel to the AI agent you already use. Let it send replies directly, or save drafts for review. You choose the permissions.</p>
-    <div class="start-actions"><a class="sky-button" href={registerUrl}>Create your free account</a><a class="start-guide-link" href={guideUrl}>See the setup guide<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></a></div>
-    <p class="start-price-note">Founding Lifetime $299 · $50 usage credit for paid ops (WhatsApp, X) at provider price. <a href="/pricing/">See pricing</a>.</p>
+    <div class="start-actions"><a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a><a class="start-guide-link" href={guideUrl}>See the setup guide<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></a></div>
+    <p class="start-price-note">Beta access is by invitation. Founding Lifetime $299 · $50 usage credit for paid ops (WhatsApp, X) at provider price. <a href="/pricing/">See pricing</a>.</p>
     <a class="start-login" href="https://app.replaid.pro/login">Already have an account? Log in</a>
   </div>
   <figure class="start-preview" aria-labelledby="start-example-label">
@@ -92,7 +91,7 @@ const registerUrl = 'https://app.replaid.pro/register';
 <section class="start-final" aria-labelledby="start-final-heading">
   <img src="/favicon.svg" width="36" height="39" alt="" aria-hidden="true" />
   <h2 id="start-final-heading">Ready to connect<br /><span class="hero-highlight">your agent?</span></h2>
-  <p>Create your account, then follow the connection guide with your channel and agent ready.</p>
-  <a class="sky-button" href={registerUrl}>Create your free account</a>
+  <p>Request beta access. Once invited, create your account and follow the connection guide.</p>
+  <a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a>
   <a class="start-guide-link" href={guideUrl}>Open the full connection guide</a>
 </section>

@@ -1,5 +1,6 @@
 ---
 import SkyHeader from './SkyHeader.astro';
+import { betaAccess } from './product-copy';
 import ConnectorGraphic from './ConnectorGraphic.astro';
 ---
 <section class="sky-hero" aria-labelledby="hero-heading">
@@ -12,7 +13,7 @@ import ConnectorGraphic from './ConnectorGraphic.astro';
         <strong>Voted #1 on Uneed</strong><span aria-hidden="true">★</span>
       </a>
     </span>
-    <a class="sky-button" href="https://app.replaid.pro/register">Connect your agent</a>
+    <a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a>
   </div>
   <ConnectorGraphic />
 </section>

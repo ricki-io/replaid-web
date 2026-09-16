@@ -1,6 +1,7 @@
-import { productCopy } from './product-copy';
+import { productCopy, betaAccess } from './product-copy';
 
 export const faqs = [
+  { q: 'How do I get beta access?', a: betaAccess.description },
   { q: 'Does Replaid include an AI agent?', a: 'No. Use ChatGPT, Claude, or Hermes Agent with the knowledge and instructions you provide. Replaid gives it access to messages, checks your permissions, and records each action.' },
   { q: 'Which channels can I connect?', a: `${productCopy.availableChannels} ${productCopy.futureChannels}` },
   { q: 'What do I need to connect a channel?', a: productCopy.channelRequirements },

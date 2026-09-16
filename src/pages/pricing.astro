@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import SkyHeader from '../components/SkyHeader.astro';
 import SkyFooter from '../components/SkyFooter.astro';
 import { legalOperator } from '../components/legal-operator';
-import { productCopy } from '../components/product-copy';
+import { productCopy, betaAccess } from '../components/product-copy';
 import '../styles/landing.css';
 import '../styles/pricing.css';
 
@@ -11,8 +11,6 @@ const foundingPrice = 299;
 const foundingCap = 5;
 const foundingCredits = 50;
 const description = `Founding Lifetime: $${foundingPrice} USD once per team for the first ${foundingCap} founding teams. Includes $${foundingCredits} usage credit. No monthly platform fee. Paid channel usage, tax, and external AI costs are separate.`;
-const registerUrl = 'https://app.replaid.pro/register';
-const registerLabel = 'Create your free account';
 const guideUrl = '/docs/connect-your-agent/';
 const includedFeatures = [
   'Connect your own AI agent through MCP or REST',
@@ -49,8 +47,8 @@ const pricingQuestions = [
     link: { href: `mailto:${legalOperator.email}`, label: 'Contact us about a payment' },
   },
   {
-    question: 'What happens when I create an account?',
-    answer: 'The button opens free account registration. It does not charge you or reserve a founding place. The Founding Lifetime offer requires a separate purchase; review the amount, currency, and tax before paying.',
+    question: 'How do I get beta access?',
+    answer: 'Request beta access with your email and use case. We’ll review your request and email you about access. If invited, create your account using the invitation link. The Founding Lifetime offer requires a separate purchase; review the amount, currency, and tax before paying.',
     link: { href: '/terms/#billing', label: 'Read the payment terms' },
   },
 ];
@@ -88,8 +86,8 @@ const jsonLd = {
           <p class="pricing-amount"><span class="pricing-currency">$</span>{foundingPrice}<span class="pricing-currency-code">USD</span></p>
           <p class="pricing-payment">Per team. Paid once.</p>
           <p class="pricing-credit">Includes <strong>${foundingCredits} usage credit</strong></p>
-          <a class="sky-button" href={registerUrl}>{registerLabel}</a>
-          <p class="pricing-next-step">Create an account first. Purchase separately.</p>
+          <a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a>
+          <p class="pricing-next-step">Beta access is by invitation. Purchase separately.</p>
           <p class="pricing-exclusions">Paid channel usage, applicable tax, and external AI costs are separate. <a href="#pricing-costs">See all costs</a></p>
         </div>
         <div class="pricing-ltd-copy">
@@ -158,10 +156,10 @@ const jsonLd = {
         <h2 id="pricing-final-heading">Ready to connect<br /><span class="hero-highlight">your agent?</span></h2>
         <p>${foundingPrice} USD per team, paid once. Includes ${foundingCredits} usage credit.</p>
         <div class="pricing-final-actions">
-          <a class="sky-button" href={registerUrl}>{registerLabel}</a>
+          <a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a>
           <a class="pricing-text-link" href={guideUrl}>See the setup guide</a>
         </div>
-        <p class="pricing-next-step">Create an account first. Purchase separately.</p>
+        <p class="pricing-next-step">Beta access is by invitation. Purchase separately.</p>
       </section>
     </main>
     <SkyFooter />

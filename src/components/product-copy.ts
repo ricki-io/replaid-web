@@ -9,3 +9,9 @@ export const productCopy = {
   automation: 'An MCP connection makes tools available when your agent runs. It does not start automatic replies. Your agent must be started by you, an external schedule, or a webhook receiver.',
   pricing: 'Founding Lifetime Deal: $299 USD one-time per team for the first 5 founding teams. Pay once for platform access — forever connect Instagram, Messenger, Telegram, and the Replaid widget via the MCP/agent connector, plus $50 prepaid usage credits preloaded in the wallet (funded by Replaid). No recurring SaaS tiers. For founding members, paid channel API costs such as WhatsApp and X (Twitter) are charged at the same price the provider charges, using prepaid credits. Applicable tax and your external agent or AI provider charges (ChatGPT, Claude, and others) are separate.',
 };
+
+export const betaAccess = {
+  url: '/beta/',
+  label: 'Request beta access',
+  description: 'Replaid is in beta and access is by invitation. Send your email and use case through the beta access form. We’ll review your request and email you about access.',
+};

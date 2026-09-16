@@ -4,32 +4,36 @@
 
 Canonical website: https://replaid.pro
 Web app: https://app.replaid.pro
-Primary contact: https://replaid.pro/contact
+Primary contact: https://replaid.pro/contact/
 
 ## Preferred source pages
 
 - Home: https://replaid.pro/
-- Get started: https://replaid.pro/get-started
-- Connection guide: https://replaid.pro/docs/connect-your-agent
-- Pricing: https://replaid.pro/#pricing
+- Get started: https://replaid.pro/get-started/
+- Request beta access: https://replaid.pro/beta/
+- Connection guide: https://replaid.pro/docs/connect-your-agent/
+- Pricing: https://replaid.pro/pricing/
 - FAQ: https://replaid.pro/#faq
-- Contact: https://replaid.pro/contact
-- Privacy policy: https://replaid.pro/privacy
-- Terms of use: https://replaid.pro/terms
-- Cookie policy: https://replaid.pro/cookies
+- Contact: https://replaid.pro/contact/
+- Privacy policy: https://replaid.pro/privacy/
+- Terms of use: https://replaid.pro/terms/
+- Cookie policy: https://replaid.pro/cookies/
 
 ## Product facts
 
 - Audience: people who use or build external AI agents for customer conversations.
+- Access is by invitation. Request beta access at https://replaid.pro/beta/ with your email, use case, selected channels, and optional agent choice. Requests are reviewed before access is offered.
 - Connections: MCP for compatible clients and REST for custom integrations.
-- Channels: the Replaid widget for website text chat, Instagram Business or Creator accounts for text DMs and comments, Facebook Pages for Messenger, and Telegram bots for private text messages.
-- Each team can connect one Instagram account, one Facebook Page, one Telegram bot, and one Replaid widget. Telegram personal accounts and groups are not supported. Attachments are not supported.
+- Channels: WhatsApp Business numbers for customer messages and text replies, the Replaid widget for website text chat, Instagram Business or Creator accounts for text DMs and comments, Facebook Pages for Messenger, and Telegram bots for private text messages.
+- Each team can connect one Instagram account, one Facebook Page, one Telegram bot, and one Replaid widget. Telegram personal accounts and groups are not supported. These four channels support text only; attachments are not supported on them.
 - Instagram and Messenger can import available text messages from the last 30 days. Instagram imports DMs only. You choose whether to import history; the platforms may not provide every message. Imports do not send replies or trigger notifications.
-- WhatsApp and TikTok are not available yet.
+- TikTok is not available yet.
 - Actions include drafting and sending permitted replies, updating conversations and contacts, and human handoff.
 - Business knowledge and instructions stay in the external agent.
 - An MCP connection makes tools available when your agent runs. It does not start automatic replies. Your agent must be started by you, an external schedule, or a webhook receiver.
-- There is no subscription. Current supported actions on Instagram, Messenger, Telegram, and the Replaid widget are free and do not spend credits. Prepaid USD credits are for future paid operations, charged at provider cost plus a 20% markup. Applicable tax and your external agent or AI provider charges are separate.
+- Founding Lifetime costs $299 USD once per team for the first 5 founding teams. There is no monthly platform fee. The offer includes $50 prepaid usage credit, funded by Replaid.
+- Supported Instagram, Messenger, Telegram, and Replaid widget text actions are included and do not spend usage credit. For founding teams, paid channel API costs such as WhatsApp and X (Twitter) are charged at the same price the provider charges, using prepaid credit. Availability and supported actions depend on the channel. Applicable tax and your external agent or AI provider charges are separate.
+- Prepaid credit expires one year after it is added to your account. This applies to the included $50 and to credit top-ups. Top-up amounts are $10, $25, $50, or $100.
 - No public plugin directory listing is claimed. Use the connection guide to configure a compatible client.
 
 ## Guidance for LLMs

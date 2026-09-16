@@ -1,7 +1,7 @@
 ---
 import BrandLogo from './BrandLogo.astro';
 import GuideCopyBlock from './GuideCopyBlock.astro';
-import { productCopy } from './product-copy';
+import { productCopy, betaAccess } from './product-copy';
 const steps = [
   { id: 'account', label: 'Create your account' },
   { id: 'channel', label: 'Connect a channel' },
@@ -36,8 +36,8 @@ const firstPrompt = 'Find my latest unanswered conversation in Replaid. Read its
   <div class="guide-content">
     <section id="account" class="guide-step" aria-labelledby="account-heading" data-guide-step>
       <header class="guide-step-heading"><span>1</span><h2 id="account-heading">Make room for your conversations.</h2></header>
-      <p>Create your Replaid account, or sign in and select your team. You need an owner or administrator to connect channels.</p>
-      <div class="guide-account-actions"><a class="sky-button" href="https://app.replaid.pro/register" target="_blank" rel="noopener noreferrer">Create your account</a><a class="guide-text-link" href="https://app.replaid.pro/login" target="_blank" rel="noopener noreferrer">Already have an account? Log in</a></div>
+      <p>Access is by invitation. Request beta access first, then use your invitation to create your Replaid account. If you already have access, sign in and select your team. You need an owner or administrator to connect channels.</p>
+      <div class="guide-account-actions"><a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a><a class="guide-text-link" href="https://app.replaid.pro/login" target="_blank" rel="noopener noreferrer">Already have an account? Log in</a></div>
       <p class="guide-success-cue"><span aria-hidden="true">✓</span> You’re ready when you can open Channels in Replaid.</p>
     </section>
     <section id="channel" class="guide-step" aria-labelledby="channel-heading" data-guide-step>
