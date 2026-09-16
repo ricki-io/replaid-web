@@ -76,20 +76,25 @@ test('the sitemap includes both destinations', async () => {
   assert.match(sitemap, /<loc>https:\/\/replaid.pro\/pricing\/?<\/loc>/);
 });
 
-test('pricing explains prepaid credits without subscription tiers', async () => {
+test('pricing explains Founding Lifetime and prepaid usage without SaaS tiers', async () => {
   const pricing = await readPage('pricing/index.html');
   const pageLinks = links(pricing);
   assert.match(pricing, /rel="canonical" href="https:\/\/replaid.pro\/pricing\/?"/);
-  assert.match(pricing, /There is no subscription/);
-  assert.match(pricing, /provider cost plus a 20% markup/);
-  assert.ok(!/\$79|\$149|\$299|€29|€79|€149|€299/.test(pricing), 'Old subscription prices must stay gone');
-  assert.ok(!/per month|\/mo\b|monthly plan/i.test(pricing), 'Subscription billing language must stay gone');
+  assert.match(pricing, /Founding Lifetime/);
+  assert.match(pricing, /\$299/);
+  assert.match(pricing, /first\s+100\s+founding teams/i);
+  assert.match(pricing, /provider cost \+ ~10%|provider cost plus about 10%/i);
+  assert.ok(!/\$79|\$149|€29|€79|€149|€299/.test(pricing), 'Old subscription prices must stay gone');
+  assert.ok(!/per month|\/mo\b|\/month\b/i.test(pricing), 'Subscription billing language must stay gone');
+  assert.ok(!/\b\$\d+\s*(?:per month|\/mo)\b/i.test(pricing), 'Monthly price points must stay gone');
   assert.match(pricing, /does not sell Starter, Pro, or Agency subscriptions/);
+  assert.match(pricing, /WhatsApp is not free/);
   for (const amount of ['$10', '$25', '$50', '$100']) {
     assert.ok(pricing.includes(amount), `Missing credit package: ${amount}`);
   }
   assert.ok(pageLinks.some(link => link.text === 'Create your free account' && link.href === 'https://app.replaid.pro/register'));
   assert.ok(pageLinks.some(link => link.text.startsWith('See how to get started') && link.href === '/get-started/'));
+  assert.ok(pageLinks.some(link => link.text === 'Claim Founding Lifetime' && link.href === 'https://app.replaid.pro/register'));
   for (const html of [await readPage('index.html'), pricing]) {
     const pricingNav = links(html).filter(link => link.text === 'Pricing');
     assert.ok(pricingNav.length > 0, 'Missing Pricing navigation');

@@ -6,14 +6,22 @@ import { productCopy } from '../components/product-copy';
 import '../styles/landing.css';
 import '../styles/pricing.css';
 
-const description = 'No subscription. Current Instagram, Messenger, Telegram, and Replaid widget actions are free. Prepaid USD credits cover future paid operations at provider cost plus 20%.';
+const description = 'Founding Lifetime Deal: $299 one-time for the first 100 teams. Forever platform access for free-to-operate channels, plus prepaid credits for WhatsApp and other paid ops at provider cost + ~10%.';
 const registerUrl = 'https://app.replaid.pro/register';
 const getStartedUrl = '/get-started/';
+const foundingPrice = 299;
+const foundingCap = 100;
 const packages = [
   { amount: '$10', cents: 1000, detail: 'Prepaid USD balance', label: 'Small top-up' },
   { amount: '$25', cents: 2500, detail: 'Prepaid USD balance', label: 'Most common start' },
   { amount: '$50', cents: 5000, detail: 'Prepaid USD balance', label: 'Steady usage' },
   { amount: '$100', cents: 10000, detail: 'Prepaid USD balance', label: 'Higher volume' },
+];
+const ltdIncludes = [
+  'Forever access to connect Instagram, Messenger, Telegram, and the Replaid widget',
+  'MCP / agent connector for those free-to-operate channels',
+  'No recurring SaaS fee — one-time Founding Lifetime purchase',
+  'Team license: one purchase covers your team',
 ];
 const freeChannels = [
   'Instagram text DMs and text comments',
@@ -30,7 +38,7 @@ const jsonLd = {
   description,
   offers: {
     '@type': 'AggregateOffer',
-    lowPrice: '0',
+    lowPrice: String(foundingPrice),
     highPrice: '100',
     priceCurrency: 'USD',
     offerCount: String(packages.length + 1),
@@ -39,17 +47,18 @@ const jsonLd = {
     offers: [
       {
         '@type': 'Offer',
-        name: 'Current supported channel actions',
-        price: '0',
+        name: 'Founding Lifetime Deal',
+        price: String(foundingPrice),
         priceCurrency: 'USD',
-        description: 'Instagram, Messenger, Telegram, and Replaid widget supported actions do not spend credits.',
+        description: `One-time Founding Lifetime access for the first ${foundingCap} teams. Forever platform access and MCP/agent connector for Instagram, Messenger, Telegram, and the Replaid widget.`,
+        availability: 'https://schema.org/LimitedAvailability',
       },
       ...packages.map(pack => ({
         '@type': 'Offer',
         name: `${pack.amount} prepaid credits`,
         price: pack.amount.slice(1),
         priceCurrency: 'USD',
-        description: `Prepaid USD credits (${pack.cents} cents) for future paid operations at provider cost plus a 20% markup.`,
+        description: `Prepaid USD credits (${pack.cents} cents) for WhatsApp and other paid operations at provider cost plus about a 10% markup.`,
       })),
     ],
   },
@@ -61,15 +70,36 @@ const jsonLd = {
     <main id="main" class="pricing-main">
       <header class="pricing-hero">
         <p class="pricing-label">Pricing</p>
-        <h1>No subscription.<br /><span class="hero-highlight">Pay only when you need paid ops.</span></h1>
+        <h1>Founding Lifetime.<br /><span class="hero-highlight">Usage when ops cost money.</span></h1>
         <p>{productCopy.pricing}</p>
       </header>
 
+      <section class="pricing-ltd" aria-labelledby="pricing-ltd-heading">
+        <div class="pricing-ltd-card">
+          <div class="pricing-ltd-copy">
+            <span class="pricing-ltd-badge">Founding · Lifetime</span>
+            <h2 id="pricing-ltd-heading">Platform access, paid once.</h2>
+            <p>The Founding Lifetime Deal is a one-time purchase per team. It unlocks forever access to connect free-to-operate channels and the MCP/agent connector for those channels. No Starter, Pro, or Agency subscriptions.</p>
+            <ul>
+              {ltdIncludes.map(item => (
+                <li><span aria-hidden="true">✓</span><span>{item}</span></li>
+              ))}
+            </ul>
+          </div>
+          <aside class="pricing-ltd-price" aria-label="Founding Lifetime price">
+            <p class="pricing-ltd-amount"><span class="pricing-ltd-currency">$</span>{foundingPrice}</p>
+            <p class="pricing-ltd-meta">USD · one-time per team</p>
+            <p class="pricing-ltd-cap">Limited to the first <strong>{foundingCap}</strong> founding teams</p>
+            <a class="sky-button" href={registerUrl}>Claim Founding Lifetime</a>
+          </aside>
+        </div>
+      </section>
+
       <section class="pricing-free" aria-labelledby="pricing-free-heading">
         <div>
-          <span class="pricing-free-badge"><span aria-hidden="true">✓</span> Free today</span>
-          <h2 id="pricing-free-heading">Current supported actions stay free.</h2>
-          <p>Supported actions on Instagram, Messenger, Telegram, and the Replaid widget do not spend credits. Connect a channel, let your agent read and reply with the permissions you set, and start without a plan.</p>
+          <span class="pricing-free-badge"><span aria-hidden="true">✓</span> Included with LTD</span>
+          <h2 id="pricing-free-heading">Free-to-operate channels stay free to run.</h2>
+          <p>With Founding Lifetime, supported actions on Instagram, Messenger, Telegram, and the Replaid widget do not spend credits. Connect a channel, let your agent read and reply with the permissions you set, and operate without metered spend on those channels.</p>
         </div>
         <ul>
           {freeChannels.map(item => (
@@ -80,8 +110,8 @@ const jsonLd = {
 
       <section class="pricing-packages" aria-labelledby="pricing-credits-heading">
         <header>
-          <h2 id="pricing-credits-heading">Prepaid USD credits</h2>
-          <p>Credits are for future paid operations. When an operation has a provider cost, Replaid charges that cost plus a 20% markup against your prepaid balance.</p>
+          <h2 id="pricing-credits-heading">Prepaid USD credits for paid ops</h2>
+          <p>LTD covers platform access. Credits cover metered paid channel and provider spend. WhatsApp and other future paid operations are charged at <strong>provider cost + ~10%</strong> against your prepaid balance. WhatsApp is not free.</p>
         </header>
         <div class="pricing-grid">
           {packages.map(pack => (
@@ -96,12 +126,12 @@ const jsonLd = {
 
       <section class="pricing-notes" aria-label="Pricing details">
         <article>
-          <h3>No monthly tiers</h3>
-          <p>Replaid does not sell Starter, Pro, or Agency subscriptions. There is nothing to renew each month for the current free channel actions.</p>
+          <h3>Access vs usage</h3>
+          <p>Founding Lifetime is platform access. Prepaid credits are separate metered spend for WhatsApp and other paid provider operations. Replaid does not sell Starter, Pro, or Agency subscriptions.</p>
         </article>
         <article>
           <h3>Tax is separate</h3>
-          <p>Applicable tax is calculated at checkout when you buy credits. The package amounts above are the prepaid credit values before tax.</p>
+          <p>Applicable tax is calculated at checkout when you buy the Lifetime Deal or credits. Package amounts above are prepaid credit values before tax.</p>
         </article>
         <article>
           <h3>Your AI provider is separate</h3>
@@ -111,7 +141,7 @@ const jsonLd = {
 
       <section class="pricing-final" aria-labelledby="pricing-final-heading">
         <h2 id="pricing-final-heading">Ready to connect<br /><span class="hero-highlight">your agent?</span></h2>
-        <p>Create a free account, connect one channel, and choose whether your agent drafts for review or sends replies.</p>
+        <p>Create an account, claim Founding Lifetime while seats remain, connect a free-to-operate channel, and add credits only when you need paid ops like WhatsApp.</p>
         <div class="pricing-final-actions">
           <a class="sky-button" href={registerUrl}>Create your free account</a>
           <a class="pricing-secondary" href={getStartedUrl}>See how to get started<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" /></svg></a>

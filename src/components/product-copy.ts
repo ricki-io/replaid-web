@@ -7,5 +7,5 @@ export const productCopy = {
   futureChannels: 'TikTok is not available yet.',
   agent: 'Use ChatGPT, Claude, Hermes Agent, or another compatible client. You provide the business knowledge and reply instructions. Connect through MCP or REST.',
   automation: 'An MCP connection makes tools available when your agent runs. It does not start automatic replies. Your agent must be started by you, an external schedule, or a webhook receiver.',
-  pricing: 'There is no subscription. Current supported actions on Instagram, Messenger, Telegram, and the Replaid widget are free and do not spend credits. Prepaid USD credits are for future paid operations, charged at provider cost plus a 20% markup. Applicable tax and your external agent or AI provider charges are separate.',
+  pricing: 'Founding Lifetime Deal: $299 USD one-time per team for the first 100 founding teams. Includes forever access to connect channels and the MCP/agent connector for Instagram, Messenger, Telegram, and the Replaid widget — channels that are free to operate today. No recurring SaaS tiers (no Starter, Pro, or Agency). WhatsApp and other paid operations use prepaid USD credits charged at provider cost plus about 10%. Applicable tax and your external agent or AI provider charges (ChatGPT, Claude, and others) are separate.',
 };
