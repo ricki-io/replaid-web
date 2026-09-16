@@ -4,7 +4,7 @@ import Hero from '../components/Hero.astro';
 import SkyFooter from '../components/SkyFooter.astro';
 import ConversationExample from '../components/ConversationExample.astro';
 import { faqs } from '../components/faq-content';
-import { productCopy, betaAccess } from '../components/product-copy';
+import { betaAccess } from '../components/product-copy';
 import '../styles/landing.css';
 
 const description = 'Let your AI agent read and reply to customer messages. Replaid connects your website, social and messaging channels to the agent you already use, with permissions you control.';
@@ -17,20 +17,6 @@ const jsonLd = [
     logo: 'https://replaid.pro/favicon.svg',
     description,
     contactPoint: { '@type': 'ContactPoint', email: 'hi@replaid.pro', contactType: 'customer support' },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: 'Replaid',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Web',
-    description,
-    offers: {
-      '@type': 'Offer', name: 'Founding Lifetime', price: '299', priceCurrency: 'USD',
-      availability: 'https://schema.org/LimitedAvailability',
-      description: productCopy.pricing,
-      url: 'https://replaid.pro/pricing/',
-    },
   },
   {
     '@context': 'https://schema.org',
