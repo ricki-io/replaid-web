@@ -7,6 +7,7 @@ import '../styles/landing.css';
 import '../styles/pricing.css';
 
 const description = 'Founding Lifetime Deal: $299 one-time for the first 5 teams, including $50 prepaid usage credits. Forever platform access for free-to-operate channels, plus prepaid credits for WhatsApp and other paid ops at provider cost + ~10%.';
+const pricingHero = 'One-time Founding access. Usage credits only when paid channels cost money.';
 const registerUrl = 'https://app.replaid.pro/register';
 const getStartedUrl = '/get-started/';
 const foundingPrice = 299;
@@ -73,7 +74,7 @@ const jsonLd = {
       <header class="pricing-hero">
         <p class="pricing-label">Pricing</p>
         <h1>Founding Lifetime.<br /><span class="hero-highlight">Usage when ops cost money.</span></h1>
-        <p>{productCopy.pricing}</p>
+        <p>{pricingHero}</p>
       </header>
 
       <section class="pricing-ltd" aria-labelledby="pricing-ltd-heading">
@@ -81,7 +82,7 @@ const jsonLd = {
           <div class="pricing-ltd-copy">
             <span class="pricing-ltd-badge">Founding · Lifetime</span>
             <h2 id="pricing-ltd-heading">Platform access, paid once.</h2>
-            <p>The Founding Lifetime Deal is a one-time purchase per team. It unlocks forever access to connect free-to-operate channels and the MCP/agent connector for those channels, and includes <strong>${foundingCredits} prepaid usage credits</strong> preloaded in your wallet (funded by Replaid). No Starter, Pro, or Agency subscriptions.</p>
+            <p>One purchase per team for the first {foundingCap} founding seats. No Starter, Pro, or Agency subscriptions.</p>
             <ul>
               {ltdIncludes.map(item => (
                 <li><span aria-hidden="true">✓</span><span>{item}</span></li>
@@ -102,7 +103,7 @@ const jsonLd = {
         <div>
           <span class="pricing-free-badge"><span aria-hidden="true">✓</span> Included with LTD</span>
           <h2 id="pricing-free-heading">Free-to-operate channels stay free to run.</h2>
-          <p>With Founding Lifetime, supported actions on Instagram, Messenger, Telegram, and the Replaid widget do not spend credits. Connect a channel, let your agent read and reply with the permissions you set, and operate without metered spend on those channels.</p>
+          <p>Supported actions on these channels do not spend credits.</p>
         </div>
         <ul>
           {freeChannels.map(item => (
@@ -114,7 +115,7 @@ const jsonLd = {
       <section class="pricing-packages" aria-labelledby="pricing-credits-heading">
         <header>
           <h2 id="pricing-credits-heading">Prepaid USD credits for paid ops</h2>
-          <p>LTD covers platform access and includes <strong>${foundingCredits}</strong> usage credit to start. Top up when you need more. WhatsApp and other future paid operations are charged at <strong>provider cost + ~10%</strong> against your prepaid balance. WhatsApp is not free.</p>
+          <p>Founding includes <strong>${foundingCredits}</strong> to start (funded by Replaid). WhatsApp and other paid ops: <strong>provider cost + ~10%</strong>. WhatsApp is not free.</p>
         </header>
         <div class="pricing-grid">
           {packages.map(pack => (
@@ -130,11 +131,11 @@ const jsonLd = {
       <section class="pricing-notes" aria-label="Pricing details">
         <article>
           <h3>Access vs usage</h3>
-          <p>Founding Lifetime is platform access plus ${foundingCredits} prepaid usage credits funded by Replaid and preloaded in your wallet. Additional prepaid credits are metered spend for WhatsApp and other paid provider operations. Replaid does not sell Starter, Pro, or Agency subscriptions.</p>
+          <p>LTD is platform access plus ${foundingCredits} included credits. Top-ups cover WhatsApp and other paid provider ops. No SaaS tiers.</p>
         </article>
         <article>
           <h3>Tax is separate</h3>
-          <p>Applicable tax is calculated at checkout when you buy the Lifetime Deal or credits. Package amounts above are prepaid credit values before tax.</p>
+          <p>Applicable tax is calculated at checkout. Package amounts above are prepaid credit values before tax.</p>
         </article>
         <article>
           <h3>Your AI provider is separate</h3>

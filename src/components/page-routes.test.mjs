@@ -79,8 +79,11 @@ test('the sitemap includes both destinations', async () => {
 test('pricing explains Founding Lifetime and prepaid usage without SaaS tiers', async () => {
   const pricing = await readPage('pricing/index.html');
   const pageLinks = links(pricing);
+  const hero = pricing.match(/<header class="pricing-hero">([\s\S]*?)<\/header>/)?.[1] ?? '';
   assert.match(pricing, /rel="canonical" href="https:\/\/replaid.pro\/pricing\/?"/);
   assert.match(pricing, /Founding Lifetime/);
+  assert.match(hero, /One-time Founding access\. Usage credits only when paid channels cost money\./);
+  assert.ok(!/Applicable tax|No recurring SaaS tiers|first 5 founding teams/.test(hero), 'Hero must stay short — full pricing facts belong below');
   assert.match(pricing, /\$299/);
   assert.match(pricing, /first\s+5\s+founding teams/i);
   assert.match(pricing, /\$50\s+prepaid usage credits|Includes\s+\$50\s+usage credit/i);
@@ -90,7 +93,7 @@ test('pricing explains Founding Lifetime and prepaid usage without SaaS tiers', 
   assert.ok(!/\$79|\$149|€29|€79|€149|€299/.test(pricing), 'Old subscription prices must stay gone');
   assert.ok(!/per month|\/mo\b|\/month\b/i.test(pricing), 'Subscription billing language must stay gone');
   assert.ok(!/\b\$\d+\s*(?:per month|\/mo)\b/i.test(pricing), 'Monthly price points must stay gone');
-  assert.match(pricing, /does not sell Starter, Pro, or Agency subscriptions/);
+  assert.match(pricing, /No SaaS tiers|does not sell Starter, Pro, or Agency subscriptions|No Starter, Pro, or Agency/);
   assert.match(pricing, /WhatsApp is not free/);
   for (const amount of ['$10', '$25', '$50', '$100']) {
     assert.ok(pricing.includes(amount), `Missing credit package: ${amount}`);
