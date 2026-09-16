@@ -130,7 +130,7 @@ test('pricing distinguishes included actions from channel and external AI costs'
   assert.ok(!pricing.includes('class="pricing-card"'), 'Top-ups should not appear as competing plans');
 });
 
-test('pricing provides native FAQ controls, the one-year expiry, and a single platform offer', async () => {
+test('pricing provides native FAQ controls and the one-year expiry', async () => {
   const pricing = await readPage('pricing/index.html');
   const faq = pricing.match(/<section class="pricing-faq"[\s\S]*?<\/section>/)?.[0] ?? '';
   const questions = Array.from(faq.matchAll(/<details\b[^>]*>([\s\S]*?)<\/details>/g), match => match[1]);
@@ -150,17 +150,19 @@ test('pricing provides native FAQ controls, the one-year expiry, and a single pl
     const destination = await readPage(`${route.slice(1)}index.html`);
     assert.ok(destination.includes(`id="${id}"`), `Missing FAQ destination: ${link.href}`);
   }
-  for (const html of [await readPage('index.html'), pricing]) {
-    const data = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1] ?? '[]');
-    const application = (Array.isArray(data) ? data : [data]).find(item => item['@type'] === 'SoftwareApplication');
-    assert.ok(application, 'The platform needs a structured offer');
-    assert.equal(application.offers['@type'], 'Offer');
-    assert.equal(application.offers.name, 'Founding Lifetime');
-    assert.equal(application.offers.price, '299');
-    assert.equal(application.offers.priceCurrency, 'USD');
-    assert.equal(application.offers.availability, 'https://schema.org/LimitedAvailability');
-    assert.equal(application.offers.url, 'https://replaid.pro/pricing/');
-    assert.equal(application.offers.lowPrice, undefined, 'Credit amounts are not platform prices');
+});
+
+test('home and pricing omit software rich results until customer reviews are available', async () => {
+  for (const path of ['index.html', 'pricing/index.html']) {
+    const html = await readPage(path);
+    const items = Array.from(html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g), match => JSON.parse(match[1])).flat();
+    assert.ok(!items.some(item => [item['@type']].flat().includes('SoftwareApplication')), `Incomplete software rich result: ${path}`);
+    if (path === 'index.html') {
+      assert.deepEqual(items.map(item => item['@type']).sort(), ['FAQPage', 'Organization']);
+      const organization = items.find(item => item['@type'] === 'Organization');
+      assert.equal(organization.name, 'Replaid');
+      assert.equal(organization.url, 'https://replaid.pro/');
+    }
   }
 });
 
