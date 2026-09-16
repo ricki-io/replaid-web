@@ -468,6 +468,11 @@ test('internal links and structured URLs match canonical pages and keep valid fr
   for (const file of files.filter(path => path.endsWith('.html'))) {
     const html = await readPage(file);
     const canonical = html.match(/rel="canonical" href="([^"]+)"/)?.[1];
+    if (file === '404.html') {
+      assert.equal(canonical, undefined, 'The error page must not declare a canonical URL');
+      assert.match(html, /name="robots" content="noindex, follow"/);
+      continue;
+    }
     assert.ok(canonical, `Missing canonical: ${file}`);
     const url = new URL(canonical);
     assert.equal(url.search, '', `Query in canonical: ${file}`);
