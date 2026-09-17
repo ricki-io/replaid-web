@@ -53,25 +53,8 @@ const pricingQuestions = [
     link: { href: '/terms/#billing', label: 'Read the payment terms' },
   },
 ];
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: 'Replaid',
-  applicationCategory: 'BusinessApplication',
-  operatingSystem: 'Web',
-  description,
-  offers: {
-    '@type': 'Offer',
-    name: 'Founding Lifetime',
-    price: String(foundingPrice),
-    priceCurrency: 'USD',
-    availability: 'https://schema.org/LimitedAvailability',
-    url: 'https://replaid.pro/pricing/',
-    description,
-  },
-};
 ---
-<Layout title="Pricing | Replaid" description={description} jsonLd={jsonLd}>
+<Layout title="Pricing | Replaid" description={description}>
   <div class="sky-landing pricing-page">
     <SkyHeader />
     <main id="main" class="pricing-main">
