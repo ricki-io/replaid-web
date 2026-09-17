@@ -13,6 +13,8 @@ Primary contact: https://replaid.pro/contact/
 - Request beta access: https://replaid.pro/beta/
 - Connection guide: https://replaid.pro/docs/connect-your-agent/
 - Pricing: https://replaid.pro/pricing/
+- Replaid vs Manychat: https://replaid.pro/compare/manychat/
+- Replaid vs respond.io: https://replaid.pro/compare/respond-io/
 - For automation agencies: https://replaid.pro/use-cases/automation-agencies/
 - For developers: https://replaid.pro/use-cases/developers/
 - For creators: https://replaid.pro/use-cases/creators/

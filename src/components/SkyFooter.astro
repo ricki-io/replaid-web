@@ -25,6 +25,11 @@ import { useCases, setupService } from './use-cases';
       <h3>Use Cases</h3>
       {useCases.map(link => <a href={link.href}>{link.label}</a>)}
     </nav>
+    <nav aria-label="Compare">
+      <h3>Compare</h3>
+      <a href="/compare/manychat/">Replaid vs Manychat</a>
+      <a href="/compare/respond-io/">Replaid vs respond.io</a>
+    </nav>
     <nav aria-label="Legal">
       <h3>Legal</h3>
       <a href="/privacy/">Privacy</a>
@@ -35,6 +40,7 @@ import { useCases, setupService } from './use-cases';
   <div class="sky-footer-bottom"><span>© {new Date().getFullYear()} Replaid</span><button type="button" data-cookie-settings hidden>Cookie settings</button></div>
 </footer>
 <style>
-  .sky-footer-main { grid-template-columns: 1.3fr .8fr 1.3fr 1.3fr .7fr; gap: 24px; }
+  .sky-footer-main { grid-template-columns: 1.3fr .9fr 1.3fr 1.3fr 1.1fr .7fr; gap: 24px; }
+  @media (min-width: 851px) and (max-width: 1050px) { .sky-footer-main { grid-template-columns: repeat(3, minmax(0, 1fr)); } .sky-footer-brand { grid-column: 1 / -1; } }
   @media (max-width: 850px) { .sky-footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; } .sky-footer-brand { grid-column: 1 / -1; } }
 </style>

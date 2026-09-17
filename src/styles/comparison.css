@@ -1,0 +1,61 @@
+.comparison-page .comparison-main { max-width: 1040px; margin: 0 auto; padding: 32px 24px 48px; }
+  .comparison-page .comparison-hero { position: relative; isolation: isolate; text-align: center; padding: 20px 0 56px; }
+  .comparison-page .comparison-hero::before { content: ''; position: absolute; z-index: -1; inset: -40px -180px -280px; background: url('/connector-sky-wisps.webp') center / cover; mask-image: radial-gradient(ellipse 50% 47% at 50% 60%, #000 10%, transparent 100%); opacity: .35; pointer-events: none; }
+  .comparison-page .comparison-breadcrumb { display: flex; justify-content: center; gap: 12px; color: #617184; font-size: 12px; margin-bottom: 38px; }
+  .comparison-page .comparison-breadcrumb a:hover { text-decoration: underline; }
+  .comparison-page .comparison-hero h1 { font-size: clamp(38px, 4.6vw, 60px); font-weight: 600; line-height: 1.12; letter-spacing: -.05em; }
+  .comparison-page .comparison-intro { max-width: 690px; margin: 26px auto; color: #64707f; font-size: 18px; line-height: 1.7; }
+  .comparison-page .comparison-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 24px; }
+  .comparison-page .comparison-link { color: #385267; font-size: 14px; font-weight: 550; text-decoration: underline; text-underline-offset: 4px; }
+  .comparison-page .comparison-link span { margin-left: 7px; }
+  .comparison-page .comparison-actions .comparison-link span { display: inline-block; text-decoration: none; }
+  .comparison-page .comparison-reviewed { margin-top: 26px; color: #64707f; font-size: 11px; line-height: 1.7; }
+  .comparison-page .comparison-choice > h2 { text-align: center; margin-bottom: 30px; }
+  .comparison-page .comparison-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .comparison-page .comparison-option { display: flex; flex-direction: column; padding: 32px; border: 1px solid #dce5ec; border-radius: 24px; background: rgb(255 255 255 / 82%); }
+  .comparison-page .comparison-option-replaid { border-color: #b4d6a6; background: linear-gradient(135deg, rgb(244 253 240 / 95%), rgb(244 250 255 / 75%)); box-shadow: inset 0 1px 0 #fff, 0 16px 42px rgb(40 87 119 / 7%); }
+  .comparison-page .comparison-brand { display: flex; align-items: center; gap: 10px; min-height: 26px; margin-bottom: 24px; font-size: 17px; font-weight: 600; }
+  .comparison-page .comparison-option h3 { font-size: 23px; line-height: 1.25; font-weight: 600; letter-spacing: -.035em; }
+  .comparison-page .comparison-option > p:not(.comparison-brand) { margin-top: 16px; color: #64707f; font-size: 14px; line-height: 1.75; }
+  .comparison-page .comparison-option ul { list-style: disc; padding-left: 18px; margin: 22px 0 26px; color: #385267; font-size: 14px; line-height: 1.65; }
+  .comparison-page .comparison-option li + li { margin-top: 10px; }
+  .comparison-page .comparison-option > a { margin-top: auto; }
+  .comparison-page .comparison-option > p.comparison-option-note { font-size: 11px; }
+  .comparison-page .comparison-section { border-top: 1px solid #e2e7ed; margin-top: 56px; padding-top: 52px; }
+  .comparison-page .comparison-section > p, .comparison-page .comparison-cost p { max-width: 730px; color: #64707f; font-size: 15px; line-height: 1.8; margin-top: 18px; }
+  .comparison-page .comparison-section p a { color: #385267; text-decoration: underline; text-underline-offset: 3px; }
+  .comparison-page .comparison-table-scroll { overflow-x: auto; border: 1px solid #dce5ec; border-radius: 18px; margin-top: 28px; }
+  .comparison-page table { width: 100%; min-width: 0; border-collapse: collapse; text-align: left; font-size: 14px; line-height: 1.7; }
+  .comparison-page caption { text-align: left; padding: 14px 22px; color: #64707f; font-size: 12px; background: #f6f9fb; }
+  .comparison-page th, .comparison-page td { padding: 22px; vertical-align: top; border-top: 1px solid #e2e7ed; }
+  .comparison-page thead th { font-size: 16px; font-weight: 600; }
+  .comparison-page thead th:first-child, .comparison-page tbody th { width: 20%; }
+  .comparison-page tbody th { font-weight: 550; }
+  .comparison-page td { width: 40%; color: #526578; }
+  .comparison-page th:nth-child(2), .comparison-page td:nth-child(2) { background: #f5faf2; }
+  .comparison-page .comparison-cell-label { display: none; }
+  .comparison-page .comparison-source-link { display: inline-block; margin-top: 8px; font-size: 11px; color: #385267; text-decoration: underline; text-underline-offset: 3px; }
+  .comparison-page .comparison-section > .comparison-detail-note { max-width: none; font-size: 12px; }
+  .comparison-page .comparison-cost { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; }
+  .comparison-page .comparison-cost h3 { font-size: 18px; font-weight: 600; }
+  .comparison-page .comparison-cost h3:not(:first-child) { margin-top: 26px; }
+  .comparison-page .comparison-cost p { margin-top: 12px; }
+  .comparison-page .comparison-trial ol { list-style: decimal; padding-left: 22px; margin-top: 20px; color: #385267; font-size: 15px; line-height: 1.8; }
+  .comparison-page .comparison-trial li + li { margin-top: 7px; }
+  .comparison-page .comparison-faq .sky-faq-list { max-width: none; margin-top: 30px; }
+  .comparison-page .comparison-sources { padding-top: 16px; }
+  .comparison-page .comparison-sources h2 { font-size: 18px; }
+  .comparison-page .comparison-sources p { margin-top: 14px; font-size: 12px; line-height: 1.8; color: #64707f; max-width: 770px; }
+  .comparison-page .comparison-sources ul { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 16px; font-size: 12px; color: #385267; }
+  .comparison-page .comparison-sources a { text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 700px) {
+    .comparison-page table, .comparison-page caption, .comparison-page tbody { display: block; }
+    .comparison-page thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .comparison-page tbody tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .comparison-page tbody th { grid-column: 1 / -1; width: auto; background: #f6f9fb; font-size: 14px; }
+    .comparison-page th, .comparison-page td { padding: 16px; }
+    .comparison-page td { width: auto; font-size: 13px; overflow-wrap: anywhere; }
+    .comparison-page td + td { border-left: 1px solid #e2e7ed; }
+    .comparison-page .comparison-cell-label { display: block; margin-bottom: 8px; color: #10151b; font-size: 13px; font-weight: 600; }
+  }
+  @media (max-width: 700px) { .comparison-page .comparison-main { padding: 24px 20px 40px; } .comparison-page .comparison-options, .comparison-page .comparison-cost { grid-template-columns: minmax(0, 1fr); gap: 24px; } .comparison-page .comparison-option { padding: 26px; } .comparison-page .comparison-intro { font-size: 16px; } .comparison-page .comparison-reviewed { max-width: 290px; margin-inline: auto; } .comparison-page .comparison-section { margin-top: 40px; padding-top: 38px; } .comparison-page .comparison-breadcrumb { margin-bottom: 30px; } }

@@ -1,0 +1,131 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SkyHeader from '../../components/SkyHeader.astro';
+import SkyFooter from '../../components/SkyFooter.astro';
+import SetupServiceCallout from '../../components/SetupServiceCallout.astro';
+import { betaAccess, productCopy } from '../../components/product-copy';
+import '../../styles/landing.css';
+import '../../styles/comparison.css';
+
+const title = 'Replaid vs respond.io | AI Agents, Channels & Pricing';
+const description = 'Compare Replaid and respond.io for external AI agents, MCP, customer messaging, channels, and pricing. See the limits and find the right fit for your workflow.';
+const canonical = 'https://replaid.pro/compare/respond-io/';
+const sources = [
+  { id: 'respond-mcp', name: 'respond.io hosted MCP', href: 'https://respond.io/help/integrations/model-context-protocol-mcp' },
+  { id: 'respond-pricing', name: 'respond.io plans and pricing', href: 'https://respond.io/pricing' },
+  { id: 'respond-credits', name: 'respond.io AI credits and overages', href: 'https://respond.io/help/organization-settings/ai-credits' },
+  { id: 'respond-channels', name: 'respond.io channels and integrations', href: 'https://respond.io/integrations' },
+  { id: 'respond-assist', name: 'respond.io AI Assist and draft review', href: 'https://respond.io/help/inbox/using-ai-assist' },
+  { id: 'respond-workflows', name: 'respond.io visual workflows', href: 'https://respond.io/help/workflows/workflows-overview' },
+  { id: 'respond-api', name: 'respond.io Developer API', href: 'https://respond.io/help/integrations/developer-api' },
+  { id: 'respond-knowledge', name: 'respond.io AI knowledge sources', href: 'https://respond.io/help/ai-agents/managing-ai-knowledge-sources' },
+];
+const rows = [
+  { topic: 'External agents and MCP', replaid: 'Connect your chosen agent through MCP. Your agent supplies the knowledge, instructions, and reply text.', competitor: 'Connect external assistants through its hosted MCP server with OAuth. Tools cover contacts, messages, conversations, and AI agent settings.', source: sources[0] },
+  { topic: 'Built-in AI and knowledge', replaid: 'An external agent is required. Keep business knowledge and reasoning in the agent or application you choose.', competitor: 'Configure built-in AI with knowledge from files and website URLs. Select which sources each agent uses.', source: sources[7] },
+  { topic: 'Starting automation', replaid: 'Run your agent manually, on an external schedule, or through a webhook receiver. Connecting MCP alone does not start replies.', competitor: 'Build workflows with triggers and steps for messaging, assignment, and routing. Built-in automation runs within the platform.', source: sources[5] },
+  { topic: 'Drafts and human replies', replaid: 'Save drafts and inspect them in Replaid. Enable sending when ready, then ask your agent to send a specific reply. There is no manual reply composer in the current app.', competitor: 'AI Assist suggests a reply in the inbox composer. A person can edit it before sending or write their own reply.', source: sources[4] },
+  { topic: 'Action controls', replaid: 'Set action permissions and hourly limits, keep sending disabled while testing, check actions with dry runs, and inspect execution records.', competitor: 'Hosted MCP follows the connected user’s role. Built-in AI agents also have configurable conversation actions. Equivalent controls for every external-agent action were not verified.', source: sources[0] },
+  { topic: 'Messaging channels', replaid: 'WhatsApp, Instagram, Messenger, Telegram, and a website widget. The current message workflow is text-based; WhatsApp replies require an open 24-hour customer-care window.', competitor: 'Includes WhatsApp, Instagram, Messenger, Telegram, web chat, email, SMS, LINE, Viber, and WeChat. TikTok Business Messaging is in beta; voice integrations are also listed.', source: sources[3] },
+  { topic: 'Custom integrations', replaid: 'Use MCP, the REST API, and outgoing webhooks to connect your agent and other tools. Custom workflows run in your own integration.', competitor: 'Developer API access starts on Growth. Its integration catalogue also includes CRM and automation tools.', source: sources[6] },
+  { topic: 'Platform and usage costs', replaid: 'A limited founding lifetime offer. Paid channel usage, external AI costs, and optional setup work are separate.', competitor: 'Recurring subscriptions, with contact allowances and included AI credits. Extra usage and channel fees can add to the bill.', source: sources[1] },
+];
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', '@id': canonical, url: canonical, name: title, description, inLanguage: 'en', dateModified: '2026-09-17' },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://replaid.pro/' },
+    { '@type': 'ListItem', position: 2, name: 'Replaid vs respond.io', item: canonical },
+  ] },
+];
+---
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <div class="sky-landing comparison-page">
+    <SkyHeader />
+    <main id="main" class="comparison-main">
+      <section class="comparison-hero" aria-labelledby="comparison-heading">
+        <nav class="comparison-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Replaid vs respond.io</span></nav>
+        <h1 id="comparison-heading">Replaid vs respond.io.<br /><span class="hero-highlight">Where will your agent work?</span></h1>
+        <p class="comparison-intro">Both connect external AI agents to customer conversations. Replaid focuses on your agent’s messaging workflow. respond.io adds built-in AI, visual automation, and a broader team inbox.</p>
+        <div class="comparison-actions"><a class="sky-button" href={`${betaAccess.url}?from=compare-respond-io`}>{betaAccess.label}</a><a class="comparison-link" href="#comparison-details">Compare the details <span aria-hidden="true">↓</span></a></div>
+        <p class="comparison-reviewed">By Replaid · Reviewed <time datetime="2026-09-17">September 17, 2026</time> · Based on linked product documentation</p>
+      </section>
+
+      <section class="comparison-choice" aria-labelledby="choose-heading">
+        <h2 id="choose-heading">Start with the workflow you need.</h2>
+        <div class="comparison-options">
+          <article class="comparison-option comparison-option-replaid">
+            <p class="comparison-brand"><img src="/favicon.svg" width="22" height="24" alt="" /> Replaid</p>
+            <h3>Connect the agent you already use.</h3>
+            <p>A fit for developers and agencies with an existing agent, business knowledge, and a supported text-messaging workflow.</p>
+            <ul><li>Keep reasoning and instructions in your agent.</li><li>Start with drafts and sending disabled.</li><li>Set action limits and review recorded results.</li></ul>
+            <a class="comparison-link" href="/docs/connect-your-agent/">See the connection guide <span aria-hidden="true">↗</span></a>
+            <p class="comparison-option-note">Beta access is by invitation. You configure and run the external agent.</p>
+          </article>
+          <article class="comparison-option">
+            <p class="comparison-brand">respond.io</p>
+            <h3>Bring more of the workflow together.</h3>
+            <p>A fit for teams that need people and AI working in a shared inbox, with more channels and built-in automation.</p>
+            <ul><li>Use built-in AI or connect an external assistant.</li><li>Build visual messaging and routing workflows.</li><li>Let people edit drafts and reply from the inbox.</li></ul>
+            <a class="comparison-link" href={sources[1].href}>Explore respond.io’s plans <span aria-hidden="true">↗</span></a>
+            <p class="comparison-option-note">Feature access, included usage, and extra charges depend on the plan.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="comparison-section" id="comparison-details" aria-labelledby="details-heading">
+        <h2 id="details-heading">Compare the parts you will use.</h2>
+        <p>MCP support is shared by both products. Compare the channel limits, review process, and tools needed for your actual conversations.</p>
+        <div class="comparison-table-scroll" role="region" aria-label="Replaid and respond.io feature comparison">
+          <table role="table">
+            <caption>Agent workflows, channels, controls, and costs.</caption>
+            <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">What matters</th><th scope="col" role="columnheader">Replaid</th><th scope="col" role="columnheader">respond.io</th></tr></thead>
+            <tbody role="rowgroup">{rows.map(row => <tr role="row"><th scope="row" role="rowheader">{row.topic}</th><td role="cell"><span class="comparison-cell-label" aria-hidden="true">Replaid</span>{row.replaid}</td><td role="cell"><span class="comparison-cell-label" aria-hidden="true">respond.io</span>{row.competitor} <a class="comparison-source-link" href={row.source.href} aria-label={`respond.io source for ${row.topic.toLowerCase()}`}>Source ↗</a></td></tr>)}</tbody>
+          </table>
+        </div>
+        <p class="comparison-detail-note">Replaid’s current limits: {productCopy.channelLimits} {productCopy.futureChannels} <a href="/docs/connect-your-agent/#channel">Check channel requirements before connecting.</a></p>
+      </section>
+
+      <section class="comparison-section comparison-cost" aria-labelledby="cost-heading">
+        <div><h2 id="cost-heading">Platform access.<br /><span class="hero-highlight">Then the cost of use.</span></h2><p>A lifetime offer and a subscription include different things. Compare the full workflow, including your agent, channels, contact volume, and setup.</p></div>
+        <div>
+          <h3>Replaid: $299 once per team</h3>
+          <p>The current offer is for the first 5 founding teams and includes $50 prepaid usage credit. There is no monthly platform fee under this offer. Paid channel usage, tax, external agent costs, and optional setup or maintenance are separate. Credit expires after one year. <a href="/pricing/">See the founding offer and terms.</a></p>
+          <h3>respond.io: recurring plans</h3>
+          <p>Starter: $99/month, or $948/year.<br />Growth: $199/month, or $1,908/year.<br />Advanced: $349/month, or $3,348/year.</p>
+          <p>Prices are USD. Annual totals are billed yearly. Growth and Advanced start at 1,000 monthly active contacts. Extra contacts cost $12 and $15 per 100, respectively. WhatsApp fees are separate. <a href={sources[1].href}>Check current plans and limits.</a></p>
+        </div>
+      </section>
+
+      <section class="comparison-section comparison-trial" aria-labelledby="credits-heading">
+        <h2 id="credits-heading">What do AI credits pay for?</h2>
+        <p>respond.io includes AI credits for its built-in AI features. At the base contact tier, Growth includes 10,000 credits and Advanced includes 20,000. Agent replies typically use 2–5 credits; draft suggestions, translations, and chat summaries use 1 each.</p>
+        <p>On current paid plans, exceeding the allowance automatically adds $15 per 1,000 credits, rounded up. AI pauses at twice the included allowance. <a href={sources[2].href}>Read the AI credit rules.</a></p>
+        <p>Replaid does not include an AI agent. Your external provider charges for its own service. Replaid’s prepaid usage credit pays for supported paid channel operations; it is not a bundle of AI replies.</p>
+      </section>
+
+      <section class="comparison-section comparison-trial" aria-labelledby="trial-heading">
+        <h2 id="trial-heading">Try the conversation you handle every week.</h2>
+        <p>Use a real support question or lead enquiry with known requirements. Include a second message that needs a person’s decision.</p>
+        <ol><li>Check how the agent receives your business knowledge.</li><li>Review a draft before allowing a reply to be sent.</li><li>Check the handoff, action record, and full running cost.</li></ol>
+        <p>Start with Replaid’s <a href="/use-cases/developers/">developer workflow</a> or <a href="/use-cases/automation-agencies/">agency workflow</a>. Keep your existing setup until the new workflow works with your channels.</p>
+      </section>
+
+      <section class="comparison-section comparison-faq" aria-labelledby="questions-heading">
+        <h2 id="questions-heading">Questions before you choose.</h2>
+        <div class="sky-faq-list">
+          <details class="sky-faq-item"><summary>Does respond.io have MCP?</summary><p>Yes. It provides a hosted MCP server with OAuth for external assistants. Its setup guide does not clearly state a minimum plan, so confirm eligibility before buying. <a href={sources[0].href}>Read its hosted MCP guide.</a></p></details>
+          <details class="sky-faq-item"><summary>Is Replaid always cheaper?</summary><p>No. Its limited founding offer has a lower initial platform price than a year of the listed respond.io plans. The products include different features. Your external agent, channel usage, and setup costs affect the total.</p></details>
+          <details class="sky-faq-item"><summary>Does connecting Replaid start automatic replies?</summary><p>No. {productCopy.automation} Start with drafts and sending disabled, then test one permitted reply.</p></details>
+          <details class="sky-faq-item"><summary>Which product fits a support team?</summary><p>Consider respond.io if you need a manual reply composer, more channels, and visual routing workflows together. Consider Replaid if you already have an agent and want it to work with supported conversations under explicit action policies.</p></details>
+        </div>
+      </section>
+      <SetupServiceCallout source="compare-respond-io" compact />
+      <section class="comparison-sources" aria-labelledby="sources-heading">
+        <h2 id="sources-heading">Sources and scope</h2>
+        <p>This comparison is published by Replaid. respond.io facts are based on the official pages below, reviewed on September 17, 2026. Replaid details reflect its current product and published offer. Features and prices can change; check the sources before choosing a plan. No performance benchmark or ranking is claimed.</p>
+        <ul>{sources.map(source => <li><a id={source.id} href={source.href}>{source.name} <span aria-hidden="true">↗</span></a></li>)}</ul>
+      </section>
+    </main>
+    <SkyFooter />
+  </div>
+</Layout>

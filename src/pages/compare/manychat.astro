@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SkyHeader from '../../components/SkyHeader.astro';
+import SkyFooter from '../../components/SkyFooter.astro';
+import SetupServiceCallout from '../../components/SetupServiceCallout.astro';
+import { betaAccess, productCopy } from '../../components/product-copy';
+import '../../styles/landing.css';
+import '../../styles/comparison.css';
+
+const title = 'Replaid vs Manychat | AI Agents & Instagram Automation';
+const description = 'Compare Replaid and Manychat for Instagram messages, AI workflows, channels, and costs. See when to use your own agent and when to choose built-in automation.';
+const canonical = 'https://replaid.pro/compare/manychat/';
+const sources = [
+  { id: 'manychat-instagram', name: 'Manychat for Instagram', href: 'https://manychat.com/product/instagram' },
+  { id: 'manychat-ai', name: 'Manychat AI guide', href: 'https://help.manychat.com/hc/en-us/articles/14281227789468-Power-up-your-chat-marketing-with-Manychat-AI' },
+  { id: 'manychat-developer-tools', name: 'Manychat developer tools', href: 'https://help.manychat.com/hc/en-us/articles/14281252007580-Dev-Tools-Basics' },
+  { id: 'manychat-pricing', name: 'Manychat plans and pricing', href: 'https://manychat.com/pricing' },
+];
+const rows = [
+  { topic: 'Where you build', replaid: 'Connect an agent you already use or build. Its knowledge and instructions stay in your agent or application.', manychat: 'Build message flows and configure automations inside Manychat.', source: sources[0] },
+  { topic: 'AI and integrations', replaid: 'Connect ChatGPT, Claude, Hermes Agent, or a compatible client through MCP or REST.', manychat: 'Offers its own AI features, plus a Public API, dynamic blocks, and external requests on eligible paid plans.', source: sources[2] },
+  { topic: 'Starting automation', replaid: 'You start the agent, schedule it externally, or connect a webhook receiver. Connecting MCP alone does not start replies.', manychat: 'Set up triggers and flows for actions such as responding to comments and direct messages.', source: sources[0] },
+  { topic: 'Review and control', replaid: 'Set read, draft, and send permissions. Start with sending disabled, review proposed replies, and inspect recorded actions.', manychat: 'Offers Inbox access for people to handle conversations, with team features and seats that depend on the plan.', source: sources[3] },
+  { topic: 'Channels', replaid: 'WhatsApp, Instagram, Messenger, Telegram, and the Replaid website widget. Supported actions and limits vary by channel.', manychat: 'Lists Instagram, TikTok, Messenger, WhatsApp, Telegram, SMS, and email, with availability depending on the plan.', source: sources[3] },
+  { topic: 'Cost model', replaid: 'A limited founding offer for platform access. Paid channel usage and external agent or AI costs are separate.', manychat: 'Free and recurring paid plans. Included Active Contacts, additional contact charges, and feature access depend on the plan.', source: sources[3] },
+];
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'WebPage', '@id': canonical, url: canonical, name: title, description, inLanguage: 'en', dateModified: '2026-09-17' },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://replaid.pro/' },
+    { '@type': 'ListItem', position: 2, name: 'Replaid vs Manychat', item: canonical },
+  ] },
+];
+---
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <div class="sky-landing comparison-page">
+    <SkyHeader />
+    <main id="main" class="comparison-main">
+      <section class="comparison-hero" aria-labelledby="comparison-heading">
+        <nav class="comparison-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Replaid vs Manychat</span></nav>
+        <h1 id="comparison-heading">Replaid vs Manychat.<br /><span class="hero-highlight">Which fits your workflow?</span></h1>
+        <p class="comparison-intro">Manychat brings flows and AI tools into one automation platform. Replaid connects customer conversations to the AI agent you choose. Start with how you want to work.</p>
+        <div class="comparison-actions"><a class="sky-button" href={`${betaAccess.url}?from=compare-manychat`}>{betaAccess.label}</a><a class="comparison-link" href="#comparison-details">Compare the details <span aria-hidden="true">↓</span></a></div>
+        <p class="comparison-reviewed">By Replaid · Reviewed <time datetime="2026-09-17">September 17, 2026</time> · Based on linked product documentation</p>
+      </section>
+
+      <section class="comparison-choice" aria-labelledby="choose-heading">
+        <h2 id="choose-heading">Two ways to handle customer messages.</h2>
+        <div class="comparison-options">
+          <article class="comparison-option comparison-option-replaid">
+            <p class="comparison-brand"><img src="/favicon.svg" width="22" height="24" alt="" /> Replaid</p>
+            <h3>You bring the agent.</h3>
+            <p>A fit when you want your existing agent, business knowledge, and instructions to work with customer conversations.</p>
+            <ul><li>Choose the agent and how it runs.</li><li>Read messages and prepare drafts for review.</li><li>Control which messaging actions it can take.</li></ul>
+            <a class="comparison-link" href="/docs/connect-your-agent/">See the connection guide <span aria-hidden="true">↗</span></a>
+            <p class="comparison-option-note">Beta access is by invitation. Agent setup is required.</p>
+          </article>
+          <article class="comparison-option">
+            <p class="comparison-brand">Manychat</p>
+            <h3>You build the automation there.</h3>
+            <p>A fit when you want to set up social messaging campaigns, comment replies, and DM flows in a visual builder.</p>
+            <ul><li>Build flows around social interactions.</li><li>Use built-in AI where your plan supports it.</li><li>Manage conversations through its Inbox.</li></ul>
+            <a class="comparison-link" href={sources[0].href}>Explore Manychat’s Instagram tools <span aria-hidden="true">↗</span></a>
+            <p class="comparison-option-note">Check the plan and channel requirements for your workflow.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="comparison-section" id="comparison-details" aria-labelledby="details-heading">
+        <h2 id="details-heading">Compare the parts you will use.</h2>
+        <p>Both products offer ways to automate conversations. The main difference is where you configure the workflow and how your agent connects.</p>
+        <div class="comparison-table-scroll" role="region" aria-label="Replaid and Manychat feature comparison">
+          <table role="table">
+            <caption>Workflow, channel, and cost comparison.</caption>
+            <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">What matters</th><th scope="col" role="columnheader">Replaid</th><th scope="col" role="columnheader">Manychat</th></tr></thead>
+            <tbody role="rowgroup">{rows.map(row => <tr role="row"><th scope="row" role="rowheader">{row.topic}</th><td role="cell"><span class="comparison-cell-label" aria-hidden="true">Replaid</span>{row.replaid}</td><td role="cell"><span class="comparison-cell-label" aria-hidden="true">Manychat</span>{row.manychat} <a class="comparison-source-link" href={row.source.href} aria-label={`Manychat source for ${row.topic.toLowerCase()}`}>Source ↗</a></td></tr>)}</tbody>
+          </table>
+        </div>
+        <p class="comparison-detail-note">Replaid’s current limits: {productCopy.channelLimits} {productCopy.futureChannels} <a href="/docs/connect-your-agent/#channel">Check the full channel requirements.</a></p>
+      </section>
+
+      <section class="comparison-section comparison-cost" aria-labelledby="cost-heading">
+        <div><h2 id="cost-heading">Compare the full cost<br /><span class="hero-highlight">of your workflow.</span></h2><p>The right choice depends on contact volume, channels, agent costs, and the setup you need.</p></div>
+        <div>
+          <h3>Replaid</h3><p>The current founding offer is $299 USD once per team for the first 5 founding teams, with $50 prepaid usage credit. Paid channel usage, tax, and your external agent or AI provider costs are separate. Optional setup and maintenance are quoted separately. <a href="/pricing/">See the current offer and terms.</a></p>
+          <h3>Manychat</h3><p>Compare its free and paid plans using your expected Active Contacts, channels, and required features. Monthly and annual billing can differ. <a href={sources[3].href}>Check Manychat’s current pricing.</a></p>
+        </div>
+      </section>
+
+      <section class="comparison-section comparison-trial" aria-labelledby="trial-heading">
+        <h2 id="trial-heading">Test one conversation before you switch.</h2>
+        <p>For a creator workflow, use a test message asking about a partnership or a service you offer. Define what makes it relevant, what information is missing, and what a useful reply should contain.</p>
+        <ol><li>Check how you supply that knowledge and set the rules.</li><li>Review the result and the actions the workflow takes.</li><li>Try a question that needs you to step in.</li></ol>
+        <p>For Replaid, start with sending disabled and inspect the draft. <a href="/use-cases/creators/">See the creator workflow</a>, or <a href="/use-cases/automation-agencies/">explore setup for agency clients</a>.</p>
+      </section>
+
+      <section class="comparison-section comparison-faq" aria-labelledby="questions-heading">
+        <h2 id="questions-heading">Questions before you choose.</h2>
+        <div class="sky-faq-list">
+          <details class="sky-faq-item"><summary>Does Manychat have AI?</summary><p>Yes. Manychat documents AI features for understanding intent, qualifying leads, and creating replies. Availability depends on the feature, plan, and channel. <a href={sources[1].href}>Read Manychat’s AI guide.</a></p></details>
+          <details class="sky-faq-item"><summary>Does Replaid run my agent automatically?</summary><p>No. {productCopy.automation} You also provide the knowledge and instructions your agent uses.</p></details>
+          <details class="sky-faq-item"><summary>Can I move my Manychat flows directly into Replaid?</summary><p>Replaid does not provide a one-click Manychat flow importer. Start with one workflow and configure it in your chosen agent. Keep your existing setup until you have checked the new workflow and its channel requirements.</p></details>
+        </div>
+      </section>
+      <SetupServiceCallout source="compare-manychat" compact />
+      <section class="comparison-sources" aria-labelledby="sources-heading">
+        <h2 id="sources-heading">Sources and scope</h2>
+        <p>This comparison is published by Replaid. Manychat facts are based on the official pages below, reviewed on September 17, 2026. Features and prices can change; check the linked pages before choosing a plan. No performance benchmark or ranking is claimed.</p>
+        <ul>{sources.map(source => <li><a id={source.id} href={source.href}>{source.name} <span aria-hidden="true">↗</span></a></li>)}</ul>
+      </section>
+    </main>
+    <SkyFooter />
+  </div>
+</Layout>

@@ -1,4 +1,4 @@
-const sources = new Set(['home', 'pricing', 'pricing-faq', 'faq', 'footer', 'agencies', 'developers', 'creators', 'customer-support']);
+const sources = new Set(['home', 'pricing', 'pricing-faq', 'faq', 'footer', 'agencies', 'developers', 'creators', 'customer-support', 'compare-manychat', 'compare-respond-io']);
 
 export function setRequestSource(form, search) {
   const requested = new URLSearchParams(search).get('from');
