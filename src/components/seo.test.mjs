@@ -31,6 +31,8 @@ function decodeText(value) {
 }
 
 const newLandingRoutes = [
+  '/compare/manychat/',
+  '/compare/respond-io/',
   '/use-cases/automation-agencies/',
   '/use-cases/developers/',
   '/use-cases/creators/',
