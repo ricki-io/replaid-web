@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import SkyFooter from '../components/SkyFooter.astro';
 import ConversationExample from '../components/ConversationExample.astro';
+import SetupServiceCallout from '../components/SetupServiceCallout.astro';
+import UseCasesSection from '../components/UseCasesSection.astro';
 import { faqs } from '../components/faq-content';
 import { betaAccess } from '../components/product-copy';
 import '../styles/landing.css';
@@ -23,7 +25,7 @@ const jsonLd = [
     '@type': 'FAQPage',
     mainEntity: faqs.map((faq) => ({
       '@type': 'Question', name: faq.q,
-      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+      acceptedAnswer: { '@type': 'Answer', text: faq.link ? `${faq.a} ${faq.link.label}` : faq.a },
     })),
   },
 ];
@@ -67,10 +69,8 @@ const jsonLd = [
       </ol>
     </section>
     <ConversationExample />
-    <section class="sky-section sky-final-cta">
-      <h2>Your agent. Connected.</h2>
-      <a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a>
-    </section>
+    <UseCasesSection />
+    <SetupServiceCallout source="home" />
     <section id="faq" class="sky-faq" aria-labelledby="faq-heading">
       <header class="sky-faq-heading">
         <span>FAQ</span>
@@ -83,10 +83,14 @@ const jsonLd = [
               <span>{faq.q}</span>
               <svg class="sky-faq-toggle" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12" /><path class="sky-faq-toggle-vertical" d="M10 4v12" /></svg>
             </summary>
-            <p>{faq.a}</p>
+            <p>{faq.a}{faq.link && <> <a class="faq-service-link" href={faq.link.href}>{faq.link.label}</a></>}</p>
           </details>
         ))}
       </div>
+    </section>
+    <section class="sky-section sky-final-cta">
+      <h2>Your agent. Connected.</h2>
+      <a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a>
     </section>
     <SkyFooter />
   </main>

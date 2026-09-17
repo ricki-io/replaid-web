@@ -1,0 +1,22 @@
+.setup-main { column-gap: 64px; max-width: 1100px; }
+.setup-page .contact-intro h1 { font-size: clamp(38px, 4.2vw, 54px); }
+.setup-page .contact-description { max-width: 420px; }
+.setup-price-note { margin-top: 24px; padding-top: 24px; border-top: 1px solid #dce5ec; font-size: 14px; line-height: 1.8; max-width: 420px; }
+.setup-cost-note { margin-top: 12px; color: #64707f; font-size: 13px; line-height: 1.8; max-width: 420px; }
+.setup-scope { grid-column: 1; grid-row: 2; }
+.setup-scope h2 { font-size: 25px; }
+.setup-scope ol { list-style: decimal; padding-left: 20px; margin-top: 28px; }
+.setup-scope li { padding-left: 8px; }
+.setup-scope li + li { margin-top: 24px; }
+.setup-scope li::marker { color: #617184; font-size: 13px; }
+.setup-scope h3 { font-size: 15px; font-weight: 600; }
+.setup-scope p { font-size: 14px; line-height: 1.8; color: #64707f; margin-top: 8px; }
+.setup-scope .setup-self-serve { margin-top: 30px; padding-top: 22px; border-top: 1px solid #dce5ec; font-size: 13px; }
+.setup-self-serve a { color: #385267; text-decoration: underline; text-underline-offset: 3px; }
+.setup-page .contact-field label span { color: #64707f; font-weight: 400; }
+.setup-page .contact-field select { display: block; width: 100%; border: 1px solid #dce3ea; border-radius: 11px; background: #fbfcfd; padding: 12px 14px; color: #10151b; font: inherit; font-size: 16px; line-height: 1.5; }
+.setup-page .contact-field select:focus { outline: 3px solid rgb(8 117 213 / 18%); outline-offset: 2px; border-color: #0875d5; background: #fff; }
+.setup-page .contact-submit-copy .setup-form-error { color: #a32727; font-size: 13px; }
+.setup-page .sky-button:disabled { opacity: .65; cursor: wait; }
+@media (max-width: 850px) { .setup-main { max-width: 620px; } .setup-scope { grid-column: 1; grid-row: auto; } }
+@media (max-width: 500px) { .setup-page .contact-intro h1 { font-size: 39px; } }

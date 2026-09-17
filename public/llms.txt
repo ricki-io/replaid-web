@@ -13,6 +13,11 @@ Primary contact: https://replaid.pro/contact/
 - Request beta access: https://replaid.pro/beta/
 - Connection guide: https://replaid.pro/docs/connect-your-agent/
 - Pricing: https://replaid.pro/pricing/
+- For automation agencies: https://replaid.pro/use-cases/automation-agencies/
+- For developers: https://replaid.pro/use-cases/developers/
+- For creators: https://replaid.pro/use-cases/creators/
+- For customer support: https://replaid.pro/use-cases/customer-support/
+- Agent setup and managed service: https://replaid.pro/setup-service/
 - FAQ: https://replaid.pro/#faq
 - Contact: https://replaid.pro/contact/
 - Privacy policy: https://replaid.pro/privacy/

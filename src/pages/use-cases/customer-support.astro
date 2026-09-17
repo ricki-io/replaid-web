@@ -1,0 +1,51 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import { productCopy } from '../../components/product-copy';
+---
+<UseCaseLayout
+  title="Replaid for Customer Support | Website Widget & Connected Channels"
+  description="Connect your AI agent to customer questions from the Replaid website widget and messaging channels. Prepare replies, control sending, and hand off to a person."
+  audience="For customer support"
+  source="customer-support"
+  intro="Bring questions from your website widget and connected messaging channels to your agent. Let it use your support knowledge to prepare answers, with permissions and human handoff you control."
+>
+  <Fragment slot="heading">Help your customers. <span class="hero-highlight">Keep your team in control.</span></Fragment>
+  <aside slot="example" class="use-case-example" aria-label="Example website widget support conversation">
+    <p class="example-label">Example · Replaid website widget</p>
+    <div class="example-message"><span>A visitor asks on your website</span><p>“Can I return an item if it doesn’t fit?”</p></div>
+    <dl class="example-steps">
+      <div><dt>Your agent reads the question</dt><dd>It checks the return policy you supplied in its knowledge.</dd></div>
+      <div><dt>Replaid saves a draft</dt><dd>“Yes, unworn items can be returned within 30 days.”</dd></div>
+      <div><dt>Your team reviews the answer</dt><dd>A person handles exceptions or questions the agent cannot answer.</dd></div>
+    </dl>
+    <p class="example-result">Illustrative policy. Start with sending disabled and test your own support rules.</p>
+  </aside>
+
+  <section class="use-case-section" aria-labelledby="support-channels-heading">
+    <header><h2 id="support-channels-heading">Start where customers ask for help.</h2><p>Connect a channel, give your agent the right knowledge, and decide which actions it can take.</p></header>
+    <div class="use-case-columns">
+      <article><h3>Add the widget to your website</h3><p>Let visitors send text questions through the Replaid widget. Set the chat title, welcome message, and allowed websites, then add the install script to your site.</p><a class="use-case-link" href="/docs/connect-your-agent/#channel">See how to install the widget</a></article>
+      <article><h3>Connect messaging channels</h3><p>Use WhatsApp, Instagram, Messenger, or Telegram alongside your website. Give your agent access to the conversation so it can prepare a reply for the same channel.</p></article>
+      <article><h3>Keep a person within reach</h3><p>Tell your agent when to escalate. Pause automation when a conversation needs a person, and review recorded actions to see what the agent did.</p></article>
+    </div>
+  </section>
+
+  <section class="use-case-section use-case-split" aria-labelledby="support-start-heading">
+    <header><h2 id="support-start-heading">Start with one question your team answers every day.</h2><p>Delivery rules, opening hours, or return policies make a clear first test.</p></header>
+    <ol class="use-case-checklist">
+      <li><h3>Give your agent the support facts</h3><p>Prepare current policies and examples in your agent’s knowledge. Define which questions it can answer and when it must ask your team.</p></li>
+      <li><h3>Send a test through the widget</h3><p>Install the Replaid widget on an allowed website and send a text question. With sending disabled, ask your agent to read the conversation and prepare a draft.</p></li>
+      <li><h3>Check the reply and handoff</h3><p>Review the draft, test a question that needs a person, and agree on the permissions. Configure how your external agent runs before enabling automatic replies.</p></li>
+    </ol>
+  </section>
+
+  <section class="use-case-section use-case-questions" aria-labelledby="support-questions-heading">
+    <h2 id="support-questions-heading">Before your first customer conversation.</h2>
+    <div class="sky-faq-list">
+      <details class="sky-faq-item"><summary>Does the website widget include an AI agent?</summary><p>No. The widget collects customer messages and displays replies. You connect your own agent and provide its knowledge, instructions, and the way it starts. Optional paid setup is available if you want help.</p></details>
+      <details class="sky-faq-item"><summary>What do I need to install the widget?</summary><p>A website where you can add the install script. In Replaid, open Website widget under Channels, configure your allowed websites, and enable it. Each team can connect one Replaid widget. The widget supports text messages; attachments are not supported.</p></details>
+      <details class="sky-faq-item"><summary>Can the agent look up orders or customer accounts?</summary><p>Only if you give your external agent access to those systems. Replaid provides the conversation and permitted messaging actions. Your agent needs a separate connection to look up an order, check a booking, or change an account.</p></details>
+      <details class="sky-faq-item"><summary>Does connecting the agent enable automatic replies?</summary><p>No. {productCopy.automation} Start with drafts and review before you allow sending.</p></details>
+    </div>
+  </section>
+</UseCaseLayout>

@@ -218,3 +218,5 @@
 
 
 .hermes-nous-logo { width: 72%; height: 72%; object-fit: contain; clip-path: inset(6% round 14%); }
+
+.sky-faq-item .faq-service-link { color: #385267; text-decoration: underline; text-underline-offset: 3px; }

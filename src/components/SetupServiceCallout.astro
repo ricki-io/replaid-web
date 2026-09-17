@@ -1,0 +1,59 @@
+---
+import { setupService } from './use-cases';
+
+interface Props {
+  source: string;
+  compact?: boolean;
+}
+const { source, compact = false } = Astro.props;
+---
+<aside class:list={['setup-callout', { 'setup-callout-compact': compact }]} aria-label="Optional setup service">
+  <div class="setup-callout-content">
+    <p class="setup-callout-label">Setup &amp; managed service</p>
+    <h2>Your AI agent,<br /><span class="hero-highlight">set up for you.</span></h2>
+    <p class="setup-callout-description">Get help configuring your agent, connecting your channels, and keeping it running.</p>
+    <ol class="setup-callout-steps" aria-label="Service steps">
+      <li>Configure</li>
+      <li><span aria-hidden="true">→</span> Connect</li>
+      <li><span aria-hidden="true">→</span> Maintain</li>
+    </ol>
+  </div>
+  <a class="sky-button" href={`${setupService.url}?from=${source}`}>{setupService.label}<span aria-hidden="true">↗</span></a>
+  <p class="setup-callout-note">Optional paid service. Setup and ongoing work are quoted separately from Replaid access and usage.</p>
+</aside>
+
+<style>
+  .setup-callout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 30px 48px;
+    max-width: 992px;
+    margin: 28px auto 64px;
+    padding: 42px 44px 26px;
+    border: 1px solid #38515f;
+    border-radius: 26px;
+    background: radial-gradient(ellipse at 100% 0%, #284f69 0%, transparent 65%), #10232e;
+    color: #fff;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 14%), 0 16px 40px rgb(16 35 46 / 10%);
+  }
+  .setup-callout .setup-callout-label { margin: 0 0 20px; color: #a6e590; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+  .setup-callout h2 { margin: 0; color: #fff; font-size: clamp(32px, 3.8vw, 44px); font-weight: 600; line-height: 1.12; letter-spacing: -.04em; text-wrap: initial; }
+  .setup-callout .setup-callout-description { max-width: 480px; margin-top: 18px; color: #cedbe4; font-size: 15px; line-height: 1.7; }
+  .setup-callout-steps { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; margin: 24px 0 0; padding: 0; color: #e6edf2; font-size: 13px; font-weight: 500; }
+  .setup-callout-steps li { display: flex; align-items: center; gap: 12px; }
+  .setup-callout-steps span { color: #8da4b3; }
+  .setup-callout .sky-button { gap: 16px; background: #82d865; color: #10232e; font-size: 15px; font-weight: 600; padding: 16px 26px; box-shadow: inset 0 1px 0 rgb(255 255 255 / 30%); }
+  .setup-callout .sky-button:hover { background: #9be481; }
+  .setup-callout .sky-button:focus-visible { outline: 3px solid #fff; outline-offset: 5px; }
+  .setup-callout .setup-callout-note { grid-column: 1 / -1; margin: 0; padding-top: 20px; border-top: 1px solid #456071; color: #b9cbd7; font-size: 12px; line-height: 1.7; }
+  .setup-callout-compact { max-width: none; margin: 36px 0; }
+  @media (max-width: 1050px) { .setup-callout:not(.setup-callout-compact) { margin-inline: 24px; } }
+  @media (max-width: 700px) {
+    .setup-callout { grid-template-columns: minmax(0, 1fr); justify-items: start; gap: 26px; padding: 30px 26px 24px; }
+    .setup-callout:not(.setup-callout-compact) { margin-inline: 20px; }
+    .setup-callout .setup-callout-label { font-size: 10px; }
+    .setup-callout-steps, .setup-callout-steps li { gap: 9px; }
+    .setup-callout-steps { font-size: 12px; }
+  }
+</style>

@@ -1,0 +1,23 @@
+---
+import { useCases } from './use-cases';
+---
+<section class="audience-section sky-section" aria-labelledby="use-cases-heading">
+  <header><h2 id="use-cases-heading">Who is Replaid for?</h2><p>Build for clients, find opportunities, or help your customers.</p></header>
+  <div class="audience-options">
+    {useCases.map((item) => <a href={item.href}><h3>{item.label}</h3><p>{item.description}</p><span>Explore this use case <span aria-hidden="true">↗</span></span></a>)}
+  </div>
+</section>
+<style>
+  .audience-section { padding: 44px 24px 40px; }
+  header { text-align: center; }
+  h2 { font-size: clamp(28px, 3vw, 36px); letter-spacing: -.045em; font-weight: 600; line-height: 1.2; }
+  header p { margin-top: 15px; color: #64707f; line-height: 1.7; }
+  .audience-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 32px; }
+  .audience-options > a { padding: 30px; border: 1px solid #e2e7ed; border-radius: 22px; }
+  .audience-options > a:hover { border-color: #9cabb9; background: #fbfcfd; }
+  h3 { font-size: 21px; font-weight: 600; letter-spacing: -.03em; }
+  .audience-options p { margin-top: 14px; color: #64707f; font-size: 15px; line-height: 1.7; max-width: 360px; }
+  .audience-options a > span { display: block; margin-top: 26px; font-size: 14px; font-weight: 550; }
+  .audience-options a > span > span { margin-left: 8px; }
+  @media (max-width: 650px) { .audience-section { padding-inline: 20px; } .audience-options { grid-template-columns: 1fr; gap: 16px; } .audience-options > a { padding: 26px; } }
+</style>

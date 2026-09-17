@@ -1,0 +1,50 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import { productCopy } from '../../components/product-copy';
+---
+<UseCaseLayout
+  title="Replaid for Creators | Find Opportunities in Your Inbox"
+  description="Connect your agent to your creator inbox. Find partnership enquiries, qualify potential customers, and prepare replies for your review."
+  audience="For creators"
+  source="creators"
+  intro="Give your agent the criteria that matter to you. Let it sort incoming messages, find potential partnerships and customers, and prepare replies for your review."
+>
+  <Fragment slot="heading">Find the opportunities <span class="hero-highlight">hidden in your inbox.</span></Fragment>
+  <aside slot="example" class="use-case-example" aria-label="Example creator inbox review">
+    <p class="example-label">Example inbox review</p>
+    <div class="creator-shortlist">
+      <div class="example-message"><span>Brand partnership</span><p>“We’d like to sponsor your next tutorial. Can you share your rates?”</p><strong>Potential fit · Review the brief</strong></div>
+      <div class="example-message"><span>Potential customer</span><p>“Do you offer a workshop for our team?”</p><strong>Service enquiry · Draft a reply</strong></div>
+      <div class="example-message"><span>Unrelated pitch</span><p>“Buy followers and grow overnight.”</p><strong>Low priority · Leave for later</strong></div>
+    </div>
+    <p class="example-result">Your agent explains its choices. You decide what deserves a reply.</p>
+  </aside>
+
+  <section class="use-case-section" aria-labelledby="creator-opportunities-heading">
+    <header><h2 id="creator-opportunities-heading">Make room for the messages that matter.</h2><p>A partnership offer, a customer question, and a generic pitch need different kinds of attention.</p></header>
+    <div class="use-case-columns">
+      <article><h3>Find relevant partnerships</h3><p>Ask your agent to identify collaboration requests and pull out the brand, proposed work, budget, and dates when the sender provides them. Review the fit before discussing terms.</p></article>
+      <article><h3>Identify potential customers</h3><p>Find people asking about your services, courses, or products. Let your agent tag the conversation and qualify the contact using criteria you define.</p></article>
+      <article><h3>Keep useful messages in view</h3><p>Have your agent label relevant questions and feedback, and separate them from repeated or unrelated pitches. Start with sorting and suggestions, then review what it found.</p></article>
+    </div>
+  </section>
+
+  <section class="use-case-section use-case-split" aria-labelledby="creator-start-heading">
+    <header><h2 id="creator-start-heading">Teach your agent what a good opportunity looks like.</h2><p>Your topics, offers, and preferences give it a reason to put a message on your shortlist.</p></header>
+    <ol class="use-case-checklist">
+      <li><h3>Connect your creator inbox</h3><p>Start with an Instagram Business or Creator account. Connect it to Replaid, then connect your agent. <a class="use-case-link" href="/docs/connect-your-agent/#channel">Check the channel setup.</a></p></li>
+      <li><h3>Define your criteria</h3><p>Tell your agent which topics and brands fit, what you sell, and which details you need before considering a partnership. Ask it to explain uncertain decisions.</p></li>
+      <li><h3>Review a shortlist and draft replies</h3><p>Ask the agent to review your messages with sending disabled. Check its choices and proposed replies before allowing more actions. You control when the agent runs.</p></li>
+    </ol>
+  </section>
+
+  <section class="use-case-section use-case-questions" aria-labelledby="creator-questions-heading">
+    <h2 id="creator-questions-heading">Your voice. Your decisions.</h2>
+    <div class="sky-faq-list">
+      <details class="sky-faq-item"><summary>Will the agent reply to brands or followers automatically?</summary><p>Only if you configure it to run and allow sending. Start with reading, sorting, and draft replies. Keep partnership terms and final decisions for your review. {productCopy.automation}</p></details>
+      <details class="sky-faq-item"><summary>Can it send me a daily shortlist?</summary><p>You can ask your connected agent for a shortlist. A scheduled daily review needs a schedule and delivery method in your agent setup; Replaid does not include a built-in daily digest.</p></details>
+      <details class="sky-faq-item"><summary>Can it read every DM, attachment, and old conversation?</summary><p>Access depends on the connected channel. Instagram requires a Business or Creator account and supports text DMs and text comments, not attachments. {productCopy.history} <a href="/docs/connect-your-agent/#channel">Review the channel requirements.</a></p></details>
+      <details class="sky-faq-item"><summary>Can you configure this for me?</summary><p>Yes. Optional paid setup can cover your agent instructions, channel connection, and a first inbox review. Ongoing management is a separate service with an agreed scope. <a href="/setup-service/?from=creators">Tell me what you want to find in your inbox.</a></p></details>
+    </div>
+  </section>
+</UseCaseLayout>

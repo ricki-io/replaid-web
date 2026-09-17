@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile, readdir } from 'node:fs/promises';
+import { access, readFile, readdir } from 'node:fs/promises';
 import test from 'node:test';
 import worker from '../error-page-worker.mjs';
 
@@ -19,6 +19,67 @@ function tags(html, name) {
 function meta(html, name) {
   return tags(html, 'meta').find(tag => tag.name === name)?.content;
 }
+
+function decodeText(value) {
+  const entities = { amp: '&', quot: '"', apos: "'", lt: '<', gt: '>' };
+  return value?.replace(/&(#x[\da-f]+|#\d+|amp|quot|apos|lt|gt);/gi, (_, entity) => {
+    if (entity.startsWith('#')) {
+      return String.fromCodePoint(entity[1].toLowerCase() === 'x' ? parseInt(entity.slice(2), 16) : Number(entity.slice(1)));
+    }
+    return entities[entity.toLowerCase()];
+  });
+}
+
+const newLandingRoutes = [
+  '/use-cases/automation-agencies/',
+  '/use-cases/developers/',
+  '/use-cases/creators/',
+  '/use-cases/customer-support/',
+  '/setup-service/',
+];
+
+test('new landing pages have complete social previews and appear in discovery files', async () => {
+  const llms = await readFile(new URL('llms.txt', output), 'utf8');
+  for (const route of newLandingRoutes) {
+    const canonical = `https://replaid.pro${route}`;
+    const page = publicPages.find(page => pageUrl(page.path) === canonical);
+    assert.ok(page, `Missing landing page: ${route}`);
+    assert.equal(locations.filter(location => location === canonical).length, 1);
+    assert.ok(llms.includes(canonical), `Missing source link: ${route}`);
+    const { html } = page;
+    const title = decodeText(html.match(/<title>([^<]+)<\/title>/)?.[1]);
+    const og = name => tags(html, 'meta').find(tag => tag.property === `og:${name}`)?.content;
+    assert.equal(decodeText(og('title')), title);
+    assert.equal(og('description'), meta(html, 'description'));
+    assert.equal(og('url'), canonical);
+    assert.equal(og('type'), 'website');
+    assert.equal(decodeText(meta(html, 'twitter:title')), title);
+    assert.equal(meta(html, 'twitter:description'), meta(html, 'description'));
+    assert.equal(meta(html, 'twitter:card'), 'summary_large_image');
+    assert.equal(meta(html, 'twitter:image'), og('image'));
+    assert.ok(og('image:alt'));
+    assert.equal(meta(html, 'twitter:image:alt'), og('image:alt'));
+    const image = new URL(og('image'));
+    assert.equal(image.origin, 'https://replaid.pro');
+    await access(new URL(image.pathname.slice(1), output));
+    assert.match(html, /<html\b[^>]*lang="en"/);
+    assert.match(meta(html, 'viewport'), /width=device-width/);
+  }
+});
+
+test('new landing pages have no broken internal page or asset links', async () => {
+  for (const route of newLandingRoutes) {
+    const page = publicPages.find(page => pageUrl(page.path) === `https://replaid.pro${route}`);
+    assert.ok(page, `Missing landing page: ${route}`);
+    for (const link of tags(page.html, 'a')) {
+      if (!link.href) continue;
+      const url = new URL(link.href, pageUrl(page.path));
+      if (url.origin !== 'https://replaid.pro') continue;
+      const path = url.pathname.endsWith('/') ? `${url.pathname}index.html` : url.pathname;
+      await assert.doesNotReject(access(new URL(path.slice(1), output)), `${route} -> ${link.href}`);
+    }
+  }
+});
 
 test('every public page has unique metadata, one H1, and its own indexable canonical', () => {
   const titles = new Set();

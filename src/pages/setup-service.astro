@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SkyHeader from '../components/SkyHeader.astro';
+import SkyFooter from '../components/SkyFooter.astro';
+import '../styles/landing.css';
+import '../styles/contact.css';
+import '../styles/setup-service.css';
+
+const channels = ['WhatsApp', 'Replaid widget', 'Instagram', 'Messenger', 'Telegram', 'Not sure yet'];
+---
+<Layout title="Agent Setup & Managed Service | Replaid" description="Get help setting up your AI agent, connecting customer channels, and managing it over time. Tell us about your workflow to discuss a paid setup service.">
+  <div class="sky-landing contact-page setup-page">
+    <SkyHeader />
+    <main id="main" class="contact-main setup-main">
+      <div class="contact-intro">
+        <p class="contact-label">Setup &amp; managed service</p>
+        <h1>Your customer assistant,<br /><span class="hero-highlight">set up for you.</span></h1>
+        <p class="contact-description">Get help turning your business knowledge into an agent that can answer customer questions through Replaid.</p>
+        <p class="setup-price-note">Optional paid service. Setup has a one-time fee. Ongoing management has a separate monthly fee and an agreed scope.</p>
+        <p class="setup-cost-note">Replaid access, paid channel usage, and external AI costs are separate. You review the scope and quote before work starts.</p>
+        <a class="contact-email" href="mailto:hi@replaid.pro?subject=Agent%20setup%20service">hi@replaid.pro</a>
+      </div>
+
+      <section class="contact-panel" aria-label="Request setup help">
+        <form id="setup-service-form" action="https://api.web3forms.com/submit" method="POST">
+          <div class="contact-form-heading"><h2>What would you like to automate?</h2><p>I’ll review your workflow and email you about scope and next steps.</p></div>
+          <input type="hidden" name="access_key" value="a9640491-09a2-43e9-8125-7c2ea847b64a" />
+          <input type="hidden" name="subject" value="Paid setup service request — Replaid" />
+          <input type="hidden" name="from_name" value="Replaid setup service" />
+          <input type="hidden" name="redirect" value="https://replaid.pro/setup-service/?success=true" />
+          <input type="hidden" name="source" value="direct" />
+          <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" aria-hidden="true" />
+          <div class="contact-field">
+            <label for="setup-email">Email address</label>
+            <input id="setup-email" type="email" name="email" autocomplete="email" required maxlength="254" placeholder="you@example.com" />
+          </div>
+          <div class="contact-field">
+            <label for="setup-website">Business website <span>(optional)</span></label>
+            <input id="setup-website" type="url" name="website" autocomplete="url" maxlength="500" placeholder="https://your-business.com" />
+          </div>
+          <div class="contact-field">
+            <label for="setup-channel">Which channel would you start with?</label>
+            <select id="setup-channel" name="channel" required>
+              <option value="" disabled selected>Choose a channel</option>
+              {channels.map(channel => <option value={channel}>{channel}</option>)}
+            </select>
+          </div>
+          <div class="contact-field">
+            <label for="setup-message">What should your assistant help with?</label>
+            <textarea id="setup-message" name="message" rows="4" required maxlength="2000" placeholder="For example, answer delivery questions and pass order issues to a person. Tell me if you already have an agent."></textarea>
+          </div>
+          <div class="contact-submit">
+            <div class="h-captcha" data-captcha="true" data-theme="light" data-size="compact"></div>
+            <div class="contact-submit-copy">
+              <p>Your details are used to review this request and contact you about the service. <a href="/privacy/">Privacy policy</a></p>
+              <p id="setup-form-error" class="setup-form-error" role="alert" tabindex="-1" hidden></p>
+              <button class="sky-button" type="submit">Request setup help</button>
+            </div>
+          </div>
+          <p class="contact-form-fallback">Sending a request does not place an order or commit you to a purchase.</p>
+        </form>
+        <div id="setup-success" class="contact-success" role="status" aria-live="polite" hidden>
+          <span class="contact-success-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m5 12 4 4L19 6" /></svg></span>
+          <h2 tabindex="-1">Request received.</h2>
+          <p>I’ll review your workflow and email you to discuss the setup and a possible quote.</p>
+          <a class="sky-button" href="/">Back to homepage</a>
+          <a class="contact-another" href="/setup-service/">Send another request</a>
+        </div>
+      </section>
+
+      <section class="setup-scope" aria-labelledby="setup-scope-heading">
+        <h2 id="setup-scope-heading">Start with one useful workflow.</h2>
+        <ol>
+          <li><h3>Define the job</h3><p>Agree on the questions to handle, the knowledge your agent needs, and when a person should take over.</p></li>
+          <li><h3>Configure and test</h3><p>Set up the agent, connect the agreed channel, and review test drafts together before enabling customer replies.</p></li>
+          <li><h3>Choose ongoing support</h3><p>If you need continued help, agree on monitoring, maintenance, and a defined amount of changes each month.</p></li>
+        </ol>
+        <p class="setup-self-serve">Already have an agent? <a href="/docs/connect-your-agent/">Follow the setup guide</a> or <a href="/beta/">request beta access</a>.</p>
+      </section>
+    </main>
+    <SkyFooter />
+  </div>
+  <script src="https://web3forms.com/client/script.js" async defer></script>
+  <script>
+    import { initRequestForm } from '../components/request-form.mjs';
+    import { setRequestSource } from '../components/request-source.mjs';
+    const form = document.querySelector<HTMLFormElement>('#setup-service-form')!;
+    const success = document.querySelector<HTMLElement>('#setup-success')!;
+    const status = document.querySelector<HTMLElement>('#setup-form-error')!;
+    setRequestSource(form, location.search);
+    if (new URLSearchParams(location.search).get('success') === 'true') {
+      form.hidden = true;
+      success.hidden = false;
+    } else {
+      initRequestForm({ form, success, status });
+    }
+  </script>
+</Layout>

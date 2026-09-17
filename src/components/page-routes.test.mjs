@@ -49,12 +49,12 @@ test('the guide route preserves the setup controls and has its own canonical URL
   assert.ok(guide.includes('Do not send the reply.'));
 });
 
-test('Docs links on every built page lead to the relocated guide', async () => {
+test('Documentation links on every built page lead to the relocated guide', async () => {
   const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html'));
   for (const path of pages) {
-    const docs = links(await readPage(path)).filter(link => link.text === 'Docs');
-    assert.ok(docs.length > 0, `Missing Docs navigation: ${path}`);
-    for (const link of docs) assert.equal(link.href, guidePath, `Wrong Docs link: ${path}`);
+    const docs = links(await readPage(path)).filter(link => link.text === 'Documentation');
+    assert.ok(docs.length > 0, `Missing Documentation navigation: ${path}`);
+    for (const link of docs) assert.equal(link.href, guidePath, `Wrong Documentation link: ${path}`);
   }
 });
 
