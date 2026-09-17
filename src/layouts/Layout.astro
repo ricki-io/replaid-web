@@ -5,6 +5,7 @@ import '../styles/global.css';
 
 export interface Props {
   title: string;
+  noindex?: boolean;
   description?: string;
   ogImage?: string;
   ogImageAlt?: string;
@@ -19,6 +20,7 @@ const canonicalPath = /(?:\/|\.html)$/.test(Astro.url.pathname) ? Astro.url.path
 const canonicalURL = new URL(canonicalPath, 'https://replaid.pro/');
 const {
   title,
+  noindex = false,
   description = "A customer inbox for your AI agent. Connect channels, control actions, and inspect results.",
   ogImage = "/og-image.png",
   ogImageAlt,
@@ -45,7 +47,8 @@ const socialImageAlt = ogImageAlt ?? (isDefaultSocialImage
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="canonical" href={canonicalURL.href} />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
+    {!noindex && <link rel="canonical" href={canonicalURL.href} />}
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />

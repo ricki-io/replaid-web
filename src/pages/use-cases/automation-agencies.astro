@@ -1,0 +1,50 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import { productCopy } from '../../components/product-copy';
+---
+<UseCaseLayout
+  title="Replaid for Automation Agencies | Connect Your Clients’ Agents"
+  description="Connect the AI agents you build to your clients’ customer conversations. Use Replaid for channel connections, reply permissions, and action records."
+  audience="For automation agencies"
+  source="agencies"
+  intro="Build the assistant your client needs. Use Replaid to connect it to customer messages, control its actions, and review what happened."
+>
+  <Fragment slot="heading">Your agent. Your client. <span class="hero-highlight">Their conversations, connected.</span></Fragment>
+  <aside slot="example" class="use-case-example" aria-label="Example client workflow">
+    <p class="example-label">Example client workflow</p>
+    <div class="example-message"><span>A customer asks on Instagram</span><p>“Do you deliver on Saturdays?”</p></div>
+    <dl class="example-steps">
+      <div><dt>Your agent</dt><dd>Reads the delivery policy you prepared with the client.</dd></div>
+      <div><dt>Replaid</dt><dd>Checks permissions and saves the proposed reply.</dd></div>
+      <div><dt>Your client</dt><dd>Reviews the draft before sending is enabled.</dd></div>
+    </dl>
+    <p class="example-result">First test: draft only. No customer reply is sent.</p>
+  </aside>
+
+  <section class="use-case-section" aria-labelledby="agency-delivery-heading">
+    <header><h2 id="agency-delivery-heading">A clear place for each part of the work.</h2><p>Keep control of the agent you deliver and the service you provide.</p></header>
+    <div class="use-case-columns">
+      <article><h3>You build the agent</h3><p>Choose the agent, prepare the business knowledge, and define reply instructions and triggers. Keep the client relationship and ongoing service with your agency.</p></article>
+      <article><h3>Your client connects their channels</h3><p>An authorized account owner completes the channel connection. Agree on what the agent can read, draft, and send before the first test.</p></article>
+      <article><h3>Replaid carries out allowed actions</h3><p>Give the agent access to conversations through MCP or REST. Review recorded actions and pause automation when a conversation needs a person.</p></article>
+    </div>
+  </section>
+
+  <section class="use-case-section use-case-split" aria-labelledby="agency-start-heading">
+    <header><h2 id="agency-start-heading">Start with one client and one workflow.</h2><p>Make the first installation easy to check before you expand its scope.</p></header>
+    <ol class="use-case-checklist">
+      <li><h3>Choose the questions to handle</h3><p>For example, common delivery questions. Collect the facts the agent needs and define when it must ask a person.</p></li>
+      <li><h3>Test with sending disabled</h3><p>Connect one channel. Ask the agent to read a test conversation and prepare a draft. Review the answer with the client.</p></li>
+      <li><h3>Agree on operation and maintenance</h3><p>Decide how the agent starts, who reviews failures, and which changes your service includes. Enable sending only for the agreed scope.</p></li>
+    </ol>
+  </section>
+
+  <section class="use-case-section use-case-questions" aria-labelledby="agency-questions-heading">
+    <h2 id="agency-questions-heading">Before you offer it to a client.</h2>
+    <div class="sky-faq-list">
+      <details class="sky-faq-item"><summary>Does Replaid build or run the agent for my agency?</summary><p>No. You provide the agent, knowledge, instructions, and the way it starts. Replaid connects it to conversations and carries out permitted actions. Optional setup help is a separate paid service.</p></details>
+      <details class="sky-faq-item"><summary>What should I allow for in the client quote?</summary><p>Your setup and maintenance work, Replaid access per team, any paid channel usage, and your external agent or AI provider costs. <a href="/pricing/">Review pricing and included access.</a></p></details>
+      <details class="sky-faq-item"><summary>Which account limits should I check?</summary><p>{productCopy.channelLimits} <a href="/docs/connect-your-agent/#channel">Check the requirements for your client’s channel.</a></p></details>
+    </div>
+  </section>
+</UseCaseLayout>

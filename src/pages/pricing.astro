@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import SkyHeader from '../components/SkyHeader.astro';
 import SkyFooter from '../components/SkyFooter.astro';
+import SetupServiceCallout from '../components/SetupServiceCallout.astro';
 import { legalOperator } from '../components/legal-operator';
 import { productCopy, betaAccess } from '../components/product-copy';
 import '../styles/landing.css';
@@ -39,7 +40,7 @@ const pricingQuestions = [
   {
     question: 'Does Replaid include an AI agent?',
     answer: 'No. Bring ChatGPT, Claude, Hermes Agent, or another compatible client, with your own knowledge and instructions. Your external agent or AI provider charges remain separate. Connecting an agent does not start automatic replies.',
-    link: { href: `${guideUrl}#agent`, label: 'See how to connect your agent' },
+    link: { href: '/setup-service/?from=pricing-faq', label: 'Get help setting up your agent' },
   },
   {
     question: 'Can I request a refund?',
@@ -104,6 +105,7 @@ const jsonLd = {
         </div>
       </section>
 
+      <SetupServiceCallout source="pricing" compact />
       <section class="pricing-costs" id="pricing-costs" aria-labelledby="pricing-costs-heading">
         <header class="pricing-section-heading">
           <h2 id="pricing-costs-heading">Know what you pay for.</h2>

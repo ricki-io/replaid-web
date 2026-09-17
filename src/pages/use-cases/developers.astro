@@ -1,0 +1,50 @@
+---
+import UseCaseLayout from '../../layouts/UseCaseLayout.astro';
+import { productCopy } from '../../components/product-copy';
+---
+<UseCaseLayout
+  title="Replaid for Developers | Customer Messages via MCP and REST"
+  description="Connect your AI agent to customer conversations through MCP or REST. Read messages, prepare drafts, and send replies within the permissions you set."
+  audience="For developers"
+  source="developers"
+  intro="Connect through MCP or REST. Let your agent read messages and prepare replies while Replaid handles channel connections and checks action permissions."
+  primaryGuide
+>
+  <Fragment slot="heading">Give your agent a way into <span class="hero-highlight">customer conversations.</span></Fragment>
+  <aside slot="example" class="use-case-example developer-example" aria-label="Agent integration model">
+    <p class="example-label">The integration</p>
+    <div class="integration-layer"><strong>Your agent</strong><span>Knowledge · Instructions · Triggers</span></div>
+    <div class="integration-connector"><span aria-hidden="true">↓</span> MCP or REST <span aria-hidden="true">↓</span></div>
+    <div class="integration-layer integration-replaid"><img src="/favicon.svg" width="24" height="26" alt="" /><div><strong>Replaid</strong><span>Conversations · Permissions · Action records</span></div></div>
+    <div class="integration-connector" aria-hidden="true">↓</div>
+    <div class="integration-layer"><strong>Customer channels</strong><span>Website · Social · Messaging</span></div>
+    <p class="example-result">Your code decides when the agent runs.</p>
+  </aside>
+
+  <section class="use-case-section" aria-labelledby="developer-integration-heading">
+    <header><h2 id="developer-integration-heading">Choose how your agent connects.</h2><p>Keep your agent logic in the tools and runtime you already use.</p></header>
+    <div class="use-case-columns">
+      <article><h3>Connect with MCP</h3><p>Add Replaid to a compatible client and authorize access. Give the agent the tools it needs to read conversations and prepare replies.</p><a class="use-case-link" href="/docs/connect-your-agent/#agent">Follow the client setup</a></article>
+      <article><h3>Integrate through REST</h3><p>Use a team agent token with the <code>/api/v1</code> endpoints to read conversations and contacts, request allowed actions, and inspect execution records.</p><a class="use-case-link" href="/docs/connect-your-agent/#agent">Read token and REST setup</a></article>
+      <article><h3>Control the actions</h3><p>Start with draft permission and sending disabled. Inspect the result before allowing the agent to send customer replies.</p><a class="use-case-link" href="/docs/connect-your-agent/#draft">Test a draft first</a></article>
+    </div>
+  </section>
+
+  <section class="use-case-section use-case-split" aria-labelledby="developer-test-heading">
+    <header><h2 id="developer-test-heading">Make one conversation work first.</h2><p>Use a test message and a small set of business facts to check the full path.</p></header>
+    <ol class="use-case-checklist">
+      <li><h3>Connect an account and agent</h3><p>Request beta access, connect a supported channel, and authorize your agent. Keep the permissions limited to your test.</p></li>
+      <li><h3>Read and draft</h3><p>Have the agent read the conversation and save a proposed answer. Check that the draft uses the supplied facts and no reply was sent.</p></li>
+      <li><h3>Add the trigger you need</h3><p>Start the agent yourself, use an external schedule, or build a webhook receiver. Test failure handling and human handoff before enabling unattended replies.</p></li>
+    </ol>
+  </section>
+
+  <section class="use-case-section use-case-questions" aria-labelledby="developer-questions-heading">
+    <h2 id="developer-questions-heading">Know the integration boundary.</h2>
+    <div class="sky-faq-list">
+      <details class="sky-faq-item"><summary>Does connecting MCP start automatic replies?</summary><p>No. {productCopy.automation}</p></details>
+      <details class="sky-faq-item"><summary>Where do knowledge and instructions live?</summary><p>In your agent or application. Replaid provides access to conversations, checks permissions, and records actions. You choose the model and how the agent uses business knowledge.</p></details>
+      <details class="sky-faq-item"><summary>Are all channels and message types supported?</summary><p>{productCopy.availableChannels} {productCopy.futureChannels} Support and limits vary by channel. <a href="/docs/connect-your-agent/#channel">Check supported actions before you build.</a></p></details>
+    </div>
+  </section>
+</UseCaseLayout>

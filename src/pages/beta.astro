@@ -28,6 +28,7 @@ const agents = ['ChatGPT', 'Claude', 'Codex', 'Hermes Agent', 'Another agent', '
           <input type="hidden" name="subject" value="Beta access request — Replaid" />
           <input type="hidden" name="from_name" value="Replaid beta access" />
           <input type="hidden" name="redirect" value="https://replaid.pro/beta/?success=true" />
+          <input type="hidden" name="source" value="direct" />
           <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" aria-hidden="true" />
           <div class="contact-field">
             <label for="beta-email">Email address</label>
@@ -88,9 +89,11 @@ const agents = ['ChatGPT', 'Claude', 'Codex', 'Hermes Agent', 'Another agent', '
   <script src="https://web3forms.com/client/script.js" async defer></script>
   <script>
     import { initBetaAccessForm, initBetaSelect } from '../components/beta-access-form.mjs';
+    import { setRequestSource } from '../components/request-source.mjs';
     const form = document.querySelector<HTMLFormElement>('#beta-access-form')!;
     const success = document.querySelector<HTMLElement>('#beta-success')!;
     const status = document.querySelector<HTMLElement>('#beta-form-error')!;
+    setRequestSource(form, location.search);
     if (new URLSearchParams(location.search).get('success') === 'true') {
       form.hidden = true;
       success.hidden = false;

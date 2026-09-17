@@ -1,34 +1,96 @@
 ---
 import { betaAccess } from './product-copy';
+import { useCases } from './use-cases';
 const links = [
   { href: '/#how-it-works', label: 'How it works' },
-  { href: '/blog/', label: 'Blog' },
-  { href: '/docs/connect-your-agent/', label: 'Docs' },
   { href: '/pricing/', label: 'Pricing' },
+];
+const resources = [
+  { href: '/blog/', label: 'News & articles', description: 'Ideas and updates on connecting your AI agent.' },
+  { href: '/docs/connect-your-agent/', label: 'Documentation', description: 'Connect your channels and set up your agent.' },
 ];
 ---
 <header class="sky-header">
   <a class="sky-wordmark sky-nav-brand" href="/" aria-label="Replaid home"><img src="/favicon.svg" width="28" height="30" alt="" aria-hidden="true" /><span>Replaid</span></a>
   <nav class="sky-desktop-nav" aria-label="Main navigation">
-    {links.map(link => <a href={link.href}>{link.label}</a>)}
+    <a href={links[0].href}>{links[0].label}</a>
+    <details class="sky-use-cases" data-nav-dropdown>
+      <summary>Use Cases<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary>
+      <div class="sky-dropdown-links">
+        {useCases.map(link => <a href={link.href} aria-current={Astro.url.pathname === link.href ? 'page' : undefined}><strong>{link.label}</strong><span>{link.description}</span></a>)}
+      </div>
+    </details>
+    <details class="sky-resources" data-nav-dropdown>
+      <summary>Resources<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></summary>
+      <div class="sky-dropdown-links">
+        {resources.map(link => <a href={link.href} aria-current={Astro.url.pathname === link.href ? 'page' : undefined}><strong>{link.label}</strong><span>{link.description}</span></a>)}
+      </div>
+    </details>
+    <a href={links[1].href}>{links[1].label}</a>
   </nav>
   <a class="sky-button sky-header-cta" href={betaAccess.url}>{betaAccess.label}</a>
   <details class="sky-mobile-nav">
     <summary aria-label="Open navigation"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></summary>
     <nav aria-label="Mobile navigation">
-      {links.map(link => <a href={link.href}>{link.label}</a>)}
+      <a href={links[0].href}>{links[0].label}</a>
+      <div class="sky-mobile-nav-group" role="group" aria-label="Use Cases">
+        <span>Use Cases</span>
+        {useCases.map(link => <a href={link.href} aria-current={Astro.url.pathname === link.href ? 'page' : undefined}>{link.label}</a>)}
+      </div>
+      <div class="sky-mobile-nav-group" role="group" aria-label="Resources">
+        <span>Resources</span>
+        {resources.map(link => <a href={link.href} aria-current={Astro.url.pathname === link.href ? 'page' : undefined}>{link.label}</a>)}
+      </div>
+      <a href={links[1].href}>{links[1].label}</a>
       <a href="https://app.replaid.pro/login">Log in</a>
       <a href={betaAccess.url}>{betaAccess.label}</a>
     </nav>
   </details>
 </header>
 <script>
-  const menu = document.querySelector<HTMLDetailsElement>('.sky-mobile-nav');
-  menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.open = false; }));
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && menu?.open) {
-      menu.open = false;
-      menu.querySelector('summary')?.focus();
-    }
+  import { initHoverMenu } from './hover-menu.mjs';
+  const menus = document.querySelectorAll<HTMLDetailsElement>('.sky-mobile-nav, [data-nav-dropdown]');
+  menus.forEach(menu => {
+    if (menu.hasAttribute('data-nav-dropdown')) initHoverMenu(menu);
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.open = false; }));
+    menu.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menu.open) {
+        event.preventDefault();
+        menu.open = false;
+        menu.querySelector('summary')?.focus();
+      }
+    });
+    menu.addEventListener('focusout', (event) => {
+      if (event.relatedTarget instanceof Node && !menu.contains(event.relatedTarget)) menu.open = false;
+    });
+    document.addEventListener('pointerdown', (event) => {
+      if (event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
+    });
   });
 </script>
+<style>
+  [data-nav-dropdown] { position: relative; }
+  [data-nav-dropdown] > summary { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: 999px; font-weight: 600; list-style: none; }
+  [data-nav-dropdown] > summary::-webkit-details-marker { display: none; }
+  [data-nav-dropdown] > summary:hover, [data-nav-dropdown][open] > summary { background: #f0f4f7; }
+  [data-nav-dropdown][open] > summary svg { transform: rotate(180deg); }
+  .sky-dropdown-links { display: grid; gap: 6px; position: absolute; top: calc(100% + 10px); left: 0; width: 310px; max-height: calc(100dvh - 140px); overflow-y: auto; padding: 8px; border: 1px solid #dce5ec; border-radius: 18px; background: #fff; box-shadow: 0 14px 32px rgb(20 57 88 / 10%); }
+  [data-nav-dropdown][open]::after { content: ''; position: absolute; top: 100%; left: 0; width: 310px; height: 12px; }
+  .sky-dropdown-links a { display: block; padding: 14px; border-radius: 12px; }
+  .sky-dropdown-links strong { display: block; font-size: 14px; font-weight: 600; }
+  .sky-dropdown-links span { display: block; margin-top: 6px; font-size: 12px; font-weight: 400; line-height: 1.6; color: #64707f; }
+  .sky-mobile-nav-group { display: flex; flex-direction: column; padding-block: 8px; border-block: 1px solid #e2e7ed; }
+  .sky-mobile-nav-group + .sky-mobile-nav-group { border-top: 0; }
+  .sky-mobile-nav-group > span { padding: 6px 14px; color: #64707f; font-size: 12px; }
+  a[aria-current="page"] { background: #f0f4f7; }
+  @media (max-width: 1050px) and (min-width: 901px) { .sky-desktop-nav { gap: 0; } .sky-desktop-nav > a, [data-nav-dropdown] > summary { padding-inline: 8px; } .sky-header { gap: 12px; } }
+  @media (max-width: 900px) {
+    .sky-desktop-nav, .sky-header-cta { display: none; }
+    .sky-mobile-nav { display: block; }
+    .sky-mobile-nav > summary { list-style: none; display: grid; place-items: center; width: 40px; height: 40px; }
+    .sky-mobile-nav > summary::-webkit-details-marker { display: none; }
+    .sky-mobile-nav nav { position: absolute; top: 76px; right: 16px; left: 16px; display: flex; flex-direction: column; gap: 4px; max-height: calc(100dvh - 120px); overflow-y: auto; border: 1px solid #dce7ef; background: #fff; border-radius: 14px; padding: 12px; box-shadow: 0 15px 30px #14395820; }
+    .sky-mobile-nav nav a { display: block; padding: 10px 14px; font-size: 15px; font-weight: 600; border-radius: 12px; }
+    .sky-mobile-nav nav a:hover { background: #f0f4f7; }
+  }
+</style>
