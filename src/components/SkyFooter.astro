@@ -37,10 +37,19 @@ import { useCases, setupService } from './use-cases';
       <a href="/cookies/#preferences">Cookies</a>
     </nav>
   </div>
-  <div class="sky-footer-bottom"><span>© {new Date().getFullYear()} Replaid</span></div>
+  <div class="sky-footer-bottom">
+    <span>© {new Date().getFullYear()} Replaid</span>
+    <span class="sky-footer-credit">A product by <a href="https://tokyocrew.com/" target="_blank" rel="noopener noreferrer">Tokyo Crew</a></span>
+  </div>
 </footer>
 <style>
   .sky-footer-main { grid-template-columns: 1.3fr .9fr 1.3fr 1.3fr 1.1fr .7fr; gap: 24px; }
+  .sky-footer-bottom { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 16px; }
+  .sky-footer-credit { grid-column: 2; text-align: center; }
+  .sky-footer-credit a { font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+  .sky-footer-credit a:hover { color: #075caa; }
+  .sky-footer-credit a:focus-visible { outline: 2px solid #075caa; outline-offset: 4px; border-radius: 2px; }
   @media (min-width: 851px) and (max-width: 1050px) { .sky-footer-main { grid-template-columns: repeat(3, minmax(0, 1fr)); } .sky-footer-brand { grid-column: 1 / -1; } }
   @media (max-width: 850px) { .sky-footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; } .sky-footer-brand { grid-column: 1 / -1; } }
+  @media (max-width: 600px) { .sky-footer-bottom { grid-template-columns: 1fr; gap: 10px; text-align: center; } .sky-footer-credit { grid-column: 1; } }
 </style>
