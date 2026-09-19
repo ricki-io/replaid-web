@@ -8,13 +8,14 @@ const route = '/compare/manychat/';
 const page = await readFile(new URL('compare/manychat/index.html', output), 'utf8');
 const main = page.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? '';
 
-test('the comparison is reachable from Resources and the footer on every page', async () => {
+test('the comparison is linked in the footer but not Resources on every page', async () => {
   for (const file of (await readdir(output, { recursive: true })).filter(file => file.endsWith('.html') && file !== 'beta/index.html')) {
     const html = await readFile(new URL(file, output), 'utf8');
     const desktop = html.match(/<details\b[^>]*class="sky-resources"[^>]*>([\s\S]*?)<\/details>/)?.[1] ?? '';
     const mobile = html.match(/<div\b[^>]*aria-label="Resources"[^>]*>([\s\S]*?)<\/div>/)?.[1] ?? '';
     const footer = html.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/)?.[1] ?? '';
-    for (const content of [desktop, mobile, footer]) assert.ok(content.includes(`href="${route}"`), file);
+    for (const content of [desktop, mobile]) assert.ok(!content.includes(`href="${route}"`), file);
+    assert.ok(footer.includes(`href="${route}"`), file);
   }
 });
 
@@ -51,14 +52,15 @@ const respondRoute = '/compare/respond-io/';
 const respondPage = await readFile(new URL('compare/respond-io/index.html', output), 'utf8');
 const respondMain = respondPage.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? '';
 
-test('respond.io is linked from desktop and mobile Resources and the Compare footer', async () => {
+test('respond.io is linked in the Compare footer but not Resources', async () => {
   for (const file of (await readdir(output, { recursive: true })).filter(file => file.endsWith('.html') && file !== 'beta/index.html')) {
     const html = await readFile(new URL(file, output), 'utf8');
     for (const pattern of [
       /<details\b[^>]*class="sky-resources"[^>]*>([\s\S]*?)<\/details>/,
       /<div\b[^>]*aria-label="Resources"[^>]*>([\s\S]*?)<\/div>/,
-      /<nav\b[^>]*aria-label="Compare"[^>]*>([\s\S]*?)<\/nav>/,
-    ]) assert.ok(html.match(pattern)?.[1].includes('href="' + respondRoute + '"'), file);
+    ]) assert.ok(!html.match(pattern)?.[1].includes('href="' + respondRoute + '"'), file);
+    const footer = html.match(/<nav\b[^>]*aria-label="Compare"[^>]*>([\s\S]*?)<\/nav>/)?.[1] ?? '';
+    assert.ok(footer.includes('href="' + respondRoute + '"'), file);
   }
 });
 
