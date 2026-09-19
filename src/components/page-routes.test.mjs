@@ -405,8 +405,17 @@ test('all built routes defer analytics to the consent control and expose a way t
     assert.match(html, /data-analytics-enabled="true"/);
     assert.match(html, /data-analytics-choice="rejected"/);
     assert.match(html, /data-analytics-choice="accepted"/);
-    assert.match(html, /data-cookie-settings/);
+    const footer = html.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/)?.[1] ?? '';
+    assert.ok(links(footer).some(link => link.text === 'Cookies' && link.href === '/cookies/#preferences'), `Missing settings access: ${name}`);
+    assert.doesNotMatch(footer, /data-cookie-settings|<button/);
   }
+  const policy = await readPage('cookies/index.html');
+  const settings = policy.match(/<section id="preferences">([\s\S]*?)<\/section>/)?.[1] ?? '';
+  assert.match(settings, /<h2>Cookie settings<\/h2>/);
+  assert.match(settings, /data-analytics-choice="rejected"/);
+  assert.match(settings, /data-analytics-choice="accepted"/);
+  assert.match(settings, /data-cookie-status/);
+  assert.match(settings, /withdraw earlier consent/);
 });
 
 

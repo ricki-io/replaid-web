@@ -15,11 +15,9 @@ export function initAnalyticsConsent({ win = window, doc = document, enabled = f
   const banner = doc.querySelector('[data-cookie-banner]');
   const statuses = doc.querySelectorAll('[data-cookie-status]');
   const choices = doc.querySelectorAll('[data-analytics-choice]');
-  const settings = doc.querySelectorAll('[data-cookie-settings]');
   let consent;
   let loaded = false;
   let timer;
-  let returnFocus;
   let persistenceFailed = false;
   const stored = () => { try { return readConsent(win.localStorage.getItem(CONSENT_KEY), now()); } catch { return null; } };
 
@@ -89,20 +87,11 @@ export function initAnalyticsConsent({ win = window, doc = document, enabled = f
     persistenceFailed = false;
     try { win.localStorage.setItem(CONSENT_KEY, JSON.stringify(consent)); } catch { persistenceFailed = true; }
     apply();
-    returnFocus?.focus();
-    returnFocus = undefined;
   }
 
   choices.forEach(button => {
     button.hidden = false;
     button.addEventListener('click', () => choose(button.dataset.analyticsChoice));
-  });
-  settings.forEach(button => {
-    button.hidden = false;
-    button.addEventListener('click', () => {
-      returnFocus = button;
-      if (banner) { banner.hidden = false; banner.querySelector('button')?.focus(); }
-    });
   });
   win.addEventListener('storage', event => {
     if (event.key !== CONSENT_KEY && event.key !== null) return;

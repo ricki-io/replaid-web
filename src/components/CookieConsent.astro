@@ -3,7 +3,7 @@ const enabled = import.meta.env.PROD;
 ---
 <section class="cookie-banner" data-cookie-banner data-analytics-enabled={String(enabled)} role="region" aria-labelledby="cookie-title" hidden>
   <h2 id="cookie-title">Optional analytics</h2>
-  <p>Allow Google Analytics to help us understand visits to this website. You can use the site without it. <a href="/cookies/">Cookie details</a></p>
+  <p>Allow Google Analytics to help us understand visits to this website. You can use the site without it. Change your choice at any time in the <a href="/cookies/#preferences">Cookie Policy</a>.</p>
   <div class="cookie-actions"><button type="button" data-analytics-choice="rejected">Reject analytics</button><button type="button" data-analytics-choice="accepted">Allow analytics</button></div>
 </section>
 <script>
@@ -20,8 +20,6 @@ const enabled = import.meta.env.PROD;
   .cookie-actions { display: flex; gap: 10px; margin-top: 18px; }
   .cookie-actions button { flex: 1; padding: 11px 12px; border: 1px solid #cad7e1; border-radius: 100px; background: #fff; color: #253b4b; font-size: 12px; font-weight: 550; cursor: pointer; }
   .cookie-actions button:hover { background: #edf4fa; }
-  .cookie-actions button:focus-visible, [data-cookie-settings]:focus-visible, .legal-cookie-options button:focus-visible { outline: 3px solid #075caa; outline-offset: 3px; }
-  .sky-footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
-  [data-cookie-settings] { padding: 3px 0; font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  .cookie-actions button:focus-visible, .legal-cookie-options button:focus-visible { outline: 3px solid #075caa; outline-offset: 3px; }
   @media (max-width: 500px) { .cookie-banner { left: 12px; bottom: 12px; width: calc(100% - 24px); padding: 19px; } }
 </style>

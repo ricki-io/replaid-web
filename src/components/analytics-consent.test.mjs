@@ -4,18 +4,19 @@ import { CONSENT_KEY, CONSENT_DURATION, MEASUREMENT_ID, readConsent, initAnalyti
 
 const today = Date.UTC(2026, 8, 14);
 const saved = (analytics, expiresAt = today + CONSENT_DURATION) => JSON.stringify({ version: 1, analytics, expiresAt });
-function fixture({ raw = null, enabled = true, storageBlocked = false } = {}) {
+function fixture({ raw = null, enabled = true, storageBlocked = false, policy = false } = {}) {
   let clock = today;
   const store = new Map(raw ? [[CONSENT_KEY, raw]] : []);
   const scripts = [], cookies = [], timers = new Map(), events = new Map();
   let nextTimer = 1;
   const control = value => ({ hidden: true, dataset: { analyticsChoice: value }, events: new Map(), addEventListener(type, fn) { this.events.set(type, fn); }, click() { this.events.get('click')(); }, focus() { this.focused = true; } });
-  const reject = control('rejected'), accept = control('accepted'), settings = control();
+  const reject = control('rejected'), accept = control('accepted');
+  const policyReject = control('rejected'), policyAccept = control('accepted');
   const status = { textContent: '' };
   const banner = { hidden: true, querySelector: () => reject };
   const doc = {
     querySelector: () => banner,
-    querySelectorAll: selector => selector === '[data-cookie-status]' ? [status] : selector === '[data-analytics-choice]' ? [reject, accept] : [settings],
+    querySelectorAll: selector => selector === '[data-cookie-status]' ? [status] : selector === '[data-analytics-choice]' ? [reject, accept, ...(policy ? [policyReject, policyAccept] : [])] : [],
     createElement: tag => ({ tag }), head: { append: script => scripts.push(script) },
     set cookie(value) { cookies.push(value); },
   };
@@ -31,7 +32,7 @@ function fixture({ raw = null, enabled = true, storageBlocked = false } = {}) {
     addEventListener(type, fn) { events.set(type, fn); },
   };
   initAnalyticsConsent({ win, doc, enabled, now: () => clock });
-  return { win, store, scripts, cookies, timers, events, status, banner, reject, accept, settings, advance(value) { clock += value; } };
+  return { win, store, scripts, cookies, timers, events, status, banner, reject, accept, policyReject, policyAccept, advance(value) { clock += value; } };
 }
 
 test('only a valid, unexpired saved choice can enable analytics', () => {
@@ -71,14 +72,15 @@ test('explicit consent loads a single tag with no query or fragment in the page 
   assert.equal(fixture({ raw: view.store.get(CONSENT_KEY) }).scripts.length, 1);
 });
 
-test('withdrawing consent disables the active tag and removes only its analytics cookies', () => {
-  const view = fixture({ raw: saved('accepted') });
-  view.settings.click();
-  assert.equal(view.banner.hidden, false);
-  assert.equal(view.reject.focused, true);
-  view.reject.click();
+test('the policy controls withdraw saved consent without reopening the banner', () => {
+  const view = fixture({ raw: saved('accepted'), policy: true });
+  assert.equal(view.banner.hidden, true);
+  assert.equal(view.policyReject.hidden, false);
+  assert.equal(view.policyAccept.hidden, false);
+  view.policyReject.click();
   assert.equal(view.win[`ga-disable-${MEASUREMENT_ID}`], true);
-  assert.equal(view.settings.focused, true);
+  assert.equal(view.banner.hidden, true);
+  assert.equal(view.status.textContent, 'Analytics is off.');
   assert.ok(view.cookies.length > 0);
   for (const cookie of view.cookies) assert.match(cookie, /^_ga(?:_T2C7LJY6CL)?=; Max-Age=0; Path=\//);
   assert.equal(fixture({ raw: view.store.get(CONSENT_KEY) }).scripts.length, 0);
