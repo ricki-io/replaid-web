@@ -2,8 +2,11 @@
 title: "Use Your AI Agent to Follow Up on Customer Messages"
 description: "A practical workflow for reading customer questions, preparing useful replies, and qualifying leads with your agent through Replaid."
 date: 2025-10-15
-updatedDate: 2026-09-14
+updatedDate: 2026-09-19
 category: "Product"
+relatedPosts:
+  - why-youre-losing-leads-in-your-dms
+  - three-workflows-small-business-should-automate
 author: "Ricard Pons"
 authorUrl: "https://rickimakes.com/"
 socialImage:
@@ -59,4 +62,6 @@ You can later compare response time and useful next steps with your previous pro
 
 Connecting through MCP does not start automatic follow-up. If you want the agent to run when messages arrive, an external schedule or webhook receiver must start it. That setup is separate from the permissions you give it in Replaid.
 
-[Get started with Replaid](/get-started/) and use the [connection guide](/docs/connect-your-agent/) to test your first draft.
+If you want help with that first workflow, read about the [optional paid setup service](/setup-service/) and its scope before deciding what to build yourself.
+
+[Create your account](https://app.replaid.pro/register) and use the [connection guide](/docs/connect-your-agent/) to test your first draft.

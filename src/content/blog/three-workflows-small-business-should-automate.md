@@ -4,8 +4,11 @@ description: "Start with lead qualification, support triage, and inbox prioritie
 author: "Ricard Pons"
 authorUrl: "https://rickimakes.com/"
 date: 2025-10-22
-updatedDate: 2026-09-14
+updatedDate: 2026-09-19
 category: "Automation"
+relatedPosts:
+  - replaid-ai-assistant-turns-messages-into-leads
+  - centralize-your-messages-with-ai
 socialImage:
   src: "/og-three-workflows-small-business-should-automate.png"
   alt: "3 Customer Message Workflows for Your AI Agent. Qualify leads, route support, and set priorities."
@@ -31,6 +34,8 @@ Start with this instruction:
 
 **Check:** does the draft ask for useful information without guessing at budget, intent, or personal details? Permit qualification actions only after the agent applies your criteria consistently.
 
+For a closer look at this process, read [how to follow up on customer messages with your agent](/replaid-ai-assistant-turns-messages-into-leads/).
+
 ## 2. Prepare a support answer or hand the case to a person
 
 **Input:** a customer asking for help.
@@ -46,6 +51,8 @@ Try:
 Where allowed, your agent can request an escalation in Replaid. This marks the conversation for human attention and pauses automated replies. Decide who will handle those cases and how they will know to check them; escalation alone does not resolve the customer's problem.
 
 **Check:** does the agent use the approved information and hand over uncertain cases with a useful summary?
+
+Use the [customer support setup](/use-cases/customer-support/) to plan a test with your own policies and a clear human handoff.
 
 ## 3. Find the conversations that need attention
 
@@ -67,6 +74,8 @@ An MCP connection makes Replaid tools available when your agent runs. It does no
 
 You can start them with a prompt. For unattended processing, use an external schedule or a webhook receiver that starts your agent. Configure that runner to check action results and avoid sending the same reply again after a retry.
 
+If you build these workflows for clients, the [automation agency workflow](/use-cases/automation-agencies/) covers how to start with one client and define the scope of the installation.
+
 Begin with one workflow and one channel. Review drafts and action outcomes before expanding the scope. Count the drafts you edit, incorrect decisions, and cases that need a person. Those checks are more useful than assuming that automation will improve sales.
 
-[Explore Replaid](/get-started/), then follow the [connection guide](/docs/connect-your-agent/) to connect your agent and test its first draft.
+[Create your account](https://app.replaid.pro/register), then follow the [connection guide](/docs/connect-your-agent/) to connect your agent and test its first draft.

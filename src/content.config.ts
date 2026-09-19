@@ -14,6 +14,7 @@ const blog = defineCollection({
     featured: z.boolean().default(false),
     historical: z.boolean().default(false),
     supersededBy: reference('blog').optional(),
+    relatedPosts: z.array(reference('blog')).max(2).default([]),
     category: z.string().default('Automation'),
     image: z.string().optional(),
     socialImage: z.object({

@@ -6,6 +6,9 @@ date: 2025-10-15
 updatedDate: 2026-09-14
 historical: true
 supersededBy: replaid-connects-your-ai-agent-to-your-customers
+relatedPosts:
+  - replaid-connects-your-ai-agent-to-your-customers
+  - centralize-your-messages-with-ai
 category: "Announcement"
 author: "Ricard Pons"
 authorUrl: "https://rickimakes.com/"

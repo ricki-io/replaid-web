@@ -4,7 +4,11 @@ description: "Bring the agent you already use to your customer conversations. Re
 author: "Ricard Pons"
 authorUrl: "https://rickimakes.com/"
 date: 2026-09-14
+updatedDate: 2026-09-19
 category: "Announcement"
+relatedPosts:
+  - centralize-your-messages-with-ai
+  - three-workflows-small-business-should-automate
 featured: true
 socialImage:
   src: "/og-replaid-connects-your-ai-agent-to-your-customers.png"
@@ -66,7 +70,7 @@ Begin with a narrow task and draft review. Broader permissions can come later, a
 3. Ask it to read a conversation and save a draft without sending it.
 4. Review the draft, adjust its instructions, and test a permitted send when you are ready.
 
-[Get started with Replaid](/get-started/), or follow the [step-by-step connection guide](/docs/connect-your-agent/).
+[Create your account](https://app.replaid.pro/register), or follow the [step-by-step connection guide](/docs/connect-your-agent/). Account creation is free; the [pricing page](/pricing/) explains paid usage and optional offers.
 
 ## What happens to the older articles
 

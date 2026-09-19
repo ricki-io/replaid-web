@@ -2,8 +2,11 @@
 title: "Why You're Losing Leads in Your DMs"
 description: "Find where customer enquiries lose momentum, then build a reviewable reply workflow with your AI agent and Replaid."
 date: 2025-10-16
-updatedDate: 2026-09-14
+updatedDate: 2026-09-19
 category: "Automation"
+relatedPosts:
+  - replaid-ai-assistant-turns-messages-into-leads
+  - three-workflows-small-business-should-automate
 author: "Ricard Pons"
 authorUrl: "https://rickimakes.com/"
 socialImage:
@@ -25,6 +28,8 @@ Separate those problems. An unanswered message needs attention. An incorrect ans
 
 You can keep this review in a simple document or spreadsheet. The aim is to find a repeated problem, not to assign a conversion rate to every message.
 
+If your inbox mixes audience questions and partnership enquiries, see the [creator workflow](/use-cases/creators/) for a way to review those different types of messages.
+
 ## Give each enquiry one useful next step
 
 Here is an illustrative example. A customer asks for a quote. The reply says, “Thanks for reaching out,” but does not ask for the information needed to prepare that quote. The customer still has the same problem.
@@ -32,6 +37,8 @@ Here is an illustrative example. A customer asks for a quote. The reply says, �
 A better next step might be one question about the work they need, or a clear explanation that a person must review the request. It depends on your business. A quick response is only useful if it moves the conversation forward.
 
 Write down what information you need and what you can promise. Those instructions can guide both you and your agent.
+
+The [customer message follow-up guide](/replaid-ai-assistant-turns-messages-into-leads/) shows how to turn those instructions into a draft and a qualification decision you can review.
 
 ## Let your agent help with the repeatable part
 
@@ -61,4 +68,4 @@ Compare the same types of conversations before and after your change. If you mea
 
 You can start the agent manually while you learn. If you later want it to process messages unattended, you need an external schedule or webhook receiver to start it. An MCP connection alone does not turn on automatic replies.
 
-[Explore Replaid](/get-started/) or follow the [connection guide](/docs/connect-your-agent/) to test a draft on one channel. For more ideas, see [three customer message workflows for your agent](/three-workflows-small-business-should-automate/).
+[Create your account](https://app.replaid.pro/register) and follow the [connection guide](/docs/connect-your-agent/) to test a draft on one channel. For more ideas, see [three customer message workflows for your agent](/three-workflows-small-business-should-automate/).

@@ -2,8 +2,11 @@
 title: "Connect Your Customer Messages to Your AI Agent"
 description: "Connect WhatsApp, the Replaid widget, Instagram, Messenger, or Telegram so your agent can read customer messages and help with replies."
 date: 2025-10-20
-updatedDate: 2026-09-14
+updatedDate: 2026-09-19
 category: "Automation"
+relatedPosts:
+  - three-workflows-small-business-should-automate
+  - replaid-connects-your-ai-agent-to-your-customers
 author: "Ricard Pons"
 authorUrl: "https://rickimakes.com/"
 socialImage:
@@ -49,6 +52,8 @@ A practical first request is:
 
 Check the draft in Replaid. Confirm that it answers the actual question and fits the conversation. Once you permit sending, test one response and check the outcome on the original channel.
 
+For recurring questions and cases that need a person, use the [customer support workflow](/use-cases/customer-support/) to plan your first test.
+
 A common interface does not remove platform rules. The available actions can depend on the channel and the conversation state. Your agent should check action results rather than treating every request as a delivered reply.
 
 ## Keep the agent's role clear
@@ -57,8 +62,12 @@ Your agent provides the knowledge and decides what to request from the tools. Re
 
 You can begin by asking the agent to work on messages yourself. Connecting through MCP does not automatically start replies when messages arrive. Unattended processing needs an external schedule or webhook receiver that starts your agent.
 
+If you are building that integration, see [Replaid for developers](/use-cases/developers/) for the MCP, REST, and trigger boundaries.
+
 If you later add another channel, review its requirements and test the same read, draft, and send steps. You keep a familiar agent workflow while checking the limits of each new connection.
 
 ## Connect one channel today
 
-[Get started with Replaid](/get-started/) and follow the [connection guide](/docs/connect-your-agent/) for the current setup steps. Keep the first task narrow: read one conversation, save one draft, and review it before sending.
+[Create your account](https://app.replaid.pro/register) and follow the [connection guide](/docs/connect-your-agent/) for the current setup steps. Keep the first task narrow: read one conversation, save one draft, and review it before sending.
+
+Creating an account is free. Check [pricing and paid usage](/pricing/) before expanding your workflow.

@@ -6,7 +6,7 @@ import BlogMeta from '../components/BlogMeta.astro';
 import BlogPostCard from '../components/BlogPostCard.astro';
 import '../styles/landing.css';
 import '../styles/blog.css';
-import { getCollection, getEntry, render } from 'astro:content';
+import { getCollection, getEntries, getEntry, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -24,9 +24,11 @@ if (post.data.historical && (!currentArticle || currentArticle.data.draft || cur
 }
 const socialImage = post.data.socialImage;
 const contents = headings.filter(heading => heading.depth === 2);
-const related = (await getCollection('blog', ({ id, data }) => !data.draft && !data.historical && id !== post.id))
-  .sort((a, b) => Number(b.data.category === post.data.category) - Number(a.data.category === post.data.category) || b.data.date.valueOf() - a.data.date.valueOf() || a.id.localeCompare(b.id))
-  .slice(0, 2);
+const related = await getEntries(post.data.relatedPosts);
+if (related.some(relatedPost => relatedPost.id === post.id || relatedPost.data.draft || relatedPost.data.historical)
+  || new Set(related.map(relatedPost => relatedPost.id)).size !== related.length) {
+  throw new Error(`Related articles for ${post.id} must be distinct, published current articles other than itself.`);
+}
 
 const blogJsonLd = [
   {

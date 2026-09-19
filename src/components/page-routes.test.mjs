@@ -59,14 +59,21 @@ test('Documentation links on every built page lead to the relocated guide', asyn
   }
 });
 
-test('existing article conversion links still lead to the sales page', async () => {
+test('current articles link directly to registration and retain setup guidance', async () => {
   const posts = (await readdir(new URL('../content/blog/', import.meta.url))).filter(path => path.endsWith('.md'));
   assert.ok(posts.length > 0);
   for (const post of posts) {
+    const source = await readFile(new URL(`../content/blog/${post}`, import.meta.url), 'utf8');
+    if (/^draft: true$/m.test(source)) continue;
     const html = await readPage(`${post.slice(0, -3)}/index.html`);
     const article = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/)?.[1];
     assert.ok(article, `Missing article: ${post}`);
-    assert.ok(links(article).some(link => link.href === '/get-started/'), `Missing conversion link: ${post}`);
+    if (/^historical: true$/m.test(source)) {
+      assert.ok(links(article).some(link => link.href === '/get-started/'), `Missing historical link: ${post}`);
+      continue;
+    }
+    assert.ok(links(article).some(link => link.href === registerUrl && link.text === 'Create your account'), `Missing registration link: ${post}`);
+    assert.ok(links(article).some(link => link.href === guidePath), `Missing setup guidance: ${post}`);
   }
 });
 
@@ -264,12 +271,39 @@ test('article navigation and search metadata match the published content', async
     assert.ok(links(html).some(link => link.href === '/blog/' && link.text.startsWith('All articles')));
     const related = html.match(/<section class="article-related"[\s\S]*?<\/section>/)?.[0];
     assert.ok(related, `Missing related articles: ${id}`);
-    for (const link of links(related).filter(link => link.href !== '/blog/')) {
+    const recommendations = links(related).filter(link => link.href !== '/blog/');
+    const selectedIds = Array.from((source.match(/^relatedPosts:\n((?:  - [^\n]+\n)+)/m)?.[1] ?? '').matchAll(/  - ([^\n]+)/g), match => match[1]);
+    assert.deepEqual(recommendations.map(link => link.href), selectedIds.map(id => `/${id}/`), `Editorial recommendation order: ${id}`);
+    assert.equal(new Set(selectedIds).size, selectedIds.length, `Duplicate recommendation: ${id}`);
+    for (const link of recommendations) {
       assert.notEqual(link.href, `/${id}/`, 'An article must not recommend itself');
       assert.notEqual(link.href, '/introducing-replaid/', 'Historical content must not appear as current guidance');
       assert.ok(posts.includes(`${link.href.slice(1, -1)}.md`), `Invalid related article: ${link.href}`);
     }
   }
+});
+
+test('current articles and product pages have incoming links beyond the site navigation and blog index', async () => {
+  const posts = (await readdir(new URL('../content/blog/', import.meta.url))).filter(path => path.endsWith('.md'));
+  const targets = new Set([
+    '/use-cases/customer-support/', '/use-cases/developers/', '/use-cases/creators/', '/use-cases/automation-agencies/',
+    '/compare/manychat/', '/compare/respond-io/', '/pricing/', '/setup-service/',
+  ]);
+  for (const filename of posts) {
+    const source = await readFile(new URL(`../content/blog/${filename}`, import.meta.url), 'utf8');
+    if (!/^(?:draft|historical): true$/m.test(source)) targets.add(`/${filename.slice(0, -3)}/`);
+  }
+  const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('/index.html') && path !== 'blog/index.html' && path !== 'beta/index.html');
+  const incoming = new Set();
+  for (const path of pages) {
+    const html = await readPage(path);
+    const main = (html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? '').replace(/<nav\b[^>]*>[\s\S]*?<\/nav>/g, '');
+    for (const link of links(main)) {
+      const destination = new URL(link.href, 'https://replaid.pro');
+      if (destination.origin === 'https://replaid.pro' && destination.pathname !== `/${path.replace('index.html', '')}`) incoming.add(destination.pathname);
+    }
+  }
+  for (const target of targets) assert.ok(incoming.has(target), `No contextual incoming link: ${target}`);
 });
 
 
