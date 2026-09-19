@@ -4,14 +4,14 @@ import SkyHeader from '../components/SkyHeader.astro';
 import SkyFooter from '../components/SkyFooter.astro';
 import SetupServiceCallout from '../components/SetupServiceCallout.astro';
 import { legalOperator } from '../components/legal-operator';
-import { productCopy, betaAccess } from '../components/product-copy';
+import { productCopy, registration } from '../components/product-copy';
 import '../styles/landing.css';
 import '../styles/pricing.css';
 
 const foundingPrice = 299;
 const foundingCap = 5;
 const foundingCredits = 50;
-const description = `Founding Lifetime: $${foundingPrice} USD once per team for the first ${foundingCap} founding teams. Includes $${foundingCredits} usage credit. No monthly platform fee. Paid channel usage, tax, and external AI costs are separate.`;
+const description = `Create your Replaid account without a card. Add prepaid credit for paid operations, or choose optional Founding Lifetime for $${foundingPrice} USD with $${foundingCredits} usage credit. External AI costs and tax are separate.`;
 const guideUrl = '/docs/connect-your-agent/';
 const includedFeatures = [
   'Connect your own AI agent through MCP or REST',
@@ -19,6 +19,10 @@ const includedFeatures = [
   'Set agent permissions and review recorded actions',
 ];
 const pricingQuestions = [
+  {
+    question: 'Do I need to pay before I can start?',
+    answer: 'No. Create your account, verify your email, and explore your workspace without a card. You can connect supported channels and your own agent. Setup is optional. Only operations with a charge need prepaid credit; Founding Lifetime is a separate, optional purchase.',
+  },
   {
     question: 'What does lifetime access include?',
     answer: 'One payment covers the listed platform access for one team, with no monthly platform fee. Paid channel usage, tax, and your external AI provider are separate. Future channels and roadmap features are not promised as part of this offer.',
@@ -48,8 +52,8 @@ const pricingQuestions = [
     link: { href: `mailto:${legalOperator.email}`, label: 'Contact us about a payment' },
   },
   {
-    question: 'How do I get beta access?',
-    answer: 'Request beta access with your email and use case. We’ll review your request and email you about access. If invited, create your account using the invitation link. The Founding Lifetime offer requires a separate purchase; review the amount, currency, and tax before paying.',
+    question: 'How do I make a payment?',
+    answer: 'Create an account, then open Billing in your workspace. The team owner can add prepaid credit or buy Founding Lifetime while it is available. Review the amount, currency, and tax at Stripe checkout. Automatic credit refill is optional.',
     link: { href: '/terms/#billing', label: 'Read the payment terms' },
   },
 ];
@@ -60,9 +64,21 @@ const pricingQuestions = [
     <main id="main" class="pricing-main">
       <header class="pricing-hero">
         <p class="pricing-label">Pricing</p>
-        <h1>Founding Lifetime.<br /><span class="hero-highlight">Pay the platform once.</span></h1>
-        <p class="pricing-intro">Your customer inbox, connected to your AI agent.</p>
+        <h1>Create your account.<br /><span class="hero-highlight">Connect at your own pace.</span></h1>
+        <p class="pricing-intro">Start without a card. Add credit for paid operations, or choose Founding Lifetime when you are ready.</p>
       </header>
+
+      <section class="pricing-start" aria-labelledby="pricing-start-heading">
+        <div>
+          <h2 id="pricing-start-heading">Start with a free account.</h2>
+          <p>Explore your workspace, connect a channel, and test your agent. You can skip setup and return later.</p>
+          <p>Supported Instagram, Messenger, Telegram, and widget text actions do not spend usage credit. Your external agent costs are separate.</p>
+        </div>
+        <div class="pricing-start-action">
+          <a class="sky-button" href={registration.url}>{registration.label}</a>
+          <p>No invitation. No card needed.</p>
+        </div>
+      </section>
 
       <section class="pricing-ltd" aria-labelledby="pricing-ltd-heading">
         <div class="pricing-ltd-price" aria-label="Founding Lifetime price">
@@ -70,14 +86,14 @@ const pricingQuestions = [
           <p class="pricing-amount"><span class="pricing-currency">$</span>{foundingPrice}<span class="pricing-currency-code">USD</span></p>
           <p class="pricing-payment">Per team. Paid once.</p>
           <p class="pricing-credit">Includes <strong>${foundingCredits} usage credit</strong></p>
-          <a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a>
-          <p class="pricing-next-step">Beta access is by invitation. Purchase separately.</p>
+          <a class="sky-button" href={registration.url}>{registration.label}</a>
+          <p class="pricing-next-step">Optional purchase in Billing after signup. Check availability in the app.</p>
           <p class="pricing-exclusions">Paid channel usage, applicable tax, and external AI costs are separate. <a href="#pricing-costs">See all costs</a></p>
         </div>
         <div class="pricing-ltd-copy">
-          <span class="pricing-badge">Founding Lifetime</span>
+          <span class="pricing-badge">Optional Founding Lifetime</span>
           <h2 id="pricing-ltd-heading">One license for your team.</h2>
-          <p>No monthly platform fee. Use the agent you choose, with the controls your team needs.</p>
+          <p>Pay the platform once. No monthly platform fee. Includes ${foundingCredits} prepaid usage credit and paid channel rates at provider cost, without the standard 20% markup.</p>
           <ul class="pricing-includes">
             {includedFeatures.map(item => <li>{item}</li>)}
           </ul>
@@ -92,15 +108,19 @@ const pricingQuestions = [
       <section class="pricing-costs" id="pricing-costs" aria-labelledby="pricing-costs-heading">
         <header class="pricing-section-heading">
           <h2 id="pricing-costs-heading">Know what you pay for.</h2>
-          <p>Platform access is paid once. Any ongoing costs depend on the channels and agent you use.</p>
+          <p>Account creation, paid usage, and the Founding Lifetime offer are separate. You choose what to buy in Billing.</p>
         </header>
         <table class="pricing-cost-table">
-          <caption class="sr-only">Platform, channel, and AI costs for founding teams</caption>
+          <caption class="sr-only">Account, Founding Lifetime, channel, and AI costs</caption>
           <thead><tr><th scope="col">What you use</th><th scope="col">How it is charged</th></tr></thead>
           <tbody>
             <tr>
-              <th scope="row">Replaid platform</th>
-              <td><strong>${foundingPrice} USD, paid once per team</strong><span>No monthly platform fee. Includes ${foundingCredits} prepaid usage credit, funded by Replaid.</span></td>
+              <th scope="row">Create an account</th>
+              <td><strong>No payment required</strong><span>Open your workspace and set up at your own pace. No card is needed to register.</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Optional Founding Lifetime</th>
+              <td><strong>${foundingPrice} USD, paid once per team</strong><span>No monthly platform fee. Includes ${foundingCredits} prepaid usage credit, funded by Replaid. Available for the first {foundingCap} founding teams; check Billing for availability.</span></td>
             </tr>
             <tr>
               <th scope="row">Instagram, Messenger, Telegram &amp; widget</th>
@@ -108,7 +128,7 @@ const pricingQuestions = [
             </tr>
             <tr>
               <th scope="row">Paid channel APIs</th>
-              <td><strong>Provider fees, paid from your credit</strong><span>For founding teams, paid API costs such as WhatsApp and X (Twitter) are charged at the same price the provider charges. Availability and supported actions depend on the channel.</span><span class="pricing-rate-links"><a href="https://developers.facebook.com/docs/whatsapp/pricing/">WhatsApp rates</a><a href="https://docs.x.com/x-api/getting-started/pricing">X API rates</a></span></td>
+              <td><strong>Only operations with a charge use credit</strong><span>Standard rates are provider cost plus 20%. Founding teams pay the same price the provider charges, with no markup. A verified zero-cost operation does not spend credit. Availability and supported actions depend on the channel.</span><span class="pricing-rate-links"><a href="https://developers.facebook.com/docs/whatsapp/pricing/">WhatsApp rates</a></span></td>
             </tr>
             <tr>
               <th scope="row">Your external AI agent</th>
@@ -117,7 +137,7 @@ const pricingQuestions = [
           </tbody>
         </table>
         <div class="pricing-cost-notes">
-          <p><strong>Optional credit top-ups:</strong> $10, $25, $50, or $100. Add balance when you need it. Credit expires after one year.</p>
+          <p><strong>Optional credit top-ups:</strong> $10, $25, $50, or $100, or a custom amount from $5. Add balance when you need it. Credit expires after one year. Automatic refill is optional.</p>
           <p>All amounts are in USD. Applicable tax is calculated at checkout.</p>
         </div>
       </section>
@@ -139,12 +159,12 @@ const pricingQuestions = [
 
       <section class="pricing-final" aria-labelledby="pricing-final-heading">
         <h2 id="pricing-final-heading">Ready to connect<br /><span class="hero-highlight">your agent?</span></h2>
-        <p>${foundingPrice} USD per team, paid once. Includes ${foundingCredits} usage credit.</p>
+        <p>Open your workspace without a card. Connect a channel and your agent when you are ready.</p>
         <div class="pricing-final-actions">
-          <a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a>
+          <a class="sky-button" href={registration.url}>{registration.label}</a>
           <a class="pricing-text-link" href={guideUrl}>See the setup guide</a>
         </div>
-        <p class="pricing-next-step">Beta access is by invitation. Purchase separately.</p>
+        <p class="pricing-next-step">Paid usage, Founding Lifetime, and setup help are optional purchases.</p>
       </section>
     </main>
     <SkyFooter />

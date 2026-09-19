@@ -61,7 +61,7 @@ Begin with a narrow task and draft review. Broader permissions can come later, a
 
 ## Start with one channel and one draft
 
-1. Request beta access. Once invited, create your Replaid account and connect one channel.
+1. Create your Replaid account, verify your email, and connect one channel when you are ready.
 2. Connect the agent you use and give it the relevant business knowledge.
 3. Ask it to read a conversation and save a draft without sending it.
 4. Review the draft, adjust its instructions, and test a permitted send when you are ready.

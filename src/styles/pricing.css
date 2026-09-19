@@ -8,6 +8,12 @@
 .pricing-label { margin-bottom: 12px; color: var(--pricing-muted); font-size: 14px; font-weight: 500; }
 .pricing-hero h1 { font-size: clamp(40px, 5vw, 56px); font-weight: 600; letter-spacing: -.055em; line-height: 1.08; text-wrap: balance; }
 .pricing-intro { max-width: 500px; margin: 18px auto 0; color: var(--pricing-muted); font-size: 17px; line-height: 1.55; text-wrap: balance; }
+.pricing-start { display: flex; flex-wrap: wrap; align-items: center; gap: 24px 40px; margin-bottom: 32px; padding: 28px 32px; border: 1px solid #dce7e0; border-radius: 20px; background: #f7faf6; }
+.pricing-start > div:first-child { flex: 1 1 320px; }
+.pricing-start h2 { color: var(--pricing-ink); font-size: 25px; font-weight: 600; letter-spacing: -.03em; }
+.pricing-start p { margin-top: 10px; color: var(--pricing-muted); font-size: 15px; line-height: 1.65; }
+.pricing-start-action { text-align: center; }
+.pricing-start-action p { font-size: 13px; }
 .pricing-ltd { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: stretch; padding: 36px; margin-bottom: 64px; border: 1px solid #d7e6f3; border-radius: 28px; background: #f3f8fc; }
 .pricing-ltd-price { grid-column: 2; grid-row: 1; padding: 28px; border: 1px solid #dce7f0; border-radius: 20px; background: #fff; }
 .pricing-amount { display: flex; align-items: baseline; color: var(--pricing-ink); font-size: clamp(52px, 6vw, 64px); font-weight: 650; letter-spacing: -.06em; line-height: 1; }

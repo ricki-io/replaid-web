@@ -1,7 +1,7 @@
 ---
 import BrandLogo from './BrandLogo.astro';
 import GuideCopyBlock from './GuideCopyBlock.astro';
-import { productCopy, betaAccess } from './product-copy';
+import { productCopy, registration } from './product-copy';
 const steps = [
   { id: 'account', label: 'Create your account' },
   { id: 'channel', label: 'Connect a channel' },
@@ -36,8 +36,8 @@ const firstPrompt = 'Find my latest unanswered conversation in Replaid. Read its
   <div class="guide-content">
     <section id="account" class="guide-step" aria-labelledby="account-heading" data-guide-step>
       <header class="guide-step-heading"><span>1</span><h2 id="account-heading">Make room for your conversations.</h2></header>
-      <p>Access is by invitation. Request beta access first, then use your invitation to create your Replaid account. If you already have access, sign in and select your team. You need an owner or administrator to connect channels.</p>
-      <div class="guide-account-actions"><a class="sky-button" href={betaAccess.url}>{betaAccess.label}</a><a class="guide-text-link" href="https://app.replaid.pro/login" target="_blank" rel="noopener noreferrer">Already have an account? Log in</a></div>
+      <p>Create your Replaid account and verify your email. No card is needed to create an account. If you already have an account, sign in and select your team. Setup is optional, and you can return to these steps later. You need an owner or administrator to connect channels.</p>
+      <div class="guide-account-actions"><a class="sky-button" href={registration.url}>{registration.label}</a><a class="guide-text-link" href="https://app.replaid.pro/login" target="_blank" rel="noopener noreferrer">Already have an account? Log in</a></div>
       <p class="guide-success-cue"><span aria-hidden="true">✓</span> You’re ready when you can open Channels in Replaid.</p>
     </section>
     <section id="channel" class="guide-step" aria-labelledby="channel-heading" data-guide-step>
@@ -77,7 +77,7 @@ const firstPrompt = 'Find my latest unanswered conversation in Replaid. Read its
       <details class="guide-details"><summary>No draft yet?<span aria-hidden="true">+</span></summary><div><p><strong>No conversation:</strong> check the channel connection and send a new message. History imports do not trigger notifications.</p><p><strong>Access error:</strong> reconnect your agent and select the correct Replaid team.</p><p><strong>Action blocked:</strong> inspect Agents → Policies and the Action Log. Enable draft replies and supply any required confidence value.</p><p><strong>Missing business information:</strong> give the agent the facts it needs, then ask for the draft again.</p></div></details>
     </section>
     <section class="guide-next" aria-labelledby="guide-next-heading"><div><span class="guide-next-symbol" aria-hidden="true">↗</span><h2 id="guide-next-heading">From a draft to a real reply.</h2><p>Review the draft first. When you are ready, enable sending and ask your agent to send one specific reply. Check that it reaches the customer.</p><a class="sky-button" href="https://app.replaid.pro/login" target="_blank" rel="noopener noreferrer">Open Replaid</a></div><details class="guide-details"><summary>What about automatic replies?<span aria-hidden="true">+</span></summary><div><p>{productCopy.automation}</p></div></details></section>
-    <details class="guide-details guide-pricing"><summary>What does Replaid cost?<span aria-hidden="true">+</span></summary><div><p>{productCopy.pricing}</p></div></details>
+    <details class="guide-details guide-pricing"><summary>What does Replaid cost?<span aria-hidden="true">+</span></summary><div><p>{productCopy.selfServicePricing}</p></div></details>
     <p class="guide-copy-status" aria-live="polite" role="status" data-guide-copy-status></p>
     <noscript><p class="guide-no-script">All setup instructions are shown below their selectors. Enable JavaScript for client selection, configuration generation, and copy buttons. You can also copy your configuration from Agents → Connections in Replaid.</p></noscript>
   </div>

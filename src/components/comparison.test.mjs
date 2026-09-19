@@ -9,7 +9,7 @@ const page = await readFile(new URL('compare/manychat/index.html', output), 'utf
 const main = page.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? '';
 
 test('the comparison is reachable from Resources and the footer on every page', async () => {
-  for (const file of (await readdir(output, { recursive: true })).filter(file => file.endsWith('.html'))) {
+  for (const file of (await readdir(output, { recursive: true })).filter(file => file.endsWith('.html') && file !== 'beta/index.html')) {
     const html = await readFile(new URL(file, output), 'utf8');
     const desktop = html.match(/<details\b[^>]*class="sky-resources"[^>]*>([\s\S]*?)<\/details>/)?.[1] ?? '';
     const mobile = html.match(/<div\b[^>]*aria-label="Resources"[^>]*>([\s\S]*?)<\/div>/)?.[1] ?? '';
@@ -19,7 +19,7 @@ test('the comparison is reachable from Resources and the footer on every page', 
 });
 
 test('the comparison states product limits and provides official Manychat sources', () => {
-  for (const copy of ['Manychat documents AI features', 'Public API', 'Beta access is by invitation', 'does not start replies', 'Active Contacts', 'No performance benchmark or ranking is claimed']) {
+  for (const copy of ['Manychat documents AI features', 'Public API', 'Create your account without a card', 'does not start replies', 'Active Contacts', 'No performance benchmark or ranking is claimed']) {
     assert.ok(main.includes(copy), `Missing qualification: ${copy}`);
   }
   const links = Array.from(main.matchAll(/href="(https:\/\/(?:help\.)?manychat\.com\/[^\"]+)"/g), match => match[1]);
@@ -39,8 +39,8 @@ test('the comparison has valid page and breadcrumb data without product ratings'
   assert.doesNotMatch(JSON.stringify(data), /aggregateRating|SoftwareApplication/);
 });
 
-test('comparison beta and setup requests preserve source attribution', () => {
-  for (const target of ['beta', 'setup-service']) assert.ok(main.includes(`href="/${target}/?from=compare-manychat"`));
+test('comparison registration and setup links preserve their source', () => {
+  for (const target of ['https://app.replaid.pro/register', '/setup-service/']) assert.ok(main.includes(`href="${target}?from=compare-manychat"`));
   const field = { value: 'direct' };
   setRequestSource({ querySelector: () => field }, '?from=compare-manychat');
   assert.equal(field.value, 'compare-manychat');
@@ -52,7 +52,7 @@ const respondPage = await readFile(new URL('compare/respond-io/index.html', outp
 const respondMain = respondPage.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? '';
 
 test('respond.io is linked from desktop and mobile Resources and the Compare footer', async () => {
-  for (const file of (await readdir(output, { recursive: true })).filter(file => file.endsWith('.html'))) {
+  for (const file of (await readdir(output, { recursive: true })).filter(file => file.endsWith('.html') && file !== 'beta/index.html')) {
     const html = await readFile(new URL(file, output), 'utf8');
     for (const pattern of [
       /<details\b[^>]*class="sky-resources"[^>]*>([\s\S]*?)<\/details>/,
@@ -81,7 +81,7 @@ test('respond.io has its own page data and request attribution', () => {
   const breadcrumb = data.find(item => item['@type'] === 'BreadcrumbList');
   assert.deepEqual(breadcrumb.itemListElement.map(item => item.item), ['https://replaid.pro/', webpage.url]);
   assert.doesNotMatch(JSON.stringify(data), /aggregateRating|SoftwareApplication/);
-  for (const target of ['beta', 'setup-service']) assert.ok(respondMain.includes('href="/' + target + '/?from=compare-respond-io"'));
+  for (const target of ['https://app.replaid.pro/register', '/setup-service/']) assert.ok(respondMain.includes('href="' + target + '?from=compare-respond-io"'));
   const field = { value: 'direct' };
   setRequestSource({ querySelector: () => field }, '?from=compare-respond-io');
   assert.equal(field.value, 'compare-respond-io');

@@ -4,6 +4,7 @@ import test from 'node:test';
 
 // Run after the Astro build to check the routes visitors actually receive.
 const output = new URL('../../dist/', import.meta.url);
+const registerUrl = 'https://app.replaid.pro/register';
 const guidePath = '/docs/connect-your-agent/';
 const readPage = path => readFile(new URL(path, output), 'utf8');
 const sales = await readPage('get-started/index.html');
@@ -24,9 +25,9 @@ function links(html) {
   }));
 }
 
-test('the conversion route offers beta access and a separate setup guide', () => {
+test('the conversion route offers public registration and a separate setup guide', () => {
   const pageLinks = links(sales.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? '');
-  assert.equal(pageLinks.filter(link => link.text === 'Request beta access' && link.href === '/beta/').length, 2);
+  assert.equal(pageLinks.filter(link => link.text === 'Create your account' && link.href === registerUrl).length, 2);
   assert.ok(pageLinks.some(link => link.text.startsWith('See the setup guide') && link.href === guidePath));
   assert.ok(!sales.includes('id="guide-mcp-url"'));
   assert.match(sales, /rel="canonical" href="https:\/\/replaid.pro\/get-started\/?"/);
@@ -50,7 +51,7 @@ test('the guide route preserves the setup controls and has its own canonical URL
 });
 
 test('Documentation links on every built page lead to the relocated guide', async () => {
-  const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html'));
+  const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html') && path !== 'beta/index.html');
   for (const path of pages) {
     const docs = links(await readPage(path)).filter(link => link.text === 'Documentation');
     assert.ok(docs.length > 0, `Missing Documentation navigation: ${path}`);
@@ -69,15 +70,15 @@ test('existing article conversion links still lead to the sales page', async () 
   }
 });
 
-test('the sitemap includes the conversion, beta, pricing, and guide routes', async () => {
+test('the sitemap includes product routes and excludes the old beta redirect', async () => {
   const sitemap = await readPage('sitemap-0.xml');
   assert.match(sitemap, /<loc>https:\/\/replaid.pro\/get-started\/?<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/replaid.pro\/docs\/connect-your-agent\/?<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/replaid.pro\/pricing\/?<\/loc>/);
-  assert.match(sitemap, /<loc>https:\/\/replaid.pro\/beta\/?<\/loc>/);
+  assert.doesNotMatch(sitemap, /<loc>https:\/\/replaid.pro\/beta\/?<\/loc>/);
 });
 
-test('pricing puts the offer before features and explains the beta access step', async () => {
+test('pricing explains the free account before the optional founding offer', async () => {
   const pricing = await readPage('pricing/index.html');
   const main = pricing.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? '';
   const text = decodeHtml(main.replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ');
@@ -93,16 +94,19 @@ test('pricing puts the offer before features and explains the beta access step',
   assert.ok(!/founding seats|Most common start|Claim Founding Lifetime|\$199|\$79|\$149/.test(text));
   const offerPosition = main.indexOf('class="pricing-ltd-price"');
   const featurePosition = main.indexOf('class="pricing-ltd-copy"');
-  assert.ok(offerPosition >= 0 && offerPosition < featurePosition, 'The reading order must put price and beta access before features');
-  const betaAccessLinks = pageLinks.filter(link => link.href === '/beta/');
-  assert.equal(betaAccessLinks.length, 2);
-  for (const link of betaAccessLinks) assert.equal(link.text, 'Request beta access');
-  assert.match(text, /Beta access is by invitation\. Purchase separately\./);
+  assert.ok(offerPosition >= 0 && offerPosition < featurePosition, 'The reading order must put the founding price before its features');
+  const registrationLinks = pageLinks.filter(link => link.href === registerUrl);
+  assert.equal(registrationLinks.length, 3);
+  for (const link of registrationLinks) assert.equal(link.text, 'Create your account');
+  assert.ok(main.indexOf('class="pricing-start"') < offerPosition);
+  assert.match(text, /Start with a free account/);
+  assert.match(text, /Optional purchase in Billing after signup/);
+  assert.match(text, /Setup is optional/);
   assert.ok(pageLinks.some(link => link.href === '#pricing-costs'));
   assert.ok(main.includes('id="pricing-costs"'));
   assert.ok(pageLinks.some(link => link.text === 'See the setup guide' && link.href === guidePath));
-  assert.match(sales, /Founding Lifetime \$299/);
-  assert.match(sales, /\$50 usage credit for paid ops/);
+  assert.match(sales, /No card needed to create an account/);
+  assert.match(sales, /Setup is optional/);
   for (const html of [await readPage('index.html'), pricing]) {
     const pricingNav = links(html).filter(link => link.text === 'Pricing');
     assert.ok(pricingNav.length > 0, 'Missing Pricing navigation');
@@ -115,15 +119,16 @@ test('pricing distinguishes included actions from channel and external AI costs'
   const table = pricing.match(/<table class="pricing-cost-table">([\s\S]*?)<\/table>/)?.[1] ?? '';
   assert.match(table, /<caption/);
   assert.equal((table.match(/scope="col"/g) ?? []).length, 2);
-  assert.equal((table.match(/scope="row"/g) ?? []).length, 4);
+  assert.equal((table.match(/scope="row"/g) ?? []).length, 5);
   assert.match(table, /No usage credit needed/);
   assert.match(table, /same price the provider charges/);
   assert.match(table, /funded by Replaid/);
   assert.match(table, /external provider costs are separate/);
-  assert.ok(!/provider cost \+|20%|10%/.test(table));
-  for (const channel of ['Instagram', 'Messenger', 'Telegram', 'widget', 'WhatsApp', 'X (Twitter)']) assert.ok(table.includes(channel));
+  assert.match(table, /Standard rates are provider cost plus 20%/);
+  assert.match(table, /A verified zero-cost operation does not spend credit/);
+  for (const channel of ['Instagram', 'Messenger', 'Telegram', 'widget', 'WhatsApp']) assert.ok(table.includes(channel));
   const rateLinks = links(table).filter(link => link.text.endsWith('rates'));
-  assert.deepEqual(rateLinks.map(link => link.href), ['https://developers.facebook.com/docs/whatsapp/pricing/', 'https://docs.x.com/x-api/getting-started/pricing']);
+  assert.deepEqual(rateLinks.map(link => link.href), ['https://developers.facebook.com/docs/whatsapp/pricing/']);
   assert.match(pricing, /Optional credit top-ups:/);
   for (const amount of ['$10', '$25', '$50', '$100']) assert.ok(pricing.includes(amount));
   assert.match(pricing, /Applicable tax is calculated at checkout/);
@@ -134,7 +139,7 @@ test('pricing provides native FAQ controls and the one-year expiry', async () =>
   const pricing = await readPage('pricing/index.html');
   const faq = pricing.match(/<section class="pricing-faq"[\s\S]*?<\/section>/)?.[0] ?? '';
   const questions = Array.from(faq.matchAll(/<details\b[^>]*>([\s\S]*?)<\/details>/g), match => match[1]);
-  assert.equal(questions.length, 7);
+  assert.equal(questions.length, 8);
   for (const question of questions) {
     assert.match(question, /^\s*<summary>/);
     assert.match(question, /class="pricing-faq-answer"/);
@@ -343,8 +348,22 @@ test('all legal routes use the new design and preserve legal and contact navigat
   }
 });
 
+test('form privacy notices describe open registration and preserve the terms version', async () => {
+  const privacy = await readPage('privacy/index.html');
+  const cookies = await readPage('cookies/index.html');
+  const terms = await readPage('terms/index.html');
+  assert.match(privacy, /Earlier beta access requests/);
+  assert.match(privacy, /app registration does not/);
+  assert.match(cookies, /The contact page uses Web3Forms/);
+  for (const html of [privacy, cookies]) {
+    assert.match(html, /datetime="2026-09-19"/);
+    assert.doesNotMatch(html, /contact and beta access (?:forms|pages)/);
+  }
+  assert.match(terms, /datetime="2026-09-14"/);
+});
+
 test('all built routes defer analytics to the consent control and expose a way to change it', async () => {
-  const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html'));
+  const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html') && path !== 'beta/index.html');
   for (const name of pages) {
     const html = await readPage(name);
     assert.ok(!/<script[^>]+src="https:\/\/www\.googletagmanager\.com/.test(html), `Analytics loaded before consent: ${name}`);
@@ -359,7 +378,7 @@ test('all built routes defer analytics to the consent control and expose a way t
 
 test('sharing cards use real landscape PNGs with matching metadata on every page', async () => {
   const posts = (await readdir(new URL('../content/blog/', import.meta.url))).filter(path => path.endsWith('.md')).map(path => path.slice(0, -3));
-  const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html'));
+  const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html') && path !== 'beta/index.html');
   for (const path of pages) {
     const html = await readPage(path);
     const id = path.replace(/\/index\.html$/, '');
@@ -433,7 +452,7 @@ test('every local image, script, stylesheet, and CSS asset exists after cleanup'
 });
 
 test('every page keeps the shared light design and accessible skip navigation', async () => {
-  for (const file of (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html'))) {
+  for (const file of (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html') && path !== 'beta/index.html')) {
     const html = await readPage(file);
     assert.match(html, /<html[^>]*data-appearance="light"/);
     assert.match(html, /name="theme-color" content="#ffffff"/);
@@ -445,7 +464,7 @@ test('every page keeps the shared light design and accessible skip navigation', 
 
 
 test('every page includes the CSS reset and hides contact spam and screen-reader controls', async () => {
-  const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html'));
+  const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html') && path !== 'beta/index.html');
   for (const page of pages) {
     const html = await readPage(page);
     const styles = Array.from(html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/g), match => match[1]);
@@ -467,7 +486,7 @@ test('every page includes the CSS reset and hides contact spam and screen-reader
 test('internal links and structured URLs match canonical pages and keep valid fragments', async () => {
   const files = await readdir(output, { recursive: true });
   const pages = new Map();
-  for (const file of files.filter(path => path.endsWith('.html'))) {
+  for (const file of files.filter(path => path.endsWith('.html') && path !== 'beta/index.html')) {
     const html = await readPage(file);
     const canonical = html.match(/rel="canonical" href="([^"]+)"/)?.[1];
     if (file === '404.html') {
@@ -530,56 +549,24 @@ test('FAQ search answers match the visible answers on both landing pages', async
 });
 
 
-test('beta access collects a short request through the existing contact inbox', async () => {
+test('old beta links redirect directly to registration without collecting another form', async () => {
   const beta = await readPage('beta/index.html');
-  const contact = await readPage('contact/index.html');
-  const form = beta.match(/<form\b([^>]*)>([\s\S]*?)<\/form>/);
-  assert.ok(form, 'The beta page must include a native form');
-  assert.match(form[1], /action="https:\/\/api.web3forms.com\/submit"/);
-  assert.match(form[1], /method="POST"/);
-  const key = html => html.match(/name="access_key" value="([^"\s]+)"/)?.[1];
-  assert.ok(key(contact));
-  assert.equal(key(form[2]), key(contact), 'Use the same inbox as the contact page');
-  for (const [name, id] of [['email', 'beta-email'], ['message', 'beta-use-case']]) {
-    assert.match(form[2], new RegExp(`<label[^>]*for="${id}"`));
-    const field = form[2].match(new RegExp(`<(?:input|textarea|select)\\b[^>]*name="${name}"[^>]*>`))?.[0];
-    assert.ok(field && /\brequired(?:[\s=>])/.test(field), `${name} must be required`);
-  }
-  assert.match(form[2], /type="email"[^>]*autocomplete="email"/);
-  const agentGroup = form[2].match(/<fieldset\b[^>]*id="beta-agent-field"[^>]*>([\s\S]*?)<\/fieldset>/)?.[1];
-  assert.ok(agentGroup);
-  assert.match(agentGroup, /<legend>Which agent would you use\? <span>\(optional\)<\/span><\/legend>/);
-  assert.match(agentGroup, /<details class="beta-select beta-agent-select" id="beta-agent-select">\s*<summary>/);
-  const agentChoices = Array.from(agentGroup.matchAll(/<input\b[^>]*type="radio"[^>]*name="agent"[^>]*value(?:="([^"]*)")?[^>]*>/g));
-  assert.deepEqual(agentChoices.map(choice => choice[1] ?? ''), ['', 'ChatGPT', 'Claude', 'Codex', 'Hermes Agent', 'Another agent', 'Not decided yet']);
-  assert.match(agentChoices[0][0], /\bchecked/);
-  for (const choice of agentChoices) assert.doesNotMatch(choice[0], /\brequired/, 'The agent choice is optional');
-  const channelGroup = form[2].match(/<fieldset\b[^>]*aria-describedby="beta-channel-hint"[^>]*>([\s\S]*?)<\/fieldset>/)?.[1];
-  assert.ok(channelGroup);
-  assert.match(channelGroup, /<legend>Which channels would you connect\?<\/legend>/);
-  assert.match(channelGroup, /id="beta-channel-hint">Select one or more\./);
-  assert.match(channelGroup, /<details class="beta-select" id="beta-channel-select">\s*<summary>/);
-  assert.match(channelGroup, /data-selected-value>Choose channels<\/span>/);
-  const choices = Array.from(channelGroup.matchAll(/<label[^>]*><input\b[^>]*type="checkbox"[^>]*name="channel"[^>]*value="([^"]+)"[^>]*><span>([^<]+)<\/span><\/label>/g));
-  assert.deepEqual(choices.map(choice => choice[1]), ['WhatsApp', 'Replaid widget', 'Instagram', 'Messenger', 'Telegram', 'Not sure yet']);
-  for (const choice of choices) assert.equal(choice[1], choice[2], 'Every checkbox needs its own label');
-  assert.match(form[2], /name="subject" value="Beta access request/);
-  assert.match(form[2], /name="redirect" value="https:\/\/replaid.pro\/beta\/\?success=true"/);
-  assert.match(form[2], /name="botcheck"/);
-  assert.match(form[2], /class="h-captcha" data-captcha="true"/);
-  assert.ok(beta.includes('https://web3forms.com/client/script.js'));
-  assert.match(beta, /id="beta-form-error"[^>]*role="alert"[^>]*hidden/);
-  assert.match(beta, /id="beta-success"[^>]*role="status"[^>]*hidden/);
-  assert.ok(links(form[2]).some(link => link.href === '/privacy/'));
-  assert.ok(links(beta).some(link => link.href === 'https://app.replaid.pro/login'));
-  assert.match(beta, /Access is by invitation\. Requesting access is free\./);
+  assert.match(beta, /http-equiv="refresh"/);
+  assert.ok(beta.includes(registerUrl));
+  assert.doesNotMatch(beta, /<form|web3forms|h-captcha/);
+  const redirects = await readPage('_redirects');
+  assert.ok(redirects.includes(`/beta ${registerUrl} 301`));
+  assert.ok(redirects.includes(`/beta/ ${registerUrl} 301`));
 });
 
-test('every built page directs new visitors to beta access instead of closed registration', async () => {
-  const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html'));
+test('every content page offers direct registration without an invitation gate', async () => {
+  const pages = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html') && path !== 'beta/index.html');
   for (const path of pages) {
-    const pageLinks = links(await readPage(path));
-    assert.ok(!pageLinks.some(link => link.href?.startsWith('https://app.replaid.pro/register')), `Closed registration link: ${path}`);
-    assert.ok(pageLinks.some(link => link.href === '/beta/' && link.text === 'Request beta access'), `Missing beta access link: ${path}`);
+    const html = await readPage(path);
+    const pageLinks = links(html);
+    assert.ok(pageLinks.some(link => link.href === registerUrl && link.text === 'Get started'), `Missing registration link: ${path}`);
+    assert.ok(!pageLinks.some(link => link.href?.startsWith('/beta')), `Old beta link: ${path}`);
+    assert.doesNotMatch(html, /Access is by invitation|Once invited|Request beta access/i, path);
+    assert.ok(pageLinks.some(link => link.href === 'https://app.replaid.pro/login'), `Missing login link: ${path}`);
   }
 });

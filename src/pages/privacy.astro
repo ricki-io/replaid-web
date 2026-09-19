@@ -12,7 +12,7 @@ const sections = [
   { id: 'changes', title: 'Changes to this notice' },
 ];
 ---
-<LegalLayout title="Privacy Policy" description="How Replaid handles account information, customer conversations, and the data you share with your agent." sections={sections}>
+<LegalLayout title="Privacy Policy" description="How Replaid handles account information, customer conversations, and the data you share with your agent." sections={sections} updatedAt="2026-09-19" updatedLabel="September 19, 2026">
   <div class="legal-summary"><h2>Your conversations. Your chosen agent.</h2><p>Replaid connects customer channels to the agent you authorize. That agent can receive conversation data and request permitted actions. This notice explains that data flow, the information needed to operate Replaid, and how to contact us about your data.</p></div>
   <section id="who-we-are">
     <h2>Who handles your data</h2>
@@ -28,7 +28,7 @@ const sections = [
       <li><strong>Conversation data:</strong> message text, available contact identifiers and profile details, timestamps, comments, drafts, tags, assignments, and conversation state.</li>
       <li><strong>Agent activity:</strong> authorization details, requested actions, policy decisions, execution results, and webhook delivery information.</li>
       <li><strong>Billing records:</strong> credit purchases, balances, usage, payment references, and tax or invoice information. Stripe handles payment details; Replaid receives payment status and related references.</li>
-      <li><strong>Beta access requests:</strong> your email address, intended use case, selected channels, and agent choice if provided.</li>
+      <li><strong>Earlier beta access requests:</strong> your email address, intended use case, selected channels, and agent choice if you submitted the former beta form. Registration is now open and does not require a beta request.</li>
       <li><strong>Support and technical data:</strong> the messages you send us, IP addresses, request and error logs, browser information, and security events.</li>
     </ul>
     <p>Optional Instagram and Messenger history imports can include available text messages from the last 30 days. The import window is not a promise to delete imported messages after 30 days.</p>
@@ -36,7 +36,7 @@ const sections = [
   <section id="purposes">
     <h2>How we use it</h2>
     <p>We use account information to provide the service and respond to requests about it. This processing supports our contract with account holders, or steps requested before a contract. Where an account belongs to an organization, administering its users also supports our legitimate interest in providing that organization with the service.</p>
-    <p>We use beta access requests to understand your intended use, review access requests, and contact you about access and setup.</p>
+    <p>If you submitted the former beta form, we use that request to respond about access and setup. New users register directly in the Replaid app.</p>
     <p>We process connected conversations to carry out the customer's instructions, provide context to an authorized agent, apply action policies, and record results. The customer is responsible for the lawful basis for its own customer communications.</p>
     <p>Security, abuse prevention, troubleshooting, and service reliability support our legitimate interests in operating and protecting Replaid. Billing and accounting records are also processed to meet legal obligations. Optional website analytics uses consent, as explained in the <a href="/cookies/">Cookie Policy</a>.</p>
   </section>
@@ -51,8 +51,8 @@ const sections = [
     <p>Replaid uses infrastructure and delivery services to host the website and application, store data, deliver messages, and protect the service. Other recipients include:</p>
     <ul>
       <li><strong>Stripe</strong> for payments and related fraud prevention. See <a href="https://stripe.com/privacy">Stripe's privacy notice</a>.</li>
-      <li><strong>Web3Forms</strong> to deliver our contact and beta access forms. Your submitted details, including your email address, message or use case, channel and agent choices, and submission metadata pass through that service. See <a href="https://web3forms.com/privacy">Web3Forms' privacy notice</a>.</li>
-      <li><strong>hCaptcha</strong> for contact and beta access form spam protection. It can process browser, device, network, and interaction information. See <a href="https://www.hcaptcha.com/privacy">hCaptcha's privacy notice</a>.</li>
+      <li><strong>Web3Forms</strong> to deliver our contact form. Your name, email address, message, and submission metadata pass through that service. Earlier beta requests also passed through Web3Forms; app registration does not. See <a href="https://web3forms.com/privacy">Web3Forms' privacy notice</a>.</li>
+      <li><strong>hCaptcha</strong> for contact form spam protection, and previously for the beta form. It can process browser, device, network, and interaction information. See <a href="https://www.hcaptcha.com/privacy">hCaptcha's privacy notice</a>.</li>
       <li><strong>Google Analytics</strong> for optional website usage measurement, only after you allow analytics. See <a href="https://policies.google.com/privacy">Google's privacy notice</a>.</li>
       <li><strong>Your selected platforms and agent providers</strong> when you connect or authorize them.</li>
     </ul>

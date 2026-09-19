@@ -1,5 +1,5 @@
 ---
-import { betaAccess } from './product-copy';
+import { registration } from './product-copy';
 import { useCases } from './use-cases';
 const links = [
   { href: '/#how-it-works', label: 'How it works' },
@@ -30,7 +30,7 @@ const resources = [
     </details>
     <a href={links[1].href}>{links[1].label}</a>
   </nav>
-  <a class="sky-button sky-header-cta" href={betaAccess.url}>{betaAccess.label}</a>
+  <div class="sky-account-actions"><a class="sky-login" href="https://app.replaid.pro/login">Log in</a><a class="sky-button sky-header-cta" href={registration.url}>Get started</a></div>
   <details class="sky-mobile-nav">
     <summary aria-label="Open navigation"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></summary>
     <nav aria-label="Mobile navigation">
@@ -45,7 +45,7 @@ const resources = [
       </div>
       <a href={links[1].href}>{links[1].label}</a>
       <a href="https://app.replaid.pro/login">Log in</a>
-      <a href={betaAccess.url}>{betaAccess.label}</a>
+      <a href={registration.url}>Get started</a>
     </nav>
   </details>
 </header>
@@ -71,6 +71,8 @@ const resources = [
   });
 </script>
 <style>
+  .sky-account-actions { display: flex; align-items: center; gap: 8px; }
+  .sky-login { font-size: 14px; white-space: nowrap; }
   [data-nav-dropdown] { position: relative; }
   [data-nav-dropdown] > summary { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: 999px; font-weight: 600; list-style: none; }
   [data-nav-dropdown] > summary::-webkit-details-marker { display: none; }
@@ -87,7 +89,7 @@ const resources = [
   a[aria-current="page"] { background: #f0f4f7; }
   @media (max-width: 1050px) and (min-width: 901px) { .sky-desktop-nav { gap: 0; } .sky-desktop-nav > a, [data-nav-dropdown] > summary { padding-inline: 8px; } .sky-header { gap: 12px; } }
   @media (max-width: 900px) {
-    .sky-desktop-nav, .sky-header-cta { display: none; }
+    .sky-desktop-nav, .sky-account-actions { display: none; }
     .sky-mobile-nav { display: block; }
     .sky-mobile-nav > summary { list-style: none; display: grid; place-items: center; width: 40px; height: 40px; }
     .sky-mobile-nav > summary::-webkit-details-marker { display: none; }

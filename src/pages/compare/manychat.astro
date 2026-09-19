@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import SkyHeader from '../../components/SkyHeader.astro';
 import SkyFooter from '../../components/SkyFooter.astro';
 import SetupServiceCallout from '../../components/SetupServiceCallout.astro';
-import { betaAccess, productCopy } from '../../components/product-copy';
+import { registration, productCopy } from '../../components/product-copy';
 import '../../styles/landing.css';
 import '../../styles/comparison.css';
 
@@ -22,7 +22,7 @@ const rows = [
   { topic: 'Starting automation', replaid: 'You start the agent, schedule it externally, or connect a webhook receiver. Connecting MCP alone does not start replies.', manychat: 'Set up triggers and flows for actions such as responding to comments and direct messages.', source: sources[0] },
   { topic: 'Review and control', replaid: 'Set read, draft, and send permissions. Start with sending disabled, review proposed replies, and inspect recorded actions.', manychat: 'Offers Inbox access for people to handle conversations, with team features and seats that depend on the plan.', source: sources[3] },
   { topic: 'Channels', replaid: 'WhatsApp, Instagram, Messenger, Telegram, and the Replaid website widget. Supported actions and limits vary by channel.', manychat: 'Lists Instagram, TikTok, Messenger, WhatsApp, Telegram, SMS, and email, with availability depending on the plan.', source: sources[3] },
-  { topic: 'Cost model', replaid: 'A limited founding offer for platform access. Paid channel usage and external agent or AI costs are separate.', manychat: 'Free and recurring paid plans. Included Active Contacts, additional contact charges, and feature access depend on the plan.', source: sources[3] },
+  { topic: 'Cost model', replaid: 'Create an account without a card. Paid operations use prepaid credit. Founding Lifetime is optional; external agent costs are separate.', manychat: 'Free and recurring paid plans. Included Active Contacts, additional contact charges, and feature access depend on the plan.', source: sources[3] },
 ];
 const jsonLd = [
   { '@context': 'https://schema.org', '@type': 'WebPage', '@id': canonical, url: canonical, name: title, description, inLanguage: 'en', dateModified: '2026-09-17' },
@@ -40,7 +40,7 @@ const jsonLd = [
         <nav class="comparison-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Replaid vs Manychat</span></nav>
         <h1 id="comparison-heading">Replaid vs Manychat.<br /><span class="hero-highlight">Which fits your workflow?</span></h1>
         <p class="comparison-intro">Manychat brings flows and AI tools into one automation platform. Replaid connects customer conversations to the AI agent you choose. Start with how you want to work.</p>
-        <div class="comparison-actions"><a class="sky-button" href={`${betaAccess.url}?from=compare-manychat`}>{betaAccess.label}</a><a class="comparison-link" href="#comparison-details">Compare the details <span aria-hidden="true">↓</span></a></div>
+        <div class="comparison-actions"><a class="sky-button" href={`${registration.url}?from=compare-manychat`}>{registration.label}</a><a class="comparison-link" href="#comparison-details">Compare the details <span aria-hidden="true">↓</span></a></div>
         <p class="comparison-reviewed">By Replaid · Reviewed <time datetime="2026-09-17">September 17, 2026</time> · Based on linked product documentation</p>
       </section>
 
@@ -53,7 +53,7 @@ const jsonLd = [
             <p>A fit when you want your existing agent, business knowledge, and instructions to work with customer conversations.</p>
             <ul><li>Choose the agent and how it runs.</li><li>Read messages and prepare drafts for review.</li><li>Control which messaging actions it can take.</li></ul>
             <a class="comparison-link" href="/docs/connect-your-agent/">See the connection guide <span aria-hidden="true">↗</span></a>
-            <p class="comparison-option-note">Beta access is by invitation. Agent setup is required.</p>
+            <p class="comparison-option-note">Create your account without a card. Connect your own agent when ready.</p>
           </article>
           <article class="comparison-option">
             <p class="comparison-brand">Manychat</p>
@@ -82,7 +82,7 @@ const jsonLd = [
       <section class="comparison-section comparison-cost" aria-labelledby="cost-heading">
         <div><h2 id="cost-heading">Compare the full cost<br /><span class="hero-highlight">of your workflow.</span></h2><p>The right choice depends on contact volume, channels, agent costs, and the setup you need.</p></div>
         <div>
-          <h3>Replaid</h3><p>The current founding offer is $299 USD once per team for the first 5 founding teams, with $50 prepaid usage credit. Paid channel usage, tax, and your external agent or AI provider costs are separate. Optional setup and maintenance are quoted separately. <a href="/pricing/">See the current offer and terms.</a></p>
+          <h3>Replaid</h3><p>Create your account without a card. The optional Founding Lifetime offer is $299 USD once per team for the first 5 founding teams, with $50 prepaid usage credit. Standard paid channel rates include a 20% markup; founding teams pay provider cost. Paid channel usage, tax, and your external agent or AI provider costs are separate. Optional setup and maintenance are quoted separately. <a href="/pricing/">See the current offer and terms.</a></p>
           <h3>Manychat</h3><p>Compare its free and paid plans using your expected Active Contacts, channels, and required features. Monthly and annual billing can differ. <a href={sources[3].href}>Check Manychat’s current pricing.</a></p>
         </div>
       </section>

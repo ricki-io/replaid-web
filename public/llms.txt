@@ -10,7 +10,7 @@ Primary contact: https://replaid.pro/contact/
 
 - Home: https://replaid.pro/
 - Get started: https://replaid.pro/get-started/
-- Request beta access: https://replaid.pro/beta/
+- Create an account: https://app.replaid.pro/register
 - Connection guide: https://replaid.pro/docs/connect-your-agent/
 - Pricing: https://replaid.pro/pricing/
 - Replaid vs Manychat: https://replaid.pro/compare/manychat/
@@ -29,7 +29,7 @@ Primary contact: https://replaid.pro/contact/
 ## Product facts
 
 - Audience: people who use or build external AI agents for customer conversations.
-- Access is by invitation. Request beta access at https://replaid.pro/beta/ with your email, use case, selected channels, and optional agent choice. Requests are reviewed before access is offered.
+- Registration is open at https://app.replaid.pro/register. Create an account and verify your email without an invitation or a payment card. Setup is optional and can be resumed later. Old /beta/ links redirect to registration.
 - Connections: MCP for compatible clients and REST for custom integrations.
 - Channels: WhatsApp Business numbers for customer messages and text replies, the Replaid widget for website text chat, Instagram Business or Creator accounts for text DMs and comments, Facebook Pages for Messenger, and Telegram bots for private text messages.
 - Each team can connect one Instagram account, one Facebook Page, one Telegram bot, and one Replaid widget. Telegram personal accounts and groups are not supported. These four channels support text only; attachments are not supported on them.
@@ -38,7 +38,8 @@ Primary contact: https://replaid.pro/contact/
 - Actions include drafting and sending permitted replies, updating conversations and contacts, and human handoff.
 - Business knowledge and instructions stay in the external agent.
 - An MCP connection makes tools available when your agent runs. It does not start automatic replies. Your agent must be started by you, an external schedule, or a webhook receiver.
-- Founding Lifetime costs $299 USD once per team for the first 5 founding teams. There is no monthly platform fee. The offer includes $50 prepaid usage credit, funded by Replaid.
+- Founding Lifetime is optional and costs $299 USD once per team for the first 5 founding teams. There is no monthly platform fee. The offer includes $50 prepaid usage credit, funded by Replaid.
+- Standard paid channel rates include a 20% markup on provider cost. Only operations with a charge require prepaid credit.
 - Supported Instagram, Messenger, Telegram, and Replaid widget text actions are included and do not spend usage credit. For founding teams, paid channel API costs such as WhatsApp and X (Twitter) are charged at the same price the provider charges, using prepaid credit. Availability and supported actions depend on the channel. Applicable tax and your external agent or AI provider charges are separate.
 - Prepaid credit expires one year after it is added to your account. This applies to the included $50 and to credit top-ups. Top-up amounts are $10, $25, $50, or $100.
 - No public plugin directory listing is claimed. Use the connection guide to configure a compatible client.

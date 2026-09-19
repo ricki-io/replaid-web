@@ -4,7 +4,7 @@ import test from 'node:test';
 import worker from '../error-page-worker.mjs';
 
 const output = new URL('../../dist/', import.meta.url);
-const files = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html'));
+const files = (await readdir(output, { recursive: true })).filter(path => path.endsWith('.html') && path !== 'beta/index.html');
 const pages = await Promise.all(files.map(async path => ({ path, html: await readFile(new URL(path, output), 'utf8') })));
 const sitemap = await readFile(new URL('sitemap-0.xml', output), 'utf8');
 const locations = Array.from(sitemap.matchAll(/<loc>([^<]+)<\/loc>/g), match => match[1]);

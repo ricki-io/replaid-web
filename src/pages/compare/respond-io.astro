@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import SkyHeader from '../../components/SkyHeader.astro';
 import SkyFooter from '../../components/SkyFooter.astro';
 import SetupServiceCallout from '../../components/SetupServiceCallout.astro';
-import { betaAccess, productCopy } from '../../components/product-copy';
+import { registration, productCopy } from '../../components/product-copy';
 import '../../styles/landing.css';
 import '../../styles/comparison.css';
 
@@ -28,7 +28,7 @@ const rows = [
   { topic: 'Action controls', replaid: 'Set action permissions and hourly limits, keep sending disabled while testing, check actions with dry runs, and inspect execution records.', competitor: 'Hosted MCP follows the connected user’s role. Built-in AI agents also have configurable conversation actions. Equivalent controls for every external-agent action were not verified.', source: sources[0] },
   { topic: 'Messaging channels', replaid: 'WhatsApp, Instagram, Messenger, Telegram, and a website widget. The current message workflow is text-based; WhatsApp replies require an open 24-hour customer-care window.', competitor: 'Includes WhatsApp, Instagram, Messenger, Telegram, web chat, email, SMS, LINE, Viber, and WeChat. TikTok Business Messaging is in beta; voice integrations are also listed.', source: sources[3] },
   { topic: 'Custom integrations', replaid: 'Use MCP, the REST API, and outgoing webhooks to connect your agent and other tools. Custom workflows run in your own integration.', competitor: 'Developer API access starts on Growth. Its integration catalogue also includes CRM and automation tools.', source: sources[6] },
-  { topic: 'Platform and usage costs', replaid: 'A limited founding lifetime offer. Paid channel usage, external AI costs, and optional setup work are separate.', competitor: 'Recurring subscriptions, with contact allowances and included AI credits. Extra usage and channel fees can add to the bill.', source: sources[1] },
+  { topic: 'Platform and usage costs', replaid: 'Create an account without a card. Paid operations use prepaid credit. Founding Lifetime, external AI costs, and setup work are separate.', competitor: 'Recurring subscriptions, with contact allowances and included AI credits. Extra usage and channel fees can add to the bill.', source: sources[1] },
 ];
 const jsonLd = [
   { '@context': 'https://schema.org', '@type': 'WebPage', '@id': canonical, url: canonical, name: title, description, inLanguage: 'en', dateModified: '2026-09-17' },
@@ -46,7 +46,7 @@ const jsonLd = [
         <nav class="comparison-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Replaid vs respond.io</span></nav>
         <h1 id="comparison-heading">Replaid vs respond.io.<br /><span class="hero-highlight">Where will your agent work?</span></h1>
         <p class="comparison-intro">Both connect external AI agents to customer conversations. Replaid focuses on your agent’s messaging workflow. respond.io adds built-in AI, visual automation, and a broader team inbox.</p>
-        <div class="comparison-actions"><a class="sky-button" href={`${betaAccess.url}?from=compare-respond-io`}>{betaAccess.label}</a><a class="comparison-link" href="#comparison-details">Compare the details <span aria-hidden="true">↓</span></a></div>
+        <div class="comparison-actions"><a class="sky-button" href={`${registration.url}?from=compare-respond-io`}>{registration.label}</a><a class="comparison-link" href="#comparison-details">Compare the details <span aria-hidden="true">↓</span></a></div>
         <p class="comparison-reviewed">By Replaid · Reviewed <time datetime="2026-09-17">September 17, 2026</time> · Based on linked product documentation</p>
       </section>
 
@@ -59,7 +59,7 @@ const jsonLd = [
             <p>A fit for developers and agencies with an existing agent, business knowledge, and a supported text-messaging workflow.</p>
             <ul><li>Keep reasoning and instructions in your agent.</li><li>Start with drafts and sending disabled.</li><li>Set action limits and review recorded results.</li></ul>
             <a class="comparison-link" href="/docs/connect-your-agent/">See the connection guide <span aria-hidden="true">↗</span></a>
-            <p class="comparison-option-note">Beta access is by invitation. You configure and run the external agent.</p>
+            <p class="comparison-option-note">Create your account without a card. You configure and run the external agent.</p>
           </article>
           <article class="comparison-option">
             <p class="comparison-brand">respond.io</p>
@@ -88,8 +88,8 @@ const jsonLd = [
       <section class="comparison-section comparison-cost" aria-labelledby="cost-heading">
         <div><h2 id="cost-heading">Platform access.<br /><span class="hero-highlight">Then the cost of use.</span></h2><p>A lifetime offer and a subscription include different things. Compare the full workflow, including your agent, channels, contact volume, and setup.</p></div>
         <div>
-          <h3>Replaid: $299 once per team</h3>
-          <p>The current offer is for the first 5 founding teams and includes $50 prepaid usage credit. There is no monthly platform fee under this offer. Paid channel usage, tax, external agent costs, and optional setup or maintenance are separate. Credit expires after one year. <a href="/pricing/">See the founding offer and terms.</a></p>
+          <h3>Replaid: start without a card</h3>
+          <p>The optional Founding Lifetime offer costs $299 USD once per team for the first 5 founding teams and includes $50 prepaid usage credit. Standard paid channel rates include a 20% markup; founding teams pay provider cost. There is no monthly platform fee under this offer. Paid channel usage, tax, external agent costs, and optional setup or maintenance are separate. Credit expires after one year. <a href="/pricing/">See the founding offer and terms.</a></p>
           <h3>respond.io: recurring plans</h3>
           <p>Starter: $99/month, or $948/year.<br />Growth: $199/month, or $1,908/year.<br />Advanced: $349/month, or $3,348/year.</p>
           <p>Prices are USD. Annual totals are billed yearly. Growth and Advanced start at 1,000 monthly active contacts. Extra contacts cost $12 and $15 per 100, respectively. WhatsApp fees are separate. <a href={sources[1].href}>Check current plans and limits.</a></p>

@@ -9,7 +9,7 @@ const routes = ['/use-cases/automation-agencies/', '/use-cases/developers/', '/u
 const anchors = html => Array.from(html.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g), match => ({ href: match[1], text: match[2].replace(/<[^>]*>/g, '').trim() }));
 
 test('every page exposes all four use cases in desktop, mobile, and footer navigation', async () => {
-  for (const file of (await readdir(output, { recursive: true })).filter(file => file.endsWith('.html'))) {
+  for (const file of (await readdir(output, { recursive: true })).filter(file => file.endsWith('.html') && file !== 'beta/index.html')) {
     const html = await readPage(file);
     const desktop = html.match(/<details\b[^>]*class="sky-use-cases"[^>]*>([\s\S]*?)<\/details>/)?.[1] ?? '';
     assert.match(desktop, /<summary\b[^>]*>Use Cases/);
@@ -41,16 +41,16 @@ test('the home places setup help before the FAQ and the final CTA after it', asy
 
 test('each audience gets a distinct example, conversion path, and optional setup help', async () => {
   for (const [path, source, primaryLabel, exampleLabel] of [
-    ['use-cases/automation-agencies/index.html', 'agencies', 'Request beta access', 'Example client workflow'],
+    ['use-cases/automation-agencies/index.html', 'agencies', 'Create your account', 'Example client workflow'],
     ['use-cases/developers/index.html', 'developers', 'Explore the integration', 'Agent integration model'],
-    ['use-cases/creators/index.html', 'creators', 'Request beta access', 'Example creator inbox review'],
-    ['use-cases/customer-support/index.html', 'customer-support', 'Request beta access', 'Example website widget support conversation'],
+    ['use-cases/creators/index.html', 'creators', 'Create your account', 'Example creator inbox review'],
+    ['use-cases/customer-support/index.html', 'customer-support', 'Create your account', 'Example website widget support conversation'],
   ]) {
     const html = await readPage(path);
     const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? '';
     assert.equal((main.match(/<h1\b/g) ?? []).length, 1);
     assert.ok(anchors(main).some(link => link.text === primaryLabel));
-    assert.ok(anchors(main).some(link => link.href === `/beta/?from=${source}`));
+    assert.ok(anchors(main).some(link => link.href === `https://app.replaid.pro/register?from=${source}`));
     assert.ok(anchors(main).some(link => link.href === `/setup-service/?from=${source}`));
     assert.ok(main.includes(exampleLabel));
     assert.match(main, /sending disabled|sending is enabled/);
@@ -105,7 +105,7 @@ test('pricing offers setup separately without changing the platform purchase pat
   assert.ok(offer > 0 && offer < service && service < costs);
   assert.match(html, /Optional paid service/);
   assert.match(html, /quoted separately from Replaid access and usage/);
-  assert.ok(anchors(html).some(link => link.href === '/beta/'));
+  assert.ok(anchors(html).some(link => link.href === 'https://app.replaid.pro/register'));
 });
 
 test('request attribution keeps known entry points and ignores arbitrary query values', () => {
@@ -124,7 +124,7 @@ test('request attribution keeps known entry points and ignores arbitrary query v
 
 
 test('every page groups News & articles and Documentation under Resources in desktop and mobile navigation', async () => {
-  for (const file of (await readdir(output, { recursive: true })).filter(file => file.endsWith('.html'))) {
+  for (const file of (await readdir(output, { recursive: true })).filter(file => file.endsWith('.html') && file !== 'beta/index.html')) {
     const html = await readPage(file);
     const desktop = html.match(/<details\b[^>]*class="sky-resources"[^>]*>([\s\S]*?)<\/details>/)?.[1] ?? '';
     assert.match(desktop, /<summary\b[^>]*>Resources/);

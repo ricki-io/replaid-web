@@ -1,8 +1,8 @@
-import { productCopy, betaAccess } from './product-copy';
+import { productCopy, registration } from './product-copy';
 import { setupService } from './use-cases';
 
 export const faqs = [
-  { q: 'How do I get beta access?', a: betaAccess.description },
+  { q: 'How do I get started?', a: registration.description },
   { q: 'Does Replaid include an AI agent?', a: `No. Use ChatGPT, Claude, or Hermes Agent with the knowledge and instructions you provide. Replaid gives it access to messages, checks your permissions, and records each action. ${setupService.faq}`, link: { href: `${setupService.url}?from=faq`, label: setupService.label } },
   { q: 'Which channels can I connect?', a: `${productCopy.availableChannels} ${productCopy.futureChannels}` },
   { q: 'What do I need to connect a channel?', a: productCopy.channelRequirements },
@@ -12,5 +12,5 @@ export const faqs = [
   { q: 'Does connecting MCP turn on automatic replies?', a: `No. ${productCopy.automation}` },
   { q: 'Can a person take over?', a: 'Yes. Your agent can flag a conversation for a person and pause its automation. You can review the conversation and the handoff in Replaid, then resume automation when appropriate.' },
   { q: 'Do I need to write code?', a: 'You can connect a compatible agent through its settings and sign in to Replaid. Custom API connections and automatic triggers need technical setup. Requirements vary by client and plan.' },
-  { q: 'What does Replaid cost?', a: productCopy.pricing },
+  { q: 'What does Replaid cost?', a: productCopy.selfServicePricing },
 ];

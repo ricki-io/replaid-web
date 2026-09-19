@@ -3,7 +3,7 @@ import Layout from './Layout.astro';
 import SkyHeader from '../components/SkyHeader.astro';
 import SkyFooter from '../components/SkyFooter.astro';
 import SetupServiceCallout from '../components/SetupServiceCallout.astro';
-import { betaAccess } from '../components/product-copy';
+import { registration } from '../components/product-copy';
 import '../styles/landing.css';
 import '../styles/use-cases.css';
 
@@ -17,7 +17,7 @@ interface Props {
 }
 const { title, description, audience, source, intro, primaryGuide = false } = Astro.props;
 const guideUrl = '/docs/connect-your-agent/';
-const betaUrl = `${betaAccess.url}?from=${source}`;
+const registrationUrl = `${registration.url}?from=${source}`;
 const relatedUseCases = {
   agencies: { href: '/use-cases/developers/', label: 'Building the integration yourself? Explore Replaid for developers.' },
   developers: { href: '/use-cases/automation-agencies/', label: 'Building for clients? Explore Replaid for automation agencies.' },
@@ -36,10 +36,10 @@ const relatedUseCase = relatedUseCases[source];
           <h1 id="use-case-heading"><slot name="heading" /></h1>
           <p class="use-case-description">{intro}</p>
           <div class="use-case-actions">
-            <a class="sky-button" href={primaryGuide ? guideUrl : betaUrl}>{primaryGuide ? 'Explore the integration' : betaAccess.label}</a>
-            <a class="use-case-link" href={primaryGuide ? betaUrl : guideUrl}>{primaryGuide ? betaAccess.label : 'See the setup guide'}</a>
+            <a class="sky-button" href={primaryGuide ? guideUrl : registrationUrl}>{primaryGuide ? 'Explore the integration' : registration.label}</a>
+            <a class="use-case-link" href={primaryGuide ? registrationUrl : guideUrl}>{primaryGuide ? registration.label : 'See the setup guide'}</a>
           </div>
-          <p class="use-case-note">Replaid is in beta. Access is by invitation.</p>
+          <p class="use-case-note">{registration.note}</p>
         </div>
         <slot name="example" />
       </section>
